@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Weather</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+</head>
+<body>
+    <h1>Weather Information</h1>
+    <div id="weatherInfo"></div>
+
+    <script>
+        $(document).ready(function() {
+    // Function to get URL parameters
+    function getUrlParameter(name) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(window.location.href);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Get city and state from URL parameters
+    const city = getUrlParameter('city');
+    const state = getUrlParameter('state');
+
+    // Display city and state
+    $("#weatherInfo").html(`<p>Weather information for ${city}, ${state}</p>`);
+
+    // Fetch weather information using city and state (you need to implement this part)
+    // Example:
+    // $.ajax({
+    //     url: `https://api.weather.gov/points?city=${city},${state}`,
+    //     success: function(data) {
+    //         // Fetch weather data and display it
+    //     },
+    //     error: function(xhr, status, error) {
+    //         console.error("Error fetching weather data:", error);
+    //     }
+    // });
+});
+
+    </script>
+</body>
+</html>

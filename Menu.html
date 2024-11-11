@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C78TXR0XFK');
+</script>
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true">
+<title>Sz Games</title>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<style>
+
+
+body {
+  background: #1d1d1d;
+  font-family: Arial, Helvetica, sans-serif;
+  background-repeat: repeat;
+
+
+  
+}
+
+img {
+  
+  margin: 10px;
+position: relative;
+z-index: 1;
+}
+
+.btn-group button {
+  background-color: black; /* Green background */
+ 
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: grey;
+}
+
+/* Header/Logo Title */
+.header-halloween {
+  padding: 60px;
+  text-align: center;
+  background: linear-gradient(to bottom right, #ff7d31, rgb(39, 39, 39), rgb(39, 39, 39));
+  color: white;
+  width: auto;
+  font-size: 30px;
+  position: relative;
+z-index: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 15px;
+}
+
+.header {
+  position: relative;
+z-index: 1;
+  padding: 60px;
+  text-align: center;
+  background: linear-gradient(to bottom right, #9a9a9a, rgb(39, 39, 39));
+  color: white;
+  width: auto;
+  font-size: 30px;
+ 
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 15px;
+}
+
+/* Page Content */
+
+</style>
+
+
+<body>
+<div style="width: 100%; z-index: 100000; height: 100%; position: fixed; background-color: #292929a8;">
+   <div style="color: white; top: 50%; left: 50%; border-radius: 15px; border: solid 2px gray; z-index: 1000000; background-color: rgb(43, 43, 43); transform: translate(-50%, -50%); position: fixed; width: 500px; height: 300px;">
+    <div style="top: 50%; left: 50%; transform: translate(-50%, -50%); position: relative;">
+      <h1 style="text-align: center;">This Page Is Outdated!</h1>
+      <br>
+    <p style="text-align: center;">This Page Is A Old page That Is Not Used Anymore</p>
+    <br>
+    <p  style="color: white;"><a style="color: white;" href="./index.html">Go Home</a></p>
+    </div>
+    <script>document.body.style.overflow = 'hidden'</script>
+  </div>
+</div>
+ 
+
+<style>
+    .game {
+        position: absolute;
+color: white;
+
+  transform: scale(1.8);
+  z-index: 3;
+  font-family: Arial, Helvetica, sans-serif;
+    }
+    .fade {
+        position: absolute;
+        background: linear-gradient(to bottom, #1d1d1d, #1d1d1d5d, rgba(39, 39, 39, 0));
+        width: 300px;
+        height: 150px;
+     border-radius: 15px;
+    }
+
+
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 85vw;
+  margin: 1rem auto;
+}
+
+
+.bg,
+.overlay {
+  text-align: center;
+}
+
+img,
+.overlay {
+  transition: .3s all;
+  border-radius: 3px;
+}
+
+
+</style>
+<style>
+  .topnav {
+  overflow: hidden;
+  position: fixed;
+  z-index: 5;
+  border-radius: 30px;
+  background-color: #333;
+}
+
+p {
+  transition: 0.5s;
+}
+
+.topnav p {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+p {
+  font-size: large; font-family: Arial, Helvetica, sans-serif; color: #f2f2f2; text-align: center;
+}
+
+.button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  color: #ffffff;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #292929;
+  width: 100%;
+  border: 1px solid #393939;
+  box-shadow: 6px 6px 12px #292929,
+             -6px -6px 12px #1d1d1d;
+}
+
+.button2:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5,
+             inset -4px -4px 12px #ffffff;
+}
+
+.button2:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #4a4a4a;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:hover {
+  color: #ffffff;
+  border: 1px solid #373737;
+}
+
+.button2:hover:before {
+  top: -35%;
+  background-color: #2c2c2c;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+  top: -45%;
+  background-color: #424242;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+.buttonn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+  color: white;
+  text-shadow: 2px 2px rgb(116, 116, 116);
+  text-transform: uppercase;
+  border: solid 2px black;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 17px;
+  background-color: #373737;
+  border-radius: 50px;
+  position: relative;
+  transform: translate(-50%, 50%) scale(1.5);
+  left: 50%;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+.buttonn:active {
+  transform: scale(.9);
+  transition: all 100ms ease;
+}
+
+.buttonn svg {
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+.play {
+  transition: all .5s ease;
+  transition-delay: 300ms;
+}
+
+.buttonn:hover svg {
+  transform: scale(3) translate(150%);
+}
+
+.now {
+  position: absolute;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+.buttonn:hover .now {
+  transform: translateX(50%);
+  transition-delay: 300ms;
+}
+
+.buttonn:hover .play {
+  transform: translateX(200%);
+  transition-delay: 300ms;
+}
+
+.btnn {
+ --glow-color: rgb(87, 87, 87);
+
+ border: .25em solid var(--glow-color);
+ padding: 1em 3em;
+ color: var(--glow-color);
+ font-size: 15px;
+ color: white;
+ font-weight: bold;
+ left: 50%;
+ transform: translate(-50%, 50%);
+ background-color: var(--btn-color);
+ border-radius: 1em;
+ outline: none;
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+ text-shadow: 0 0 .5em var(--glow-color);
+ position: relative;
+ transition: all 0.3s;
+}
+
+.btnn::after {
+ pointer-events: none;
+ content: "";
+ position: absolute;
+ top: 120%;
+ left: 0;
+ height: 100%;
+ width: 100%;
+ background-color: var(--glow-spread-color);
+ filter: blur(2em);
+ opacity: .7;
+ transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+.btnn:hover {
+ color: var(--btn-color);
+ background-color: var(--glow-color);
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+        color: white;
+}
+
+.btnn:active {
+ box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+.btn {
+ --color: #878686;
+ --color2: rgb(10, 25, 30);
+ padding: 0.8em 1.75em;
+ background-color: transparent;
+ border-radius: 6px;
+ border: .3px solid var(--color);
+ transition: .5s;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+ z-index: 1;
+ font-weight: 300;
+ left: 50%;
+ transform: translate(-50%, 100%);
+
+ font-size: 17px;
+ font-family: 'Roboto', 'Segoe UI', sans-serif;
+ text-transform: uppercase;
+ color: var(--color);
+}
+
+.btn::after, .btn::before {
+ content: '';
+ display: block;
+ height: 100%;
+ width: 100%;
+ transform: skew(90deg) translate(-50%, -50%);
+ position: absolute;
+ inset: 50%;
+ left: 25%;
+ z-index: -1;
+ transition: .5s ease-out;
+ background-color: var(--color);
+}
+
+.btn::before {
+ top: -50%;
+ left: -25%;
+ transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::before {
+ transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::after {
+ transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn:hover {
+ color: var(--color2);
+}
+
+.btn:active {
+ filter: brightness(.7);
+ transform: scale(.98);
+}
+buttonn {
+ padding: 17px 40px;
+ border-radius: 50px;
+ border: 0;
+ background-color: white;
+ box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+ letter-spacing: 1.5px;
+ text-transform: uppercase;
+ cursor: pointer;
+ position: relative;
+ text-align: center;
+ font-size: 15px;
+ transition: all .5s ease;
+}
+
+buttonn:hover {
+ letter-spacing: 3px;
+ background-color: hsl(261deg 80% 48%);
+ color: hsl(0, 0%, 100%);
+ box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+buttonn:active {
+ letter-spacing: 3px;
+ background-color: hsl(261deg 80% 48%);
+ color: hsl(0, 0%, 100%);
+ box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+ transform: translateY(10px);
+ transition: 100ms;
+}
+</style>
+
+    <div class="header">
+        <!--img src="https://github.com/sz-games/sz-games.github.io/blob/main/Gh.png?raw=true" style="position: relative; width: 150px; height: 150px;" alt="img"-->
+        <img src="https://github.com/sz-games/home/blob/main/G.png?raw=true" style="position: relative; width: 150px; height: 150px;" alt="img">
+        <h1>Menu</h1>
+      </div>
+
+
+<div style="margin: 5px;">
+  <div style="background-color: #464646; width: 100%; height: 100%; border-radius: 25px; z-index: 10;">
+    <h1 onclick="window.location='https://sz-games.github.io/Menu.html#Gamesss'" style="font-family: Arial, Helvetica, sans-serif; color: white; text-align: center; cursor: pointer;">Links To Useful Sites | Scroll To Games</h1>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io'" class="button2">
+      Home Page/Game Collection
+      
+    </button>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://mr-funkinguy.github.io/'" class="button2">
+     Website Hub - Useful Websites
+    </button>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io/Website.html?game=https://5gms-rednotsus.koyeb.app/uv/service/hvtrs8%2F-wuw%2Cgmoelg.aoo%2F%3Dgus%5Drf%3Dqsn'" class="button2">
+     Bolt Unblocker - Spam Register
+    </button>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io/Codes.html'" class="button2">
+      Codes
+    </button>
+    <br>
+    <br>
+    <br>
+    <h1 id="Gamesss" style="font-family: Arial, Helvetica, sans-serif; color: white; text-align: center;">Games</h1>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io/games/game.html?game=https://mr-funkinguy.github.io/wasmStuff/doom/'" class="button2">
+      Doom
+    </button>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io/games/game.html?game=https://jamesfriend.com.au/projects/wolf3d/Chocolate-Wolfenstein-3D.html'" class="button2">
+      Wolfenstein 3D
+    </button>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/storage/play/minecraft/'" id="1" class="button2">
+      Minecraft Java Clone - Performance may be lowered, Change Graphics to low if lagging
+    </button>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io/games/game.html?game=https://www.netquake.io/'" class="button2">
+     Quake
+    </button>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://sz-games.github.io/games/game.html?game=https://supernintendoemulator.com/'" class="button2">
+     Super Nintendo Emulator
+    </button>
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <h1 style="font-family: Arial, Helvetica, sans-serif; color: white; text-align: center;">Other</h1>
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location='https://docs.google.com/forms/d/e/1FAIpQLSeyu-AbhHFmdx9EWa42g66jSvKlGmNrksSvXGBt3FpnYseXWg/viewform?usp=sf_link'" class="button2">
+      Current Economy Form (External)
+    </button>
+    <!--button>
+      <svg height="36px" width="36px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <rect fill="#373737" y="0" x="0" height="36" width="36"></rect>
+          <path d="M38.67,42H11.52C11.27,40.62,11,38.57,11,36c0-5,0-11,0-11s1.44-7.39,3.22-9.59 c1.67-2.06,2.76-3.48,6.78-4.41c3-0.7,7.13-0.23,9,1c2.15,1.42,3.37,6.67,3.81,11.29c1.49-0.3,5.21,0.2,5.5,1.28 C40.89,30.29,39.48,38.31,38.67,42z" fill="#e53935"></path>
+          <path d="M39.02,42H11.99c-0.22-2.67-0.48-7.05-0.49-12.72c0.83,4.18,1.63,9.59,6.98,9.79 c3.48,0.12,8.27,0.55,9.83-2.45c1.57-3,3.72-8.95,3.51-15.62c-0.19-5.84-1.75-8.2-2.13-8.7c0.59,0.66,3.74,4.49,4.01,11.7 c0.03,0.83,0.06,1.72,0.08,2.66c4.21-0.15,5.93,1.5,6.07,2.35C40.68,33.85,39.8,38.9,39.02,42z" fill="#b71c1c"></path>
+          <path d="M35,27.17c0,3.67-0.28,11.2-0.42,14.83h-2C32.72,38.42,33,30.83,33,27.17 c0-5.54-1.46-12.65-3.55-14.02c-1.65-1.08-5.49-1.48-8.23-0.85c-3.62,0.83-4.57,1.99-6.14,3.92L15,16.32 c-1.31,1.6-2.59,6.92-3,8.96v10.8c0,2.58,0.28,4.61,0.54,5.92H10.5c-0.25-1.41-0.5-3.42-0.5-5.92l0.02-11.09 c0.15-0.77,1.55-7.63,3.43-9.94l0.08-0.09c1.65-2.03,2.96-3.63,7.25-4.61c3.28-0.76,7.67-0.25,9.77,1.13 C33.79,13.6,35,22.23,35,27.17z" fill="#212121"></path>
+          <path d="M17.165,17.283c5.217-0.055,9.391,0.283,9,6.011c-0.391,5.728-8.478,5.533-9.391,5.337 c-0.913-0.196-7.826-0.043-7.696-5.337C9.209,18,13.645,17.32,17.165,17.283z" fill="#01579b"></path>
+          <path d="M40.739,37.38c-0.28,1.99-0.69,3.53-1.22,4.62h-2.43c0.25-0.19,1.13-1.11,1.67-4.9 c0.57-4-0.23-11.79-0.93-12.78c-0.4-0.4-2.63-0.8-4.37-0.89l0.1-1.99c1.04,0.05,4.53,0.31,5.71,1.49 C40.689,24.36,41.289,33.53,40.739,37.38z" fill="#212121"></path>
+          <path d="M10.154,20.201c0.261,2.059-0.196,3.351,2.543,3.546s8.076,1.022,9.402-0.554 c1.326-1.576,1.75-4.365-0.891-5.267C19.336,17.287,12.959,16.251,10.154,20.201z" fill="#81d4fa"></path>
+          <path d="M17.615,29.677c-0.502,0-0.873-0.03-1.052-0.069c-0.086-0.019-0.236-0.035-0.434-0.06 c-5.344-0.679-8.053-2.784-8.052-6.255c0.001-2.698,1.17-7.238,8.986-7.32l0.181-0.002c3.444-0.038,6.414-0.068,8.272,1.818 c1.173,1.191,1.712,3,1.647,5.53c-0.044,1.688-0.785,3.147-2.144,4.217C22.785,29.296,19.388,29.677,17.615,29.677z M17.086,17.973 c-7.006,0.074-7.008,4.023-7.008,5.321c-0.001,3.109,3.598,3.926,6.305,4.27c0.273,0.035,0.48,0.063,0.601,0.089 c0.563,0.101,4.68,0.035,6.855-1.732c0.865-0.702,1.299-1.57,1.326-2.653c0.051-1.958-0.301-3.291-1.073-4.075 c-1.262-1.281-3.834-1.255-6.825-1.222L17.086,17.973z" fill="#212121"></path>
+          <path d="M15.078,19.043c1.957-0.326,5.122-0.529,4.435,1.304c-0.489,1.304-7.185,2.185-7.185,0.652 C12.328,19.467,15.078,19.043,15.078,19.043z" fill="#e1f5fe"></path>
+      </svg>
+      <span class="now">Lets Go!</span>
+      <span class="play">Ready to play?</span>
+  </button-->
+
+
+    <br>
+  <br>
+    <br>
+  <br>
+    <br>
+    
+    
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('https://sz-games.github.io/service-worker.js');
+  }
+</script>
+   <!--PageScript1-->
+   <!--script id="CHECK">
+    function getCookie2(name) {
+  const cookieName = name + "=";
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i];
+      while (cookie.charAt(0) === ' ') {
+          cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(cookieName) === 0) {
+          return cookie.substring(cookieName.length, cookie.length);
+      }
+  }
+  return '';
+}
+
+
+let Setting14bu = getCookie2("PagePrevent");
+
+function checkPageClose(event) {
+
+  
+      event.returnValue = "Prevent Page Close Is Active, You Can Click Off Of This";
+
+ 
+
+}
+function checkPageClose2() {
+  if(Setting14bu==="true") {
+  
+      window.onbeforeunload = function(event) {
+          // return a string to prevent the page from closing
+          event.preventDefault();
+          return "Prevent Page Close Is Active, You Can Click Off Of This";
+      };
+      window.addEventListener("beforeunload", checkPageClose);
+
+  } 
+  if(Setting14bu==="false") {
+  
+  }
+}
+console.log('CookiePAGE Value: ' + Setting14bu + "SzGames-Scripts Loaded")
+checkPageClose2()
+
+
+
+
+</script-->
+<!--PageScript1-->
+
+<link rel="manifest" href="https://sz-games.github.io/manifest.json">
+<link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/sz-games/home/main/G.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQP9MNX8LF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YQP9MNX8LF');
+</script>
+<title>Sz Games - Chat</title>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<meta name="description" content="A chat Room">
+<script src="./GobalSettings.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        overflow-x: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(45, 45, 45);
+    }
+
+    ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #282828;
+
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(45, 45, 45);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(60, 60, 60);
+}
+
+
+.cssbuttons-io-button {
+  background: #454545;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  width: 50px ;
+  border: none;
+  letter-spacing: 0.05em;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #474747;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s;
+  transform-origin: center;
+  height: 50px;
+}
+
+.cssbuttons-io-button:hover {
+  width: 60px !important;
+}
+
+.cssbuttons-io-button .icon {
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+position: absolute;
+}
+
+    .textInputWrapper {
+  position: relative;
+  width: 20%;
+  bottom: 5%;
+  left: 25px;
+  margin: 12px 5px;
+  --accent-color: #676767;
+}
+
+.textInputWrapper:before {
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.textInputWrapper:before,
+.textInputWrapper:after {
+  content: "";
+  left: 0;
+  right: 0;
+  position: absolute;
+  pointer-events: none;
+  bottom: -1px;
+  z-index: 4;
+  width: 100%;
+}
+
+.textInputWrapper:focus-within:before {
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.textInputWrapper:before {
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.textInputWrapper:focus-within:before {
+  border-bottom: 1px solid var(--accent-color);
+  transform: scaleX(1);
+}
+
+#name-box:focus {
+  border-bottom: 2px solid var(--accent-color);
+  outline: none;
+  transform: scaleX(1);
+}
+#name-box::placeholder {
+  color: white;
+
+}
+#name-box {
+  color: white;
+}
+#message-input:focus {
+  outline: none;
+  transform: scaleX(1);
+
+}
+#message-input::placeholder {
+  color: white;
+
+}
+#message-input {
+  color: white;
+  transition: 0.5s;
+}
+.textInputWrapper:after {
+  content: "";
+  transform: scaleX(0);
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  will-change: transform;
+  border-bottom: 2px solid var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+.textInput::placeholder {
+  transition: opacity 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  opacity: 1;
+  user-select: none;
+  color: rgba(255, 255, 255, 0.582);
+}
+
+.textInputWrapper .textInput {
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+  max-height: 36px;
+  background-color: #252525;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 200ms;
+  transition-property: background-color;
+  color: #e8e8e8;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px;
+  width: 100%;
+  border-left: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+.textInputWrapper .textInput:focus,
+.textInputWrapper .textInput:active {
+  outline: none;
+}
+
+.textInputWrapper:focus-within .textInput,
+.textInputWrapper .textInput:focus,
+.textInputWrapper .textInput:active {
+  background-color: #353535;
+}
+
+.textInputWrapper:focus-within .textInput::placeholder {
+  opacity: 0;
+}
+.messsge {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.234), rgba(0, 0, 0, 0.233));
+  z-index: 9;
+  display: block;
+  padding: 7px 3px;
+  color: #fefefe;
+  opacity: 0;
+  width: 95%;
+  height: fit-content;
+
+  left: 50%;
+  position: relative;
+  transform: translate(-50%);
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 40px;
+  word-wrap: break-word;
+  margin: 15px;
+}
+.innermsg {
+  z-index: 10;
+  text-align: center;
+font-size: 15px;  color: white;
+}
+
+.memberTAG {
+  background-color: rgba(128, 128, 128, 0.419);
+  width: fit-content;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  top: -13px;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  position: absolute;
+}
+
+
+.modTAG {
+  background-color: rgba(218, 210, 48, 0.419);
+  width: fit-content;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  top: -13px;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.modOW {
+  background-color: rgba(48, 218, 215, 0.419);
+  width: fit-content;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  top: -13px;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  position: absolute;
+}
+.nameTXT2 {
+  font-size: 17px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -90%);
+  width: 50%;
+  left: 50%;
+}
+
+.profilemsg {
+  position: relative;
+  height: 23px;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- div style="height: 35px;border-radius: 15px; width: 100%; background-color: rgba(255, 196, 0, 0.529);"> <h4 style="position: relative; text-align: center; font-family: Arial, Helvetica, sans-serif;  bottom: -10%;">Servers Will Be Down Friday the 24th from 8-9 pm</h4></div-->
+
+  <!--div id="wrapper-load" style="transition: 0.5s; z-index: 9; position: fixed; background-color: #252525; width: 100%; height: 100%;">
+    <div class="loader">
+      <span></span>
+  </div>
+  <span style="text-align: center; position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Arial, Helvetica, sans-serif;  color: white; position: absolute; " id="loading-info2">Locating Server...</span>
+  <span style="text-align: center; position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Arial, Helvetica, sans-serif;  color: white; position: absolute; " id="loading-info">Loading</span>
+
+
+  </div>
+
+  <div id="page_logs" style= "visibility: hidden;  z-index: 6; position: fixed; transition: 0.5s; width: 100%; height: 100%; background-color: #282828;">
+   <h1 onclick="close_logs()" style="z-index: 7; left: 0.5%; color: white; cursor: pointer; position: fixed;" >X</h1>
+    <h5  id="message-logs-txt" style="color: #fefefe; overflow-y: auto; height: 95%;  position: relative; right: -3%;">Loading messages...</h5>
+   
+  </div-->
+ 
+     
+  <p style="" id="typing-message"></p>
+
+  <div style="position: absolute; height: 90%; text-align: center; overflow-y: auto; right: 0; top: 0; border-radius: 15px; width: 100%; background-color: #252525ef;" id="messages"></div>
+
+  <div style="cursor: pointer; position: fixed; border-radius: 15px; color: rgb(224, 224, 224); background-color: #1d1d1dc0; left: 0; bottom: 0px; margin: 10px;" id="Menu">
+
+
+    <span class="material-icons buttonForMenu" style="z-index: 90; position: absolute; bottom: 20px; left: 10px; margin: 5px;" onclick="window.location = 'https://sz-games.github.io'" >
+      arrow_back
+      </span>
+   
+    </div>
+
+  <!--a href="https://sz-games.github.io" aria-label="Home">  <img alt="Icon" fetchpriority="low" src="https://github.com/sz-games/home/blob/main/G.png?raw=true" style="position: relative; z-index: 7;   top: 0; height: 70px; width: 70px;"> </a>
+  <h1 style="   font-size: 25px; top: 48px; left: 75px; color: white; font-family: Arial, Helvetica, sans-serif; position: absolute;">Sz Games | Chat</h1-->
+
+  <button id="log-button" onclick="logsopen()" style="opacity: 0;" type="menu">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span>Logs</span>
+
+
+  </button>
+
+  <script>
+    var loadedLogs = false;
+    //page_logs.style.opacity = 0;
+    function logsopen() {
+      var page_logs = document.getElementById('page_logs');
+      var txt_logs = document.getElementById('message-logs-txt');
+
+      
+      page_logs.style.visibility = 'visible';
+      page_logs.style.opacity = 1;
+      
+      
+       
+      if(loadedLogs===false){
+        LoadLogs();
+        loadedLogs = true;
+      } else {
+
+      }
+          }
+      function LoadLogs() {
+        var page_logs = document.getElementById('page_logs');
+      var txt_logs = document.getElementById('message-logs-txt');
+
+
+        fetch('https://raw.githubusercontent.com/Mr-funkinguy/Music-Player-/main/logs.txt')
+        .then(response => response.text())
+        .then(data => {
+          //console.log(data);
+          
+          setTimeout(() => {
+            txt_logs.innerHTML = 'Leading The Data...';
+          }, 500);
+          setTimeout(() => {
+            txt_logs.innerHTML = data;
+          }, 1000);
+          setTimeout(() => {
+            txt_logs.style.wordWrap = 'break-word';
+            txt_logs.style.whiteSpace = 'pre-wrap';
+          }, 1500);
+          setTimeout(() => {
+            txt_logs.innerHTML = data;
+            txt_logs.scrollTop = txt_logs.scrollHeight;
+          
+          }, 2000);
+        })
+      }
+
+      function close_logs() {
+        var page_logs = document.getElementById('page_logs');
+      var txt_logs = document.getElementById('message-logs-txt');
+
+      page_logs.style.opacity = 0;
+      setTimeout(() => {
+        page_logs.style.visibility = 'hidden';
+      }, 500);
+     
+      
+      }
+  </script>
+
+<style>
+
+.notification {
+  position: fixed;
+  bottom: -100px;
+  z-index: 100;
+  left: 0;
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  background-color: #333;
+  color: #fff;
+  border-radius: 15px;
+  padding: 10px 0px;
+  transition: bottom 0.5s;
+}
+
+.notification.active {
+  bottom: 15px;
+}
+
+.notification-content {
+ 
+  text-align: center;
+}
+
+.timer-bar {
+  position: absolute;
+  height: 3px;
+  bottom: 0;
+  border-radius: 15px;
+  width: 100%;
+  background-color: #797979;
+  transform-origin: left;
+  transition: 0.5s;
+}
+
+@keyframes timer-animation {
+  0% {
+    background-color: #797979;
+    transform: scaleX(1);
+  }
+  20% {
+    transform: scaleX(1);
+
+  }
+  50% {
+    transform: scaleX(0);
+    background-color: #797979;
+    opacity: 1;
+  } 
+  59%{
+    opacity: 0;
+    transform: scaleX(0);
+
+  }
+  60% {
+    opacity: 0;
+    transform: scaleX(0);
+
+  }
+  65% {
+    transform-origin: left;
+
+    transform: scaleX(1);
+    background-color: #69bc32;
+
+   opacity: 1;
+  }
+  70%{
+   
+    background-color: #69bc32;
+
+  }
+  80% {
+   
+    background-color: #69bc32;
+
+
+  }
+  100% {
+   
+    background-color: #69bc32;
+
+
+
+  }
+}
+</style>
+
+<button style="display: none;" id="showNotification">Show Notification</button>
+<div id="notification" class="notification">
+  <div id="CONTENTNOTE1" class="notification-content">
+   <p2 id="CONTENTNOTE" style=" text-align: center;  font-size: 17px;">Cooldown</p2>
+    <div class="timer-bar"></div>
+  </div>
+</div>
+
+<script>
+  const showNotificationButton = document.getElementById('showNotification');
+const notification = document.getElementById('notification');
+const timerBar = notification.querySelector('.timer-bar');
+
+
+  notification.classList.add('active');
+    document.getElementById('CONTENTNOTE').innerHTML = 'Loading Chat |  Firebase V9.0.2 | Server: US-central-1'
+
+    timerBar.style.animation = 'none';
+    timerBar.offsetHeight; 
+    timerBar.style.animation = 'timer-animation 3s';
+
+
+  setTimeout(() => {
+    notification.classList.remove('active');
+  }, 3000); 
+
+
+</script>
+
+    <div style="bottom: 20%; left: 10px; width: 100%; position: absolute;">
+    <h4 style="font-family: Arial, Helvetica, sans-serif; text-align: center; margin-right: 1%; color: white;" id="cooldown"></h4>
+   <div style="bottom: 0; position: fixed; width: 100%;  height: 39px;">
+    <input  value="Guest" id="name-box"  style="float: left; bottom: 10px; position: relative; background-color: #5c5c5c76; border: none; z-index: 9; width: 15%; border-radius: 10px; left: 55px; height: 35px;" maxlength="40" placeholder="Name" type="text" class="textInput">
+      <input id="message-input" style="bottom: 10px;left: 70px; position: relative; background-color: #5c5c5c76; border: none; z-index: 9; width: 70%; border-radius: 10px; float: left; height: 35px;" maxlength="200" placeholder="Type Here" type="text" class="textInput">
+      <button id="send-button" style="right: -100px; bottom: 18px; position: relative !important; cursor: pointer; " type="submit" class="cssbuttons-io-button"> 
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+        </div>
+      </button>
+    </div>
+      
+    </div>
+   
+      
+  <script id="script1" src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js" type="module"></script>
+<script id="script2" src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js" type="module"></script>
+<script defer src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js" type="module"></script>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
+<script type="text/javascript">
+  var onloadCallback = function() {
+    
+  };
+</script>
+
+
+<script>
+  
+</script>
+
+<script id="script3" type="module">
+ //chat features are now stored on script2 above(gstatic.com)
+        
+ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js';
+  import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js';
+
+const firebaseConfig = {
+apiKey: "AIzaSyAbtjH2ZZHD9o4yJ5SRBYZ08JVuKQeUrok",
+authDomain: "szgames-d9272.firebaseapp.com",
+databaseURL: "https://szgames-d9272-default-rtdb.firebaseio.com",
+projectId: "szgames-d9272",
+storageBucket: "szgames-d9272.appspot.com",
+messagingSenderId: "733530201740",
+appId: "1:733530201740:web:e0e6e8f287086121ab65a9",
+measurementId: "G-YQP9MNX8LF"
+};
+
+  const app = initializeApp(firebaseConfig);
+
+  const firebaseApp = initializeApp(firebaseConfig);
+
+
+//chat connection
+function uploadSC(httpskey, type) {
+ type = type || '';
+
+  var byteCharacters = atob(httpskey);
+  var byteArrays = [];
+
+  for (var i = 0; i < byteCharacters.length; i++) {
+    byteArrays.push(byteCharacters.charCodeAt(i));
+  }
+
+  var byteArray = new Uint8Array(byteArrays);
+
+  return new Blob([byteArray], { type: type });
+}
+
+async function send(key1) {
+  var key2 = URL.createObjectURL(key1);
+  var key3 = document.createElement('script');
+
+  key3.type = 'module';
+  key3.src = key2;
+
+  await import(key2);
+
+  document.head.appendChild(key3);
+}
+async function sen3d(key1) {
+  var key2 = URL.createObjectURL(key1);
+  var key3 = document.createElement('script');
+
+
+  key3.src = key2;
+
+  await import(key2);
+
+  document.head.appendChild(key3);
+}
+var httpskey = "Y29uc3QgXzB4NDczZGY1PV8weDI0MWI7ZnVuY3Rpb24gXzB4MjQxYihfMHgyODExYmIsXzB4NTY4MTNjKXtjb25zdCBfMHg1NWIyMjY9XzB4NTViMigpO3JldHVybiBfMHgyNDFiPWZ1bmN0aW9uKF8weDI0MWJiZixfMHgzNDhlMWQpe18weDI0MWJiZj1fMHgyNDFiYmYtMHgxMzM7bGV0IF8weDQ2NzdhYj1fMHg1NWIyMjZbXzB4MjQxYmJmXTtyZXR1cm4gXzB4NDY3N2FiO30sXzB4MjQxYihfMHgyODExYmIsXzB4NTY4MTNjKTt9KGZ1bmN0aW9uKF8weDNkZTgzYixfMHg1YTkyOGIpe2NvbnN0IF8weDI0YjgzOD1fMHgyNDFiLF8weDU1NWFiZj1fMHgzZGU4M2IoKTt3aGlsZSghIVtdKXt0cnl7Y29uc3QgXzB4NTRlMWJjPS1wYXJzZUludChfMHgyNGI4MzgoMHgxNzIpKS8weDEqKC1wYXJzZUludChfMHgyNGI4MzgoMHgxNmIpKS8weDIpK3BhcnNlSW50KF8weDI0YjgzOCgweDE1ZSkpLzB4MystcGFyc2VJbnQoXzB4MjRiODM4KDB4MTM0KSkvMHg0KihwYXJzZUludChfMHgyNGI4MzgoMHgxODgpKS8weDUpK3BhcnNlSW50KF8weDI0YjgzOCgweDFhMCkpLzB4NistcGFyc2VJbnQoXzB4MjRiODM4KDB4MTZkKSkvMHg3KihwYXJzZUludChfMHgyNGI4MzgoMHgxNzYpKS8weDgpK3BhcnNlSW50KF8weDI0YjgzOCgweDE0NCkpLzB4OStwYXJzZUludChfMHgyNGI4MzgoMHgxNWIpKS8weGEqKHBhcnNlSW50KF8weDI0YjgzOCgweDE3YSkpLzB4Yik7aWYoXzB4NTRlMWJjPT09XzB4NWE5MjhiKWJyZWFrO2Vsc2UgXzB4NTU1YWJmWydwdXNoJ10oXzB4NTU1YWJmWydzaGlmdCddKCkpO31jYXRjaChfMHgxMDgwNGIpe18weDU1NWFiZlsncHVzaCddKF8weDU1NWFiZlsnc2hpZnQnXSgpKTt9fX0oXzB4NTViMiwweDI3NDIzKSk7Y29uc3Qgbm93PW5ldyBEYXRlKCk7aW1wb3J0e2luaXRpYWxpemVBcHB9ZnJvbSdodHRwczovL3d3dy5nc3RhdGljLmNvbS9maXJlYmFzZWpzLzkuMC4yL2ZpcmViYXNlLWFwcC5qcyc7aW1wb3J0e2dldERhdGFiYXNlLHJlZixwdXNoLG9uVmFsdWV9ZnJvbSdodHRwczovL3d3dy5nc3RhdGljLmNvbS9maXJlYmFzZWpzLzkuMC4yL2ZpcmViYXNlLWRhdGFiYXNlLmpzJztjb25zdCBmaXJlYmFzZUNvbmZpZz17J2FwaUtleSc6XzB4NDczZGY1KDB4MTY5KSwnYXV0aERvbWFpbic6XzB4NDczZGY1KDB4MWExKSwnZGF0YWJhc2VVUkwnOidodHRwczovL3N6Z2FtZXMtZDkyNzItZGVmYXVsdC1ydGRiLmZpcmViYXNlaW8uY29tJywncHJvamVjdElkJzpfMHg0NzNkZjUoMHgxOTApLCdzdG9yYWdlQnVja2V0Jzonc3pnYW1lcy1kOTI3Mi5hcHBzcG90LmNvbScsJ21lc3NhZ2luZ1NlbmRlcklkJzpfMHg0NzNkZjUoMHgxOTYpLCdhcHBJZCc6XzB4NDczZGY1KDB4MTdmKSwnbWVhc3VyZW1lbnRJZCc6XzB4NDczZGY1KDB4MThlKX0sYXBwPWluaXRpYWxpemVBcHAoZmlyZWJhc2VDb25maWcpLHRleHRCb3g9ZG9jdW1lbnRbJ2dldEVsZW1lbnRCeUlkJ10oXzB4NDczZGY1KDB4MTdkKSksZmlyZWJhc2VBcHA9aW5pdGlhbGl6ZUFwcChmaXJlYmFzZUNvbmZpZyksbWVzc2FnZXNSZWY9cmVmKGdldERhdGFiYXNlKGZpcmViYXNlQXBwKSxfMHg0NzNkZjUoMHgxOWQpKTtmdW5jdGlvbiBfMHg1NWIyKCl7Y29uc3QgXzB4NTA0NTA0PVsnOlx4MjBVc2VkXHgyMENvbW1hbmQ6XHgyMEFsZXJ0JywnbW9ua2V5JywncHJvZmlsZW1zZycsJ3VpZCcsJ0ctWVFQOU1OWDhMRicsJ3ZhbHVlJywnc3pnYW1lcy1kOTI3MicsJ2Vycm9yJywnZ2V0RWxlbWVudEJ5SWQnLCdyYXBlJywnc2VuZEFsZXJ0JywnY2xpY2snLCc3MzM1MzAyMDE3NDAnLCdvbGQnLCdvd25lcicsJ0V2YW5ceDIw8J+YjicsJ3ByZXZlbnREZWZhdWx0JywnYWN0aXZlJywnbmlnZ2VyJywnbWVzc2FnZXMnLCdzZW5kLWJ1dHRvbicsJ2JvYmJ5JywnMjMwNTJRREliY3UnLCdzemdhbWVzLWQ5MjcyLmZpcmViYXNlYXBwLmNvbScsJ2NsYXNzTGlzdCcsJ3RleHRDb250ZW50Jywnc2Nyb2xsVG9wJywnNDU5NkRnVFFqSScsJ2FkbWluaXN0cmF0b3InLCdodHRwOi8vJywnaHR0cHM6Ly8nLCdpbm5lckhUTUwnLCdkaXYnLCdmb3JFYWNoJywnbW9kJywnY2F0Y2gnLCdiIXRjaCcsJ2dldE1pbnV0ZXMnLCdhYnMnLCdpbm5lcm1zZycsJ2hvdXJzJywnbW9kT1cnLCdhcHBlbmRDaGlsZCcsJzExMTg1MjlNUHBZb08nLCdzZWNceDIwbm93JywnXHgyMFx4MGFceDIwVGhpc1x4MjBXYXNceDIwU2VudFx4MjBCeVx4MjBBXHgyME1vZGVyYXRvclx4MjBceDBhXHgyMENsaWNrXHgyME9rXHgyMFRvXHgyMERpc21pc3MnLCdtZXNzYWdlJywnc2VjMicsJ1x4MjB8XHgyMCcsJ21lc3NhZ2UtZm9ybScsJ24hZ2dlcicsJ01lbWJlcicsJ3RvTG93ZXJDYXNlJywnc2VuZEFsZXJ0XHgyMCcsJ25pZ2dAJywnbW9kVEFHJywnbmlnZ2EnLCdPd25lcicsJ0hvdXInLCdCYW5uZWRceDIwV29yZCcsJ2VtYWlsJywnbW9kZXJhdG9yJywndmFsJywnZGlzYWJsZWQnLCfwn5GRXHgyMHxceDIwQm9iYnlceDIw8J+YjicsJ3RvdGFsJywnMzE0NzMwMFhRWEVtdicsJ21vbmtlJywnYW5pbWF0aW9uJywnMzk0ODM2bm5pRHZRJywncHVzc3knLCdkIWNrJywnQ29vbGRvd24nLCdzZW5kXHgyMFRpbWUnLCdreXMnLCdtZW1iZXJUQUcnLCdzZWNceDIwbWVzc2FnZScsJ2FkZCcsJ2dldEhvdXJzJywnbG9nJywnQUl6YVN5QWJ0akgyWlpIRDlvNHlKNVNSQllaMDhKVnVLUWVVcm9rJywndGltZXItYW5pbWF0aW9uXHgyMDFzJywnNHd4QUNtWScsJ29mZnNldEhlaWdodCcsJzdlVHlBTEknLCdnZXRTZWNvbmRzJywndGhlbicsJ0NPTlRFTlROT1RFJywnb3BhY2l0eScsJzI0MzEycnZBZWNjJywnblx4MjBpXHgyMGdceDIwZ1x4MjBlXHgyMHInLCdzdHUnLCdieXBhc3MyJywnMjAxNjE1MnNwY2ZTdycsJ3RleHQnLCdzdHlsZScsJ3Bhc3N3b3JkJywnMTFwYkRFWEMnLCdiaXRjaCcsJ25hbWUnLCduYW1lLWJveCcsJ21pbnV0ZXMnLCcxOjczMzUzMDIwMTc0MDp3ZWI6ZTBlNmU4ZjI4NzA4NjEyMWFiNjVhOScsJy5jb20nLCdkaWNrJywnaW5jbHVkZXMnLCdub25lJywncmVwbGFjZScsJ2NyZWF0ZUVsZW1lbnQnLCdyZW1vdmUnLCdhZGRFdmVudExpc3RlbmVyJywnOTE1RGpCc1VFJywnc2VjJ107XzB4NTViMj1mdW5jdGlvbigpe3JldHVybiBfMHg1MDQ1MDQ7fTtyZXR1cm4gXzB4NTViMigpO312YXIgc3R1PSFbXTtjb25zdCBtZXNzYWdlc0VsPWRvY3VtZW50WydnZXRFbGVtZW50QnlJZCddKF8weDQ3M2RmNSgweDE5ZCkpLG1lc3NhZ2VGb3JtPWRvY3VtZW50W18weDQ3M2RmNSgweDE5MildKF8weDQ3M2RmNSgweDE0YSkpLG1lc3NhZ2VJbnB1dD1kb2N1bWVudFtfMHg0NzNkZjUoMHgxOTIpXSgnbWVzc2FnZS1pbnB1dCcpLFNlbmRCdXR0b249ZG9jdW1lbnRbXzB4NDczZGY1KDB4MTkyKV0oXzB4NDczZGY1KDB4MTllKSksY29vbHR4dD1kb2N1bWVudFsnZ2V0RWxlbWVudEJ5SWQnXSgnY29vbGRvd24nKSx0YXJnZXREaXY9bWVzc2FnZXNFbCxvYnNlcnZlcj1uZXcgTXV0YXRpb25PYnNlcnZlcigoKT0+e2NvbnN0IF8weDI0N2U4ZT1fMHg0NzNkZjU7dGFyZ2V0RGl2W18weDI0N2U4ZSgweDEzMyldPXRhcmdldERpdlsnc2Nyb2xsSGVpZ2h0J107fSksY29uZmlnPXsnY2hpbGRMaXN0JzohIVtdfTtvYnNlcnZlclsnb2JzZXJ2ZSddKHRhcmdldERpdixjb25maWcpO2xldCBzZWMyPW5ldyBEYXRlKClbXzB4NDczZGY1KDB4MTZlKV0oKSxtaW51dGVzPW5ldyBEYXRlKClbXzB4NDczZGY1KDB4MTNlKV0oKSxob3Vycz1uZXcgRGF0ZSgpW18weDQ3M2RmNSgweDE2NyldKCksdG90YWx0aW1lPWhvdXJzKyc6JyttaW51dGVzO3ZhciBuYW1lPXRleHRCb3hbJ3ZhbHVlJ107c2V0SW50ZXJ2YWwoKCk9Pntjb25zdCBfMHhlNTY5NzE9XzB4NDczZGY1O3NlYzI9bmV3IERhdGUoKVtfMHhlNTY5NzEoMHgxNmUpXSgpLG1pbnV0ZXM9bmV3IERhdGUoKVtfMHhlNTY5NzEoMHgxM2UpXSgpLGhvdXJzPW5ldyBEYXRlKClbXzB4ZTU2OTcxKDB4MTY3KV0oKSx0b3RhbHRpbWU9aG91cnMrJzonK21pbnV0ZXM7fSwweDNlOCksb25WYWx1ZShtZXNzYWdlc1JlZixfMHg1YjE5YmQ9Pntjb25zdCBfMHgyNGE1NWI9XzB4NDczZGY1O21lc3NhZ2VzRWxbXzB4MjRhNTViKDB4MTM4KV09JycsXzB4NWIxOWJkW18weDI0YTU1YigweDEzYSldKF8weDQxNmM1NT0+e2NvbnN0IF8weGQ5ZDg5NT1fMHgyNGE1NWIsXzB4ZjI1ZjFlPV8weDQxNmM1NVtfMHhkOWQ4OTUoMHgxNTcpXSgpLF8weGQ0MDYwOT1kb2N1bWVudFtfMHhkOWQ4OTUoMHgxODUpXSgncCcpLF8weDE2Y2FiMD1ub3dbXzB4ZDlkODk1KDB4MTY3KV0oKSxfMHgyZGY4OGY9bm93W18weGQ5ZDg5NSgweDEzZSldKCksXzB4NTRmMTdjPW5vd1snZ2V0U2Vjb25kcyddKCk7dmFyIF8weDU4NjA4ND1fMHg0MTZjNTVbXzB4ZDlkODk1KDB4MTU3KV0oKVsnaG91cnMnXStfMHg0MTZjNTVbXzB4ZDlkODk1KDB4MTU3KV0oKVtfMHhkOWQ4OTUoMHgxN2UpXTtjb25zb2xlW18weGQ5ZDg5NSgweDE2OCldKF8weGYyNWYxZVtfMHhkOWQ4OTUoMHgxNzcpXSk7Y29uc3QgXzB4ZmY5N2FjPU1hdGhbXzB4ZDlkODk1KDB4MTNmKV0obm93WydnZXRTZWNvbmRzJ10oKS1fMHg0MTZjNTVbJ3ZhbCddKClbJ3NlYyddKTt2YXIgXzB4MTI0MzFlPV8weDQxNmM1NVtfMHhkOWQ4OTUoMHgxNTcpXSgpW18weGQ5ZDg5NSgweDE0OCldKzB4NSxfMHgxNjZiYmU9XzB4NDE2YzU1W18weGQ5ZDg5NSgweDE1NyldKClbXzB4ZDlkODk1KDB4MTQxKV0rJzonK18weDQxNmM1NVtfMHhkOWQ4OTUoMHgxNTcpXSgpW18weGQ5ZDg5NSgweDE3ZSldO2lmKF8weDQxNmM1NVtfMHhkOWQ4OTUoMHgxNTcpXSgpW18weGQ5ZDg5NSgweDE3NyldW18weGQ5ZDg5NSgweDE4MildKF8weGQ5ZDg5NSgweDE5NCkpKXtpZih0b3RhbHRpbWU9PT1fMHgxNjZiYmUpe2lmKHNlYzI8XzB4MTI0MzFlKXtjb25zb2xlW18weGQ5ZDg5NSgweDE2OCldKHRvdGFsdGltZStfMHhkOWQ4OTUoMHgxNWEpKTtjb25zdCBfMHgzYjM4MmU9XzB4NDE2YzU1Wyd2YWwnXSgpW18weGQ5ZDg5NSgweDE3NyldLF8weDE0Mzk0ZD1fMHgzYjM4MmVbXzB4ZDlkODk1KDB4MTg0KV0oXzB4ZDlkODk1KDB4MTRlKSwnJyk7YWxlcnQoXzB4MTQzOTRkK18weGQ5ZDg5NSgweDE0NikpLGNvbnNvbGVbJ2xvZyddKF8weGQ5ZDg5NSgweDE0NSkrXzB4NTRmMTdjKydceDBhJysnc2VjXHgyMG1lc3NhZ2UnK18weDEyNDMxZSk7fWVsc2UgY29uc29sZVtfMHhkOWQ4OTUoMHgxNjgpXSgnc2VjXHgyMG5vdycrXzB4NTRmMTdjKydceDBhJytfMHhkOWQ4OTUoMHgxNjUpK18weDEyNDMxZSk7fWVsc2UgY29uc29sZVtfMHhkOWQ4OTUoMHgxNjgpXShfMHhkOWQ4OTUoMHgxOTcpKSxjb25zb2xlW18weGQ5ZDg5NSgweDE2OCldKF8weGQ5ZDg5NSgweDE4OSkrXzB4NTRmMTdjKydceDBhJytfMHhkOWQ4OTUoMHgxNTMpK18weDE2Y2FiMCsnXHgwYScrJ21pbicrXzB4MmRmODhmKydceDBhJytfMHhkOWQ4OTUoMHgxNWEpK3RvdGFsdGltZSsnXHgwYScrXzB4ZDlkODk1KDB4MTYyKStfMHgxNjZiYmUpO18weGQ0MDYwOVtfMHhkOWQ4OTUoMHgxYTMpXT1fMHhmMjVmMWVbXzB4ZDlkODk1KDB4MTQxKV0rJzonK18weGYyNWYxZVtfMHhkOWQ4OTUoMHgxN2UpXStfMHhkOWQ4OTUoMHgxNDkpK18weGYyNWYxZVtfMHhkOWQ4OTUoMHgxN2MpXStfMHhkOWQ4OTUoMHgxOGEpLF8weGQ0MDYwOVtfMHhkOWQ4OTUoMHgxNzgpXVsnb3BhY2l0eSddPTB4MCxtZXNzYWdlc0VsWydhcHBlbmRDaGlsZCddKF8weGQ0MDYwOSksXzB4ZDQwNjA5W18weGQ5ZDg5NSgweDE3OCldW18weGQ5ZDg5NSgweDE3MSldPTB4MTt9ZWxzZXt2YXIgXzB4NTdlMzI4PWRvY3VtZW50W18weGQ5ZDg5NSgweDE4NSldKF8weGQ5ZDg5NSgweDEzOSkpLF8weDMxNzg2Nj1kb2N1bWVudFtfMHhkOWQ4OTUoMHgxODUpXSgnZGl2Jyk7XzB4MzE3ODY2W18weGQ5ZDg5NSgweDFhMildW18weGQ5ZDg5NSgweDE2NildKF8weGQ5ZDg5NSgweDE4YykpO3ZhciBfMHgyZjcxNDA9ZG9jdW1lbnRbXzB4ZDlkODk1KDB4MTg1KV0oXzB4ZDlkODk1KDB4MTM5KSk7XzB4MmY3MTQwW18weGQ5ZDg5NSgweDFhMildW18weGQ5ZDg5NSgweDE2NildKF8weGQ5ZDg5NSgweDE2NCkpLF8weDJmNzE0MFtfMHhkOWQ4OTUoMHgxMzgpXT1fMHhkOWQ4OTUoMHgxNGMpO2lmKF8weGYyNWYxZVtfMHhkOWQ4OTUoMHgxN2MpXT09PV8weGQ5ZDg5NSgweDE1OSkmJl8weGYyNWYxZVtfMHhkOWQ4OTUoMHgxNzQpXT09PSEhW10pe3ZhciBfMHg1YTZiMjY9ZG9jdW1lbnRbJ2NyZWF0ZUVsZW1lbnQnXShfMHhkOWQ4OTUoMHgxMzkpKTtfMHg1YTZiMjZbXzB4ZDlkODk1KDB4MWEyKV1bXzB4ZDlkODk1KDB4MTY2KV0oXzB4ZDlkODk1KDB4MTQyKSksXzB4NWE2YjI2Wydpbm5lckhUTUwnXT1fMHhkOWQ4OTUoMHgxNTIpLF8weDMxNzg2NlsnYXBwZW5kQ2hpbGQnXShfMHg1YTZiMjYpO31lbHNle2lmKF8weGYyNWYxZVtfMHhkOWQ4OTUoMHgxN2MpXT09PV8weGQ5ZDg5NSgweDE5OSkpe3ZhciBfMHg0YmZlNTk9ZG9jdW1lbnRbXzB4ZDlkODk1KDB4MTg1KV0oXzB4ZDlkODk1KDB4MTM5KSk7XzB4NGJmZTU5W18weGQ5ZDg5NSgweDFhMildWydhZGQnXShfMHhkOWQ4OTUoMHgxNTApKSxfMHg0YmZlNTlbXzB4ZDlkODk1KDB4MTM4KV09J01vZCcsXzB4MzE3ODY2WydhcHBlbmRDaGlsZCddKF8weDRiZmU1OSk7fWVsc2UgXzB4MzE3ODY2W18weGQ5ZDg5NSgweDE0MyldKF8weDJmNzE0MCk7fXZhciBfMHhkOTE2ZDc9ZG9jdW1lbnRbJ2NyZWF0ZUVsZW1lbnQnXSgnaDMnKTtfMHhkOTE2ZDdbJ2NsYXNzTGlzdCddW18weGQ5ZDg5NSgweDE2NildKCduYW1lVFhUMicpLF8weGQ5MTZkN1tfMHhkOWQ4OTUoMHgxMzgpXT1fMHhmMjVmMWVbXzB4ZDlkODk1KDB4MTdjKV0sXzB4MzE3ODY2W18weGQ5ZDg5NSgweDE0MyldKF8weGQ5MTZkNyksXzB4NTdlMzI4W18weGQ5ZDg5NSgweDE0MyldKF8weDMxNzg2NiksXzB4NTdlMzI4WydjbGFzc0xpc3QnXVtfMHhkOWQ4OTUoMHgxNjYpXSgnbWVzc3NnZScpLF8weGQ0MDYwOVtfMHhkOWQ4OTUoMHgxYTMpXT1fMHhmMjVmMWVbJ2hvdXJzJ10rJzonK18weGYyNWYxZVtfMHhkOWQ4OTUoMHgxN2UpXSsnXHgyMHxceDIwJytfMHhmMjVmMWVbXzB4ZDlkODk1KDB4MTc3KV0sXzB4ZDQwNjA5W18weGQ5ZDg5NSgweDFhMildW18weGQ5ZDg5NSgweDE2NildKF8weGQ5ZDg5NSgweDE0MCkpLF8weDU3ZTMyOFtfMHhkOWQ4OTUoMHgxNDMpXShfMHhkNDA2MDkpLGRvY3VtZW50W18weGQ5ZDg5NSgweDE5MildKF8weGQ5ZDg5NSgweDE5ZCkpW18weGQ5ZDg5NSgweDE0MyldKF8weDU3ZTMyOCksc2V0VGltZW91dCgoKT0+e18weDU3ZTMyOFsnc3R5bGUnXVsnb3BhY2l0eSddPTB4MTt9LDB4NjQpO319KTt9KTtjb25zdCBteUlucHV0Qm94PWRvY3VtZW50W18weDQ3M2RmNSgweDE5MildKF8weDQ3M2RmNSgweDE3ZCkpLHZhbHVlPW15SW5wdXRCb3hbXzB4NDczZGY1KDB4MThmKV07Y29uc29sZVtfMHg0NzNkZjUoMHgxNjgpXSh2YWx1ZSk7bGV0IGlzU2VuZGluZ01lc3NhZ2U9IVtdO2RvY3VtZW50WydnZXRFbGVtZW50QnlJZCddKCdzZW5kLWJ1dHRvbicpWydhZGRFdmVudExpc3RlbmVyJ10oXzB4NDczZGY1KDB4MTk1KSxfMHgxYzdiMTM9Pntjb25zdCBfMHg1MmUxNWY9XzB4NDczZGY1O18weDFjN2IxM1tfMHg1MmUxNWYoMHgxOWEpXSgpO2lmKGlzU2VuZGluZ01lc3NhZ2UpcmV0dXJuO2NvbnN0IF8weDM3MTIzMz1tZXNzYWdlSW5wdXRbJ3ZhbHVlJ10sXzB4ZjExZDU4PWRvY3VtZW50W18weDUyZTE1ZigweDE5MildKCduYW1lLWJveCcpO2lmKHVzZXJVaWQ9PT0nWU5TQmk1RkxBTlN5ZTRJMm1jVTBZMDBFM3cyMycmJmF1dGhDPT09ISFbXSltZXNzYWdlSW5wdXRbXzB4NTJlMTVmKDB4MTU4KV09IVtdLHRleHRCb3hbXzB4NTJlMTVmKDB4MTU4KV09ISFbXSxTZW5kQnV0dG9uW18weDUyZTE1ZigweDE1OCldPSFbXSxuYW1lPV8weDUyZTE1ZigweDE1OSk7ZWxzZXtpZihuYW1lPT09JzAyMycpVGltZU91dDEoKSxuYW1lPV8weDUyZTE1ZigweDE5OSksY29uc29sZVtfMHg1MmUxNWYoMHgxNjgpXShfMHg1MmUxNWYoMHgxNzUpKTtlbHNle2lmKG5hbWVbXzB4NTJlMTVmKDB4MTRkKV0oKVsnaW5jbHVkZXMnXSgnYWRtaW4nKSluYW1lPSdGYWtlXHgyMCcrbmFtZSxUaW1lT3V0KCk7ZWxzZSBuYW1lW18weDUyZTE1ZigweDE0ZCldKClbXzB4NTJlMTVmKDB4MTgyKV0oXzB4NTJlMTVmKDB4MTNiKSl8fG5hbWVbXzB4NTJlMTVmKDB4MTRkKV0oKVsnaW5jbHVkZXMnXShfMHg1MmUxNWYoMHgxODApKXx8bmFtZVsndG9Mb3dlckNhc2UnXSgpW18weDUyZTE1ZigweDE4MildKF8weDUyZTE1ZigweDEzNikpfHxuYW1lW18weDUyZTE1ZigweDE0ZCldKClbXzB4NTJlMTVmKDB4MTgyKV0oXzB4NTJlMTVmKDB4MTM3KSl8fG5hbWVbXzB4NTJlMTVmKDB4MTRkKV0oKVsnaW5jbHVkZXMnXSgn8J+YjicpfHxuYW1lWyd0b0xvd2VyQ2FzZSddKClbXzB4NTJlMTVmKDB4MTgyKV0oJ/CfkZEnKXx8bmFtZVtfMHg1MmUxNWYoMHgxNGQpXSgpW18weDUyZTE1ZigweDE4MildKF8weDUyZTE1ZigweDEzNSkpfHxuYW1lWyd0b0xvd2VyQ2FzZSddKClbXzB4NTJlMTVmKDB4MTgyKV0oXzB4NTJlMTVmKDB4MTU2KSl8fG5hbWVbJ3RvTG93ZXJDYXNlJ10oKVtfMHg1MmUxNWYoMHgxODIpXShfMHg1MmUxNWYoMHgxOTgpKXx8bmFtZVtfMHg1MmUxNWYoMHgxNGQpXSgpWydpbmNsdWRlcyddKF8weDUyZTE1ZigweDE5ZikpPyhuYW1lPSdGYWtlXHgyMCcrbmFtZSxUaW1lT3V0KCkpOihuYW1lPV8weGYxMWQ1OFtfMHg1MmUxNWYoMHgxOGYpXSxUaW1lT3V0KCkpO319aWYoXzB4MzcxMjMzW18weDUyZTE1ZigweDE4MildKCdzZW5kQWxlcnQnKSluYW1lPT09XzB4NTJlMTVmKDB4MTU5KT9wdXNoKG1lc3NhZ2VzUmVmLHsnaG91cnMnOmhvdXJzLCdtaW51dGVzJzptaW51dGVzLCdzZWMyJzpzZWMyLCduYW1lJzpuYW1lLCd0ZXh0JzpfMHgzNzEyMzMsJ3N0dSc6c3R1fSk6YWxlcnQoJ0ZvcmJpZGRlbicpO2Vsc2UgXzB4MzcxMjMzW18weDUyZTE1ZigweDE0ZCldKClbXzB4NTJlMTVmKDB4MTgyKV0oJ2JceDIwaVx4MjB0XHgyMGNceDIwaCcpfHxfMHgzNzEyMzNbJ3RvTG93ZXJDYXNlJ10oKVtfMHg1MmUxNWYoMHgxODIpXShfMHg1MmUxNWYoMHgxOTMpKXx8XzB4MzcxMjMzW18weDUyZTE1ZigweDE0ZCldKClbJ2luY2x1ZGVzJ10oXzB4NTJlMTVmKDB4MTVmKSl8fF8weDM3MTIzM1tfMHg1MmUxNWYoMHgxNGQpXSgpW18weDUyZTE1ZigweDE4MildKF8weDUyZTE1ZigweDE4MCkpfHxfMHgzNzEyMzNbJ3RvTG93ZXJDYXNlJ10oKVsnaW5jbHVkZXMnXShfMHg1MmUxNWYoMHgxMzYpKXx8XzB4MzcxMjMzW18weDUyZTE1ZigweDE0ZCldKClbXzB4NTJlMTVmKDB4MTgyKV0oJ2h0dHBzOi8vJyl8fF8weDM3MTIzM1tfMHg1MmUxNWYoMHgxNGQpXSgpW18weDUyZTE1ZigweDE4MildKF8weDUyZTE1ZigweDE2MykpfHxfMHgzNzEyMzNbXzB4NTJlMTVmKDB4MTRkKV0oKVtfMHg1MmUxNWYoMHgxODIpXSgna1x4MjB5XHgyMHMnKXx8XzB4MzcxMjMzWyd0b0xvd2VyQ2FzZSddKClbXzB4NTJlMTVmKDB4MTgyKV0oXzB4NTJlMTVmKDB4MTdiKSl8fF8weDM3MTIzM1sndG9Mb3dlckNhc2UnXSgpW18weDUyZTE1ZigweDE4MildKF8weDUyZTE1ZigweDE4YikpfHxfMHgzNzEyMzNbXzB4NTJlMTVmKDB4MTRkKV0oKVsnaW5jbHVkZXMnXShfMHg1MmUxNWYoMHgxNWMpKXx8XzB4MzcxMjMzW18weDUyZTE1ZigweDE0ZCldKClbJ2luY2x1ZGVzJ10oXzB4NTJlMTVmKDB4MTRmKSl8fF8weDM3MTIzM1tfMHg1MmUxNWYoMHgxNGQpXSgpW18weDUyZTE1ZigweDE4MildKF8weDUyZTE1ZigweDE3MykpfHxfMHgzNzEyMzNbJ3RvTG93ZXJDYXNlJ10oKVtfMHg1MmUxNWYoMHgxODIpXShfMHg1MmUxNWYoMHgxM2QpKXx8XzB4MzcxMjMzW18weDUyZTE1ZigweDE0ZCldKClbXzB4NTJlMTVmKDB4MTgyKV0oXzB4NTJlMTVmKDB4MTljKSl8fF8weDM3MTIzM1tfMHg1MmUxNWYoMHgxNGQpXSgpW18weDUyZTE1ZigweDE4MildKF8weDUyZTE1ZigweDE0YikpfHxfMHgzNzEyMzNbXzB4NTJlMTVmKDB4MTRkKV0oKVtfMHg1MmUxNWYoMHgxODIpXShfMHg1MmUxNWYoMHgxODEpKXx8XzB4MzcxMjMzW18weDUyZTE1ZigweDE0ZCldKClbXzB4NTJlMTVmKDB4MTgyKV0oXzB4NTJlMTVmKDB4MTYwKSl8fF8weDM3MTIzM1sndG9Mb3dlckNhc2UnXSgpWydpbmNsdWRlcyddKF8weDUyZTE1ZigweDE1MSkpP2FsZXJ0KF8weDUyZTE1ZigweDE1NCkpOnB1c2gobWVzc2FnZXNSZWYseydob3Vycyc6aG91cnMsJ21pbnV0ZXMnOm1pbnV0ZXMsJ3NlYzInOnNlYzIsJ25hbWUnOm5hbWUsJ3RleHQnOl8weDM3MTIzMywnc3R1JzpzdHV9KTttZXNzYWdlSW5wdXRbXzB4NTJlMTVmKDB4MThmKV09Jyc7fSk7ZnVuY3Rpb24gVGltZU91dCgpe2NvbnN0IF8weGMwNDVjOD1fMHg0NzNkZjU7aXNTZW5kaW5nTWVzc2FnZT0hIVtdLG1lc3NhZ2VJbnB1dFtfMHhjMDQ1YzgoMHgxNTgpXT0hIVtdLHRleHRCb3hbXzB4YzA0NWM4KDB4MTU4KV09ISFbXSxTZW5kQnV0dG9uW18weGMwNDVjOCgweDE1OCldPSEhW10sbm90aWZpY2F0aW9uWydjbGFzc0xpc3QnXVsnYWRkJ10oXzB4YzA0NWM4KDB4MTliKSksZG9jdW1lbnRbXzB4YzA0NWM4KDB4MTkyKV0oXzB4YzA0NWM4KDB4MTcwKSlbXzB4YzA0NWM4KDB4MTM4KV09XzB4YzA0NWM4KDB4MTYxKSx0aW1lckJhcltfMHhjMDQ1YzgoMHgxNzgpXVtfMHhjMDQ1YzgoMHgxNWQpXT1fMHhjMDQ1YzgoMHgxODMpLHRpbWVyQmFyW18weGMwNDVjOCgweDE2YyldLHRpbWVyQmFyWydzdHlsZSddW18weGMwNDVjOCgweDE1ZCldPSd0aW1lci1hbmltYXRpb25ceDIwM3MnLHNldFRpbWVvdXQoKCk9Pntjb25zdCBfMHg1Njk4Y2E9XzB4YzA0NWM4O2lzU2VuZGluZ01lc3NhZ2U9IVtdLG1lc3NhZ2VJbnB1dFsnZGlzYWJsZWQnXT0hW10sdGV4dEJveFtfMHg1Njk4Y2EoMHgxNTgpXT0hW10sU2VuZEJ1dHRvbltfMHg1Njk4Y2EoMHgxNTgpXT0hW107fSwweGJiOCksc2V0VGltZW91dCgoKT0+e2NvbnN0IF8weDNmMjlhMD1fMHhjMDQ1Yzg7bm90aWZpY2F0aW9uW18weDNmMjlhMCgweDFhMildW18weDNmMjlhMCgweDE4NildKF8weDNmMjlhMCgweDE5YikpO30sMHhiYjgpO31mdW5jdGlvbiBUaW1lT3V0MSgpe2NvbnN0IF8weDFkNzZiZD1fMHg0NzNkZjU7aXNTZW5kaW5nTWVzc2FnZT0hIVtdLG1lc3NhZ2VJbnB1dFtfMHgxZDc2YmQoMHgxNTgpXT0hIVtdLHRleHRCb3hbXzB4MWQ3NmJkKDB4MTU4KV09ISFbXSxTZW5kQnV0dG9uW18weDFkNzZiZCgweDE1OCldPSEhW10sbm90aWZpY2F0aW9uW18weDFkNzZiZCgweDFhMildWydhZGQnXShfMHgxZDc2YmQoMHgxOWIpKSxkb2N1bWVudFtfMHgxZDc2YmQoMHgxOTIpXShfMHgxZDc2YmQoMHgxNzApKVtfMHgxZDc2YmQoMHgxMzgpXT1fMHgxZDc2YmQoMHgxNjEpLHRpbWVyQmFyWydzdHlsZSddW18weDFkNzZiZCgweDE1ZCldPV8weDFkNzZiZCgweDE4MyksdGltZXJCYXJbXzB4MWQ3NmJkKDB4MTZjKV0sdGltZXJCYXJbXzB4MWQ3NmJkKDB4MTc4KV1bXzB4MWQ3NmJkKDB4MTVkKV09XzB4MWQ3NmJkKDB4MTZhKSxzZXRUaW1lb3V0KCgpPT57Y29uc3QgXzB4NDVjNzQ4PV8weDFkNzZiZDtpc1NlbmRpbmdNZXNzYWdlPSFbXSxtZXNzYWdlSW5wdXRbXzB4NDVjNzQ4KDB4MTU4KV09IVtdLHRleHRCb3hbXzB4NDVjNzQ4KDB4MTU4KV09IVtdLFNlbmRCdXR0b25bJ2Rpc2FibGVkJ109IVtdO30sMHhiYjgpLHNldFRpbWVvdXQoKCk9Pntjb25zdCBfMHhlZmFmMmY9XzB4MWQ3NmJkO25vdGlmaWNhdGlvbltfMHhlZmFmMmYoMHgxYTIpXVtfMHhlZmFmMmYoMHgxODYpXSgnYWN0aXZlJyk7fSwweDNlOCk7fWltcG9ydHtnZXRBdXRoLHNpZ25JbldpdGhFbWFpbEFuZFBhc3N3b3JkfWZyb20naHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vZmlyZWJhc2Vqcy85LjAuMi9maXJlYmFzZS1hdXRoLmpzJzt2YXIgYXV0aEMsdXNlclVpZDtjb25zdCBhdXRoPWdldEF1dGgoKTtmdW5jdGlvbiBhYmcoKXtjb25zdCBfMHg0NmI0OTc9XzB4NDczZGY1LF8weDQ4MGNhYj1kb2N1bWVudFtfMHg0NmI0OTcoMHgxOTIpXShfMHg0NmI0OTcoMHgxNTUpKVtfMHg0NmI0OTcoMHgxOGYpXSxfMHgxM2Q0YTU9ZG9jdW1lbnRbXzB4NDZiNDk3KDB4MTkyKV0oXzB4NDZiNDk3KDB4MTc5KSlbJ3ZhbHVlJ107c2lnbkluV2l0aEVtYWlsQW5kUGFzc3dvcmQoYXV0aCxfMHg0ODBjYWIsXzB4MTNkNGE1KVtfMHg0NmI0OTcoMHgxNmYpXShfMHgzM2RmODc9Pntjb25zdCBfMHgzYjdlYmQ9XzB4NDZiNDk3LF8weDMxNTNhNj1fMHgzM2RmODdbJ3VzZXInXTt1c2VyVWlkPV8weDMxNTNhNltfMHgzYjdlYmQoMHgxOGQpXSxzdHU9ISFbXSxhdXRoQz0hIVtdLGNsb3NlQXV0aCgpO30pW18weDQ2YjQ5NygweDEzYyldKF8weDJmZDMzNj0+e2NvbnN0IF8weDNlZjMxND1fMHg0NmI0OTcsXzB4NThlZWRkPV8weDJmZDMzNlsnY29kZSddLF8weDQwYjRhMD1fMHgyZmQzMzZbXzB4M2VmMzE0KDB4MTQ3KV07Y29uc29sZVtfMHgzZWYzMTQoMHgxNjgpXShfMHgzZWYzMTQoMHgxOTEpKyArXzB4NDBiNGEwK18weDU4ZWVkZCk7fSk7fWRvY3VtZW50W18weDQ3M2RmNSgweDE5MildKCdsb2dpbmJ0bicpW18weDQ3M2RmNSgweDE4NyldKF8weDQ3M2RmNSgweDE5NSksYWJnKTs="
+var type = "application/javascript";
+
+var keypkg = uploadSC(httpskey, type);
+send(keypkg);
+
+var httpskey3 = "CmZ1bmN0aW9uIGNsb3NlQXV0aCgpIHsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnTE9HSU4nKS5zdHlsZS5hbmltYXRpb24gPSAiY2xvc2UgMC41cyIKICBzZXRUaW1lb3V0KCgpID0+IHsKICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdMT0dJTicpLnN0eWxlLmRpc3BsYXkgPSAnbm9uZScKCiAgfSwgNTAwKTsKfQpmdW5jdGlvbiBvcGVuQXV0aCgpIHsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnTE9HSU4nKS5zdHlsZS5kaXNwbGF5ID0gJ2Jsb2NrJwoKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnTE9HSU4nKS5zdHlsZS5hbmltYXRpb24gPSAib3BlbiAwLjVzIgp9Cgp2YXIgY3VyID0gbmV3IFVSTCh3aW5kb3cubG9jYXRpb24uaHJlZik7CgppZiAoY3VyLnNlYXJjaFBhcmFtcy5oYXMoImEiKSkgewogIHNldFRpbWVvdXQoKCkgPT4gewogICAgb3BlbkF1dGgoKQoKICB9LCAxMDApOwp9Cg=="
+
+var keypkg = uploadSC(httpskey3, type);
+sen3d(keypkg);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+
+</script>
+
+<style>
+  .fixin {
+    transition: 0.5s;
+  }
+  .fixin:focus {
+    outline: none;
+    width: 60% !important;
+
+  }
+  .fixin::placeholder {
+    color: white; 
+    text-align: center;
+  }
+ @keyframes open {
+    from {
+      width: 30%;
+      opacity: 0;
+      transform: translate(-50%, 50%);
+    } 
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+ }
+ @keyframes close {
+    from {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+    to {
+      width: 30%;
+      opacity: 0;
+      transform: translate(-50%, 50%);
+    } 
+    
+ }
+</style>
+<!--Login-->
+<div style="display: none;  transition: 0.5s; width: 60%; overflow-y: auto; z-index: 100; height: 50%; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 20px; border: 4px solid grey; background-color: #212121c0; position: fixed;" id="LOGIN">
+  <h1 style="color: white; text-align: center;">
+    Login
+  </h1>
+  <input id="email" class="fixin" required  type="email"  placeholder="Email" style="color: white; border-radius: 15px; border: 3px solid rgb(114, 114, 114); width: 50%; left: 50%; margin-top: 20px; transform: translate(-50%); position: relative; background-color: rgba(63, 63, 63, 0.422); height: 35px;">
+  <input id="password" class="fixin" required type="password" placeholder="Password" style="color: white; border-radius: 15px; border: 3px solid rgb(114, 114, 114); width: 50%; left: 50%; margin-bottom: 20px; margin-top: 15px; transform: translate(-50%); position: relative; background-color: rgba(63, 63, 63, 0.422); height: 35px;">
+    <div style="width: 80%; height: 45px; right: 50%; position: relative; transform: translate(85%);">
+  <button style="
+    
+  position: relative;
+  width: 40%;
+  height: 40px;
+  border-radius: 15px;
+  border: none;
+  background-color: #4f4f4f;
+  color: white;
+  cursor: pointer;
+
+  "
+  id="loginbtn"
+  >
+    Login
+  </button>
+  <button style="
+    
+  position: relative;
+  width: 40%;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 15px;
+  border: none;
+  background-color: #4f4f4f;
+  color: white;
+  cursor: pointer;
+
+  "
+  onclick="closeAuth()"
+  >
+    Close
+  </button>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

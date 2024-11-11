@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C78TXR0XFK');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1654900800235927" crossorigin="anonymous"></script>
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true">
+<title>Blog | Sz Games</title>
+<meta name="description" property="og:description" content="Sz Games Blog"> 
+<meta name="description" content="Sz Games Blog"> 
+<script src="./GobalSettings.js"></script>
+
+<meta
+name="keywords"
+content="sz games, sz games blog, games, unblocked games, school, games, games to play, games on the web, html5 games, sz, sz-games, play games online,  online games, about sz games, sz games about"
+/> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  background: rgb(39, 39, 39);
+  font-family: Arial, Helvetica, sans-serif;
+  background-repeat: none;
+  background-size: cover;
+  color: white;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+.title {
+  text-align: center;
+}
+.desc {
+  text-align: center;
+  font-weight: 1000;
+  transform: translateY(-10px);
+
+}
+p {
+  text-align: center;
+}
+img {
+  padding: 20px;
+  background-color: rgba(61, 61, 61, 0.39);
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
+  border-radius: 15px;
+  border: solid 3px rgb(109, 109, 109);
+}
+a {
+  color: white;
+}
+</style>
+
+
+<body>
+
+  <div style="top: 0; width: 100%; height: 60px; border-radius: 20px; background-color: rgb(20, 20, 20);">
+    
+    <a style="text-decoration: none; color: white; position: relative; " href="./index.html">
+      <span style="position: relative; transform: translateY(-50%); left: 25px; top: 50%;" class="material-symbols-outlined">
+        arrow_back_ios
+        </span>
+    </a>  
+    
+    <h1 style="left: 50%; transform: translateX(-50%); top: 9px; position: absolute; font-size: 25px; color: white;">Blog</h1>
+  </div>
+  
+</div>
+      
+
+<br>
+
+<div style="" id="blogcontent">
+  
+  <!-- ADCODE -->
+  <div id="ad-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); box-shadow: 0px 0px 10px black; grid-gap: 0px; width: 90%; margin: 0 auto;">
+    <!-- Row 1 -->
+    <div style="background-color: gray; height: 80px;">
+      <ins class="adsbygoogle"
+        id="ad-container1"
+        style="display: block; height: 80px !important; width: 100%; background-color: gray;"
+        data-ad-client="ca-pub-1654900800235927"
+        data-ad-slot="6959226874"></ins>
+    </div>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="background-color: gray; height: 80px;">
+      <ins class="adsbygoogle"
+        id="ad-container2"
+        style="display: block; height: 80px !important; width: 100%; background-color: gray;"
+        data-ad-client="ca-pub-1654900800235927"
+        data-ad-slot="9203744669"></ins>
+     
+    </div>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+  </div>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+
+
+</div>
+
+</div>
+
+
+
+</body>
+
+<script>
+   // get blog data
+   function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    function addContentToPage(content) {
+      const contentDiv = document.getElementById('blogcontent');
+      const lines = content.split('\n');
+
+      lines.forEach(line => {
+        line = line.trim();
+        if (line === '---') {
+      
+          contentDiv.appendChild(document.createElement('br'));
+        } else if (line.startsWith('-h1-') && line.endsWith('-/h1-')) {
+        
+          const h1 = document.createElement('h1');
+          h1.textContent = line.slice(5, -6);
+          contentDiv.appendChild(h1);
+        } else if (line.startsWith('-title-') && line.endsWith('-/title-')) {
+        
+          const h1 = document.createElement('h1');
+          h1.textContent = line.slice(7, -9);
+          h1.classList.add('title')
+          contentDiv.appendChild(h1);
+        } else if (line.startsWith('-a-h1-') && line.includes('-') && line.endsWith('-/a-/h1-')) {
+         
+          const linkEndIndex = line.indexOf(' -');
+          const text = line.slice(7, linkEndIndex);
+          const url = line.slice(linkEndIndex + 2, -10);
+          const a = document.createElement('a');
+          a.href = url;
+          a.textContent = text;
+          const h1 = document.createElement('h1');
+          h1.appendChild(a);
+          contentDiv.appendChild(h1);
+        }  else if (line.startsWith('-a-2-') && line.includes('-') && line.endsWith('-/a-/2-')) {
+         
+         const linkEndIndex = line.indexOf(' -');
+         const text = line.slice(7, linkEndIndex);
+         const url = line.slice(linkEndIndex + 3, -8);
+         const a = document.createElement('a');
+         a.href = url;
+         a.textContent = text;
+         const h1 = document.createElement('p');
+         h1.appendChild(a);
+         contentDiv.appendChild(h1);
+       } else if (line.startsWith('-a-p-') && line.includes('-') && line.endsWith('-/a-/p-')) {
+         
+         const linkEndIndex = line.indexOf(' -');
+         const text = line.slice(7, linkEndIndex);
+         const url = line.slice(linkEndIndex + 3, -8);
+         const a = document.createElement('a');
+         a.href = 'https://' + url;
+         a.textContent = text;
+         const h1 = document.createElement('p');
+         h1.appendChild(a);
+         contentDiv.appendChild(h1);
+       } else if (line.startsWith('-p-') && line.endsWith('-/p-')) {
+         
+          const p = document.createElement('p');
+          p.textContent = line.slice(4, -4);
+          contentDiv.appendChild(p);
+        } else if (line.startsWith('-desc-') && line.endsWith('-/desc-')) {
+         
+         const p = document.createElement('p');
+         p.textContent = line.slice(6, -7);
+         p.classList.add('desc')
+         contentDiv.appendChild(p);
+       } else if (line.startsWith('-img-') && line.endsWith('-/img-')) {
+          
+          const img = document.createElement('img');
+          img.src = line.slice(6, -6);
+          contentDiv.appendChild(img);
+        }
+      });
+    }
+
+    async function fetchBlogContent(blogFile) {
+      try {
+        const response = await fetch('/Blog/' + blogFile);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const content = await response.text();
+        addContentToPage(content);
+      } catch (error) {
+        console.error('Error fetching the blog content:', error);
+      }
+    }
+
+    const blogFile = getQueryParam('blog');
+    if (blogFile) {
+      fetchBlogContent(blogFile);
+    } else {
+      console.log('No blog file specified in the URL.');
+    }
+
+  //Service Worker
+
+  if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+</script>
+
+</html>

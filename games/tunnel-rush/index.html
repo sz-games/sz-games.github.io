@@ -1,0 +1,59 @@
+<html>
+  <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Tunnel Rush</title>
+    <link rel="shortcut icon" href="style/favicon.ico">
+    <link rel="stylesheet" href="style/style.css">
+	<script src="/adinLoader.js"></script>
+	<script src="UnityLoader.js"></script>
+    <script src="UnityProgress.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "build.json", {onProgress: UnityProgress,Module:{onRuntimeInitialized: function() {UnityProgress(gameInstance, "complete")}}});
+    </script>
+  </head>
+  <body>
+
+ <style>
+      .back {
+        position: relative;
+        width: 150px;
+        z-index: 5;
+        height: 50px;
+        background-color: rgb(43, 43, 43);
+   margin-left: 50px;
+        color: white;
+        border-radius: 15px;
+        color: #FFFFFF;
+    text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 100%; height: 95%; margin: auto;"></div>
+	  <div class="footer">
+	      
+	        </div>
+    </div>
+
+	  <script>
+  setInterval(() => {
+      var Ad = document.getElementById('adsCode')
+      Ad.remove();
+      var Ad2 = document.getElementById('preroll')
+      Ad2.remove();
+  }, 500);
+</script>	
+<script>
+       if (typeof getAdinDomain !== 'undefined') {
+           const bodyTag = document.getElementsByTagName('body')[0];
+
+           let addAdinPreroll = document.createElement('script');
+            addAdinPreroll.src = getAdinDomain;
+            bodyTag.appendChild(addAdinPreroll);
+        }
+  </script>
+  </body>
+</html>

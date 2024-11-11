@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Site</title>
+    <!-- Include jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./rain.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
+    
+
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #303030;
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #weatherInfo p {
+            margin: 5px 0;
+        }
+        .forecast-item {
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 150px;
+            position: relative;
+            height: 165px;
+            float: left;
+            background-color: #494949ad;
+            border-radius: 15px;
+            min-width: 150px;
+            min-height: 165px;
+        }
+        .forecast-item-sunny {
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 150px;
+            position: relative;
+            height: 165px;
+            float: left;
+            background-color: #636363c3;
+            border-radius: 15px;
+            min-width: 150px;
+            min-height: 165px;
+        }
+        .forecast-item-rain {
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 150px;
+            min-width: 150px;
+            min-height: 165px;
+            position: relative;
+            height: 165px;
+            float: left;
+            background: linear-gradient(to bottom, rgba(3, 197, 246, 0.731), rgba(55, 123, 140, 0.731), #494949ad);
+            border-radius: 15px;
+        }
+        .forecast-item-snow {
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 150px;
+            min-width: 150px;
+            min-height: 165px;
+            position: relative;
+            height: 165px;
+            float: left;
+            background: linear-gradient(to bottom, rgba(224, 224, 224, 0.731), rgba(182, 182, 182, 0.731), #494949ad);
+            border-radius: 15px;
+        }
+        .forecast-description {
+            text-align: center;
+            color: white;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            
+        }
+        .forecast-temperature {
+            color: white;
+           left: 50%;
+           top: 30%;
+           transform: translate(-50%, -60%);
+            position: absolute;
+        }
+        .forecast-date {
+            text-align: center;
+            font-size: 15px;
+            color: white;
+        }
+ #result {
+            outline: none;
+            border: none;
+}
+.DATETXT {
+            color: white;
+}
+#forecast {
+    bottom: 10px;
+    max-width: 100%; 
+    height: fit-content;
+    overflow: auto; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center; 
+}
+.searchbar {
+            width: 35%;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            border-radius: 15px;
+            border: none;
+            background-color: rgb(38, 38, 38);
+            top: 50%;
+            text-align: center;
+            color: white;
+            transform: translate(-50%, -50%);
+}
+.searchbar::placeholder {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.645);
+}
+
+.searchbar:focus {
+            outline: none;
+            transition: 0.1s;
+            border: solid 3px rgb(57, 57, 57);
+}
+.ui-menu-item-wrapper {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 10px;
+}
+.ui-menu-item-wrapper:hover {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none;
+}
+.custom-autocomplete-menu {
+            background-color: #242424; 
+            border: 3px solid #303030; 
+            outline: none !important;
+            border-radius: 15px;
+            width: 20%;
+            left: 50%;
+            margin-top: 10px;
+            height: 150px;
+            overflow-y: auto;
+            transform: translate(-50%, -0%);
+            bottom: 50px;
+            position: absolute;
+            color: rgba(255, 255, 255, 0.788);
+            overflow: none; 
+}
+.custom-autocomplete-menu .ui-menu-item {
+    background-color: #292929; 
+    color: #f5f5f5; 
+    padding: 5px; 
+    border: none; 
+    
+    border-radius: 15px;
+    cursor: pointer; 
+    outline: none !important;
+    transition: 0.5s;
+}
+.bgweatherimg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    filter: blur(0.5);
+    display: none;
+}
+
+.custom-autocomplete-menu .ui-menu-item:hover {
+    background-color: #3c3c3c !important; 
+    border: none !important;
+    outline: none !important;
+}
+@keyframes moveto {
+    from {
+        transform: scale(1.0); opacity: 1;
+    }
+    to {
+        transform: scale(1.5); opacity: 0;
+    }
+}
+
+@keyframes movefrom {
+    from {
+        transform: scale(0.5); opacity: 0;
+    }
+    to {
+        transform: scale(1.0); opacity: 1;
+    }
+}
+
+@keyframes movefrom2 {
+    from {
+        transform: scale(1.5); opacity: 0;
+    }
+    to {
+        transform: scale(1.0); opacity: 1;
+    }
+}
+
+.drop {
+  position: absolute;
+  bottom: 100%;
+  width: 15px;
+  height: 120px;
+  pointer-events: none;
+  animation: drop 0.5s linear infinite;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(0vh);
+  }
+  100% {
+    transform: translateY(25vh);
+  }
+ 
+}
+
+.stem {
+  width: 1px;
+  height: 60%;
+  margin-left: 7px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
+  animation: stem 0.5s linear infinite;
+}
+
+@keyframes stem {
+  0% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.splat {
+  width: 15px;
+  height: 10px;
+  border-top: 2px dotted rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  opacity: 1;
+  transform: scale(0);
+  animation: splat 0.5s linear infinite;
+  display: none;
+}
+
+.splat {
+  display: block;
+}
+
+@keyframes splat {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  90% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<script>
+    
+$(document).ready(function() {
+    // Function to get user's estimated location
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            console.error("Geolocation is not supported by this browser.");
+        }
+    }
+
+    // Function to display position
+    function showPosition(position) {
+        const userLatitude = position.coords.latitude;
+        const userLongitude = position.coords.longitude;
+        getCityFromCoordinates(userLatitude, userLongitude);
+    }
+
+    // Function to handle errors
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                console.error("User denied the request for Geolocation.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                console.error("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                console.error("The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                console.error("An unknown error occurred.");
+                break;
+        }
+    }
+
+    // Function to get city from coordinates
+    function getCityFromCoordinates(latitude, longitude) {
+        $.ajax({
+            url: `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+            success: function(data) {
+                const city = data.address.city || data.address.town || data.address.village || data.address.county;
+                $("#currentCity2").text(`${city}`);
+                getCurrentWeather(latitude, longitude, city);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching city data:", error);
+            }
+        });
+    }
+
+    // Function to get current weather
+    function getCurrentWeather(latitude, longitude, city) {
+        $.ajax({
+            url: `https://api.weather.gov/points/${latitude},${longitude}`,
+            success: function(data) {
+                const forecastUrl2 = data.properties.forecast;
+                $.ajax({
+                    url: forecastUrl2,
+                    success: function(forecastData) {
+                        const currentForecast2 = forecastData.properties.periods[0];
+                        $("#currentTemp2").text(`${currentForecast2.temperature} ${currentForecast2.temperatureUnit}`);
+                        $("#currentDes2").text(`${currentForecast2.shortForecast}`);
+                        let forecastContainerClasss2 = 'normalBG';
+
+
+                        if (currentForecast2.shortForecast.includes('Rain')) {
+                                forecastContainerClasss2 = 'rainBG';
+                                document.getElementById('rainanim').style.display = 'block'
+                        } else if (currentForecast2.shortForecast.includes('Sunny')) {
+                                forecastContainerClasss2 = 'sunnyBG';
+                        } else if (currentForecast2.shortForecast.includes('Snow')) {
+                                forecastContainerClasss2 = 'snowBG';
+                        }
+
+                        document.getElementById('pageMAIN').classList.add(forecastContainerClasss2)
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error fetching weather data:", error);
+                    }
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching weather data:", error);
+            }
+        });
+    }
+
+    // Call function to get user location
+    getUserLocation();
+});
+</script>
+
+
+<div id="pageMAIN" style="transition: 0.5s; position: fixed; background-color: rgb(26, 26, 26); width: 100%; height: 100%;">
+    <h1 id="currentCity2" style="top: 20%; left: 50%; position: absolute; color: white; transform: translateX(-50%);"></h1>
+    <h2 id="currentTemp2" style="top: 27%; left: 50%; position: absolute; color: white; transform: translateX(-50%);"></h2>
+    <h4 id="currentDes2" style="top: 34%; left: 50%; position: absolute; color: white; transform: translateX(-50%);"></h4>
+    <input type="text" class="searchbar" id="cityInput" placeholder="Search">
+    <div style="border-radius: 15px;" id="autocompleteContainer"></div> <!-- Container for autocomplete suggestions -->
+
+
+ 
+</div>
+<style>
+    .normalBG {
+        background-color: rgb(26, 26, 26);
+    }
+    .rainBG {
+       
+        background: linear-gradient(to bottom, rgb(22, 81, 159), rgb(26, 26, 26), rgb(26, 26, 26));
+    }
+    .sunnyBG {
+        background: linear-gradient(to bottom, rgb(249, 221, 4), rgb(26, 26, 26), rgb(26, 26, 26));
+
+    }
+    .snowBG {
+        background: linear-gradient(to bottom, rgb(177, 177, 177), rgb(26, 26, 26), rgb(26, 26, 26));
+
+    }
+</style>
+
+<div id="pageVIEW" style=" position: fixed; display: none; transition: 0.5s; background-color: rgb(26, 26, 26); width: 100%; height: 100%;">
+    <div style="position: fixed; top: 0px; width: 100%; height: 45px; z-index: 100; background-color: #181818;">
+        <span onclick="switchtohome()"  class="material-icons"  style="background-color: #1d1d1dcf; padding: 2px; border-radius: 15px; z-index: 30; cursor: pointer;  font-size: 25px;  left: 10px; top: 10px;  color: white;  position: relative;">  
+            arrow_back
+        </span>
+        <h1 id="cityname" style="position: absolute; top: 0px; left: 50%; transform: translate(-50%, -0%); color: white; font-size: 20px;">Placeholder</h1>
+    </div>
+
+    <div  id="result" style="">
+        <div style="left: 50%; width: 98%; position: relative; padding: 10px;  background-color: #222222c5; height: 35%; top: 20px; border-radius: 15px; transform: translateX(-50%);" id="cityInfo">
+            <h1 id="datern" style="text-align: center; color: white; font-size: 25px;"></h1>
+            <h1 id="temp" style="color: white; text-align: center; font-size: 30px;"></h1>
+            <h3 style="color: white; font-size: 17px; text-align: center; " id="descriptionnow"></h3>
+            <h3 style="color: white; font-size: 17px; text-align: center;" id="descriptionnowlong"></h3>
+            <!--div style="height: fit-content;  position: absolute; width: 100%; background: linear-gradient(to bottom, transparent, transparent, rgb(26, 26, 26));">
+                <div  style=" height: 100px; width: 100%; position: absolute;" class="rain front-row"></div>
+            </div-->
+            <div id="rainanim">
+                <i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i>
+            </div>
+        </div>
+        <div style="display: none; left: 50%; border-radius: 15px; top: 50%; transform: translate(-50%, -25%); width: 90%; height: 28%; position: absolute; " id="map"></div>
+
+        <p id="currentTemperature"></p>
+        <p id="currentDescription"></p>
+        <div style="" id="forecast"></div>
+    </div>
+   
+</div>
+
+
+<script>
+$(document).ready(function() {
+    // JavaScript code for creating the map
+    var map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([0, 0]),
+            zoom: 10
+        })
+    });
+
+    const includeAirQuality = true;
+    const includeForecastHourly = false;
+    const includeForecastGridData = true;
+
+    // Function to perform autocomplete for city input
+    $("#cityInput").autocomplete({
+        source: function(request, response) {
+            // Fetch city suggestions from Nominatim API
+            $.ajax({
+                url: "https://nominatim.openstreetmap.org/search",
+                data: {
+                    q: request.term,
+                    format: "json",
+                    limit: 10
+                },
+                success: function(data) {
+                    // Extract city names from API response
+                    const cities = data.map(function(item) {
+                        return {
+                            label: item.display_name,
+                            value: item
+                        };
+                    });
+                    response(cities);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching city data:", error);
+                }
+            });
+        },
+        minLength: 2, // Minimum characters to trigger autocomplete
+        appendTo: "body", // Append autocomplete menu to the body element
+        select: function(event, ui) {
+           
+            const selectedCity = ui.item.value;
+            console.log(ui.item.value)
+            // Extract latitude and longitude from the selected value
+            const latitude = selectedCity.lat;
+            const longitude = selectedCity.lon;
+            map.getView().setCenter(ol.proj.fromLonLat([longitude, latitude]));
+            var view = map.getView();
+            view.setZoom(10);
+            //map.panTo([latitude, longitude]);
+
+            
+            $.ajax({
+                url: `https://api.weather.gov/points/${latitude},${longitude}`,
+                success: function(data) {
+                    switchtoview();
+                    // Extract forecast URL from the API response
+                    const forecastUrl = data.properties.forecast;
+                    console.log(forecastUrl)
+                    // Fetch the forecast data using the forecast URL
+                    $.ajax({
+                        url: forecastUrl,
+                        success: function(forecastData) {
+                            document.getElementById('cityInput').value = ''
+                            document.getElementById('pageVIEW').classList = [] 
+
+                            // Display current weather information
+                            const currentForecast = forecastData.properties.periods[0]; // Current forecast
+                            //$("#cityInfo").html(`<h1>${currentForecast.temperature} ${currentForecast.temperatureUnit}</h1><p class="current-description">${currentForecast.detailedForecast}</p><h3>${currentForecast.name}</h3>`);
+                            document.getElementById('datern').innerHTML = currentForecast.name
+                            document.getElementById('temp').innerHTML = currentForecast.temperature + currentForecast.temperatureUnit
+                            document.getElementById('descriptionnow').innerHTML = currentForecast.shortForecast
+                            document.getElementById('descriptionnowlong').innerHTML = currentForecast.detailedForecast
+
+                            document.getElementById('cityname').innerHTML = selectedCity.display_name
+                            let forecastContainerClasss = 'normalBG';
+                            document.getElementById('rainanim').style.display = 'none'
+
+                            if (currentForecast.shortForecast.includes('Rain')) {
+                                    forecastContainerClasss = 'rainBG';
+                                    document.getElementById('rainanim').style.display = 'block'
+                            } else if (currentForecast.shortForecast.includes('Sunny')) {
+                                    forecastContainerClasss = 'sunnyBG';
+                            } else if (currentForecast.shortForecast.includes('Snow')) {
+                                    forecastContainerClasss = 'snowBG';
+                            }
+                        
+
+
+                            console.log(currentForecast)
+                            document.getElementById('pageVIEW').classList.add(forecastContainerClasss)
+
+                            // Display 7-day forecast
+                            const forecastPeriods = forecastData.properties.periods.slice(1, 8); 
+                            //$("#forecast").empty(); 
+                            
+                            
+                           
+                            forecastPeriods.forEach(function(period) {
+                                let forecastContainerClass = 'forecast-item';
+                                if (period.shortForecast.includes('Rain')) {
+                                    forecastContainerClass = 'forecast-item-rain';
+                                } else if (period.shortForecast.includes('Sunny')) {
+                                    forecastContainerClass = 'forecast-item-sunny';
+                                } else if (period.shortForecast.includes('Snow')) {
+                                    forecastContainerClass = 'forecast-item-snow';
+                                }
+                                console.log(period)
+                                $("#forecast").append(`
+                               
+                                    <div class="${forecastContainerClass}">
+                                        <img class="bgweatherimg" src="${period.icon}">
+                                        <h1 class="forecast-date">${period.name}</h1>
+                                        <h3 class="forecast-temperature"> ${period.temperature} ${period.temperatureUnit}</h3>
+                                        <p class="forecast-description">${period.shortForecast}</p>
+                                    </div>
+                             
+                                `);
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching weather forecast data:", error);
+                            $("#cityInfo").text("");
+                            $("#forecast").empty();
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching weather data:", error);
+                    $("#cityInfo").text("");
+                    $("#forecast").empty();
+                }
+               
+            });
+        }
+        
+    }).data("ui-autocomplete")._renderMenu = function(ul, items) {
+        var that = this;
+        $.each(items, function(index, item) {
+            that._renderItemData(ul, item).addClass('custom-autocomplete-item');
+        });
+        $(ul).addClass('custom-autocomplete-menu'); // Add custom class to the autocomplete menu
+    };
+});
+
+function switchtoview() {
+    document.getElementById('pageVIEW').style.display = 'block';
+    document.getElementById('pageVIEW').style.animation = 'movefrom2 0.5s';
+    document.getElementById('pageMAIN').style.animation = 'moveto 0.5s';
+    setTimeout(() => {
+        document.getElementById('pageMAIN').style.display = 'none';
+    }, 480);
+}
+
+function switchtohome() {
+   
+    document.getElementById('pageMAIN').style.display = 'block';
+    document.getElementById('pageMAIN').style.animation = 'movefrom 0.5s';
+    document.getElementById('pageVIEW').style.animation = 'moveto 0.5s';
+    setTimeout(() => {
+        document.getElementById('pageVIEW').style.display = 'none';
+    }, 480);
+    document.getElementById('forecast').remove()
+    var forecastcontstuff = document.createElement('div')             
+    forecastcontstuff.setAttribute('id', 'forecast')
+    document.getElementById('result').appendChild(forecastcontstuff);
+
+}
+
+
+</script>
+
+<script>
+   
+  //clear out everything
+  $('.rain').empty();
+
+  var increment = 0;
+  var drops = "";
+  var backDrops = "";
+
+  while (increment < 100) {
+    //couple random numbers to use for various randomizations
+    //random number between 98 and 1
+    var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
+    //random number between 5 and 2
+    var randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
+    //increment
+    increment += randoFiver;
+    //add in a new raindrop with various randomizations to certain CSS properties
+    drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+    backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+  }
+
+  $('.rain.front-row').append(drops);
+  $('.rain.back-row').append(backDrops);
+
+
+</script>
+
+</body>
+</html>

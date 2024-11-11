@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true">
+    <title>Sz Games - Friday Night Funkin</title>
+
+<meta property="og:site_name" content="Sz Games - Friday Night Funkin">
+<meta name="description" property="og:description" content="Come play some friday night funkin on sz games!"> 
+<meta name="description" content="Come play some friday night funkin on sz games!"> 
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "name": "Sz Games",
+    "logo": "https://sz-games.github.io/G-Google.png"
+  }
+  </script>
+
+<meta content="website" property="og:type">
+<meta name="description" property="twitter:description" content="Come play some friday night funkin on sz games!"> 
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
+ <!--PageScript1-->
+ <!--script id="CHECK">
+  function getCookie2(name) {
+const cookieName = name + "=";
+const cookies = document.cookie.split(';');
+for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i];
+    while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(cookieName) === 0) {
+        return cookie.substring(cookieName.length, cookie.length);
+    }
+}
+return '';
+}
+
+
+let Setting14bu = getCookie2("PagePrevent");
+
+function checkPageClose(event) {
+
+
+    event.returnValue = "Prevent Page Close Is Active, You Can Click Off Of This";
+
+
+
+}
+function checkPageClose2() {
+if(Setting14bu==="true") {
+
+    window.onbeforeunload = function(event) {
+        // return a string to prevent the page from closing
+        event.preventDefault();
+        return "Prevent Page Close Is Active, You Can Click Off Of This";
+    };
+    window.addEventListener("beforeunload", checkPageClose);
+
+} 
+if(Setting14bu==="false") {
+
+}
+}
+console.log('CookiePAGE Value: ' + Setting14bu + "SzGames-Scripts Loaded")
+checkPageClose2()
+
+</script-->
+<!--PageScript1-->
+<link rel="manifest" href="manifest.json">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C78TXR0XFK');
+</script>
+<script src="./GobalSettings.js"></script>
+
+<meta
+name="keywords"
+content="sz games, games, friday night funkin, fnf, unblocked games, school, games, games to play, games on the web, html5 games, sz, sz-games, play games online,  online games"
+/> 
+
+<link rel="canonical" href="https://sz-games.github.io/FNF.html" />
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  margin: 0;
+ overflow: hidden;
+ background-color: #1d1d1d;
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-group button {
+  background-color: black; /* Green background */
+ 
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: grey;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 60px;
+  text-align: center;
+  background: linear-gradient(to bottom right, #9a9a9a, rgb(39, 39, 39));
+  color: white;
+  width: auto;
+  font-size: 30px;
+ 
+ 
+  border-radius: 15px;
+}
+
+/* Page Content */
+
+</style>
+</head>
+<body onresize="resize()">
+<style>
+    .game {
+        position: absolute;
+color: white;
+
+  transform: scale(1.8);
+  z-index: 3;
+  font-family: Arial, Helvetica, sans-serif;
+    }
+   .fade {
+        position: absolute;
+        background: linear-gradient(to bottom, #1d1d1d, #1d1d1d5d, rgba(39, 39, 39, 0));
+        width: 300px;
+        height: 150px;
+     border-radius: 15px;
+    }
+    .buttonForMenu {
+      transition: 0.5s;
+    }
+    .buttonForMenu:hover {
+      color: #9a9a9a;
+    }
+    .Mod {
+      float: left; 
+      margin: 3px;
+       border-radius: 10px; 
+       width: 45px;
+       height: 45px;
+       transition: 0.5s;
+       cursor: pointer;
+      background-color: #6a6a6a;
+    }
+    .ModImg:hover {
+      transform: scale(1.15) !important;
+    }
+    .ModImg {
+      width: 45px;
+      transition: 0.5s;
+       height: 45px;
+    }
+</style>
+
+<style>
+  @keyframes ShowAlert {
+    0% {opacity: 0; top: -100px;}
+    20% {opacity: 1; top: 5px;}
+    80% {opacity: 1; top: 5px;}
+    100% {opacity: 0; top: -100px;}
+  }
+  .showAlert {
+    animation: ShowAlert 10.5s;
+  }
+</style>
+<style>
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 15px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  </style>
+  
+<div id="Alertt" style="visibility: hidden;">
+  <div id="AlertU" style=" border: solid #616161 3px; transition: 0.5s; padding: 5px  5px; left: 50%; z-index: 1000; transform: translate(-50%, 0%); top: 5px; position: fixed; background-color: #1b1b1bc8; border-radius: 15px; width: fit-content; height: 80px;" > 
+ 
+    <h3 id="AlertText" style=" color: white; word-wrap: break-word;">---</h3>
+   
+  </div>
+</div>
+
+
+<div  style="opacity: 0; visibility: hidden; overflow-y: auto; transition: 0.8s; position: absolute; top: 5px; z-index: 5; border: solid rgb(72, 72, 72) 3px; left: 5px; width: 310px; border-radius: 15px; height: 50%; background-color: #1d1d1de5;" id="Menu">
+  <div style="height: 80px; width: 290px; position: fixed; border-radius: 15px; background-color: #1d1d1dc7; z-index: 90;">
+   
+      <p  onclick="toggle()" style="cursor: pointer; margin: 10px; color: white;">Close Menu</p>
+
+      <p id="CS" style="word-wrap: break-word; transition: 0.3s; margin: 10px; color: white;">Currently Selected: </p>
+ 
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div id="mods">
+
+    <div onclick="Change('FNF')" class="Mod" id="FNF">
+      <img class="ModImg" id="FNF"  src="https://github.com/Mr-funkinguy/Suicidemouse-cutscenes/blob/main/favicon.png?raw=true">
+    </div>
+
+    <div onclick="Change('SM')" class="Mod" id="Shaggy X Matt">
+      <img class="ModImg" id="Shaggy X Matt"  src="https://mr-funkinguy.github.io/funkymods/shaggymatt/favicon.png?raw=true">
+    </div>
+
+    <div onclick="Change('Miku')" class="Mod" id="Vs Miku">
+      <img class="ModImg" id="Miku"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Miku/Miku.webp">
+    </div>
+    
+    <div onclick="Change('Week7')" class="Mod" id="Shadow Engine">
+      <img class="ModImg" id="Shadow Engine"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/week7/w7.png">
+    </div>
+
+    <div onclick="Change('ann')" class="Mod" id="Vs Annie">
+      <img class="ModImg" id="Vs Annie"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/ann/Annie.png">
+    </div>
+
+    <div onclick="Change('bsides')" class="Mod" id="B Sides">
+      <img class="ModImg" id="B Sides" style="width: 45px; height: 35px; top: 5px; position: relative;"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/bsides/Bside2.png">
+    </div>
+
+    <div onclick="Change('henry')" class="Mod" id="Vs Henry">
+      <img class="ModImg" id="Vs Henry"   src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/henry/Henry.png">
+    </div>
+
+    <div onclick="Change('Neo')" class="Mod" id="FNF Neo">
+      <img class="ModImg" id="FNF Neo"   src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Neo.webp">
+    </div>
+
+    <div onclick="Change('SNS')" class="Mod" id="Vs Suicide Mouse">
+      <img class="ModImg" id="Vs Suicide Mouse" style="top: 5px; position: relative; width: 45px; height: 35px;"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/SNS.png">
+    </div>
+
+    <div onclick="Change('Sky')" class="Mod" id="Vs Sky">
+      <img class="ModImg" id="Vs Sky"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Sky.webp">
+    </div>
+
+    <div onclick="Change('Whitty')" class="Mod" id="Vs Whitty">
+      <img class="ModImg" id="Vs Whitty" style="top: 5px; position: relative; width: 45px; height: 35px;"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Whitty.png">
+    </div>
+
+    <div onclick="Change('Wiik3')" class="Mod" id="Vs Matt Wiik 3">
+      <img class="ModImg" id="Vs Matt Wiik 3"   src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Matt.png">
+    </div>
+
+    <div onclick="Change('Tko')" class="Mod" id="TKO But Matt Goes All Out">
+      <img class="ModImg" id="TKO But Matt Goes All Out" style=" width: 40px; transform: scale(0.9);"   src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Matt2.webp">
+    </div>
+
+    <div onclick="Change('Ca')" class="Mod" id="Vs Camellia">
+      <img class="ModImg" id="Vs Camellia"   src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/C.webp">
+    </div>
+
+    <div onclick="Change('IMP')" class="Mod" id="Vs Imposter">
+      <img class="ModImg" id="Vs Imposter"   src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/im.webp">
+    </div>
+
+    <div onclick="Change('Rtrn')" class="Mod" id="FNF Return Of Garcello">
+      <img class="ModImg" id="FNF Return Of Garcello" style="top: 5px; position: relative; width: 45px; height: 35px;"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Gr.png">
+    </div>
+
+    <div onclick="Change('idol')" class="Mod" id="FNF Super Idol">
+      <img class="ModImg" id="FNF Super Idol"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/idol.webp">
+    </div>
+
+    <div onclick="Change('huggy')" class="Mod" id="Vs Huggy Wuggy">
+      <img class="ModImg" id="Vs Huggy Wuggy"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/huggy.webp">
+    </div>
+
+    <div onclick="Change('date')" class="Mod" id="FNF Date Week">
+      <img class="ModImg" id="FNF Date Week"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/date.webp">
+    </div>
+
+
+    <div onclick="Change('golf')" class="Mod" id="FNF Golf Minigame">
+      <img class="ModImg" id="FNF Golf Minigame"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/date.webp">
+    </div>
+
+    <div onclick="Change('EXE')" class="Mod" id="FNF Sonic.exe">
+      <img class="ModImg" id="FNF Sonic.exe"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/Sonic.png">
+    </div>
+
+    <div onclick="Change('Tabi')" class="Mod" id="Vs Tabi">
+      <img class="ModImg" id="Vs Tabi"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/TabiIcon.webp">
+    </div>
+
+    <div onclick="Change('zardy')" class="Mod" id="Vs Zardy">
+      <img class="ModImg" id="Vs Zardy"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/zardy.webp">
+    </div>
+
+    <div onclick="Change('sunday')" class="Mod" id="Vs Sunday">
+      <img class="ModImg" id="Vs Sunday" style="top: 5px; position: relative; width: 45px; height: 35px;"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/sun.png">
+    </div>
+
+    <div onclick="Change('tord')" class="Mod" id="Vs Tord">
+      <img class="ModImg" id="Vs Tord" style="top: 5px; position: relative; width: 45px; height: 35px;"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/tord.png">
+    </div>
+
+    <div onclick="Change('dSides')" class="Mod" id="FNF D Sides">
+      <img class="ModImg" id="FNF D Sides"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/DD.png">
+    </div>
+
+    <div onclick="Change('CG5')" class="Mod" id="Vs CG5">
+      <img class="ModImg" id="Vs CG5"  src="https://raw.githubusercontent.com/Mr-funkinguy/funkymods/master/CG5.webp">
+    </div>
+
+  </div>
+
+</div>
+
+
+<iframe frameBorder="0" id="game" style="transition: 0.5s; text-align: center; align-items: center; overflow: hidden; width: 100%; " src="https://sz-games.github.io/StartFNF.html" allowfullscreen></iframe>
+
+
+
+<!--h2 onclick="window.location = 'https://sz-games.github.io'" style="display: none; cursor: pointer; position: fixed; bottom: -20px;  ">Back</h2>
+<h2  style="position: fixed; bottom: 10px;">____</h2>
+<h2 onclick="makeFullScreen()" style="cursor: pointer; position: fixed; bottom: 20px;">Fullscreen</h2-->
+<div style="border: solid #616161 2px; cursor: pointer; position: fixed; border-radius: 15px; color: rgb(224, 224, 224); background-color: #1d1d1dc0; left: 0; bottom: 0px; margin: 10px;" id="Menu">
+
+
+<span class="material-icons buttonForMenu" style="margin: 5px;" onclick="window.location = 'https://sz-games.github.io'" >
+  arrow_back
+  </span>
+  <span class="material-icons buttonForMenu" style="margin: 5px;" onclick="makeFullScreen()" >
+    fullscreen
+    </span>
+    <span class="material-icons buttonForMenu" style="margin: 5px;" onclick="toggle()" >
+      sports_esports
+      </span>
+</div>
+  </body>
+
+  <script>
+
+var toggleMenu = false;
+
+function toggle() {
+  var menu = document.getElementById('Menu')
+
+  if(toggleMenu===false) {
+    menu.style.visibility = 'visible'
+    menu.style.opacity = 1
+    toggleMenu = true
+  } else if (toggleMenu===true) {
+    toggleMenu = false
+    menu.style.opacity = 0
+    setTimeout(() => {
+      menu.style.visibility = "hidden"
+    }, 800);
+  }
+
+}
+
+var stuffForMod;
+function Change(Mod) {
+  
+  if(Mod==='FNF') {
+    stuffForMod = 'https://sz-games.github.io/FNFSTUFF/FNF' 
+  }
+  if(Mod==='SM') {
+    stuffForMod = 'https://mr-funkinguy.github.io/funkymods/shaggymatt/' 
+  }
+  if(Mod==='Miku') {
+    stuffForMod = 'https://mr-funkinguy.github.io/funkymods/Miku/' 
+  }
+  if(Mod==='Week7') {
+    stuffForMod = 'https://sz-games.github.io/FNFSTUFF/SHADOWENGINE' 
+  }
+  if(Mod==='ann') {
+    stuffForMod = 'https://mr-funkinguy.github.io/funkymods/ann/' 
+  }
+  if(Mod==='bsides') {
+    stuffForMod = 'https://mr-funkinguy.github.io/bb/' 
+  }
+  if(Mod==='henry') {
+    stuffForMod = 'https://mr-funkinguy.github.io/funkymods/henry/' 
+  }
+  if(Mod==='Neo') {
+    stuffForMod = 'https://mr-funkinguy.github.io/FNF-NEO-HTML5-BY-ME/' 
+  }
+  if(Mod==='SNS') {
+    stuffForMod = 'https://mr-funkinguy.github.io/Suicidemouse-cutscenes/' 
+    document.getElementById('AlertText').innerHTML = "WARNING: This mod contains screen shaking, and other unsettling things."
+    document.getElementById('AlertU').style.animation = "ShowWifiAlert 10.5s"
+
+    document.getElementById('Alertt').style.visibility = 'visible'
+
+    setTimeout(() => {
+        document.getElementById('Alertt').style.visibility = 'hidden'
+
+    }, 10500);
+  }
+  if(Mod==='Sky') {
+    stuffForMod = 'https://mr-funkinguy.github.io/syk/' 
+  }
+  if(Mod==='Whitty') {
+    stuffForMod = 'https://mr-funkinguy.github.io/whi/' 
+  }
+  if(Mod==='Wiik3') {
+    stuffForMod = 'https://mr-funkinguy.github.io/wiik3/' 
+  }
+  if(Mod==='Tko') {
+    stuffForMod = 'https://mr-funkinguy.github.io/TKO-B-M-G-A-O/' 
+  }
+  if(Mod==='Ca') {
+    stuffForMod = 'https://ggl22.github.io/camellia/' 
+  }
+  if(Mod==='IMP') {
+    stuffForMod = 'https://ggl22.github.io/impostor-v3/' 
+  }
+  if(Mod==='Rtrn') {
+    stuffForMod = 'https://mr-funkinguy.github.io/RETURN-OF-GAR/' 
+    alertt('This Mod Only Supports W, A, S, D Keys')
+  }
+  if(Mod==='idol') {
+    stuffForMod = 'https://mr-funkinguy.github.io/Super-Idol/' 
+   
+  }
+  if(Mod==='huggy') {
+    stuffForMod = 'https://mr-funkinguy.github.io/huggyyy/' 
+   
+  }
+  if(Mod==='date') {
+    stuffForMod = 'https://mr-funkinguy.github.io/dw/' 
+    
+  }
+
+  if(Mod==='golf') {
+    stuffForMod = 'https://mr-funkinguy.github.io/GOLFFFFF/' 
+    
+  }
+
+  if(Mod==='EXE') {
+    stuffForMod = 'https://mr-funkinguy.github.io/SANIC/' 
+    
+  }
+
+  if(Mod==='Tabi') {
+    stuffForMod = 'https://mr-funkinguy.github.io/FNF-Tabi/' 
+    alertt('If you have epilepsy check setting and turn on photosensitive mode, because game contains flashes and other stuff that can trigger.')
+    
+  }
+  if(Mod==='zardy') {
+    stuffForMod = 'https://mr-funkinguy.github.io/funkymods/zardy/' 
+  }
+
+  if(Mod==='sunday') {
+    stuffForMod = 'https://mr-funkinguy.github.io/sun.---dayyyy/' 
+    alertt('This Mod Only Supports W, A, S, D Keys')
+  }
+
+  if(Mod==='dSides') {
+    stuffForMod = 'https://mr-funkinguy.github.io/noice/' 
+  }
+
+  if(Mod==='CG5') {
+    stuffForMod = 'https://mr-funkinguy.github.io/FNF-CG5-Better-Ver/' 
+  }
+
+  if(Mod==='tord') {
+    stuffForMod = 'https://mr-funkinguy.github.io/funkymods/tord/' 
+  }
+
+  textElement.style.opacity = 0
+
+  setTimeout(() => {
+      textElement.src = stuffForMod
+      textElement.style.opacity = 1
+
+    }, 500);
+}
+
+function alertt(msg) {
+  document.getElementById('AlertText').innerHTML = msg
+    document.getElementById('AlertU').classList.add('showAlert')
+  
+
+    document.getElementById('Alertt').style.visibility = 'visible'
+    setTimeout(() => {
+        document.getElementById('Alertt').style.visibility = 'hidden'
+        document.getElementById('AlertU').classList.remove('showAlert')
+    }, 9900);
+}
+
+var nothing = false;
+var b = document.getElementById("Menu");
+
+b.addEventListener("mouseover", function(event) {
+  var hoveredElement = event.target;
+  var id = hoveredElement.id;
+  
+  //console.log("Hovered element ID: " + id);
+  if(id==="Menu" || id==='CS') {
+    if(nothing===true) {
+      document.getElementById('CS').innerHTML = "Currently Selected: Nothing"
+
+    } else {
+    document.getElementById('CS').style.opacity = 0
+
+
+
+    setTimeout(() => {
+      document.getElementById('CS').innerHTML = "Currently Selected: Nothing"
+
+
+      document.getElementById('CS').style.opacity = 1
+
+    }, 300);
+    nothing = true
+  }
+
+
+  } else {
+    nothing = false
+
+    document.getElementById('CS').style.opacity = 0
+
+
+
+    setTimeout(() => {
+      document.getElementById('CS').innerHTML = "Currently Selected: " + id
+
+      document.getElementById('CS').style.opacity = 1
+
+    }, 300);
+
+  }
+});
+
+
+document.body.onkeyup = function(e) {
+  if( e.keyCode == 27 ) {
+    document.getElementById('game').style.width = '800px';
+  }
+}
+
+function requestFullScreen(element) {
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullscreen;
+    
+    if (requestMethod) { // Native full screen.
+        requestMethod.call(element);
+        let hh = window.innerHeight - 10;
+
+document.getElementById('game').height = hh;
+    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+}
+var canvas = document.getElementById('game');
+
+function makeFullScreen() {
+
+
+    requestFullScreen(canvas);
+}
+
+
+
+let hh = window.innerHeight - 0;
+
+
+document.getElementById('game').height = hh;
+window.onresize = function(event) {
+  let hh = window.innerHeight - 0;
+
+document.getElementById('game').height = hh;
+}
+// Get the text element
+var textElement = document.getElementById("game");
+
+// Get the current URL
+var currentUrl = new URL(window.location.href);
+
+// Check for the presence of the "text" parameter in the URL
+if (currentUrl.searchParams.has("game")) {
+  // Set the text of the element to the value of the "text" parameter
+  textElement.src = currentUrl.searchParams.get("game");
+} else {
+ 
+}
+
+setInterval(() => {
+  if(document.getElementById('game').contentWindow.location.href.includes('https://ckf01.lancsd.org/')) {
+    textElement.src = currentUrl.searchParams.get("game");
+  }
+}, 1000);
+
+console.log(currentUrl.searchParams.get("game"))
+
+  </script>
+</html>

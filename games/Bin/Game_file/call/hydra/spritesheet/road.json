@@ -1,0 +1,36 @@
+{"frames": {
+
+"road000.png":
+{
+	"frame": {"x":0,"y":0,"w":500,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":140},
+	"sourceSize": {"w":500,"h":140}
+},
+"road001.png":
+{
+	"frame": {"x":0,"y":140,"w":500,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":140},
+	"sourceSize": {"w":500,"h":140}
+},
+"road002.png":
+{
+	"frame": {"x":0,"y":280,"w":500,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":140},
+	"sourceSize": {"w":500,"h":140}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "road.png",
+	"format": "RGBA8888",
+	"size": {"w":500,"h":420},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4fc6a802bb92e2b882f9b32dd5b337aa:eb637c801844f847323d73403ed47573:2e96d1d0c2bc23345131606289c624ff$"
+}
+}
