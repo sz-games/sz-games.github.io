@@ -84,7 +84,7 @@
 
 <meta
 name="keywords"
-content="sz games, sz games unblocked, games, unblocked games, school, games, games to play, games on the web, html5 games, sz, sz-games, play games online, online games"
+content="sz games, sz games unblocked, games, github unblocked, unblocked games, school, games, games to play, games on the web, html5 games, sz, sz-games, play games online,  online games"
 /> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -550,7 +550,7 @@ p {
     border: solid 2px rgb(133, 133, 133);
   }
 </style>
-<div onclick="togglequicklinksmen()" id="quickmenutoggle" style="">
+<div onclick="togglequicklinksmen()" id="quickmenutoggle" style="display: none;">
   <span style="left: 50%; top: 50%; position: relative; color: white; transform: translate(-50%, -50%);" class="material-icons">
     keyboard_arrow_up
     </span>
@@ -2346,6 +2346,7 @@ style=" height: 40px; box-shadow: 0px 0px 8px #000000; font-size: 15px; color: w
 
 <br>
 
+
 <div class="ipAR" style="display: none;  z-index: 75; cursor: pointer; position: fixed; bottom: 25px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background-color: #1d1d1d;" id="SCROLLUP">
 
   <span  class="material-icons notranslate"  style=" cursor: pointer;  left: 50%; font-size: larger; top: 50%; transform: translate(-50%, -50%);  color: white;  position: absolute;">  
@@ -2355,8 +2356,40 @@ style=" height: 40px; box-shadow: 0px 0px 8px #000000; font-size: 15px; color: w
      </span>
 </div>
 
+<div class="ipAR" onclick="randomGamelol()" style="z-index: 75; cursor: pointer; position: fixed; bottom: 25px; left: 20px; height: 40px; border-radius: 20px; background-color: #1d1d1d; display: flex; align-items: center; justify-content: center; transition: width 0.3s ease; padding: 5px; overflow: hidden;" id="pickforme">
 
-  
+  <span class="material-icons notranslate" id="icon" style="cursor: pointer; opacity: 1; top: 50%; transform: translate(-50%, -50%); position: absolute; font-size: larger; left: 50%; color: white; transition: opacity 0.3s ease, transform 0.3s ease;">
+    shuffle
+  </span>
+
+  <span id="tooltipText" style="white-space: nowrap; opacity: 0; color: white; font-size: 14px; transition: opacity 0.3s ease, transform 0.3s ease; transform: translateX(-10px); margin-left: 5px;">
+    Random Game
+  </span>
+</div>
+
+<style>
+  #pickforme:hover #icon {
+    opacity: 0 !important;
+    transform: translateY(-10px) !important;
+  }
+
+  #pickforme:hover #tooltipText {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+
+  #pickforme:hover {
+    width: 120px !important; 
+  }
+
+  #pickforme {
+    
+    width: 40px !important; 
+  }
+</style>
+
+
+
 <div id="games">
 
 
@@ -6151,6 +6184,171 @@ style=" height: 40px; box-shadow: 0px 0px 8px #000000; font-size: 15px; color: w
 </div>
 
 
+<div class="box"  id="magic tiles 3" category="casual" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/magictiles/">
+    
+    <img  class="ImageForGame" data-src="./cover/magictiles.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Magic Tiles 3 (Clone)</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="blumgi slime" category="casual" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/slime/Blumgi Slime.html">
+    
+    <img  class="ImageForGame" data-src="./cover/blumgisl.jpeg" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Blumgi Slime</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="the impossible quiz" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/The_Impossible_Quiz.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/impqz.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">The Impossible Quiz</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="scrap metal 3" category="casual driver" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/scrapmetal/">
+    
+    <img  class="ImageForGame" data-src="./cover/scrapm.jfif" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Scrap Metal 3</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="bitburner" category="casual" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/bitburner-dev/bitburner-dev/">
+    
+    <img  class="ImageForGame" data-src="./cover/bitburner.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Bitburner</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="tube jumbers" category="casual" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/tube-jumpers">
+    
+    <img  class="ImageForGame" data-src="./cover/tubej.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Tube Jumpers</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="basket random" category="casual" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/basketrandom">
+    
+    <img  class="ImageForGame" data-src="./cover/basketr.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Basket Random</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="awesome tanks 2" category="casual" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/awesometanks2">
+    
+    <img  class="ImageForGame" data-src="./cover/tankawe2.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Awesome Tanks 2</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="boxing random" category="casual" style="position: relative; float: left;">
+  <a href="./games/game.html?game=/Games11/boxingrandom">
+    
+    <img  class="ImageForGame" data-src="./cover/boxingr.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Boxing Random</div>
+      
+  </a>
+
+</div>
+
+
+<div class="box"  id="duck life" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/ducklife1/game.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/ducklife.avif" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Duck Life</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="duck life 2" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/ducklife2/game.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/ducklife.avif" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Duck Life 2</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="duck life 3" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/ducklife3/game.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/ducklife.avif" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Duck Life 3</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="duck life 4" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/ducklife4/game.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/ducklife.avif" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Duck Life 4</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="run" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/run1/game.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/run1.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Run</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="worlds hardest game 3" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/worldshardestgame3.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/whg3.png" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Worlds Hardest Game 3</div>
+      
+  </a>
+
+</div>
+
+<div class="box"  id="learn to fly 3" category="casual" style="position: relative; float: left;">
+  <a href="./games/Flash.html?game=/Games11/Learn-To-Fly-3.swf">
+    
+    <img  class="ImageForGame" data-src="./cover/ltf3.webp" alt="game">
+ <div class="textover" style="width: 90%; border-radius: 15px; background-color: #191919db;  top: 15% !important; color: rgba(255, 255, 255, 0.827) !important; color: rgb(255, 255, 255) !important;">Learn To Fly 3</div>
+      
+  </a>
+
+</div>
+
+
+
+
+
   <div id="nonefound" style="display: none; height: 400px; width: 100%; ">
  
   <div style="width: max-content; height: max-content; top: 50%; transform: translate(-50%, -50%); position: relative; left: 50%;">
@@ -6258,6 +6456,27 @@ window.addEventListener("scroll", function() {
 
  
 <script>
+  function randomGamelol() {
+  
+  const gameItems = document.querySelectorAll('#games .box');
+
+
+  if (gameItems.length > 0) {
+
+    const randomIndex = Math.floor(Math.random() * gameItems.length);
+
+    const randomGame = gameItems[randomIndex];
+
+    const anchorTag = randomGame.querySelector('a');
+
+    const gameUrl = anchorTag.href;
+
+    window.location.href = gameUrl;
+  } else {
+    console.error("No game items found in the #games container.");
+  }
+}
+
 
 const imageContainer = document.getElementById("games");
 
