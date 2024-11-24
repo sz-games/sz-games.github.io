@@ -16,9 +16,9 @@
 
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true">
-<title>About The Site - Sz Games</title>
-<meta name="description" property="og:description" content="A Small Page About Sz Games "> 
-<meta name="description" content="A Small Page About Sz Games "> 
+<title>About Us - Sz Games</title>
+<meta name="description" property="og:description" content="Learn About Sz Games Creator And Our Story"> 
+<meta name="description" content="Learn About Sz Games Creator And Our Story"> 
 <script src="./GobalSettings.js"></script>
 <link rel="canonical" href="https://sz-games.github.io/About.html" />
 
@@ -38,608 +38,127 @@ content="sz games, games, unblocked games, school, games, games to play, games o
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
- <!--PageScript1-->
- <!--script id="CHECK">
-  function getCookie2(name) {
-const cookieName = name + "=";
-const cookies = document.cookie.split(';');
-for (let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i];
-    while (cookie.charAt(0) === ' ') {
-        cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(cookieName) === 0) {
-        return cookie.substring(cookieName.length, cookie.length);
-    }
-}
-return '';
-}
 
-
-let Setting14bu = getCookie2("PagePrevent");
-
-function checkPageClose(event) {
-
-
-    event.returnValue = "Prevent Page Close Is Active, You Can Click Off Of This";
-
-
-
-}
-function checkPageClose2() {
-if(Setting14bu==="true") {
-
-    window.onbeforeunload = function(event) {
-        // return a string to prevent the page from closing
-        event.preventDefault();
-        return "Prevent Page Close Is Active, You Can Click Off Of This";
-    };
-    window.addEventListener("beforeunload", checkPageClose);
-
-} 
-if(Setting14bu==="false") {
-
-}
-}
-console.log('CookiePAGE Value: ' + Setting14bu + "SzGames-Scripts Loaded")
-checkPageClose2()
-
-</script-->
-<!--PageScript1-->
 </head>
 
 <style>
+  body {
+    background: rgb(39, 39, 39);
+    font-family: Arial, Helvetica, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    margin: 0;
+  }
 
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgb(17, 17, 17);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 
-body {
-  background: rgb(39, 39, 39);
-  font-family: Arial, Helvetica, sans-serif;
-  background-repeat: none;
-  background-size: cover;
-}
+  .nav img.logo {
+    max-width: 40px;
+    border-radius: 50%;
+  }
 
-img {
-  
-  margin: 10px;
-position: relative;
-z-index: 1;
-}
+  .nav h1 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #f0f0f0;
+  }
 
-.btn-group button {
-  background-color: black; /* Green background */
- 
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
-}
+  .nav-menu {
+    display: flex;
+    gap: 15px;
+  }
 
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
+  .nav-menu a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
 
-.btn-group button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
+  .nav-menu a:hover {
+    color: #ffcc00;
+  }
 
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: grey;
-}
+  .header {
+    text-align: center;
+    background-color: rgb(24, 24, 24);
+    padding: 80px 20px;
+  }
 
-/* Header/Logo Title */
-.header-halloween {
-  padding: 60px;
-  text-align: center;
-  background: linear-gradient(to bottom right, #ff7d31, rgb(39, 39, 39), rgb(39, 39, 39));
-  color: white;
-  width: auto;
-  font-size: 30px;
-  position: relative;
-z-index: 1;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 15px;
-}
+  .header img {
+    max-width: 100px;
+    margin-bottom: 20px;
+  }
 
-.header {
-  position: relative;
-z-index: 1;
-  padding: 60px;
-  text-align: center; 
-  color: white;
-  width: auto;
-  font-size: 30px;
- 
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 15px;
-}
+  .profile-picture {
+    display: block;
+    max-width: 150px;
+    margin: 20px auto;
+    border-radius: 50%;
+    border: 5px solid #5a5a5a;
+  }
 
-/* Page Content */
+  .content {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.6;
+    text-align: center;
+  }
 
+  .content h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+  }
 </style>
 
 
 <body>
+  <div class="nav">
+    <h1>Sz Games</h1>
+  </div>
 
-<style>
-    .game {
-        position: absolute;
-color: white;
+  <div class="header">
+    <h1>About Sz Games</h1>
+    <p style="margin-bottom: -10px; text-decoration: underline; cursor: pointer;"><a style="color: white;" href="./index.html">Back Home</a></p>
+  </div>
 
-  transform: scale(1.8);
-  z-index: 3;
-  font-family: Arial, Helvetica, sans-serif;
-    }
-    .fade {
-        position: absolute;
-        background: linear-gradient(to bottom, #1d1d1d, #1d1d1d5d, rgba(39, 39, 39, 0));
-        width: 300px;
-        height: 150px;
-     border-radius: 15px;
-    }
-
-
-
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 85vw;
-  margin: 1rem auto;
-}
-
-
-.bg,
-.overlay {
-  text-align: center;
-}
-
-img,
-.overlay {
-  transition: .3s all;
-  border-radius: 3px;
-}
-
-.day {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  color: white;
-  position: relative;
-z-index: 1;
-}
-
-.bubbles{
-  position: fixed;
-  width:100%;
-  height: 100%;
-  z-index: 0;
-  overflow:hidden;
-  top:0;
-  left:0;
-}
-.bubble{
-  position: absolute;
-  bottom:-100px;
-  width:40px;
-  height: 40px;
-  background: linear-gradient(to top right, #c68324, #bd0d0d5d);
-  border-radius:50%;
-  opacity:0.5;
-  animation: rise 10s infinite ease-in;
-}
-.bubble:nth-child(1){
-  width:40px;
-  height:40px;
-  left:10%;
-  animation-duration:8s;
-}
-.bubble:nth-child(2){
-  width:20px;
-  height:20px;
-  left:20%;
-  animation-duration:5s;
-  animation-delay:1s;
-}
-.bubble:nth-child(3){
-  width:50px;
-  height:50px;
-  left:35%;
-  animation-duration:7s;
-  animation-delay:2s;
-}
-.bubble:nth-child(4){
-  width:80px;
-  height:80px;
-  left:50%;
-  animation-duration:11s;
-  animation-delay:0s;
-}
-.bubble:nth-child(5){
-  width:35px;
-  height:35px;
-  left:55%;
-  animation-duration:6s;
-  animation-delay:1s;
-}
-.bubble:nth-child(6){
-  width:45px;
-  height:45px;
-  left:65%;
-  animation-duration:8s;
-  animation-delay:3s;
-}
-.bubble:nth-child(7){
-  width:90px;
-  height:90px;
-  left:70%;
-  animation-duration:12s;
-  animation-delay:2s;
-}
-.bubble:nth-child(8){
-  width:25px;
-  height:25px;
-  left:80%;
-  animation-duration:6s;
-  animation-delay:2s;
-}
-.bubble:nth-child(9){
-  width:15px;
-  height:15px;
-  left:70%;
-  animation-duration:5s;
-  animation-delay:1s;
-}
-.bubble:nth-child(10){
-  width:90px;
-  height:90px;
-  left:25%;
-  animation-duration:10s;
-  animation-delay:4s;
-}
-@keyframes rise{
-  0%{
-    bottom:-100px;
-    transform:translateX(0);
-  }
-  50%{
-    transform:translate(100px);
-  }
-  100%{
-    bottom:1080px;
-    transform:translateX(-200px);
-  }
-}
-
-.hello img {
-            width: 100%;
-            transition: 0.5s all ease-in-out;
-        }
-     
-        .hello:hover img {
-          transform-origin: top;
-            transform: scale(1.1);
-        }
-
-
-</style>
-<style>
-  .topnav {
-  overflow: hidden;
-  position: fixed;
-  z-index: 5;
-  border-radius: 30px;
-  background-color: #333;
-}
-
-p {
-  transition: 0.5s;
-}
-
-.topnav p {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
+  <img src="data:image/webp;base64,UklGRiYDAABXRUJQVlA4IBoDAAAQFgCdASpSAFIAPm0sk0WkIqGYebXgQAbEs4BnPOLBNzTF+5Dwd9fOMzaNF6Gt6xz6BFBE291eZre9WAeAJMnkYIBXtPt4beuFHzhXDqDGNDCIMLFy3QePnasNdIg8URPWd9h2miqb1z6TcWsAN7955mF2m2qVwvsV6Ye8+ynZG45lnaa2I6qDQI579TYqdXi/5feeIsvMUAQFI5PNvQAa0G0thA/odYyCfXRV5mU30GR3uL9aggk6AAD+9CVuMhX3hj4gZ0Oz8YsPDa/5HYQ3YR+ESq63yRBWtrC1GyLK8callM5i2xmGzSfm928Vslzu+iwmFJ+EQdVY0M9VinPec9pfojZD8KoEL6+tIgSRMGVuJYBkVhgUiPdVWoYrpZz59Vk2WWdiTVa49e3hblpkdFhZPX7A0bT3g05h32u6u0sCLA95nEGLQ9ebDYFH3zvuC2J1uiJbEVqqpvUzkO6rYyqi2KsfQBD2UH8JMc6SVgsNxMeZ0Sn7/8kfEnomlx6XhOeWzMQ86KFXoJFHlZno5M+vH5zjRP0FoEXz9N94ZiYsdC44YfacA5tNuyop485G0zGnYLJioBA5wujxrD3rrqKM84DyrjO3vSxb+qZyeKSQTOQPE6sRqhxXJSqf+wndWwCuuglzsFGE1LrRSzt+SFNDG/Q/SK2VEh6AWbQgf6AnVXt/m1sCgsqBiRIQIypHJG+U/ClQENJq+XCx9I0UofBxwhPAAv5dQ+XyeR1mqmTVbaaxopHwfaYcI77mJ3EzMw0MTuujdtB4b4HS9AZ0W1zxisQLMByJOqJhfytbC0nOllb54xCAWyFp0YzaLFFL84BJUvipabN/ttpXlGaJ/ySz9or+OMtMRYy0qwLRV/5dO7aIptf+MN5UZdCVdewctFfqxe9nfT0I9U1lbGumrhQ45agpTppspB7IIIwvzm3FnNJDDO3eRAX3gRT864mQylJ44iQmRvh67q+EIy/7NXNv7jiykOxiywlEUjP40GD1S84sR/shpR9fAl+iENneSEHSSPsoBFbbZjMAjxjDHOIppiwLvkAAAA==" alt="Profile Picture" class="profile-picture">
   
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+  <div class="content">
+   
+    <h2>The Creator And Our Story</h2>
+    <p>
+      My Name Is Bobby, I Started Sz Games Because I Wanted A Place Where I Could Play Unblocked Games And Without There Being A Million Ads Being Shown To Me While Im Playing Games, I Started Making The Site On October 20th 2022 And It Has Come A Long Way Since Then.
+    </p>
 
+    
 
-@keyframes move {
-  0% {
-    transform: translate(-100%, -100%);
-  }
-  100% {
-    transform: translate(100%, 100%);
-  }
-}
-.button {
- --color: #979797;
- padding: 0.8em 1.7em;
- background-color: transparent;
- border-radius: .3em;
- position: relative;
- overflow: hidden;
- width: 100%;
- cursor: pointer;
- transition: .5s;
- font-weight: 400;
- font-size: 17px;
- border: 1px solid;
- font-family: inherit;
- text-transform: uppercase;
- color: var(--color);
- z-index: 1;
-}
-.button:hover {
-  color: white;
-}
+    <h3>What Sz In Sz Games Stands For:</h3>
+    <p>
+      "Sz" Never Really Meant Anything I Came Up With It Because It Was Easy To Remember And Wasn't Long.
+    </p>
 
-</style>
+    <h2>What I Plan To Do In The Future</h2>
+    <p>
+      I Will Continue To Update The Site And Keep Ads Minimal, I Will Naver Put Ads In Any of Our Games.
+    </p>
 
-
-
-
- 
- 
-
-
-    <div class="header">
-        <!--img src="https://github.com/sz-games/sz-games.github.io/blob/main/Gh.png?raw=true" style="position: relative; width: 150px; height: 150px;" alt="img"-->
-        <img src="https://github.com/sz-games/home/blob/main/G.png?raw=true" style="position: relative; width: 150px; height: 150px;" alt="img">
-        <h1>About</h1>
-      </div>
-  
+  </div>
 </div>
       
 
-
-
-<!--div class="hello" style=" margin-right: auto; margin-left: auto; width: 430px;">
-  <a href="https://sites.google.com/view/fnf-unblockedhehe/home">
-      <p class="game" style="left: 105px;" >Infinite Tower</p>
-      <div class="fade" ></div>
-   <img style="border-radius: 15px; width: 400px;" src="https://github.com/sz-games/sz-games.github.io/blob/main/cover/fn.png?raw=true" alt="game">
-  </a>
- 
-  
-</div-->
-
-
-<a href="./index.html">
-<button onclick=""  class="button"> Back Home</button>
-</a>
-<br>
-<br>
-<p style="font-size: 20px; color: white; text-align: center; word-wrap: break-word;">This Website Was Made For People Who Are Bored In School Or Bored At Home.</p>
-<br>
-<br>
-<p style="font-size: 20px; color: white; text-align: center; word-wrap: break-word;">The Site Started On October 20th 2022 And Has Had Many Improvements to provide the best user experience.</p>
-<br>
-<br>
-<p style="font-size: 20px; color: white; text-align: center; word-wrap: break-word;">Sz Games Currently Has Ads (Ads Will Be Minimal For Best User Experience)</p>
-
-<script>
-  
-</script>
-
-<section class="sticky">
- 
-  <!--div class="bubbles" style="  filter: drop-shadow(0 0 10px white);" >
-  <div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-  </div-->
-</section>
-
-</body>
 
 <script>
   if ('serviceWorker' in navigator) {
