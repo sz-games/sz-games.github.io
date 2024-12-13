@@ -477,80 +477,81 @@ text-align: center;
       <h1 style="text-decoration: none;  color: white; right: 20px; top: 50%; font-size: 20px; position: relative;transform: translate(-0%, -50%); float: right;">Main Menu</h1>
   
   </div>
-  
+
+  <style>
+   .menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 25px;
+    padding: 50px;
+    background-color: #1e1e1e;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .menu-button {
+    border: none;
+    background-color: #2c2c2c;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    height: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .menu-button:hover {
+    background-color: #3a3a3a;
+    transform: translate(-50%, -3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .menu-icon {
+    font-size: 26px;
+    margin-left: 20px;
+    margin-bottom: 3px;
+    position: relative;
+    color: #ffffff;
+  }
+
+  .menu-label {
+    flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+  }
+  </style>
   <br>
-      <br> 
-    <button
-      class="BTN" onclick="to('PG1', 'PG3')"
-      style="
-        border: none;
-        background-color: rgb(27, 27, 27);
-        border-radius: 15px;
-        font-size: 20px;
-        cursor: pointer; 
-        height: 50px;
-        width: 65%;
-        position: relative;
-        left: 50%;
-        transform: translate(-50%, -0%);
-        color:white;
-       ">
-        <span  class="material-icons" style="top: 50%; position: relative; transform: translate(-0%, -85%);">
-          settings
-          </span>
-       Main Settings
-       </button>
-
-
-       <br>
-       <br>
-       <br>
-       <button 
-       class="BTN" onclick="to('PG1', 'PG4')"
-       style="
-         border: none;
-         background-color: rgb(27, 27, 27);
-         border-radius: 15px;
-         font-size: 20px;
-         cursor: pointer; 
-         height: 50px;
-         width: 65%;
-         position: relative;
-         left: 50%;
-         transform: translate(-50%, -0%);
-         color:white;
-        ">
-         <span  class="material-icons" style="top: 50%; position: relative; transform: translate(-0%, -85%);">
-          error
-
-           </span>
-        Panic Button
-        </button>
-
-       <br>
-       <br>
-       <br>
-       <button id="110" onclick="to('PG1', 'PG2')"
-       class="BTN"
-       style="
-         border: none;
-         background-color: rgb(27, 27, 27);
-         border-radius: 15px;
-         font-size: 20px;
-         cursor: pointer; 
-         height: 50px;
-         width: 65%;
-         position: relative;
-         left: 50%;
-         transform: translate(-50%, -0%);
-         color:white;
-        ">
-         <span  class="material-icons" style="top: 50%; position: relative; transform: translate(-0%, -85%);">
-          article
-
-           </span>
-        About:blank Page Maker
-        </button>
+  <button class="menu-button" onclick="to('PG1', 'PG3')">
+    <span class="material-icons menu-icon">settings</span>
+    <span class="menu-label">Basic Settings</span>
+  </button>
+  <br>
+  <button class="menu-button" onclick="to('PG1', 'PG5')">
+    <span class="material-icons menu-icon">settings</span>
+    <span class="menu-label">User Settings</span>
+  </button>
+  <br>
+  <button class="menu-button" onclick="to('PG1', 'PG4')">
+    <span class="material-icons menu-icon">error</span>
+    <span class="menu-label">Panic Button</span>
+  </button>
+  <br>
+  <button class="menu-button" onclick="to('PG1', 'PG2')">
+    <span class="material-icons menu-icon">article</span>
+    <span class="menu-label">About:blank Page Maker</span>
+  </button>
   </div>
 
 <!--PG1 END-->
@@ -575,7 +576,7 @@ text-align: center;
 </div>
 
 <br>
-    <p style="text-decoration: none; color: white; font-size: 20px; text-align: center;">A  About:Blank Page Will Show Up As a blank page in your tabs, Enter a url below and create a page. </p>
+    <p style="text-decoration: none; color: white; font-size: 20px; text-align: center;">A About:Blank Page Will Show Up As a blank page in your tabs, Enter a url below and create a page. </p>
     <br> 
     <input
         style="
@@ -599,21 +600,11 @@ text-align: center;
       />
     </p>
     <br>
-    <button id="create"
-    class="BTN"
-    style="
-      border: none;
-      background-color: rgb(27, 27, 27);
-      border-radius: 15px;
-      cursor: pointer; 
-      height: 35px;
-      width: 20%;
-      position: relative;
-      left: 50%;
-      transform: translate(-50%, -0%);
-      color:white;
-     ">Create page
-     </button>
+   
+     <div id="create" class="option-container " onclick="clearPANIC()">
+      <p class="option-label" style="text-align: center;">Create Page</p>
+      
+    </div>
 </div>
 
 <script>
@@ -665,44 +656,104 @@ text-align: center;
             close
           </a>
           </span>
-      <h1 style="text-decoration: none;  color: white; right: 20px; top: 50%; font-size: 20px; position: relative;transform: translate(-0%, -50%); float: right;">Main Settings</h1>
+      <h1 style="text-decoration: none;  color: white; right: 20px; top: 50%; font-size: 20px; position: relative;transform: translate(-0%, -50%); float: right;">Basic Settings</h1>
   
   </div>
   
 
   <style>
-    .OptionSet {
-      width: 95%; 
-      left: 50%;
-      cursor: pointer;
-       transform: translate(-50%, -0%) scale(1.0);
-        position: relative; 
-        height: 50px fit-content; 
-        padding: 15px 0px; 
-        background-color: #1d1d1da5;
-         border-radius: 15px;
-      transition: 0.5s;
-    }
+    .option-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 15px;
+    background-color: #1d1d1da5;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
 
-    .OptionSet:hover {
-      transform: translate(-50%, -0%) scale(1.03);
-    }
+  .option-container:hover {
+    transform: scale(1.03);
+    background-color: #272727;
+  }
+
+  .option-label {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    flex-grow: 1;
+  }
+
+  .toggle {
+    transition: 0.5s;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: #555;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+  }
+
+  .toggle:before {
+    transition: 0.5s;
+
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  .toggle.active {
+    background-color: #4caf50;
+  }
+
+  .toggle.active:before {
+    transition: 0.5s;
+
+    transform: translateX(25px);
+  }
+
+  .presets {
+    border: solid 3px grey;
+    border-color: #111111 !important;
+
+    background-color: none;
+  }
+  .presets:hover {
+    transform: translateY(-5px) scale(1.1);
+  }
+
+  .DisabledOption {
+    filter: brightness(60%);
+    cursor: default;
+  }
   </style>
 
     <br>
     <br>
 
-    <div style="" onclick="toggleOptionSet('PageClose')" class="OptionSet">
-      <p style="color: white; word-wrap: break-word; width: 55%;  top: 50%; left: 15px; position: relative; " >Prevent Page Close</p>
-      <p id="Op1-Stat" style="transition: 0.5s; word-wrap: break-word; color: white; top: 50%; right: 15px; position: absolute; transform: translate(-0%, -50%);" >Off</p>
-
+    <div class="option-container" onclick="toggleOptionSet('PageClose')">
+      <p class="option-label">Prevent Page Close</p>
+      <div id="toggle-PageClose" class="toggle"></div>
     </div>
+
+
     <br>
     <br>
     <br>
     <h1 style="text-align: center; color: white;">Tab Cloak Presets</h1>
 
-      <div style="left: 50%; position: relative; transform: translate(-50%, -0%); cursor: pointer;" id="buttons-container"></div>
+      <div style="left: 50%; width: fit-content; position: relative; transform: translate(-50%, -0%); cursor: pointer;" id="buttons-container"></div>
     <br>
       <button style="color: white; font-size: 19px; cursor: pointer; left: 50%; position: relative; transform: translate(-50%, -0%); height: 35px; width: 40%; background-color: #1d1d1d; border-radius: 15px; border: none;" onclick="resetTab()">Clear</button>
 
@@ -785,7 +836,7 @@ text-align: center;
 
 
 
-      var option1bx = document.getElementById('Op1-Stat')
+      var option1bx = document.getElementById('toggle-PageClose')
       var option2bx = document.getElementById('Op2-Stat')
       let Setting1e4b = getCookie("PagePrevent");
 
@@ -819,20 +870,20 @@ text-align: center;
       function CheckSettngs1B() {
         Setting1e4b = getCookie("PagePrevent")
         if(Setting1e4b==="true") {
-          option1bx.style.opacity = 0
-          setTimeout(() => {
-            option1bx.innerHTML = "Active"
-            option1bx.style.opacity = 1
-          }, 500);
+          //option1bx.style.opacity = 0
+          //setTimeout(() => {
+            option1bx.classList.add('active');
+            //option1bx.style.opacity = 1
+          //}, 500);
           //NoteLOCK()
           
         } 
         if(Setting1e4b==="false") {
-          option1bx.style.opacity = 0
-          setTimeout(() => {
-            option1bx.innerHTML = "Not Active"
-            option1bx.style.opacity = 1
-          }, 500);
+          //option1bx.style.opacity = 0
+         // setTimeout(() => {
+            option1bx.classList.remove('active');
+            //option1bx.style.opacity = 1
+          //}, 500);
         }
         console.log('CookiePAGE Value: ' + Setting1e4b)
       }
@@ -843,9 +894,71 @@ text-align: center;
     </script>
 
   </div>
+
   
 
   <!--PG3 END-->
+  <!--Content PG 5-->
+
+
+  <div id="PG5" style="display: none; height: 100%; bottom: 0; width: 100%; position: absolute; overflow-y: auto;">
+    <div style="width: 100%; height: 45px; background-color: #333;">
+    
+        <span onclick="back('PG5', 'PG1')" class="material-icons" style="float: left; cursor: pointer; color: rgb(255, 255, 255.369); top: 50%; left: 10px; position: relative; transform: translate(-0%, -50%);">
+          arrow_back
+          </span>
+          <span onclick="" class="material-icons" style="float: left; cursor: pointer; color: rgb(255, 255, 255); top: 50%; left: 15px; position: relative; transform: translate(-0%, -50%);">
+            <a style="text-decoration: none; color: white;" href="./index.html">
+              close
+            </a>
+            </span>
+        <h1 style="text-decoration: none;  color: white; right: 20px; top: 50%; font-size: 20px; position: relative;transform: translate(-0%, -50%); float: right;">User Settings</h1>
+    
+    </div>
+    
+  
+      <br>
+      <br>
+  
+      <div class="option-container DisabledOption" onclick="toggleOptionSet('testing')">
+        <p class="option-label">Restrict Smooth Animations</p>
+        <div id="toggle-Restrict" class="toggle"></div>
+      </div>
+
+      <div class="option-container  DisabledOption" onclick="">
+        <p class="option-label">Show Game Details</p>
+        <div id="toggle-ShowDet" class="toggle"></div>
+      </div>
+
+      <div class="option-container  DisabledOption" onclick="">
+        <p class="option-label">Performence Mode</p>
+        <div id="toggle-Perform" class="toggle"></div>
+      </div>
+
+      <div class="option-container  DisabledOption" onclick="">
+        <p class="option-label">Advanced Player</p>
+        <div id="toggle-Perform" class="toggle"></div>
+      </div>
+
+      <div class="option-container  DisabledOption" onclick="">
+        <p class="option-label">Blocked Checker</p>
+        <div id="toggle-Perform" class="toggle"></div>
+      </div>
+
+      <div class="option-container  DisabledOption" onclick="">
+        <p class="option-label">Auto Report (Experimental)</p>
+        <div id="toggle-Perform" class="toggle"></div>
+      </div>
+      <br>
+      <p style="text-align: center; color: white;">Options Are Disabled At The Moment As They Are Being Added</p>
+  
+      <br>
+      <br>
+      <br>
+
+  </div>
+
+<!--Content PG 5 end-->
 
 
 
@@ -892,39 +1005,18 @@ text-align: center;
         />
       </p>
       <br>
-      <button id="create2"
-      class="BTN" onclick="panicURL()"
-      style="
-        border: none;
-        background-color: rgb(27, 27, 27);
-        border-radius: 15px;
-        cursor: pointer; 
-        height: 35px;
-        width: 20%;
-        position: relative;
-        left: 50%;
-        transform: translate(-50%, -0%);
-        color:white;
-       ">Save
-       </button>
-       <br>
-       <br>
-       <br>
-       <button id="create3"
-       class="BTN" onclick="clearPANIC()"
-       style="
-         border: none;
-         background-color: rgb(27, 27, 27);
-         border-radius: 15px;
-         cursor: pointer; 
-         height: 35px;
-         width: 20%;
-         position: relative;
-         left: 50%;
-         transform: translate(-50%, -0%);
-         color:white;
-        ">Disable
-        </button>
+      
+       <div id="create2" class="option-container " onclick="panicURL()">
+        <p class="option-label" style="text-align: center;">Save</p>
+        
+      </div>
+       
+      
+       
+       <div id="create3" class="option-container " onclick="clearPANIC()">
+        <p class="option-label" style="text-align: center;">Clear</p>
+        
+      </div>
   </div>
   
   <script>
@@ -964,7 +1056,10 @@ text-align: center;
 
 
 
-
+  <div style="width: 100%; height: 45px; background-color: #333;">
+    
+    
+</div>
 </body>
 
 <script>
