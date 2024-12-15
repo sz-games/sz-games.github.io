@@ -806,92 +806,6 @@ text-align: center;
     </script>
 
 
-    <script>
-
-      function getCookie(name) {
-          const cookieName = name + "=";
-          const cookies = document.cookie.split(';');
-          for (let i = 0; i < cookies.length; i++) {
-              let cookie = cookies[i];
-              while (cookie.charAt(0) === ' ') {
-                  cookie = cookie.substring(1);
-              }
-              if (cookie.indexOf(cookieName) === 0) {
-                  return cookie.substring(cookieName.length, cookie.length);
-              }
-          }
-          return '';
-      }
-
-      // Usage
-   
-
-
-      function setCookie(name, value, years) {
-          const expirationDate = new Date();
-          expirationDate.setFullYear(expirationDate.getFullYear() + years);
-          const expires = "expires=" + expirationDate.toUTCString();
-          document.cookie = name + "=" + value + ";" + expires + ";path=/";
-      }
-
-
-
-      var option1bx = document.getElementById('toggle-PageClose')
-      var option2bx = document.getElementById('Op2-Stat')
-      let Setting1e4b = getCookie("PagePrevent");
-
-      function toggleOptionSet(name) {
-
-        if(name==="PageClose") {
-          if(Setting1e4b==='false' || Setting1e4b==="") {
-            Setting1e4b = getCookie("PagePrevent")
-            setCookie("PagePrevent", 'true', 10); // Set the cookie to expire in 10 years
-
-            //console.log('PagePrevent True')
-
-            //const cookieValue45 = getCookie("PagePrevent");
-            // console.log(cookieValue45); // Print the cookie value to the console
-          }
-          if(Setting1e4b==='true') {
-            Setting1e4b = getCookie("PagePrevent")
-
-            setCookie("PagePrevent", 'false', 10); // Set the cookie to expire in 10 years
-            //console.log('PagePrevent False')
-            //const cookieValue45 = getCookie("PagePrevent");
-
-            // console.log(Setting14b); // Print the cookie value to the console
-          }
-        }
-       // console.log('Code: 89B')
-       CheckSettngs1B()
-
-
-      }
-      function CheckSettngs1B() {
-        Setting1e4b = getCookie("PagePrevent")
-        if(Setting1e4b==="true") {
-          //option1bx.style.opacity = 0
-          //setTimeout(() => {
-            option1bx.classList.add('active');
-            //option1bx.style.opacity = 1
-          //}, 500);
-          //NoteLOCK()
-          
-        } 
-        if(Setting1e4b==="false") {
-          //option1bx.style.opacity = 0
-         // setTimeout(() => {
-            option1bx.classList.remove('active');
-            //option1bx.style.opacity = 1
-          //}, 500);
-        }
-        console.log('CookiePAGE Value: ' + Setting1e4b)
-      }
-
-      CheckSettngs1B()
-
-   
-    </script>
 
   </div>
 
@@ -920,7 +834,7 @@ text-align: center;
       <br>
       <br>
   
-      <div class="option-container DisabledOption" onclick="toggleOptionSet('testing')">
+      <div class="option-container" onclick="toggleOptionSet('RestrictSm')">
         <p class="option-label">Restrict Smooth Animations</p>
         <div id="toggle-Restrict" class="toggle"></div>
       </div>
@@ -930,24 +844,24 @@ text-align: center;
         <div id="toggle-ShowDet" class="toggle"></div>
       </div>
 
-      <div class="option-container  DisabledOption" onclick="">
-        <p class="option-label">Performence Mode</p>
+      <div class="option-container " onclick="toggleOptionSet('PerformMode')">
+        <p class="option-label">Performence Mode (May Mess Up UI A Bit)</p>
         <div id="toggle-Perform" class="toggle"></div>
       </div>
 
       <div class="option-container  DisabledOption" onclick="">
         <p class="option-label">Advanced Player</p>
-        <div id="toggle-Perform" class="toggle"></div>
+        <div id="toggle-Advanced" class="toggle"></div>
       </div>
 
       <div class="option-container  DisabledOption" onclick="">
         <p class="option-label">Blocked Checker</p>
-        <div id="toggle-Perform" class="toggle"></div>
+        <div id="toggle-Blocked" class="toggle"></div>
       </div>
 
       <div class="option-container  DisabledOption" onclick="">
         <p class="option-label">Auto Report (Experimental)</p>
-        <div id="toggle-Perform" class="toggle"></div>
+        <div id="toggle-AutoR" class="toggle"></div>
       </div>
       <br>
       <p style="text-align: center; color: white;">Options Are Disabled At The Moment As They Are Being Added</p>
@@ -960,6 +874,125 @@ text-align: center;
 
 <!--Content PG 5 end-->
 
+
+<script>
+
+  function getCookie(name) {
+      const cookieName = name + "=";
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i];
+          while (cookie.charAt(0) === ' ') {
+              cookie = cookie.substring(1);
+          }
+          if (cookie.indexOf(cookieName) === 0) {
+              return cookie.substring(cookieName.length, cookie.length);
+          }
+      }
+      return '';
+  }
+
+  // Usage
+
+
+
+  function setCookie(name, value, years) {
+      const expirationDate = new Date();
+      expirationDate.setFullYear(expirationDate.getFullYear() + years);
+      const expires = "expires=" + expirationDate.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
+
+
+
+
+  let PageCloseOP = getCookie("PagePrevent");
+  let RestrictSmOP = getCookie("RestrictSmooth");
+  let PerformMode = getCookie("PerforMode");
+
+
+  function toggleOptionSet(name) {
+
+    if(name==="PageClose") {
+      if(PageCloseOP==='false' || PageCloseOP==="") {
+        setCookie("PagePrevent", 'true', 10); // Set the cookie to expire in 10 years
+
+      }
+      if(PageCloseOP==='true') {
+        setCookie("PagePrevent", 'false', 10); // Set the cookie to expire in 10 years
+      }
+      PageCloseOP = getCookie("PagePrevent")
+    }
+
+    if(name==="RestrictSm") {
+      if(RestrictSmOP==='false' || RestrictSmOP==="") {
+        setCookie("RestrictSmooth", 'true', 10); // Set the cookie to expire in 10 years
+      }
+      if(RestrictSmOP==='true') {
+        setCookie("RestrictSmooth", 'false', 10); // Set the cookie to expire in 10 years
+      }
+      RestrictSmOP = getCookie("RestrictSmooth")
+    }
+
+    if(name==="PerformMode") {
+      if(PerformMode==='false' || PerformMode==="") {
+        setCookie("PerforMode", 'true', 10); // Set the cookie to expire in 10 years
+      }
+      if(PerformMode==='true') {
+        setCookie("PerforMode", 'false', 10); // Set the cookie to expire in 10 years
+      }
+      PerformMode = getCookie("PerforMode")
+    }
+
+
+    CheckSettngs1B()
+
+
+  }      
+  
+  var pagecloseToggle = document.getElementById('toggle-PageClose')
+  var restrictToggle = document.getElementById('toggle-Restrict')
+  var performToggle = document.getElementById('toggle-Perform')
+
+
+  var option2bx = document.getElementById('Op2-Stat') //dont touch might break code
+
+
+
+  function CheckSettngs1B() {
+    PageCloseOP = getCookie("PagePrevent")
+
+    //PageClose
+      if(PageCloseOP==="true") {
+          pagecloseToggle.classList.add('active');
+      } 
+      if(PageCloseOP==="false") {
+          pagecloseToggle.classList.remove('active');
+      }
+
+    //RestrictSm
+      if(RestrictSmOP==="true") {
+          restrictToggle.classList.add('active');
+      } 
+      if(RestrictSmOP==="false") {
+          restrictToggle.classList.remove('active');
+      }
+
+    //PerformMode
+      if(PerformMode==="true") {
+        performToggle.classList.add('active');
+      } 
+      if(PerformMode==="false") {
+        performToggle.classList.remove('active');
+      }
+
+
+  }
+
+  CheckSettngs1B()
+
+
+</script>
 
 
 
