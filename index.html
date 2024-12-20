@@ -396,8 +396,152 @@ p {
   </script>
 
 <!--overlay-->
-  <div id="overlay" style="pointer-events: none; position: fixed; display: none; width: 100%; height: 100%;">
+<div id="overlay" style="pointer-events: none; z-index: -1; position: fixed; display: block; width: 100%; height: 100%;">
 
+    <script>
+ var maxSnowflakeCount = 100; // Set max snowflake count
+var snowflakeSpeed = 2; // Set the snowflake fall speed
+var driftSpeed = 0.5; // Set the horizontal drift speed (adjust this value for more/less drift)
+var startSnowfall; // Call to start snowfall animation
+var stopSnowfall; // Call to stop adding snowflakes
+var toggleSnowfall; // Call to start or stop the snowfall animation depending on whether it's already running
+var removeSnowfall; // Call to stop the snowfall animation and remove all snowflakes immediately
+
+(function() {
+  startSnowfall = startSnowfallInner;
+  stopSnowfall = stopSnowfallInner;
+  toggleSnowfall = toggleSnowfallInner;
+  removeSnowfall = removeSnowfallInner;
+
+  var colors = ["#FFFFFF"]; // Snowflakes will be white
+
+  var streamingSnowfall = false;
+  var animationTimer = null;
+  var snowflakes = [];
+
+  function resetSnowflake(snowflake, width, height) {
+    snowflake.color = colors[0]; // White snowflake color
+    snowflake.x = Math.random() * width;
+    snowflake.y = Math.random() * height - height;
+    snowflake.diameter = Math.random() * 5 + 2; // Adjust size of snowflakes
+    snowflake.drift = (Math.random() * 2 - 1) * driftSpeed; // Random horizontal drift (-1 to 1)
+    return snowflake;
+  }
+
+  function startSnowfallInner() {
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    window.requestAnimFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function (callback) {
+          return window.setTimeout(callback, 16.6666667);
+        };
+    })();
+
+    var canvas = document.getElementById("snow-canvas");
+
+    if (canvas === null) {
+      canvas = document.createElement("canvas");
+      canvas.setAttribute("id", "confetti-canvas");
+      canvas.setAttribute("style", " display:block;z-index:-1;pointer-events:none");
+      document.getElementById('overlay').appendChild(canvas);
+      canvas.width = width;
+      canvas.height = height;
+
+      window.addEventListener("resize", function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }, true);
+    }
+
+    var context = canvas.getContext("2d");
+
+    while (snowflakes.length < maxSnowflakeCount)
+      snowflakes.push(resetSnowflake({}, width, height));
+
+    streamingSnowfall = true;
+
+    if (animationTimer === null) {
+      (function runAnimation() {
+        context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+        if (snowflakes.length === 0)
+          animationTimer = null;
+        else {
+          updateSnowflakes();
+          drawSnowflakes(context);
+          animationTimer = requestAnimFrame(runAnimation);
+        }
+      })();
+    }
+  }
+
+  function stopSnowfallInner() {
+    streamingSnowfall = false;
+  }
+
+  function removeSnowfallInner() {
+    stopSnowfall();
+    snowflakes = [];
+  }
+
+  function toggleSnowfallInner() {
+    if (streamingSnowfall)
+      stopSnowfallInner();
+    else
+      startSnowfallInner();
+  }
+
+  function drawSnowflakes(context) {
+    var snowflake;
+    for (var i = 0; i < snowflakes.length; i++) {
+      snowflake = snowflakes[i];
+      context.beginPath();
+      context.arc(snowflake.x, snowflake.y, snowflake.diameter, 0, Math.PI * 2, false);
+      context.fillStyle = snowflake.color;
+      context.fill();
+    }
+  }
+
+  function updateSnowflakes() {
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var snowflake;
+
+    for (var i = 0; i < snowflakes.length; i++) {
+      snowflake = snowflakes[i];
+
+      if (!streamingSnowfall && snowflake.y < -15)
+        snowflake.y = height + 100;
+      else {
+        snowflake.y += snowflakeSpeed;
+        snowflake.x += snowflake.drift; // Apply horizontal drift
+      }
+
+      if (snowflake.x > width || snowflake.x < 0 || snowflake.y > height) {
+        if (streamingSnowfall && snowflakes.length <= maxSnowflakeCount)
+          resetSnowflake(snowflake, width, height);
+        else {
+          snowflakes.splice(i, 1);
+          i--;
+        }
+      }
+    }
+  }
+})();
+
+var start2 = true;
+
+if (start2 === true) {
+  startSnowfall();
+}
+
+    </script>
   </div>
 
   <div id="notices" style="">
