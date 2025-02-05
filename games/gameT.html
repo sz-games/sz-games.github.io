@@ -312,8 +312,8 @@ body {
 
      const canvascpu = document.getElementById('cpuCanvas');
 const ctx = canvascpu.getContext('2d');
-canvascpu.width = canvas.offsetWidth;
-canvascpu.height = canvas.offsetHeight;
+canvascpu.width = canvascpu.offsetWidth;
+canvascpu.height = canvascpu.offsetHeight;
 
 let timeframe = 0.1;
 let dataLength = Math.max(1, Math.floor(canvascpu.width * timeframe));
