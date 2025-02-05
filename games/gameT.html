@@ -311,7 +311,7 @@ body {
     setInterval(updateMemoryUsage, 1800);
 
      const canvascpu = document.getElementById('cpuCanvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvascpu.getContext('2d');
 canvascpu.width = canvas.offsetWidth;
 canvascpu.height = canvas.offsetHeight;
 
