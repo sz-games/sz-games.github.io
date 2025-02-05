@@ -310,13 +310,13 @@ body {
     // Update memory usage every 1800ms
     setInterval(updateMemoryUsage, 1800);
 
-     const canvas = document.getElementById('cpuCanvas');
+     const canvascpu = document.getElementById('cpuCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = canvas.offsetWidth;
-canvas.height = canvas.offsetHeight;
+canvascpu.width = canvas.offsetWidth;
+canvascpu.height = canvas.offsetHeight;
 
 let timeframe = 0.1;
-let dataLength = Math.max(1, Math.floor(canvas.width * timeframe));
+let dataLength = Math.max(1, Math.floor(canvascpu.width * timeframe));
 let data = Array(dataLength).fill(0);
 
 async function getCPUUsage() {
@@ -332,21 +332,21 @@ async function updateGraph() {
     data.push(cpuUsage);
     if (data.length > dataLength) data.shift();
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvascpu.width, canvascpu.height);
 
      // Draw grid lines
      ctx.strokeStyle = '#333';
     ctx.lineWidth = 1;
-    for (let i = 0; i < canvas.width; i += canvas.width / 10) {
+    for (let i = 0; i < canvascpu.width; i += canvascpu.width / 10) {
         ctx.beginPath();
         ctx.moveTo(i, 0);
         ctx.lineTo(i, canvas.height);
         ctx.stroke();
     }
-    for (let i = 0; i < canvas.height; i += canvas.height / 5) {
+    for (let i = 0; i < canvascpu.height; i += canvascpu.height / 5) {
         ctx.beginPath();
         ctx.moveTo(0, i);
-        ctx.lineTo(canvas.width, i);
+        ctx.lineTo(canvascpu.width, i);
         ctx.stroke();
     }
 
@@ -354,8 +354,8 @@ async function updateGraph() {
     ctx.lineWidth = 2;
     ctx.beginPath();
     data.forEach((value, index) => {
-        let y = canvas.height - (value / 100 * canvas.height);
-        ctx.lineTo(index * (canvas.width / dataLength), y);
+        let y = canvascpu.height - (value / 100 * canvascpu.height);
+        ctx.lineTo(index * (canvascpu.width / dataLength), y);
     });
     ctx.stroke();
 
