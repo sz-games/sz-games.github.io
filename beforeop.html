@@ -856,32 +856,6 @@ p {
 
 <script>
   var IsOpenLang = false
-  function ToggleLang() {
-    if(IsOpenLang===false) {
-      document.getElementById('LangSelect').style.opacity = 1
-      document.getElementById('LangSelect').classList.add('openLang')
-      document.getElementById('LangSelect').style.visibility = "visible"
-      setTimeout(() => {
-        document.getElementById('LangSelect').classList.remove('openLang')
-        IsOpenLang = true
-      }, 800);
-      
-    }
-    else if(IsOpenLang===true) {
-      document.getElementById('LangSelect').style.opacity = 0
-
-      document.getElementById('LangSelect').style.visibility = "hidden"
-
-      setTimeout(() => {
-        IsOpenLang = false
-
-      
-        
-      }, 810);
-      
-    }
-  }
-
   var myElement = document.getElementById("TopMenu"); // Get the element
   var Isscrolled = false;
 window.addEventListener("scroll", function() { // Add a scroll event listener
@@ -1555,98 +1529,6 @@ if (isMobile2) {
   }
     
   </script>
-
-<!--LANG-->
-<div id="LangSelect" style="transition: 0.5s; visibility: hidden; position: fixed; z-index: 90; transform: translate(-50%, -50%); top: 50%; left: 50%; background-color: #1d1d1d; width: 350px; border: solid rgba(56, 56, 56, 0.97) 5px; border-radius: 15px; height: 200px;">
-
- 
-    <span onclick="ToggleLang()" class="material-icons notranslate"  style=" cursor: pointer;   font-size: larger; top: 10%; transform: translate(-0%, -50%); margin-right: 15px; float: right; color: white;  position: relative;">  
-     
-     close
-      
-      </span>
-    
-    <p style="float: left; top: 5%; position: relative; margin-left: 15px; color: white;"> Translate </p>
-
-    <div style="top: 17%; left: 8px; width: 95%; border-radius: 10px; position: relative; height: 2px; background-color: #3d3d3d;">
-
-    </div>
-
-  <div style="position: absolute;  top: 50%; left: 50%; transform: translate(-50%, -50%);" id="google_translate_element"></div>
-
-
-    <script>
-   
-   fetch('https://ipapi.co/json/')
-  .then(response => {
-    if (response.status === 429) {
-      // Request returned with code 429 (Too Many Requests)
-      console.log('Too Many Requests');
-      // Handle the error or implement retry logic here
-      return;
-    }
-    return response.json();
-  })
-  .then(data => {
-    if (data) {
-      var userCountryCode = data.country;
-
-      // Check if the user's country is different from the desired country
-      if (userCountryCode !== 'US') {
-        // Display the specific element for users in a different country
-        console.log('isNot');
-        IsOpenLang = true;
-        var element = document.getElementById('LangSelect');
-        element.style.visibility = 'visible';
-      } else {
-        console.log('us');
-      }
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
-
-
-
-
-      var ToggledMenu3 = false;
-
-      function ToggleMenuBig() {
-        if(ToggledMenu3===false) {
-          document.getElementById('SideMenuBigScreen').style.display = 'block'
-          document.getElementById('SideMenuBigScreen').style.opacity = 1
-
-          document.getElementById('MMenuBig').style.display = 'block'
-          
-          document.getElementById('MMenuBig').classList.add('SlSlideIn')
-         
-          setTimeout(() => {
-            document.getElementById('MMenuBig').classList.remove('SlSlideIn')
-           
-
-            ToggledMenu3 = true
-          }, 500);
-
-        } else if(ToggledMenu3===true) {
-         
-          ToggledMenu3 = false
-
-       
-          document.getElementById('SideMenuBigScreen').style.opacity = 0
-
-          document.getElementById('MMenuBig').classList.add('SlSlide')
-          setTimeout(() => {
-            document.getElementById('MMenuBig').classList.remove('SlSlide')
-            document.getElementById('MMenuBig').style.display = 'none'
-            document.getElementById('SideMenuBigScreen').style.display = 'none'
-          }, 500);
-        }
-      }
-    </script>
-
-</div>
 
 
     <div id="Header" class="header">
