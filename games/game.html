@@ -356,17 +356,80 @@
       }
     </script>
 
-    <iframe
-      frameborder="0"
-      id="game"
-      style="text-align: center; align-items: center; overflow: hidden; width: 100%"
-      src=""
-      allowfullscreen
-    ></iframe>
+    <style>
+      .game-container {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+      }
 
-    <!--h2 onclick="window.location = 'https://sz-games.github.io'" style="display: none; cursor: pointer; position: fixed; bottom: -20px;  ">Back</h2>
-<h2  style="position: fixed; bottom: 10px;">____</h2>
-<h2 onclick="makeFullScreen()" style="cursor: pointer; position: fixed; bottom: 20px;">Fullscreen</h2-->
+      .game-area {
+        flex: 1;
+        height: 100%;
+        position: relative;
+      }
+
+      .sidebar {
+        width: 300px;
+        background-color: #1d1d1d;
+        color: white;
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      @media (max-width: 1279px) {
+        .sidebar {
+          display: none;
+        }
+
+        .game-area {
+          width: 100%;
+        }
+      }
+
+      .ad-small {
+        display: inline-block;
+      }
+
+      @media (max-height: 1079px) {
+        .ad-small {
+          display: none;
+        }
+      }
+    </style>
+
+    <div class="game-container">
+      <div class="game-area">
+        <iframe
+          frameborder="0"
+          id="game"
+          style="text-align: center; align-items: center; overflow: hidden; width: 100%; height: 100%"
+          src=""
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="sidebar">
+        <ins
+          class="adsbygoogle"
+          style="display: inline-block; width: 300px; height: 600px"
+          data-ad-client="ca-pub-3723218062742398"
+          data-ad-slot="9386191967"
+        ></ins>
+        <script>
+          ;(adsbygoogle = window.adsbygoogle || []).push({})
+        </script>
+        <ins
+          class="adsbygoogle ad-small"
+          style="display: inline-block; width: 300px; height: 300px"
+          data-ad-client="ca-pub-3723218062742398"
+          data-ad-slot="5174526352"
+        ></ins>
+        <script>
+          ;(adsbygoogle = window.adsbygoogle || []).push({})
+        </script>
+      </div>
+    </div>
+
     <div
       style="
         transition: 0.5s;
@@ -389,10 +452,6 @@
         arrow_back
       </span>
       <span class="material-icons buttonForMenu" style="margin: 5px" onclick="makeFullScreen()"> fullscreen </span>
-
-      <!--span class="material-icons buttonForMenu" style="margin: 5px;" onclick="ToggleChat()" >
-      chat
-      </span-->
       <script>
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 
@@ -445,14 +504,25 @@
       requestFullScreen(canvas)
     }
 
-    let hh = window.innerHeight
-
-    document.getElementById('game').height = hh
-    window.onresize = function (event) {
+    function resize() {
       let hh = window.innerHeight
-
       document.getElementById('game').height = hh
+
+      // Check window width for sidebar visibility
+      checkSidebarVisibility()
     }
+
+    function checkSidebarVisibility() {
+      // No need to add JS for this since we're using CSS media queries
+    }
+
+    window.onresize = resize
+
+    // Initialize on load
+    window.addEventListener('load', function () {
+      resize()
+    })
+
     // Get the text element
     var textElement = document.getElementById('game')
     textElement.addEventListener('beforeunload', function (event) {
