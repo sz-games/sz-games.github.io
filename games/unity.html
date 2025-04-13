@@ -1,458 +1,499 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true">
+  <head>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true" />
     <title>Sz Games - Game (UNITY)</title>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('https://sz-games.github.io/service-worker.js');
-  }
-</script>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('https://sz-games.github.io/service-worker.js')
+      }
+    </script>
 
- <!--PageScript1-->
- <!--script id="CHECK">
-  function getCookie2(name) {
-const cookieName = name + "=";
-const cookies = document.cookie.split(';');
-for (let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i];
-    while (cookie.charAt(0) === ' ') {
-        cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(cookieName) === 0) {
-        return cookie.substring(cookieName.length, cookie.length);
-    }
-}
-return '';
-}
+    <link rel="manifest" href="https://sz-games.github.io/manifest.json" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
 
+      gtag('config', 'G-C78TXR0XFK')
+    </script>
+    <script src="/GobalSettings.js"></script>
 
-let Setting14bu = getCookie2("PagePrevent");
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(117, 117, 117);
+      }
 
-function checkPageClose(event) {
+      .btn-group button {
+        background-color: black; /* Green background */
 
+        color: white; /* White text */
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        float: left; /* Float the buttons side by side */
+      }
 
-    event.returnValue = "Prevent Page Close Is Active, You Can Click Off Of This";
+      /* Clear floats (clearfix hack) */
+      .btn-group:after {
+        content: '';
+        clear: both;
+        display: table;
+      }
 
+      .btn-group button:not(:last-child) {
+        border-right: none; /* Prevent double borders */
+      }
 
+      /* Add a background color on hover */
+      .btn-group button:hover {
+        background-color: grey;
+      }
 
-}
-function checkPageClose2() {
-if(Setting14bu==="true") {
+      /* Header/Logo Title */
+      .header {
+        padding: 60px;
+        text-align: center;
+        background: linear-gradient(to bottom right, #9a9a9a, rgb(39, 39, 39));
+        color: white;
+        width: auto;
+        font-size: 30px;
 
-    window.onbeforeunload = function(event) {
-        // return a string to prevent the page from closing
-        event.preventDefault();
-        return "Prevent Page Close Is Active, You Can Click Off Of This";
-    };
-    window.addEventListener("beforeunload", checkPageClose);
+        border-radius: 15px;
+      }
 
-} 
-if(Setting14bu==="false") {
+      /* Page Content */
+    </style>
 
-}
-}
-console.log('CookiePAGE Value: ' + Setting14bu + "SzGames-Scripts Loaded")
-checkPageClose2()
+    <style>
+      .game-container {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+      }
 
-</script-->
-<!--PageScript1-->
+      .game-area {
+        flex: 1;
+        height: 100%;
+        position: relative;
+      }
 
-<link rel="manifest" href="https://sz-games.github.io/manifest.json">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      .sidebar {
+        width: 300px;
+        background-color: #1d1d1d;
+        color: white;
+        height: 100vh;
+        overflow-y: auto;
+      }
 
-  gtag('config', 'G-C78TXR0XFK');
-</script>
-<script src="/GobalSettings.js"></script>
+      @media (max-width: 1279px) {
+        .sidebar {
+          display: none;
+        }
 
-<style>
+        .game-area {
+          width: 100%;
+        }
+      }
 
-body {
-  margin: 0;
- overflow: hidden;
- font-family: Arial, Helvetica, sans-serif;
- background-color: rgb(117, 117, 117);
-}
+      .ad-small {
+        display: inline-block;
+      }
 
-.btn-group button {
-  background-color: black; /* Green background */
- 
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
-}
-
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.btn-group button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: grey;
-}
-
-/* Header/Logo Title */
-.header {
-  padding: 60px;
-  text-align: center;
-  background: linear-gradient(to bottom right, #9a9a9a, rgb(39, 39, 39));
-  color: white;
-  width: auto;
-  font-size: 30px;
- 
- 
-  border-radius: 15px;
-}
-
-/* Page Content */
-
-</style>
-</head>
-<body onresize="resize()">
-<style>
-    .game {
+      @media (max-height: 1079px) {
+        .ad-small {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body onresize="resize()">
+    <style>
+      .game {
         position: absolute;
-color: white;
+        color: white;
 
-  transform: scale(1.8);
-  z-index: 3;
-  font-family: Arial, Helvetica, sans-serif;
-    }
+        transform: scale(1.8);
+        z-index: 3;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-    .loading-screen {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-}
+      .loading-screen {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+      }
 
-.left-column {
-  width: 30%;
-  padding: 20px;
-  background-color: #1b1b1b;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 2;
-  transition: 1s;
-}
+      .left-column {
+        width: 30%;
+        padding: 20px;
+        background-color: #1b1b1b;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 2;
+        transition: 1s;
+      }
 
-.logo img {
-  width: 55px;
-  margin-top: 10px;
-}
+      .logo img {
+        width: 55px;
+        margin-top: 10px;
+      }
 
-.loading-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px; /* Adjust this value for spacing between the loader and text */
-}
+      .loading-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px; /* Adjust this value for spacing between the loader and text */
+      }
 
-.loading-circle {
-  width: 25px;
-  height: 25px;
-  border: 4px solid transparent;
-  border-top: 3px solid #5c5c5c;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 15px; /* Remove negative margins */
-}
+      .loading-circle {
+        width: 25px;
+        height: 25px;
+        border: 4px solid transparent;
+        border-top: 3px solid #5c5c5c;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 15px; /* Remove negative margins */
+      }
 
-.loading-text {
-  margin: 0; /* Keep margin to 0 */
-  text-align: center;
-}
+      .loading-text {
+        margin: 0; /* Keep margin to 0 */
+        text-align: center;
+      }
 
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+      .buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
 
-.buttons {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
+      .home-button,
+      .skip-loading {
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: 5px;
+        color: #fff;
+        transition: 0.5s;
+        background-color: #444444b0;
+      }
 
-.home-button, .skip-loading {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 5px;
-  color: #fff;
-  transition: 0.5s;
-  background-color: #444444b0;
-}
+      .home-button:hover,
+      .skip-loading:hover {
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: 5px;
+        color: #fff;
+        box-shadow: 0px 0px 10px #000000;
+      }
 
-.home-button:hover, .skip-loading:hover {
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 5px;
-  color: #fff;
-  box-shadow: 0px 0px 10px #000000;
-}
+      .right-column {
+        position: relative;
+        width: 70%;
+        padding: 20px;
+        overflow: hidden;
+      }
 
-.right-column {
-  position: relative;
-  width: 70%;
-  padding: 20px;
-  overflow: hidden;
-}
+      .cover-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 1; /* Set behind the left column */
+      }
 
-.cover-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  z-index: 1; /* Set behind the left column */
-}
+      .cover-row {
+        display: flex;
+        justify-content: space-around;
+        gap: 15px;
+        transform: rotate(-10deg);
+      }
 
-.cover-row {
-  display: flex;
-  justify-content: space-around;
-  gap: 15px;
-  transform: rotate(-10deg);
-}
+      .cover {
+        flex: 1;
+        max-width: 22%;
+        height: 200px;
+        border-radius: 10px;
+        min-width: 150px;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        opacity: 0.9; /* Slight transparency for a subtle effect */
+      }
 
-.cover {
-  flex: 1;
-  max-width: 22%;
-  height: 200px;
-  border-radius: 10px;
-  min-width: 150px;
-  background-size: cover;
-  background-position: center;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  opacity: 0.9; /* Slight transparency for a subtle effect */
-}
+      @media (min-width: 1200px) {
+        .cover {
+          height: 225px;
+        }
+      }
+      @keyframes downan {
+        from {
+          transform: rotate(-10deg) translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: rotate(-10deg) translateY(20%);
+          opacity: 0;
+        }
+      }
+      @keyframes closeload {
+        from {
+          transform: scale(1);
+          opacity: 1;
+        }
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    </style>
 
-@media (min-width: 1200px) {
-  .cover {
-    height: 225px;
-  }
-}
-@keyframes downan {
-  from {
-    transform: rotate(-10deg) translateY(0); opacity: 1;
-  }
-  to{
-    transform: rotate(-10deg) translateY(20%); opacity: 0;
-  }
-}
-@keyframes closeload {
-  from {
-    transform: scale(1.0); opacity: 1;
-  }
-  to {
-    transform: scale(2.0); opacity: 0;
+    <div
+      id="loadingcontainer"
+      style="
+        transition: 0.5s;
+        background-color: #272727;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: 100000;
+      "
+    >
+      <div class="loading-screen">
+        <div id="leftside" class="left-column">
+          <div class="logo">
+            <img src="../G.png" alt="Logo" />
+          </div>
+          <div class="loading-content">
+            <div class="loading-circle"></div>
+            <p class="loading-text">Your Game Is Loading</p>
+          </div>
 
-  }
-}
-</style>
-
-<div id="loadingcontainer" style="transition: 0.5s;  background-color: #272727; position: fixed; width: 100%; height: 100%; display: block; z-index: 100000;">
-  <div class="loading-screen">
-    <div id="leftside" class="left-column">
-      <div class="logo">
-        <img src="../G.png" alt="Logo">
-      </div>
-      <div class="loading-content">
-        <div class="loading-circle"></div>
-        <p class="loading-text">Your Game Is Loading</p>
-      </div>
-      
-      <div class="buttons">
-        <a href="../index.html">
-           <button class="home-button">Home</button>
-        </a>
-        <button class="skip-loading" onclick="skipload()">Skip Loading</button>
+          <div class="buttons">
+            <a href="../index.html">
+              <button class="home-button">Home</button>
+            </a>
+            <button class="skip-loading" onclick="skipload()">Skip Loading</button>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="cover-grid">
+            <div class="cover-row" style="--rotation: -10deg">
+              <div class="cover" style="background-image: url('../cover/slope.webp')"></div>
+              <div class="cover" style="background-image: url('../cover/Bitlife.png')"></div>
+              <div class="cover" style="background-image: url('../cover/Minecraft.png')"></div>
+              <div class="cover" style="background-image: url('../cover/gunnn.png')"></div>
+            </div>
+            <div class="cover-row" style="--rotation: 10deg">
+              <div class="cover" style="background-image: url('../cover/lol.jpeg')"></div>
+              <div class="cover" style="background-image: url('../cover/BASKETBRO.png')"></div>
+              <div class="cover" style="background-image: url('../cover/fnaf1.jpeg')"></div>
+              <div class="cover" style="background-image: url('../cover/fnaf2.webp')"></div>
+            </div>
+            <div class="cover-row" style="--rotation: -10deg">
+              <div class="cover" style="background-image: url('../cover/motox3m.png')"></div>
+              <div class="cover" style="background-image: url('../cover/roblox.jpeg')"></div>
+              <div class="cover" style="background-image: url('../cover/retrobowl.avif')"></div>
+              <div class="cover" style="background-image: url('../cover/pvz.png')"></div>
+            </div>
+            <div class="cover-row" style="--rotation: -10deg">
+              <div class="cover" style="background-image: url('../cover/EGGYCAR.webp')"></div>
+              <div class="cover" style="background-image: url('../cover/gunnn.png')"></div>
+              <div class="cover" style="background-image: url('../cover/CSGO.png')"></div>
+              <div class="cover" style="background-image: url('../cover/jetpackjoyride.webp')"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="right-column">
-      <div class="cover-grid">
-        
-        <div class="cover-row" style="--rotation: -10deg;">
-          <div class="cover" style="background-image: url('../cover/slope.webp');"></div>
-          <div class="cover" style="background-image: url('../cover/Bitlife.png');"></div>
-          <div class="cover" style="background-image: url('../cover/Minecraft.png');"></div>
-          <div class="cover" style="background-image: url('../cover/gunnn.png');"></div>
-        </div>
-        <div class="cover-row" style="--rotation: 10deg;">
-          <div class="cover" style="background-image: url('../cover/lol.jpeg');"></div>
-          <div class="cover" style="background-image: url('../cover/BASKETBRO.png');"></div>
-          <div class="cover" style="background-image: url('../cover/fnaf1.jpeg');"></div>
-          <div class="cover" style="background-image: url('../cover/fnaf2.webp');"></div>
-        </div>
-        <div class="cover-row" style="--rotation: -10deg;">
-          <div class="cover" style="background-image: url('../cover/motox3m.png');"></div>
-          <div class="cover" style="background-image: url('../cover/roblox.jpeg');"></div>
-          <div class="cover" style="background-image: url('../cover/retrobowl.avif');"></div>
-          <div class="cover" style="background-image: url('../cover/pvz.png');"></div>
-        </div>
-        <div class="cover-row" style="--rotation: -10deg;">
-          <div class="cover" style="background-image: url('../cover/EGGYCAR.webp');"></div>
-          <div class="cover" style="background-image: url('../cover/gunnn.png');"></div>
-          <div class="cover" style="background-image: url('../cover/CSGO.png');"></div>
-          <div class="cover" style="background-image: url('../cover/jetpackjoyride.webp');"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
- 
- 
-      window.addEventListener('load', function() {
-
-        
-
+    <script>
+      window.addEventListener('load', function () {
         //document.getElementById('loadingcontainer').style.opacity = 0
         setTimeout(() => {
-        //  document.getElementById('loadingcontainer').style.display = 'none'
-        }, 800);
+          //  document.getElementById('loadingcontainer').style.display = 'none'
+        }, 800)
         donewithload()
-      });
-    function skipload() {
-      donewithload()
-    }
+      })
+      function skipload() {
+        donewithload()
+      }
 
-    function donewithload() {
-     
-      const elements = document.querySelectorAll('.cover-row');
-      elements.forEach((element, index) => {
-        setTimeout(() => {
-          element.style.animation = 'downan 0.5s'
-          
+      function donewithload() {
+        const elements = document.querySelectorAll('.cover-row')
+        elements.forEach((element, index) => {
           setTimeout(() => {
-            element.style.opacity = 0
-          }, 450);
-        }, index * 200); 
-      });
-      setTimeout(() => {
-        
-        document.getElementById('leftside').style.transform = 'translateX(-200%)'
+            element.style.animation = 'downan 0.5s'
+
+            setTimeout(() => {
+              element.style.opacity = 0
+            }, 450)
+          }, index * 200)
+        })
         setTimeout(() => {
-          document.getElementById('leftside').style.opacity = 0
-        }, 500);
-        setTimeout(() => {
-          document.getElementById('loadingcontainer').style.animation = 'closeload 0.5s'
+          document.getElementById('leftside').style.transform = 'translateX(-200%)'
           setTimeout(() => {
-            document.getElementById('loadingcontainer').style.display = 'none'
+            document.getElementById('leftside').style.opacity = 0
+          }, 500)
+          setTimeout(() => {
+            document.getElementById('loadingcontainer').style.animation = 'closeload 0.5s'
+            setTimeout(() => {
+              document.getElementById('loadingcontainer').style.display = 'none'
+            }, 450)
+          }, 300)
+        }, 500)
+      }
+    </script>
 
-          }, 450);
-        }, 300);
-      }, 500);
-    }
-
-</script>
-
-
-<iframe frameBorder="0" id="game" style="text-align: center; align-items: center; overflow: hidden; width: 100%; " src="" allowfullscreen></iframe>
-
-<!--h2 onclick="window.location = 'https://sz-games.github.io'" style="display: none; cursor: pointer; position: fixed; bottom: -20px;  ">Back</h2>
-<h2  style="position: fixed; bottom: 10px;">____</h2>
-<h2 onclick="makeFullScreen()" style="cursor: pointer; position: fixed; bottom: 20px;">Fullscreen</h2-->
-<div style="cursor: pointer; position: fixed; border-radius: 15px; color: rgb(224, 224, 224); background-color: #1d1d1dc0; left: 0; bottom: 0px; margin: 10px;" id="Menu">
-
-
-<span class="material-icons buttonForMenu" style="margin: 5px;" onclick="window.location = 'https://sz-games.github.io'" >
-  arrow_back
-  </span>
-  <span class="material-icons buttonForMenu" style="margin: 5px;" onclick="document.getElementById('game').contentWindow.gameInstance.SetFullscreen(1)" >
-    fullscreen
-    </span>
-</div>
+    <div class="game-container">
+      <div class="game-area">
+        <iframe
+          frameborder="0"
+          id="game"
+          style="text-align: center; align-items: center; overflow: hidden; width: 100%; height: 100%"
+          src=""
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="sidebar">
+        <ins
+          class="adsbygoogle"
+          style="display: inline-block; width: 300px; height: 600px"
+          data-ad-client="ca-pub-3723218062742398"
+          data-ad-slot="9386191967"
+        ></ins>
+        <script>
+          ;(adsbygoogle = window.adsbygoogle || []).push({})
+        </script>
+        <ins
+          class="adsbygoogle ad-small"
+          style="display: inline-block; width: 300px; height: 300px"
+          data-ad-client="ca-pub-3723218062742398"
+          data-ad-slot="5174526352"
+        ></ins>
+        <script>
+          ;(adsbygoogle = window.adsbygoogle || []).push({})
+        </script>
+      </div>
+    </div>
+    <div
+      style="
+        cursor: pointer;
+        position: fixed;
+        border-radius: 15px;
+        color: rgb(224, 224, 224);
+        background-color: #1d1d1dc0;
+        left: 0;
+        bottom: 0px;
+        margin: 10px;
+      "
+      id="Menu"
+    >
+      <span
+        class="material-icons buttonForMenu"
+        style="margin: 5px"
+        onclick="window.location = 'https:\/\/sz-games.github.io'"
+      >
+        arrow_back
+      </span>
+      <span
+        class="material-icons buttonForMenu"
+        style="margin: 5px"
+        onclick="document.getElementById('game').contentWindow.gameInstance.SetFullscreen(1)"
+      >
+        fullscreen
+      </span>
+    </div>
   </body>
 
   <script>
+    var isFUll = false
 
-
-
-var isFUll = false
-
-document.body.onkeyup = function(e) {
-  if( e.keyCode == 27 ) {
-    if(isFUll) {
-    //document.getElementById('game').style.width = '800px';
-    }
-  }
-}
-
-function requestFullScreen(element) {
-    // Supports most browsers and their versions.
-    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullscreen;
-    
-    if (requestMethod) { // Native full screen.
-        requestMethod.call(element);
-        let hh = window.innerHeight;
-
-document.getElementById('game').height = hh;
-    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-        var wscript = new ActiveXObject("WScript.Shell");
-        if (wscript !== null) {
-            wscript.SendKeys("{F11}");
+    document.body.onkeyup = function (e) {
+      if (e.keyCode == 27) {
+        if (isFUll) {
+          //document.getElementById('game').style.width = '800px';
         }
+      }
     }
-}
-var canvas = document.getElementById('game');
 
-function makeFullScreen() {
+    function requestFullScreen(element) {
+      // Supports most browsers and their versions.
+      var requestMethod =
+        element.requestFullScreen ||
+        element.webkitRequestFullScreen ||
+        element.mozRequestFullScreen ||
+        element.msRequestFullscreen
 
-    isFUll = true
-    requestFullScreen(canvas);
-}
+      if (requestMethod) {
+        // Native full screen.
+        requestMethod.call(element)
+        let hh = window.innerHeight
 
+        document.getElementById('game').height = hh
+      } else if (typeof window.ActiveXObject !== 'undefined') {
+        // Older IE.
+        var wscript = new ActiveXObject('WScript.Shell')
+        if (wscript !== null) {
+          wscript.SendKeys('{F11}')
+        }
+      }
+    }
+    var canvas = document.getElementById('game')
 
+    function makeFullScreen() {
+      isFUll = true
+      requestFullScreen(canvas)
+    }
 
-let hh = window.innerHeight;
+    let hh = window.innerHeight
 
+    document.getElementById('game').height = hh
+    window.onresize = function (event) {
+      let hh = window.innerHeight
 
-document.getElementById('game').height = hh;
-window.onresize = function(event) {
-  let hh = window.innerHeight;
+      document.getElementById('game').height = hh
+    }
+    // Get the text element
+    var textElement = document.getElementById('game')
 
-document.getElementById('game').height = hh;
-}
-// Get the text element
-var textElement = document.getElementById("game");
+    // Get the current URL
+    var currentUrl = new URL(window.location.href)
 
-// Get the current URL
-var currentUrl = new URL(window.location.href);
+    // Check for the presence of the "text" parameter in the URL
+    if (currentUrl.searchParams.has('game')) {
+      // Set the text of the element to the value of the "text" parameter
+      textElement.src = currentUrl.searchParams.get('game')
+    }
 
-// Check for the presence of the "text" parameter in the URL
-if (currentUrl.searchParams.has("game")) {
-  // Set the text of the element to the value of the "text" parameter
-  textElement.src = currentUrl.searchParams.get("game");
-}
-
-
-console.log(currentUrl.searchParams.get("game"))
-
+    console.log(currentUrl.searchParams.get('game'))
   </script>
 </html>
