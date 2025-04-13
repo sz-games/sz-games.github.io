@@ -520,8 +520,26 @@
       }
 
       function resize() {
-        let hh = window.innerHeight
-        document.getElementById('game').height = hh
+        let containerWidth = document.querySelector('.game-area').clientWidth
+        // Calculate height based on 16:9 aspect ratio
+        let aspectRatio = 9 / 16
+        let calculatedHeight = containerWidth * aspectRatio
+
+        // Limit height to viewport height if needed
+        let maxHeight = window.innerHeight * 0.85 // Use 85% of viewport height as max
+        let gameHeight = Math.min(calculatedHeight, maxHeight)
+
+        // Apply the height to the game
+        document.getElementById('game').style.height = gameHeight + 'px'
+        document.getElementById('game').style.width = '100%'
+
+        // Center the game vertically in its container if needed
+        let gameArea = document.querySelector('.game-area')
+        if (gameArea) {
+          gameArea.style.display = 'flex'
+          gameArea.style.alignItems = 'center'
+          gameArea.style.justifyContent = 'center'
+        }
       }
 
       window.onresize = resize
