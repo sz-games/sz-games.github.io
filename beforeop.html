@@ -86,6 +86,37 @@
 <meta name="language" content="English">
 <script async src="./GobalSettings.js"></script>
 
+<script>
+  var ToggledMenu3 = false
+  function ToggleMenuBig() {
+    if (ToggledMenu3 === false) {
+      document.getElementById('SideMenuBigScreen').style.display = 'block'
+      document.getElementById('SideMenuBigScreen').style.opacity = 1
+
+      document.getElementById('MMenuBig').style.display = 'block'
+
+      document.getElementById('MMenuBig').classList.add('SlSlideIn')
+
+      setTimeout(() => {
+        document.getElementById('MMenuBig').classList.remove('SlSlideIn')
+
+        ToggledMenu3 = true
+      }, 500)
+    } else if (ToggledMenu3 === true) {
+      ToggledMenu3 = false
+
+      document.getElementById('SideMenuBigScreen').style.opacity = 0
+
+      document.getElementById('MMenuBig').classList.add('SlSlide')
+      setTimeout(() => {
+        document.getElementById('MMenuBig').classList.remove('SlSlide')
+        document.getElementById('MMenuBig').style.display = 'none'
+        document.getElementById('SideMenuBigScreen').style.display = 'none'
+      }, 500)
+    }
+  }
+</script>
+
 <meta
 name="keywords"
 content="sz games, sz games unblocked, games, github unblocked, unblocked games, school, games, games to play, games on the web, html5 games, sz, sz-games, play games online,  online games"
