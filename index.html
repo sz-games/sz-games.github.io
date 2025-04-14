@@ -33,8 +33,11 @@
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
       window.googletag = window.googletag || { cmd: [] }
+
+      let bannerSlot728x90
+
       googletag.cmd.push(function () {
-        googletag
+        bannerSlot728x90 = googletag
           .defineSlot(
             '/22921845643/SZ_Games_Top_Leaderboard',
             [
@@ -53,6 +56,10 @@
           .addService(googletag.pubads())
         googletag.pubads().enableSingleRequest()
         googletag.enableServices()
+
+        setInterval(function () {
+          googletag.pubads().refresh([bannerSlot728x90])
+        }, 30000)
       })
     </script>
 
@@ -2013,7 +2020,7 @@
         <div id="div-gpt-ad-1744619501453-0" style="min-width: 300px; min-height: 50px">
           <script>
             googletag.cmd.push(function () {
-              googletag.display('div-gpt-ad-1744619501453-0')
+              googletag.display(bannerSlot728x90)
             })
           </script>
         </div>
