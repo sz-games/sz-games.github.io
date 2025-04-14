@@ -11,6 +11,23 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3723218062742398"
       crossorigin="anonymous"
     ></script>
+
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || { cmd: [] }
+      var bannerSlot300x600
+      googletag.cmd.push(function () {
+        bannerSlot300x600 = googletag
+          .defineSlot('/22921845643/SZ_Games_Right_Sidebar_300x600', [300, 600], 'div-gpt-ad-1744674311666-0')
+          .addService(googletag.pubads())
+        googletag.pubads().enableSingleRequest()
+        googletag.enableServices()
+
+        setInterval(function () {
+          googletag.pubads().refresh([bannerSlot300x600])
+        }, 30000)
+      })
+    </script>
     <script>
       window.plausible =
         window.plausible ||
@@ -409,15 +426,13 @@
         ></iframe>
       </div>
       <div class="sidebar">
-        <ins
-          class="adsbygoogle"
-          style="display: inline-block; width: 300px; height: 600px"
-          data-ad-client="ca-pub-3723218062742398"
-          data-ad-slot="9386191967"
-        ></ins>
-        <script>
-          ;(adsbygoogle = window.adsbygoogle || []).push({})
-        </script>
+        <div id="div-gpt-ad-1744674311666-0" style="min-width: 300px; min-height: 600px">
+          <script>
+            googletag.cmd.push(function () {
+              googletag.display(bannerSlot300x600)
+            })
+          </script>
+        </div>
         <ins
           class="adsbygoogle ad-small"
           style="display: inline-block; width: 300px; height: 300px"
