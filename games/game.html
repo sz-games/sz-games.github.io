@@ -14,34 +14,6 @@
 
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
-      window.googletag = window.googletag || { cmd: [] }
-      var bannerSlot300x600
-      googletag.cmd.push(function () {
-        bannerSlot300x600 = googletag
-          .defineSlot('/22921845643/SZ_Games_Right_Sidebar_300x600', [300, 600], 'div-gpt-ad-1744674311666-0')
-          .addService(googletag.pubads())
-
-        // only if height is more than 1079px
-        if (window.innerHeight > 1079) {
-          bannerSlot300x300 = googletag
-            .defineSlot('/22921845643/SZ_Games_Sidebar_300x300', [300, 300], 'div-gpt-ad-1744675399683-0')
-            .addService(googletag.pubads())
-        }
-        googletag.pubads().enableSingleRequest()
-        googletag.enableServices()
-
-        setInterval(function () {
-          googletag.pubads().refresh([bannerSlot300x600])
-        }, 30000)
-
-        if (window.innerHeight > 1079) {
-          setInterval(function () {
-            googletag.pubads().refresh([bannerSlot300x300])
-          }, 30000)
-        }
-      })
-    </script>
-    <script>
       window.plausible =
         window.plausible ||
         function () {
@@ -439,20 +411,24 @@
         ></iframe>
       </div>
       <div class="sidebar">
-        <div id="div-gpt-ad-1744674311666-0" style="min-width: 300px; min-height: 600px">
-          <script>
-            googletag.cmd.push(function () {
-              googletag.display(bannerSlot300x600)
-            })
-          </script>
-        </div>
-        <div id="div-gpt-ad-1744675399683-0" style="min-width: 300px; min-height: 300px">
-          <script>
-            googletag.cmd.push(function () {
-              googletag.display(bannerSlot300x300)
-            })
-          </script>
-        </div>
+        <ins
+          class="adsbygoogle"
+          style="display: inline-block; width: 300px; height: 600px"
+          data-ad-client="ca-pub-3723218062742398"
+          data-ad-slot="9386191967"
+        ></ins>
+        <script>
+          ;(adsbygoogle = window.adsbygoogle || []).push({})
+        </script>
+        <ins
+          class="adsbygoogle ad-small"
+          style="display: inline-block; width: 300px; height: 300px"
+          data-ad-client="ca-pub-3723218062742398"
+          data-ad-slot="5174526352"
+        ></ins>
+        <script>
+          ;(adsbygoogle = window.adsbygoogle || []).push({})
+        </script>
       </div>
     </div>
 
