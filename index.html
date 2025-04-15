@@ -38,24 +38,15 @@
 
       googletag.cmd.push(function () {
         bannerSlot728x90 = googletag
-          .defineSlot(
-            '/22921845643/SZ_Games_Top_Leaderboard',
-            [
-              [300, 100],
-              [750, 300],
-              [728, 90],
-              [300, 250],
-              [970, 250],
-              [970, 90],
-              [320, 50],
-              [336, 280],
-              [980, 90],
-            ],
-            'div-gpt-ad-1744619501453-0'
-          )
+          .defineSlot('/22921845643/SZ_Games_Top_Leaderboard', [728, 90], 'div-gpt-ad-1744679821427-0')
           .addService(googletag.pubads())
+
         googletag.pubads().enableSingleRequest()
         googletag.enableServices()
+
+        setInterval(function () {
+          googletag.pubads().refresh([bannerSlot728x90])
+        }, 30000)
       })
     </script>
 
@@ -932,26 +923,12 @@
         Sz Games
       </h1>
 
-      <div
-        style="display: none; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%)"
-        id="timecontainercount"
-      >
-        <div
-          style="
-            background-color: #5656563c;
-            border-radius: 15px;
-            width: fit-content;
-            padding: 0px 10px 0px 10px;
-            height: 30px;
-          "
-        >
-          <p
-            id="countdowntxt"
-            style="position: relative; top: 50%; transform: translate(-0%, -50%); color: white; text-align: center"
-          >
-            --Countdown--
-          </p>
-        </div>
+      <div id="div-gpt-ad-1744679821427-0" style="min-width: 728px; min-height: 90px">
+        <script>
+          googletag.cmd.push(function () {
+            googletag.display(bannerSlot728x90)
+          })
+        </script>
       </div>
 
       <span
@@ -969,22 +946,6 @@
         "
       >
         menu
-      </span>
-      <span
-        onclick="ToggleLang()"
-        class="material-icons notranslate"
-        style="
-          cursor: pointer;
-          font-size: larger;
-          top: 50%;
-          transform: translate(-0%, -50%);
-          margin-right: 15px;
-          float: right;
-          color: white;
-          position: relative;
-        "
-      >
-        translate
       </span>
 
       <style>
@@ -1038,34 +999,6 @@
         </svg>
       </a>
     </div>
-
-    <script>
-      var IsOpenLang = false
-
-      var myElement = document.getElementById('TopMenu')
-      var Isscrolled = false
-      window.addEventListener('scroll', function () {
-        if (window.pageYOffset > 350) {
-          if (Isscrolled === false) {
-            myElement.style.animation = 'scroll 0.8s'
-            myElement.style.top = '-50%'
-            Isscrolled = true
-            //console.log("its false")
-          } else {
-            Isscrolled = true
-          }
-        } else if (window.pageYOffset < 350) {
-          if (Isscrolled === true) {
-            //console.log("its true")
-            myElement.style.animation = 'scroll2 0.3s'
-            myElement.style.top = '10px'
-            Isscrolled = false
-          } else {
-            Isscrolled = false
-          }
-        }
-      })
-    </script>
     <style>
       @keyframes menuM {
         0% {
