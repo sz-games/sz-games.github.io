@@ -83,6 +83,8 @@
         font-family: Arial, Helvetica, sans-serif;
         background-repeat: none;
         background-size: cover;
+        margin: 0;
+        overflow: hidden; /* Prevent body scroll */
       }
 
       img {
@@ -147,8 +149,7 @@
 
       .game-area {
         flex: 1;
-        height: 100%;
-        position: relative;
+        height: 100vh;
         overflow-y: auto;
         padding-right: 20px;
       }
@@ -166,31 +167,36 @@
         border-radius: 4px;
       }
 
+      .game-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
       .sidebar {
         width: 300px;
         background-color: #1d1d1d;
-        color: white;
-        height: 100vh;
-        overflow: hidden;
         border-left: 1px solid rgba(255, 255, 255, 0.1);
-        position: relative;
+        flex-shrink: 0; /* Prevent sidebar from shrinking */
+        display: flex;
+        flex-direction: column;
       }
 
       .sidebar-ad {
-        position: fixed;
-        width: 300px;
-        right: 0;
+        position: sticky;
         top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
       }
 
       @media (max-width: 1279px) {
-        .sidebar,
-        .sidebar-ad {
+        .sidebar {
           display: none;
         }
 
         .game-area {
-          width: 100%;
+          padding-right: 0;
         }
       }
 
@@ -448,91 +454,93 @@
 
     <div class="game-container">
       <div class="game-area">
-        <div class="header">
-          <img
-            src="https://github.com/sz-games/home/blob/main/G.png?raw=true"
-            style="position: relative; width: 150px; height: 150px"
-            alt="img"
-          />
-          <h1>Roblox</h1>
-        </div>
+        <div class="game-content">
+          <div class="header">
+            <img
+              src="https://github.com/sz-games/home/blob/main/G.png?raw=true"
+              style="position: relative; width: 150px; height: 150px"
+              alt="img"
+            />
+            <h1>Roblox</h1>
+          </div>
 
-        <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px">
-          <div
-            id="ad-container"
-            style="display: block; width: 728px; height: 300px; min-width: 400px; max-width: 800px"
-          >
-            <div id="div-gpt-ad-1744679821427-0" style="min-width: 300px; min-height: 50px">
-              <script>
-                googletag.cmd.push(function () {
-                  googletag.display(bannerSlot728x90)
-                })
-              </script>
+          <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px">
+            <div
+              id="ad-container"
+              style="display: block; width: 728px; height: 300px; min-width: 400px; max-width: 800px"
+            >
+              <div id="div-gpt-ad-1744679821427-0" style="min-width: 300px; min-height: 50px">
+                <script>
+                  googletag.cmd.push(function () {
+                    googletag.display(bannerSlot728x90)
+                  })
+                </script>
+              </div>
             </div>
           </div>
+
+          <br />
+          <a href="./index.html">
+            <button onclick="" class="button">Back Home</button>
+          </a>
+          <br />
+          <br />
+          <p style="font-size: 20px; color: white; text-align: center; word-wrap: break-word">
+            Before you play please note the links may be blocked By Your Admin Or Not Work, And May Load Slow.
+          </p>
+          <br />
+          <p style="font-size: 20px; color: white; text-align: center; word-wrap: break-word">
+            Select A Server To Continue, Servers 9 - 12 Should Be Working
+          </p>
+
+          <br />
+
+          <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.online/demo">
+            <button onclick="" class="button">Server 1</button>
+          </a>
+          <br />
+          <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.info/demo">
+            <button onclick="" class="button">Server 2</button>
+          </a>
+          <br />
+          <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.one/demo">
+            <button onclick="" class="button">Server 3</button>
+          </a>
+          <br />
+          <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.monster/demo">
+            <button onclick="" class="button">Server 4</button>
+          </a>
+          <br />
+          <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.world/demo">
+            <button onclick="" class="button">Server 5</button>
+          </a>
+          <br />
+          <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.xyz/demo">
+            <button onclick="" class="button">Server 6</button>
+          </a>
+          <br />
+          <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.fun/demo">
+            <button onclick="" class="button">Server 7</button>
+          </a>
+          <br />
+          <a href="https://mathsspot.com/">
+            <button onclick="" class="button">Server 8</button>
+          </a>
+          <br />
+          <a href="https://xn--31byd1i.net/play/roblox-corporation/5349/roblox">
+            <button onclick="" class="button">Server 9</button>
+          </a>
+          <br />
+          <a href="https://universityequality.com/play/uncube/7074/now">
+            <button onclick="" class="button">Server 10 (Android OS)</button>
+          </a>
+          <a href="https://selfstudybrain.com/">
+            <button onclick="" class="button">Server 11</button>
+          </a>
+          <a href="https://educationbluesky.com/">
+            <button onclick="" class="button">Server 12</button>
+          </a>
         </div>
-
-        <br />
-        <a href="./index.html">
-          <button onclick="" class="button">Back Home</button>
-        </a>
-        <br />
-        <br />
-        <p style="font-size: 20px; color: white; text-align: center; word-wrap: break-word">
-          Before you play please note the links may be blocked By Your Admin Or Not Work, And May Load Slow.
-        </p>
-        <br />
-        <p style="font-size: 20px; color: white; text-align: center; word-wrap: break-word">
-          Select A Server To Continue, Servers 9 - 12 Should Be Working
-        </p>
-
-        <br />
-
-        <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.online/demo">
-          <button onclick="" class="button">Server 1</button>
-        </a>
-        <br />
-        <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.info/demo">
-          <button onclick="" class="button">Server 2</button>
-        </a>
-        <br />
-        <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.one/demo">
-          <button onclick="" class="button">Server 3</button>
-        </a>
-        <br />
-        <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.monster/demo">
-          <button onclick="" class="button">Server 4</button>
-        </a>
-        <br />
-        <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.world/demo">
-          <button onclick="" class="button">Server 5</button>
-        </a>
-        <br />
-        <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.xyz/demo">
-          <button onclick="" class="button">Server 6</button>
-        </a>
-        <br />
-        <a href="https://sz-games.github.io/games/game.html?game=https://acb.caculatorgeo.fun/demo">
-          <button onclick="" class="button">Server 7</button>
-        </a>
-        <br />
-        <a href="https://mathsspot.com/">
-          <button onclick="" class="button">Server 8</button>
-        </a>
-        <br />
-        <a href="https://xn--31byd1i.net/play/roblox-corporation/5349/roblox">
-          <button onclick="" class="button">Server 9</button>
-        </a>
-        <br />
-        <a href="https://universityequality.com/play/uncube/7074/now">
-          <button onclick="" class="button">Server 10 (Android OS)</button>
-        </a>
-        <a href="https://selfstudybrain.com/">
-          <button onclick="" class="button">Server 11</button>
-        </a>
-        <a href="https://educationbluesky.com/">
-          <button onclick="" class="button">Server 12</button>
-        </a>
       </div>
       <div class="sidebar">
         <div class="sidebar-ad">
