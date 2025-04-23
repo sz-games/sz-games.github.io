@@ -1,99 +1,212 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true">
+  <head>
+    <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true" />
     <title>Sz Games | 404</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-    background: rgb(41, 41, 41);
-    margin: 0;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        background: rgb(41, 41, 41);
+        margin: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+      }
 
-    }
-    
-    
-/* Header/Logo Title */
-.header {
-  
-  text-align: center;
-  
+      .game-covers {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+        opacity: 0.2;
+      }
 
-  width: auto;
-  font-size: 30px;
- 
- 
-}
+      .cover {
+        aspect-ratio: 1;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        transform: rotate(var(--rotation));
+        animation: float 6s ease-in-out infinite;
+      }
 
-/* Page Content */
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(var(--rotation)) translateY(0);
+        }
+        50% {
+          transform: rotate(var(--rotation)) translateY(-20px);
+        }
+      }
 
-</style>
-</head>
-<body>
-<style>
-   
-  
+      .error-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: rgba(32, 32, 32, 0.9);
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+      }
 
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
 
-  .bgp1 {
-    width: 20%; 
-    height: 100%; 
-    transform: rotate(-25deg); 
-     position: absolute;
-      background-color: rgba(116, 116, 116, 0.569); 
-      left: -200px; 
-      top: 150px;
-      transition: 0.8;
-      animation: bgp1 0.8s;
-  }
-  .bgp2 {
-    width: 20%; 
-    height: 100%; 
-    transform: rotate(-25deg); 
-     position: absolute;
-      background-color: rgba(116, 116, 116, 0.569); 
-      right: -200px; 
-      top: -150px;
-      transition: 0.8;
-      animation: bgp2 0.8s;
+      .logo img {
+        width: 50px;
+        height: 50px;
+      }
 
-  }
-  
-@keyframes bgp1 {
-  from {left: -400px; opacity: 0; }
-  to {left: -200px; opacity: 1; }
+      .error-code {
+        font-size: 120px;
+        font-weight: bold;
+        margin: 0;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-}
-@keyframes bgp2 {
-  from {right: -400px; opacity: 0; }
-  to {right: -200px; opacity: 1; }
+      .error-message {
+        font-size: 24px;
+        margin: 20px 0;
+      }
 
-}
+      .home-link {
+        display: inline-block;
+        padding: 15px 35px;
+        background: linear-gradient(45deg, #ff3d3d, #ff8c00);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba(255, 61, 61, 0.4);
+        position: relative;
+        overflow: hidden;
+        animation: pulse 2s infinite;
+      }
 
-  
-</style>
-    <div style="border-radius: 15px; border: solid gray 4px; overflow-y: scroll; overflow-x: hidden; z-index: 50; position: absolute; width: 40%; height: 55%; background-color: rgb(32, 32, 32); left: 50%; top: 50%; transform: translate(-50%, -50%);">
-      <div id="sz Games">
-          <img src="https://github.com/sz-games/sz-games.github.io/blob/main/G.png?raw=true" style="float: left; position: relative;  width: 50px; height: 50px;" alt="img">
-          <p style="font-size: 20px; float: left;">Sz Games</p>
+      .home-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(255, 61, 61, 0.6);
+        background: linear-gradient(45deg, #ff8c00, #ff3d3d);
+      }
 
-        </div>
-        <br>
-        <br>
-        <p style="left: 10px;  font-size: 35px; position: relative;">404</p>
-        <p style="left: 10px; font-size: 20px; position: relative;">Page Not Found</p>
-        <!--p style="cursor: pointer; text-decoration: none;" onclick="window.location = 'https://sz-games.github.io'">Find A Game</p-->
-       
-     
+      .home-link:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(255, 61, 61, 0.4);
+      }
 
-       
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .home-link::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-covers">
+      <div
+        class="cover"
+        style="--rotation: -5deg; background-image: url('https://sz-games.github.io/cover/slope.webp')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 5deg; background-image: url('https://sz-games.github.io/cover/Bitlife.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -3deg; background-image: url('https://sz-games.github.io/cover/Minecraft.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 7deg; background-image: url('https://sz-games.github.io/cover/gunnn.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 3deg; background-image: url('https://sz-games.github.io/cover/lol.jpeg')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -7deg; background-image: url('https://sz-games.github.io/cover/BASKETBRO.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 2deg; background-image: url('https://sz-games.github.io/cover/fnaf1.jpeg')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -4deg; background-image: url('https://sz-games.github.io/cover/fnaf2.webp')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 6deg; background-image: url('https://sz-games.github.io/cover/motox3m.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -2deg; background-image: url('https://sz-games.github.io/cover/roblox.jpeg')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 4deg; background-image: url('https://sz-games.github.io/cover/retrobowl.avif')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -6deg; background-image: url('https://sz-games.github.io/cover/pvz.png')"
+      ></div>
     </div>
 
-  
-
-
-</body>
+    <div class="error-container">
+      <div class="logo">
+        <img src="https://github.com/sz-games/sz-games.github.io/blob/main/G.png?raw=true" alt="Sz Games Logo" />
+        <h1>Sz Games</h1>
+      </div>
+      <h1 class="error-code">404</h1>
+      <p class="error-message">Oops! This page got lost in the game</p>
+      <a href="https://sz-games.github.io" class="home-link">🎮 Back to Games 🎮</a>
+    </div>
+  </body>
 </html>
