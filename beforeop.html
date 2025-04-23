@@ -610,28 +610,6 @@ p {
 </div>
 
 
-<div id="CHATDISABLED" style="transition: 0.5s;  opacity: 0; display: none; left: 50%; position: fixed; z-index: 90; top: 50%; transform: translate(-50%, -50%); width: 45%; height: 40%; border-radius: 15px; background-color: rgb(32, 32, 32);">
-  <h1 style="margin: 20px; color: white; text-align: center;">The Chat Room Has Been Disabled</h1>
-  <h3 style="color: white; width: 95%; left: 50%; top: 50%; transform: translate(-50%, -150%); position: absolute;"></h3>
-<p style="color: white; position: absolute; bottom: 80px; left: 10px;"></p>
-<p style="color: white; bottom: 50px; left: 50%; transform: translateX(-50%); position: absolute; text-align: center;">This Will Close In A Few Seconds</p>
-</div>
-<script>
-  function chaterror() {
-    var containererrmsg = document.getElementById('CHATDISABLED')
-    containererrmsg.style.display = "block"
-    containererrmsg.style.animation = "openerror 0.5s"
-    containererrmsg.style.opacity = 1
-    setTimeout(() => {
-      containererrmsg.style.opacity = 0
-      setTimeout(() => {
-        containererrmsg.style.display = 'none'
-      }, 490);
-    }, 7000);
-  }
-</script>
-
-
 <div style="display: none; z-index: 1000;  width: 100%; position: fixed; height: 100%; background-color: #1d1d1d;" id="WeWillBeBackScreen">
   <style>
    
@@ -641,26 +619,8 @@ p {
     <h1 style="font-size: 23px; color: white; text-align: center;">We'll Be Back Soon!</h1>
   </div>
   <p style="background-color: #2727279c; padding: 10px; border-radius: 15px; z-index: 10; color: rgb(255, 255, 255); font-size: 16px; position: fixed; transform: translateX(-50%); bottom: 20px; left: 50%;">There May be More Info On Our <a style="text-decoration: underline; color: white; cursor: pointer;" href="https://discord.gg/XaEPUtUZ7G">Discord Server</a></p>
-
-  <div style="position: absolute; bottom: 0;  z-index: -1; ">
-    <div style="position: absolute; z-index: 5; top: -20px; width: 100%; height: 70%;  background: linear-gradient(to bottom, #1d1d1d, #1d1d1d, rgba(255, 255, 255, 0));"></div>
-    <video id="BGVIDSOM1" style="width: 100%; filter: blur(3px) brightness(80%);" src="" muted loop autoplay>
-      <script> 
-      </script>
-    </video>
-
-  </div>
 </div>
 
-<script>
-  var setscreen = false
-
-  if(setscreen === true) {    
-    document.getElementById('BGVIDSOM1').src = 'https://sz-games.github.io/BGVIDLOW.mp4'
-    document.getElementById('WeWillBeBackScreen').style.display = 'block'
-    document.body.style.overflowX = 'hidden'
-  }
-</script>
 <div id="overlay" style="pointer-events: none; position: fixed; display: none; width: 100%; height: 100%;">
 
 </div>
@@ -846,12 +806,6 @@ p {
         }
 
       </style>
-          <!--a href="./Chat.html" aria-label="Go To Chat"-->
-
-            <span onclick="chaterror()" class="material-icons notranslate"  style=" cursor: pointer;  font-size: larger; top: 50%; transform: translate(-0%, -50%); margin-right: 15px; float: right; color: rgb(54, 54, 54);  position: relative;">  
-                chat
-            </span>
-          <!--/a-->
       <a href="https://discord.gg/DzKRSntb87" aria-label="Go To Discord Server Invite Page">
         <i class='fab fa-discord Discord'  style='cursor: pointer;  font-size: larger; top: 50%; transform: translate(-0%, -50%); margin-right: 15px; float: right; color: white;  position: relative; '></i>
       </a>
