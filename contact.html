@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Sz Games</title>
+    <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true" />
+    <script
+      defer
+      data-domain="sz-games.github.io"
+      src="https://stats.senty.com.au/js/script.outbound-links.pageview-props.tagged-events.js"
+    ></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          ;(window.plausible.q = window.plausible.q || []).push(arguments)
+        }
+    </script>
+    <style>
+      body {
+        background: rgb(41, 41, 41);
+        margin: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+      }
+
+      .game-covers {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+        opacity: 0.2;
+      }
+
+      .cover {
+        aspect-ratio: 1;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        transform: rotate(var(--rotation));
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(var(--rotation)) translateY(0);
+        }
+        50% {
+          transform: rotate(var(--rotation)) translateY(-20px);
+        }
+      }
+
+      .contact-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: rgba(32, 32, 32, 0.9);
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+        width: 90%;
+        max-width: 700px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+      }
+
+      h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p {
+        font-size: 18px;
+        margin: 0 0 30px 0;
+        line-height: 1.5;
+      }
+
+      iframe {
+        width: 100%;
+        max-width: 640px;
+        height: 650px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f0f0f0;
+      }
+
+      .home-link {
+        display: inline-block;
+        padding: 15px 35px;
+        background: linear-gradient(45deg, #ff3d3d, #ff8c00);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba(255, 61, 61, 0.4);
+        position: relative;
+        overflow: hidden;
+        margin-top: 20px;
+      }
+
+      .home-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(255, 61, 61, 0.6);
+        background: linear-gradient(45deg, #ff8c00, #ff3d3d);
+      }
+
+      .home-link::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(45deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .contact-container {
+          padding: 30px 20px;
+          width: 90%;
+        }
+
+        iframe {
+          height: 700px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-covers">
+      <div class="cover" style="--rotation: -5deg; background-image: url('cover/slope.webp')"></div>
+      <div class="cover" style="--rotation: 5deg; background-image: url('cover/Bitlife.png')"></div>
+      <div class="cover" style="--rotation: -3deg; background-image: url('cover/Minecraft.png')"></div>
+      <div class="cover" style="--rotation: 7deg; background-image: url('cover/gunnn.png')"></div>
+      <div class="cover" style="--rotation: 3deg; background-image: url('cover/lol.jpeg')"></div>
+      <div class="cover" style="--rotation: -7deg; background-image: url('cover/BASKETBRO.png')"></div>
+      <div class="cover" style="--rotation: 2deg; background-image: url('cover/fnaf1.jpeg')"></div>
+      <div class="cover" style="--rotation: -4deg; background-image: url('cover/fnaf2.webp')"></div>
+      <div class="cover" style="--rotation: 6deg; background-image: url('cover/motox3m.png')"></div>
+      <div class="cover" style="--rotation: -2deg; background-image: url('cover/roblox.jpeg')"></div>
+      <div class="cover" style="--rotation: 4deg; background-image: url('cover/retrobowl.avif')"></div>
+      <div class="cover" style="--rotation: -6deg; background-image: url('cover/pvz.png')"></div>
+    </div>
+
+    <div class="contact-container">
+      <div class="logo">
+        <img src="https://github.com/sz-games/sz-games.github.io/blob/main/G.png?raw=true" alt="Sz Games Logo" />
+        <h1>Contact Us</h1>
+      </div>
+      <p>
+        If you have any questions or feedback, want to submit a game or leave a review, please use the form below to get
+        in touch with us.
+      </p>
+
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScc5KUKSzERyIQb8FfF8xb4w0d6YxD4oE4RV8gvqygR1BKq3w/viewform?embedded=true"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        >Loading…</iframe
+      >
+
+      <a href="https://sz-games.github.io" class="home-link">🎮 Back to Games 🎮</a>
+    </div>
+  </body>
+</html>
