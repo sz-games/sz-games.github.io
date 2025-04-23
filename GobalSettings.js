@@ -198,7 +198,10 @@ function restrictsmoothanimations() {
     }
   }
 
-  document.querySelectorAll('*').forEach(stopAnimationsOnElement)
+  // Apply to existing elements
+  if (document.body) {
+    document.querySelectorAll('*').forEach(stopAnimationsOnElement)
+  }
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -215,11 +218,24 @@ function restrictsmoothanimations() {
     })
   })
 
-  observer.observe(document.body, {
-    childList: true,
-    attributes: true,
-    subtree: true,
-  })
+  // Only observe if body exists
+  if (document.body) {
+    observer.observe(document.body, {
+      childList: true,
+      attributes: true,
+      subtree: true,
+    })
+  } else {
+    // If body doesn't exist yet, wait for it
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('*').forEach(stopAnimationsOnElement)
+      observer.observe(document.body, {
+        childList: true,
+        attributes: true,
+        subtree: true,
+      })
+    })
+  }
 
   document.addEventListener('animationstart', (e) => {
     e.target.style.animation = 'none'
