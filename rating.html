@@ -1,632 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <script defer data-domain="sz-games.github.io" src="https://stats.senty.com.au/js/script.outbound-links.pageview-props.tagged-events.js"></script>
-  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-  
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3723218062742398"
-     crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yo!</title>
+    <link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true" />
+    <link rel="manifest" href="manifest.json" />
 
-
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-C78TXR0XFK');
-</script>
-
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="https://github.com/sz-games/home/blob/main/G.png?raw=true">
-<title>Yo!</title>
-    
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-
-<style>
-
-
-body {
-  background: linear-gradient(to bottom, #1d1d1d, #2f2f2f, rgb(58, 58, 58), #1d1d1d, #2f2f2f);
-  font-family: Arial, Helvetica, sans-serif;
-  background-repeat: none;
-  background-size: cover;
-}
-
-img {
-  
-  margin: 10px;
-position: relative;
-z-index: 1;
-}
-
-.btn-group button {
-  background-color: black; /* Green background */
- 
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
-}
-
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.btn-group button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: grey;
-}
-
-/* Header/Logo Title */
-.header-halloween {
-  padding: 60px;
-  text-align: center;
-  background: linear-gradient(to bottom right, #ff7d31, rgb(39, 39, 39), rgb(39, 39, 39));
-  color: white;
-  width: auto;
-  font-size: 30px;
-  position: relative;
-z-index: 1;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 15px;
-}
-
-.header {
-  position: relative;
-z-index: 1;
-  padding: 60px;
-  text-align: center;
-  background: linear-gradient(to bottom right, #9a9a9a, rgb(39, 39, 39));
-  color: white;
-  width: auto;
-  font-size: 30px;
- 
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 15px;
-}
-
-/* Page Content */
-
-</style>
-
-
-<body>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3723218062742398"
-     crossorigin="anonymous"></script>
-
-<style>
-    .game {
-        position: absolute;
-color: white;
-
-  transform: scale(1.8);
-  z-index: 3;
-  font-family: Arial, Helvetica, sans-serif;
-    }
-    .fade {
-        position: absolute;
-        background: linear-gradient(to bottom, #1d1d1d, #1d1d1d5d, rgba(39, 39, 39, 0));
-        width: 300px;
-        height: 150px;
-     border-radius: 15px;
-    }
-
-
-
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 85vw;
-  margin: 1rem auto;
-}
-
-
-.bg,
-.overlay {
-  text-align: center;
-}
-
-img,
-.overlay {
-  transition: .3s all;
-  border-radius: 3px;
-}
-
-.day {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  color: white;
-  position: relative;
-z-index: 1;
-}
-
-.bubbles{
-  position: fixed;
-  width:100%;
-  height: 100%;
-  z-index: 0;
-  overflow:hidden;
-  top:0;
-  left:0;
-}
-.bubble{
-  position: absolute;
-  bottom:-100px;
-  width:40px;
-  height: 40px;
-  background: linear-gradient(to top right, #c68324, #bd0d0d5d);
-  border-radius:50%;
-  opacity:0.5;
-  animation: rise 10s infinite ease-in;
-}
-.bubble:nth-child(1){
-  width:40px;
-  height:40px;
-  left:10%;
-  animation-duration:8s;
-}
-.bubble:nth-child(2){
-  width:20px;
-  height:20px;
-  left:20%;
-  animation-duration:5s;
-  animation-delay:1s;
-}
-.bubble:nth-child(3){
-  width:50px;
-  height:50px;
-  left:35%;
-  animation-duration:7s;
-  animation-delay:2s;
-}
-.bubble:nth-child(4){
-  width:80px;
-  height:80px;
-  left:50%;
-  animation-duration:11s;
-  animation-delay:0s;
-}
-.bubble:nth-child(5){
-  width:35px;
-  height:35px;
-  left:55%;
-  animation-duration:6s;
-  animation-delay:1s;
-}
-.bubble:nth-child(6){
-  width:45px;
-  height:45px;
-  left:65%;
-  animation-duration:8s;
-  animation-delay:3s;
-}
-.bubble:nth-child(7){
-  width:90px;
-  height:90px;
-  left:70%;
-  animation-duration:12s;
-  animation-delay:2s;
-}
-.bubble:nth-child(8){
-  width:25px;
-  height:25px;
-  left:80%;
-  animation-duration:6s;
-  animation-delay:2s;
-}
-.bubble:nth-child(9){
-  width:15px;
-  height:15px;
-  left:70%;
-  animation-duration:5s;
-  animation-delay:1s;
-}
-.bubble:nth-child(10){
-  width:90px;
-  height:90px;
-  left:25%;
-  animation-duration:10s;
-  animation-delay:4s;
-}
-@keyframes rise{
-  0%{
-    bottom:-100px;
-    transform:translateX(0);
-  }
-  50%{
-    transform:translate(100px);
-  }
-  100%{
-    bottom:1080px;
-    transform:translateX(-200px);
-  }
-}
-
-.hello img {
-            width: 100%;
-            transition: 0.5s all ease-in-out;
+    <!-- Analytics -->
+    <script
+      defer
+      data-domain="sz-games.github.io"
+      src="https://stats.senty.com.au/js/script.outbound-links.pageview-props.tagged-events.js"
+    ></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          ;(window.plausible.q = window.plausible.q || []).push(arguments)
         }
-     
-        .hello:hover img {
-          transform-origin: top;
-            transform: scale(1.1);
-        }
+    </script>
 
-
-</style>
-<style>
-  .topnav {
-  overflow: hidden;
-  position: fixed;
-  z-index: 5;
-  border-radius: 30px;
-  background-color: #333;
-}
-
-p {
-  transition: 0.5s;
-}
-
-.topnav p {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-
-@keyframes move {
-  0% {
-    transform: translate(-100%, -100%);
-  }
-  100% {
-    transform: translate(100%, 100%);
-  }
-}
-.button {
- --color: #00A97F;
- padding: 0.8em 1.7em;
- background-color: transparent;
- border-radius: .3em;
- position: relative;
- overflow: hidden;
- width: 100%;
- cursor: pointer;
- transition: .5s;
- font-weight: 400;
- font-size: 17px;
- border: 1px solid;
- font-family: inherit;
- text-transform: uppercase;
- color: var(--color);
- z-index: 1;
-}
-.button:hover {
-  color: white;
-}
-
-</style>
-
-
-
-
- 
- 
-
-
-    <div class="header">
-        <!--img src="https://github.com/sz-games/sz-games.github.io/blob/main/Gh.png?raw=true" style="position: relative; width: 150px; height: 150px;" alt="img"-->
-        <img src="https://github.com/sz-games/home/blob/main/G.png?raw=true" style="position: relative; width: 150px; height: 150px;" alt="img">
-        <h1>Hey!</h1>
-      </div>
-      <br></br>
-   
-      <br></br>
-
-</div>
-      
-
-
-
-<!--div class="hello" style=" margin-right: auto; margin-left: auto; width: 430px;">
-  <a href="https://sites.google.com/view/fnf-unblockedhehe/home">
-      <p class="game" style="left: 105px;" >Infinite Tower</p>
-      <div class="fade" ></div>
-   <img style="border-radius: 15px; width: 400px;" src="https://github.com/sz-games/sz-games.github.io/blob/main/cover/fn.png?raw=true" alt="game">
-  </a>
- 
-  
-</div-->
-
-
-<h4 id="reason1" style="text-align: center; color: #f2f2f2; font-family: Arial, Helvetica, sans-serif; z-index: 60;"></h4>
-<br>
-<h3 id="reason2" style="text-align: center; color: #f2f2f2; font-family: Arial, Helvetica, sans-serif; z-index: 60;"></h3>
-<br>
-<h3 id="reason3" style="text-align: center; color: #f2f2f2; font-family: Arial, Helvetica, sans-serif; z-index: 60;"></h3>
-<br>
-<br>
-<button onclick="opena()" class="button"> Yeah
-</button>
-<br>
-<br>
-<br>
-<br>
-<button onclick="back()" class="button"> Nah
-</button>
-<script>
-  var currentUrl = new URL(window.location.href);
-       var game = currentUrl.searchParams.get("game")
-       var url = currentUrl.searchParams.get("url")
-       
-       // Check for the presence of the "text" parameter in the URL
-       if (game === 'bitlife') {
-       // Set the text of the element to the value of the "text" parameter
-         document.getElementById('reason1').innerHTML = "This Game Contains:"    
-         document.getElementById('reason2').innerHTML = "violence, sexual content, drugs, and alcohol"    
-         document.getElementById('reason3').innerHTML = "Do you want to continue?"    
-       }
-       function opena() {
-        window.location = url;
-        console.log(url)
-       }
-      function back() {
-
-        window.location = 'https://sz-games.github.io'
-
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
       }
-</script>
+      gtag('js', new Date())
+      gtag('config', 'G-C78TXR0XFK')
+    </script>
 
-<script>
-  
-</script>
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3723218062742398"
+      crossorigin="anonymous"
+    ></script>
 
-<section class="sticky">
-  <div class="bubbles">
-      <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-  </div>
-  <!--div class="bubbles" style="  filter: drop-shadow(0 0 10px white);" >
-  <div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-  </div-->
-</section>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || { cmd: [] }
 
-</body>
+      let bannerSlot728x90
 
-<script>
-  if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-</script>
+      googletag.cmd.push(function () {
+        bannerSlot728x90 = googletag
+          .defineSlot('/22921845643/SZ_Games_Top_Leaderboard', [728, 90], 'div-gpt-ad-1744679821427-0')
+          .addService(googletag.pubads())
 
+        googletag.pubads().enableSingleRequest()
+        googletag.enableServices()
+
+        setInterval(function () {
+          googletag.pubads().refresh([bannerSlot728x90])
+        }, 30000)
+      })
+    </script>
+
+    <style>
+      /* Reset and Base Styles */
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: rgb(41, 41, 41);
+        margin: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* Game covers background, similar to 404 page */
+      .game-covers {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      .cover {
+        aspect-ratio: 1;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        transform: rotate(var(--rotation));
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(var(--rotation)) translateY(0);
+        }
+        50% {
+          transform: rotate(var(--rotation)) translateY(-20px);
+        }
+      }
+
+      /* Header Styles */
+      .header {
+        position: relative;
+        z-index: 1;
+        padding: 3rem;
+        text-align: center;
+        background: rgba(32, 32, 32, 0.9);
+        color: white;
+        font-size: 1.5rem;
+        border-radius: 20px;
+        margin: 2rem auto;
+        max-width: 800px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .header-halloween {
+        background: linear-gradient(to bottom right, #ff7d31, rgb(39, 39, 39), rgb(39, 39, 39));
+      }
+
+      .header img {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        transition: transform 0.3s ease;
+      }
+
+      .header img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Ad container styles */
+      .ad-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        z-index: 10;
+      }
+
+      .header-ad {
+        background: rgba(32, 32, 32, 0.7);
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Content Styles */
+      .container {
+        width: 85%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: rgba(32, 32, 32, 0.9);
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+      }
+
+      .content-section {
+        text-align: center;
+        margin: 2rem 0;
+      }
+
+      h1,
+      h3,
+      h4 {
+        margin-bottom: 1rem;
+      }
+
+      /* Button Styles */
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 15px 35px;
+        background: linear-gradient(45deg, #ff3d3d, #ff8c00);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba(255, 61, 61, 0.4);
+        position: relative;
+        overflow: hidden;
+        animation: pulse 2s infinite;
+        border: none;
+        cursor: pointer;
+        width: 200px;
+      }
+
+      .button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(255, 61, 61, 0.6);
+        background: linear-gradient(45deg, #ff8c00, #ff3d3d);
+      }
+
+      .button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(255, 61, 61, 0.4);
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .button::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(45deg);
+        }
+      }
+
+      /* Navigation */
+      .topnav {
+        overflow: hidden;
+        position: fixed;
+        z-index: 5;
+        border-radius: 30px;
+        background-color: #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .topnav p {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        transition: 0.3s;
+      }
+
+      .topnav p:hover {
+        background-color: #555;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .header {
+          padding: 2rem 1rem;
+        }
+
+        .header img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .button {
+          width: 180px;
+        }
+
+        .container {
+          width: 90%;
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="game-covers">
+      <div
+        class="cover"
+        style="--rotation: -5deg; background-image: url('https://sz-games.github.io/cover/slope.webp')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 5deg; background-image: url('https://sz-games.github.io/cover/Bitlife.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -3deg; background-image: url('https://sz-games.github.io/cover/Minecraft.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 7deg; background-image: url('https://sz-games.github.io/cover/gunnn.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 3deg; background-image: url('https://sz-games.github.io/cover/lol.jpeg')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -7deg; background-image: url('https://sz-games.github.io/cover/BASKETBRO.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 2deg; background-image: url('https://sz-games.github.io/cover/fnaf1.jpeg')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -4deg; background-image: url('https://sz-games.github.io/cover/fnaf2.webp')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 6deg; background-image: url('https://sz-games.github.io/cover/motox3m.png')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -2deg; background-image: url('https://sz-games.github.io/cover/roblox.jpeg')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: 4deg; background-image: url('https://sz-games.github.io/cover/retrobowl.avif')"
+      ></div>
+      <div
+        class="cover"
+        style="--rotation: -6deg; background-image: url('https://sz-games.github.io/cover/pvz.png')"
+      ></div>
+    </div>
+
+    <div class="ad-container">
+      <div id="div-gpt-ad-1744679821427-0" class="header-ad" style="width: 728px; height: 90px; margin-bottom: 4px">
+        <script>
+          googletag.cmd.push(function () {
+            googletag.display(bannerSlot728x90)
+          })
+        </script>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="logo">
+        <img
+          src="https://github.com/sz-games/home/blob/main/G.png?raw=true"
+          alt="SZ Games Logo"
+          style="width: 50px; height: 50px"
+        />
+        <h1>Sz Games</h1>
+      </div>
+
+      <div class="content-section">
+        <h4 id="reason1"></h4>
+        <h3 id="reason2"></h3>
+        <h3 id="reason3"></h3>
+
+        <div class="button-container">
+          <button onclick="opena()" class="button">Yeah</button>
+          <button onclick="back()" class="button">Nah</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get URL parameters
+      const currentUrl = new URL(window.location.href)
+      const game = currentUrl.searchParams.get('game')
+      const url = currentUrl.searchParams.get('url')
+
+      // Set content based on game parameter
+      if (game === 'bitlife') {
+        document.getElementById('reason1').innerHTML = 'This Game Contains:'
+        document.getElementById('reason2').innerHTML = 'violence, sexual content, drugs, and alcohol'
+        document.getElementById('reason3').innerHTML = 'Do you want to continue?'
+      }
+
+      // Navigation functions
+      function opena() {
+        window.location = url
+      }
+
+      function back() {
+        window.location = 'https://sz-games.github.io'
+      }
+
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+      }
+    </script>
+  </body>
 </html>
