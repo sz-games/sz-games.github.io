@@ -33,6 +33,7 @@
 
       let bannerSlot728x90
       let interstitialSlot
+      let anchorSlot
 
       googletag.cmd.push(function () {
         bannerSlot728x90 = googletag
@@ -43,6 +44,13 @@
           '/22921845643/SZ_Games_Interstitial',
           googletag.enums.OutOfPageFormat.INTERSTITIAL
         )
+
+        anchorSlot = googletag.defineOutOfPageSlot(
+          '/22921845643/SZ_Games_Bottom_Anchor',
+          googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR
+        )
+
+        anchorSlot.addService(googletag.pubads())
 
         if (interstitialSlot) {
           interstitialSlot.addService(googletag.pubads()).setConfig({
@@ -59,7 +67,7 @@
         googletag.enableServices()
 
         setInterval(function () {
-          googletag.pubads().refresh([bannerSlot728x90])
+          googletag.pubads().refresh([bannerSlot728x90, anchorSlot])
         }, 30000)
       })
     </script>
