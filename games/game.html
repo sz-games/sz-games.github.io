@@ -517,83 +517,87 @@
         }
       </script>
     </div>
-  </body>
+    <script>
+      var isFUll = false
 
-  <script>
-    var isFUll = false
-
-    document.body.onkeyup = function (e) {
-      if (e.keyCode == 27) {
-        if (isFUll) {
-          //document.getElementById('game').style.width = '800px';
+      document.body.onkeyup = function (e) {
+        if (e.keyCode == 27) {
+          if (isFUll) {
+            //document.getElementById('game').style.width = '800px';
+          }
         }
       }
-    }
 
-    function requestFullScreen(element) {
-      // Supports most browsers and their versions.
-      var requestMethod =
-        element.requestFullScreen ||
-        element.webkitRequestFullScreen ||
-        element.mozRequestFullScreen ||
-        element.msRequestFullscreen
+      function requestFullScreen(element) {
+        // Supports most browsers and their versions.
+        var requestMethod =
+          element.requestFullScreen ||
+          element.webkitRequestFullScreen ||
+          element.mozRequestFullScreen ||
+          element.msRequestFullscreen
 
-      if (requestMethod) {
-        // Native full screen.
-        requestMethod.call(element)
+        if (requestMethod) {
+          // Native full screen.
+          requestMethod.call(element)
+          let hh = window.innerHeight
+
+          document.getElementById('game').height = hh
+        } else if (typeof window.ActiveXObject !== 'undefined') {
+          // Older IE.
+          var wscript = new ActiveXObject('WScript.Shell')
+          if (wscript !== null) {
+            wscript.SendKeys('{F11}')
+          }
+        }
+      }
+      var canvas = document.getElementById('game')
+
+      function makeFullScreen() {
+        isFUll = true
+        requestFullScreen(canvas)
+      }
+
+      function resize() {
         let hh = window.innerHeight
-
         document.getElementById('game').height = hh
-      } else if (typeof window.ActiveXObject !== 'undefined') {
-        // Older IE.
-        var wscript = new ActiveXObject('WScript.Shell')
-        if (wscript !== null) {
-          wscript.SendKeys('{F11}')
-        }
+
+        // Check window width for sidebar visibility
+        checkSidebarVisibility()
       }
-    }
-    var canvas = document.getElementById('game')
 
-    function makeFullScreen() {
-      isFUll = true
-      requestFullScreen(canvas)
-    }
+      function checkSidebarVisibility() {
+        // No need to add JS for this since we're using CSS media queries
+      }
 
-    function resize() {
-      let hh = window.innerHeight
-      document.getElementById('game').height = hh
+      window.onresize = resize
 
-      // Check window width for sidebar visibility
-      checkSidebarVisibility()
-    }
+      // Initialize on load
+      window.addEventListener('load', function () {
+        resize()
+      })
 
-    function checkSidebarVisibility() {
-      // No need to add JS for this since we're using CSS media queries
-    }
+      // Get the text element
+      var textElement = document.getElementById('game')
+      textElement.addEventListener('beforeunload', function (event) {
+        event.preventDefault()
+      })
+      // Get the current URL
+      var currentUrl = new URL(window.location.href)
 
-    window.onresize = resize
+      // Check for the presence of the "text" parameter in the URL
+      if (currentUrl.searchParams.has('game')) {
+        // Set the text of the element to the value of the "text" parameter
+        textElement.src = currentUrl.searchParams.get('game')
+      }
 
-    // Initialize on load
-    window.addEventListener('load', function () {
-      resize()
-    })
+      console.log(currentUrl.searchParams.get('game'))
+    </script>
 
-    // Get the text element
-    var textElement = document.getElementById('game')
-    textElement.addEventListener('beforeunload', function (event) {
-      event.preventDefault()
-    })
-    // Get the current URL
-    var currentUrl = new URL(window.location.href)
-
-    // Check for the presence of the "text" parameter in the URL
-    if (currentUrl.searchParams.has('game')) {
-      // Set the text of the element to the value of the "text" parameter
-      textElement.src = currentUrl.searchParams.get('game')
-    }
-
-    console.log(currentUrl.searchParams.get('game'))
-  </script>
-
-  <script src="/optimizely.js"></script>
+    <script src="/optimizely.js"></script>
+    <script>
+      googletag.cmd.push(function () {
+        googletag.display(interstitialSlot)
+      })
+    </script>
+  </body>
 </html>

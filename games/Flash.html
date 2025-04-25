@@ -623,5 +623,10 @@
         textElement.src = currentUrl.searchParams.get('game')
       }
     </script>
+    <script>
+      googletag.cmd.push(function () {
+        googletag.display(interstitialSlot)
+      })
+    </script>
   </body>
 </html>

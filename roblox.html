@@ -582,11 +582,15 @@
         </div>
       </div>
     </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+      }
+    </script>
+    <script>
+      googletag.cmd.push(function () {
+        googletag.display(interstitialSlot)
+      })
+    </script>
   </body>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-    }
-  </script>
 </html>
