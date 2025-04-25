@@ -21,7 +21,8 @@
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
       window.googletag = window.googletag || { cmd: [] }
-      var bannerSlot300x600
+      let bannerSlot300x600
+      let interstitialSlot
       googletag.cmd.push(function () {
         bannerSlot300x600 = googletag
           .defineSlot(
@@ -36,6 +37,22 @@
             'div-gpt-ad-1744674311666-0'
           )
           .addService(googletag.pubads())
+
+        interstitialSlot = googletag.defineOutOfPageSlot(
+          '/22921845643/SZ_Games_Interstitial',
+          googletag.enums.OutOfPageFormat.INTERSTITIAL
+        )
+
+        if (interstitialSlot) {
+          interstitialSlot.addService(googletag.pubads()).setConfig({
+            interstitial: {
+              triggers: {
+                navBar: true,
+                unhideWindow: true,
+              },
+            },
+          })
+        }
 
         googletag.pubads().enableSingleRequest()
         googletag.enableServices()

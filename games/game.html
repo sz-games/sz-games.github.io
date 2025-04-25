@@ -11,8 +11,6 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3723218062742398"
       crossorigin="anonymous"
     ></script>
-
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
       window.plausible =
         window.plausible ||
@@ -44,6 +42,32 @@
       gtag('config', 'G-C78TXR0XFK')
     </script>
     <script src="/GobalSettings.js"></script>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || { cmd: [] }
+
+      let interstitialSlot
+
+      googletag.cmd.push(() => {
+        interstitialSlot = googletag.defineOutOfPageSlot(
+          '/22921845643/SZ_Games_Interstitial',
+          googletag.enums.OutOfPageFormat.INTERSTITIAL
+        )
+
+        if (interstitialSlot) {
+          interstitialSlot.addService(googletag.pubads()).setConfig({
+            interstitial: {
+              triggers: {
+                navBar: true,
+                unhideWindow: true,
+              },
+            },
+          })
+        }
+        googletag.pubads().enableSingleRequest()
+        googletag.enableServices()
+      })
+    </script>
 
     <style>
       body {
