@@ -540,7 +540,7 @@ img {
 }
 .split-left {
   flex: 1;
-  width: calc(100% - 300px); /* Account for sidebar width */
+  width: 100%; /* Default to full width */
 }
 .sidebar {
   display: none;
@@ -561,6 +561,10 @@ img {
     position: sticky;
     top: 0;
     height: 100%;
+  }
+  /* Adjust split-left width only at 1024px+ */
+  .split-left {
+    width: calc(100% - 300px);
   }
 }
 
@@ -1052,27 +1056,6 @@ img {
 
 /* Show expanded sidebar at 1536px+ */
 @media (min-width: 1536px) {
-  /* Remove rules that force width/margin based only on screen size */
-  /* .youtube-sidebar {
-    width: 220px;
-  } */
-
-  /* Remove rule that overrides collapsed state width */
-  /* .youtube-sidebar.collapsed {
-    width: 220px;
-  } */
-
-  /* .youtube-main {
-    margin-left: 220px;
-    max-width: calc(100% - 220px);
-  } */
-
-  /* Remove rule that overrides collapsed state margin */
-  /* .collapsed-sidebar .youtube-main {
-    margin-left: 220px;
-    max-width: calc(100% - 220px);
-  } */
-
   /* Keep rules related to text visibility on hover/expand */
   .collapsed .sidebar-text {
     opacity: 1;
@@ -1150,7 +1133,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  right: 300px; /* Leave space for right sidebar */
+  right: 0; /* Default to full width */
   height: 56px;
   background-color: var(--sidebar-bg-color);
   display: flex;
@@ -1158,6 +1141,12 @@ img {
   padding: 0 16px;
   z-index: 100;
   border-bottom: 1px solid var(--border-color);
+}
+
+@media (min-width: 1024px) {
+  .site-header {
+    right: 300px; /* Adjust for sidebar at 1024px+ */
+  }
 }
 
 .site-header .logo {
@@ -1235,12 +1224,18 @@ img {
   position: fixed;
   top: 56px;
   left: 220px;
-  right: 300px;
+  right: 0; /* Default to full width */
   background-color: var(--sidebar-bg-color);
   padding: 12px 0;
   z-index: 98;
   border-bottom: 1px solid var(--border-color);
   transition: left 0.2s ease;
+}
+
+@media (min-width: 1024px) {
+  .categories-container {
+    right: 300px; /* Adjust for sidebar at 1024px+ */
+  }
 }
 
 /* Adjust category container when sidebar is collapsed */
@@ -1258,12 +1253,6 @@ img {
   height: 40px;
   align-items: center;
   justify-content: flex-start;
-}
-
-@media (min-width: 1536px) {
-  .category-chips {
-    margin-left: 220px;
-  }
 }
 
 .category-chip {
@@ -1308,8 +1297,8 @@ img {
 
 .featured-games {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
 }
 
 .featured-game {
@@ -1373,8 +1362,8 @@ img {
 /* YouTube Grid */
 .youtube-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
   margin-top: 20px;
 }
 
@@ -1448,55 +1437,48 @@ img {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .youtube-grid,
-  .featured-games {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 1000px) {
-  .youtube-grid,
-  .featured-games {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
-  .youtube-grid,
-  .featured-games {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .youtube-grid,
-  .featured-games {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (min-width: 1600px) {
   .youtube-grid,
   .featured-games {
-    grid-template-columns: repeat(7, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) and (max-width: 1599px) {
   .youtube-grid,
   .featured-games {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 16px;
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .youtube-grid,
   .featured-games {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .youtube-grid,
+  .featured-games {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 479px) {
+  .youtube-grid,
+  .featured-games {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+  }
+
+  .game-info h3,
+  .featured-game-info h3 {
+    font-size: 11px;
   }
 }
 
@@ -1544,13 +1526,37 @@ img {
 
 @media (max-width: 768px) {
   .youtube-sidebar {
+    width: 60px;
+    position: fixed;
+    left: 0;
+    top: 56px;
+    bottom: 0;
+    z-index: 99;
+    transform: none;
+    display: block;
+    background-color: var(--sidebar-bg-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar-text {
     display: none;
   }
 
-  .youtube-main {
-    margin-left: 0;
+  .sidebar-item {
+    justify-content: center;
+    padding: 12px 0;
   }
 
+  .sidebar-item .material-icons {
+    margin-right: 0;
+  }
+
+  .youtube-main {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+  }
+
+  /* Update the rest of the mobile styles */
   .youtube-grid,
   .featured-games {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -1570,30 +1576,20 @@ img {
     margin-bottom: 12px;
   }
 
+  /* Adjust categories container to account for sidebar */
+  .categories-container {
+    left: 60px;
+  }
+
+  /* Hide mobile menu toggle since we're showing sidebar all the time */
   .mobile-menu-toggle {
-    display: block;
+    display: none;
   }
 
-  /* Position for mobile sidebar toggle */
-  .mobile-menu-toggle {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    background-color: rgba(33, 33, 33, 0.8);
-    padding: 8px;
-    border-radius: 50%;
-    z-index: 100;
-  }
-
-  /* Sidebar is hidden by default on mobile */
-  .youtube-sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-
-  /* Show sidebar when has 'show' class */
-  .youtube-sidebar.show {
-    transform: translateX(0);
+  /* Add to existing media query */
+  .site-header {
+    left: 60px; /* Leave space for sidebar */
+    padding-left: 10px; /* Adjust padding */
   }
 }
 
@@ -1749,8 +1745,8 @@ img {
 /* YouTube Grid */
 .youtube-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
   margin-top: 20px;
 }
 
@@ -1763,8 +1759,8 @@ img {
 
 .featured-games {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
 }
 
 /* Common borders and colors */
@@ -1786,4 +1782,88 @@ img {
 /* State when font is loaded */
 body.material-icons-loaded .material-icons {
   opacity: 1;
+}
+
+/* Mobile optimizations for game cards */
+@media (max-width: 767px) {
+  .game-card,
+  .featured-game {
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .game-info,
+  .featured-game-info {
+    padding: 6px 4px;
+  }
+
+  /* Simpler hover effects for touch devices */
+  .game-card:hover,
+  .featured-game:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .game-card:hover img,
+  .featured-game:hover img {
+    transform: scale(1.01);
+  }
+
+  .game-card:hover .game-info,
+  .featured-game:hover .featured-game-info {
+    transform: translateY(-2px);
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 359px) {
+  .youtube-grid,
+  .featured-games {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .game-info h3,
+  .featured-game-info h3 {
+    font-size: 10px;
+  }
+}
+
+/* Mobile optimizations for main content area */
+@media (max-width: 767px) {
+  .youtube-main {
+    padding: 12px 10px;
+    padding-top: 0;
+  }
+
+  .featured-section {
+    margin-bottom: 16px;
+  }
+
+  .featured-title h1 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  /* Optimize for touch - increase tap targets */
+  .sidebar-item {
+    height: 56px;
+  }
+
+  .sidebar-item .material-icons {
+    font-size: 24px;
+  }
+
+  /* Allow horizontal scrolling for category chips */
+  .category-chips {
+    padding-bottom: 4px;
+    margin: 0 8px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  .category-chip {
+    padding: 6px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 }
