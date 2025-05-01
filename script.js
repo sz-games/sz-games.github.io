@@ -634,3 +634,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 })
+
+// Add sidebar toggle functionality
+document.addEventListener('DOMContentLoaded', function () {
+  // Handle sidebar toggle
+  const sidebar = document.querySelector('.youtube-sidebar')
+  const layout = document.querySelector('.youtube-layout')
+
+  // Toggle sidebar on menu click in header
+  const menuToggle = document.querySelector('.menu-toggle')
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function () {
+      sidebar.classList.toggle('collapsed')
+      layout.classList.toggle('collapsed-sidebar')
+    })
+  }
+
+  // Apply appropriate sidebar state based on screen width
+  function adjustSidebarForScreenSize() {
+    const isLargeScreen = window.innerWidth >= 1536
+
+    if (isLargeScreen) {
+      sidebar.classList.remove('collapsed')
+      layout.classList.remove('collapsed-sidebar')
+    } else {
+      sidebar.classList.add('collapsed')
+      layout.classList.add('collapsed-sidebar')
+    }
+  }
+
+  // Initial setup
+  adjustSidebarForScreenSize()
+
+  // Make sidebar items clickable
+  const sidebarItems = document.querySelectorAll('.sidebar-item')
+  sidebarItems.forEach((item) => {
+    const link = item.querySelector('a')
+    if (link) {
+      item.addEventListener('click', function (e) {
+        // Only handle click if it's not on the link itself
+        if (e.target !== link) {
+          link.click()
+        }
+      })
+    }
+  })
+})

@@ -51,7 +51,7 @@
       rel="preload"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="this.onload=null;this.rel='stylesheet';document.body.classList.add('material-icons-loaded')"
     />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -148,6 +148,14 @@
     </script>
 
     <link rel="stylesheet" href="./style.css" />
+
+    <noscript>
+      <style>
+        .material-icons {
+          opacity: 1 !important; /* Ensure icons are visible if JS is off */
+        }
+      </style>
+    </noscript>
   </head>
 
   <body>
@@ -161,64 +169,48 @@
     ></noscript>
     <div class="split">
       <div class="split-left">
-        <div
-          id="WeWillBeBackScreen"
-          style="display: none; z-index: 1000; width: 100%; position: fixed; height: 100%; background-color: #1d1d1d"
-        >
-          <div style="position: absolute; top: 20%; left: 50%; width: 300px; transform: translateX(-50%)">
-            <img
-              style="width: 80px; position: relative; left: 50%; transform: translateX(-65%)"
-              src="https://sz-games.github.io/home/G.png"
-              loading="lazy"
-            />
-            <p style="font-size: 23px; color: white; text-align: center">We'll Be Back Soon!</p>
-          </div>
-          <p
-            style="
-              background-color: #2727279c;
-              padding: 10px;
-              border-radius: 15px;
-              z-index: 10;
-              color: rgb(255, 255, 255);
-              font-size: 16px;
-              position: fixed;
-              transform: translateX(-50%);
-              bottom: 20px;
-              left: 50%;
-            "
-          >
-            There May be More Info On Our
-            <a style="text-decoration: underline; color: white; cursor: pointer" href="https://discord.gg/XaEPUtUZ7G"
-              >Discord Server</a
-            >
-          </p>
-
-          <div style="position: absolute; bottom: 0; z-index: -1">
-            <div
-              style="
-                position: absolute;
-                z-index: 5;
-                top: -20px;
-                width: 100%;
-                height: 70%;
-                background: linear-gradient(to bottom, #1d1d1d, #1d1d1d, rgba(255, 255, 255, 0));
-              "
-            ></div>
-            <video id="BGVIDSOM1" style="width: 100%; filter: blur(3px) brightness(80%)" src="" muted loop autoplay>
-              <script></script>
-            </video>
-          </div>
-        </div>
-
-        <div class="youtube-layout">
-          <div class="youtube-sidebar">
-            <div class="sidebar-logo">
-              <a href="https://sz-games.github.io" aria-label="Home" class="logo">
-                <img alt="Icon" fetchpriority="low" src="https://github.com/sz-games/home/blob/main/G.png?raw=true" />
-                <h1>Sz Games</h1>
-              </a>
-              <span class="material-icons notranslate menu-icon mobile-menu-toggle">menu</span>
+        <div class="youtube-layout collapsed-sidebar">
+          <!-- Site header with search -->
+          <div class="site-header">
+            <a href="https://sz-games.github.io" aria-label="Home" class="logo">
+              <img alt="Icon" fetchpriority="low" src="https://github.com/sz-games/home/blob/main/G.png?raw=true" />
+              <h1>Sz Games</h1>
+            </a>
+            <div class="header-search">
+              <div class="search-container">
+                <input
+                  onkeyup="Search()"
+                  id="SearchBox"
+                  placeholder="Search games"
+                  type="search"
+                  class="youtube-search"
+                />
+                <button class="search-button">
+                  <span class="material-icons notranslate">search</span>
+                </button>
+              </div>
             </div>
+          </div>
+
+          <!-- Fixed categories bar -->
+          <div class="categories-container">
+            <div class="category-chips">
+              <button class="category-chip active" data-category="No Filter">All</button>
+              <button class="category-chip" data-category="Casual">Casual</button>
+              <button class="category-chip" data-category="Shooter">Shooter</button>
+              <button class="category-chip" data-category="Sports">Sports</button>
+              <button class="category-chip" data-category="Sandbox">Sandbox</button>
+              <button class="category-chip" data-category="Horror">Horror</button>
+              <button class="category-chip" data-category="Fighting">Fighting</button>
+              <button class="category-chip" data-category="Adventure">Adventure</button>
+              <button class="category-chip" data-category="Action">Action</button>
+              <button class="category-chip" data-category="Multiplayer">Multiplayer</button>
+              <button class="category-chip" data-category="Idle">Idle</button>
+              <button class="category-chip" data-category="Driver">Driver</button>
+            </div>
+          </div>
+
+          <div class="youtube-sidebar collapsed">
             <div class="sidebar-item active">
               <span class="material-icons">home</span>
               <a href="./index.html" class="sidebar-text">Home</a>
@@ -233,31 +225,19 @@
             </div>
             <div class="sidebar-item">
               <span class="material-icons">assignment</span>
-              <a href="https://forms.gle/6R1E28R33RvK7y486" class="sidebar-text">Game Request</a>
+              <a href="./contact.html" class="sidebar-text">Game Request</a>
             </div>
             <div class="sidebar-item">
               <span class="material-icons">bug_report</span>
-              <a href="https://forms.gle/3eanrSMcAHdf9rTy6" class="sidebar-text">Report A Bug</a>
+              <a href="./contact.html" class="sidebar-text">Report A Bug</a>
             </div>
             <div class="sidebar-item">
               <span class="material-icons">rate_review</span>
-              <a href="https://forms.gle/1EoD5k5HZSA8yd8ZA" class="sidebar-text">Submit A Review</a>
+              <a href="./contact.html" class="sidebar-text">Submit A Review</a>
             </div>
             <div class="sidebar-item">
               <span class="material-icons">cloud</span>
               <a href="./MessageUN.html" class="sidebar-text">Unblocker</a>
-            </div>
-            <div class="sidebar-item">
-              <span class="material-icons">movie</span>
-              <a
-                href="https://sz-games.github.io/games/game.html?game=https://mr-funkinguy.github.io/MOVIES/"
-                class="sidebar-text"
-                >Movies</a
-              >
-            </div>
-            <div class="sidebar-item">
-              <span class="material-icons">sports_esports</span>
-              <a href="https://sz-games.github.io/BetaTest.html" class="sidebar-text">Beta Test Portal</a>
             </div>
             <div class="sidebar-item">
               <span class="material-icons">sports_esports</span>
@@ -268,50 +248,12 @@
               <a href="./reviews.html" class="sidebar-text">Reviews</a>
             </div>
             <div class="sidebar-item">
-              <span class="material-icons">dns</span>
-              <a href="https://szgamesstatus.statuspage.io/" class="sidebar-text">Status</a>
-            </div>
-            <div class="sidebar-item">
               <span class="material-icons">import_contacts</span>
               <a href="./About.html" class="sidebar-text">About</a>
-            </div>
-            <div class="sidebar-item">
-              <span class="material-icons">handshake</span>
-              <a href="./partners.html" class="sidebar-text">Partners</a>
             </div>
           </div>
 
           <div class="youtube-main">
-            <div class="sticky-header">
-              <div class="search-container">
-                <input
-                  onkeyup="Search()"
-                  id="SearchBox"
-                  placeholder="Search games"
-                  type="search"
-                  class="youtube-search"
-                />
-                <button class="search-button">
-                  <span class="material-icons notranslate">search</span>
-                </button>
-              </div>
-
-              <div class="category-chips">
-                <button class="category-chip active" data-category="No Filter">All</button>
-                <button class="category-chip" data-category="Casual">Casual</button>
-                <button class="category-chip" data-category="Shooter">Shooter</button>
-                <button class="category-chip" data-category="Sports">Sports</button>
-                <button class="category-chip" data-category="Sandbox">Sandbox</button>
-                <button class="category-chip" data-category="Horror">Horror</button>
-                <button class="category-chip" data-category="Fighting">Fighting</button>
-                <button class="category-chip" data-category="Adventure">Adventure</button>
-                <button class="category-chip" data-category="Action">Action</button>
-                <button class="category-chip" data-category="Multiplayer">Multiplayer</button>
-                <button class="category-chip" data-category="Idle">Idle</button>
-                <button class="category-chip" data-category="Driver">Driver</button>
-              </div>
-            </div>
-
             <div class="featured-section">
               <div class="featured-header">
                 <div class="featured-title">
@@ -366,6 +308,18 @@
               </div>
             </div>
 
+            <div
+              id="div-gpt-ad-1744679821427-0"
+              class="header-ad"
+              style="width: 728px; height: 90px; margin-bottom: 4px"
+            >
+              <script>
+                googletag.cmd.push(function () {
+                  googletag.display(bannerSlot728x90)
+                })
+              </script>
+            </div>
+
             <!-- YouTube-style game grid -->
             <div id="games" class="youtube-grid"></div>
           </div>
@@ -400,61 +354,6 @@
             "
           >
             arrow_upward
-          </span>
-        </div>
-
-        <div
-          class="ipAR"
-          onclick="randomGamelol()"
-          style="
-            z-index: 75;
-            cursor: pointer;
-            position: fixed;
-            bottom: 25px;
-            left: 20px;
-            height: 40px;
-            border-radius: 20px;
-            background-color: #1d1d1d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: width 0.3s ease;
-            padding: 5px;
-            overflow: hidden;
-          "
-          id="pickforme"
-        >
-          <span
-            class="material-icons notranslate"
-            id="icon"
-            style="
-              cursor: pointer;
-              opacity: 1;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              position: absolute;
-              font-size: larger;
-              left: 50%;
-              color: white;
-              transition: opacity 0.3s ease, transform 0.3s ease;
-            "
-          >
-            shuffle
-          </span>
-
-          <span
-            id="tooltipText"
-            style="
-              white-space: nowrap;
-              opacity: 0;
-              color: white;
-              font-size: 14px;
-              transition: opacity 0.3s ease, transform 0.3s ease;
-              transform: translateX(-10px);
-              margin-left: 5px;
-            "
-          >
-            Random Game
           </span>
         </div>
       </div>
@@ -504,6 +403,17 @@
         </div>
       </div>
     </div>
+    <script>
+      // Prevent layout shift on large screens by setting initial sidebar state
+      ;(function () {
+        const layout = document.querySelector('.youtube-layout')
+        const sidebar = document.querySelector('.youtube-sidebar')
+        if (window.innerWidth >= 1536 && layout && sidebar) {
+          layout.classList.remove('collapsed-sidebar')
+          sidebar.classList.remove('collapsed')
+        }
+      })()
+    </script>
     <script src="./script.js"></script>
   </body>
 </html>
