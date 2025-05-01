@@ -1247,7 +1247,6 @@ img {
   display: flex;
   overflow-x: auto;
   margin: 0 24px;
-  padding-bottom: 8px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   height: 40px;
@@ -1623,7 +1622,6 @@ img {
   }
 
   .category-chips {
-    padding-bottom: 4px;
   }
 
   .category-chip {
@@ -1856,7 +1854,6 @@ body.material-icons-loaded .material-icons {
 
   /* Allow horizontal scrolling for category chips */
   .category-chips {
-    padding-bottom: 4px;
     margin: 0 8px;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   }
