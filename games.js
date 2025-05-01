@@ -2662,9 +2662,12 @@ const gamesData = [
 // Function to render games in YouTube style grid
 document.addEventListener('DOMContentLoaded', function () {
   const gamesContainer = document.getElementById('games')
+  if (!gamesContainer) return // Exit if container not found
 
   // Clear existing content
   gamesContainer.innerHTML = ''
+
+  const isBeforeOpPage = window.location.pathname.endsWith('/beforeop.html')
 
   // Render each game in YouTube style
   gamesData.forEach((game) => {
@@ -2680,9 +2683,23 @@ document.addEventListener('DOMContentLoaded', function () {
     thumbnailContainer.className = 'thumbnail-container'
 
     const thumbnail = document.createElement('img')
-    thumbnail.src = game.imgSrc // Direct src instead of data-src
+    thumbnail.src = game.imgSrc // Direct src
     thumbnail.alt = game.name
-    thumbnail.className = 'game-thumbnail'
+    // Use appropriate class based on the page
+    thumbnail.className = isBeforeOpPage ? 'game-thumbnail' : 'ImageForGame'
+
+    if (isBeforeOpPage) {
+      thumbnail.loading = 'lazy' // Native lazy loading for beforeop.html
+      thumbnail.onerror = function () {
+        this.onerror = null // Prevent infinite loop if fallback fails
+        this.src = './fallback.png'
+      }
+    } else {
+      // Keep original logic for other pages if needed, or remove if unused
+      // For now, we assume other pages might still use the old JS lazy load
+      // So we don't add loading='lazy' or onerror here for non-beforeop pages
+      // If the old JS is removed, this 'else' can be removed and attributes added unconditionally.
+    }
 
     thumbnailContainer.appendChild(thumbnail)
 
@@ -2692,12 +2709,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const gameTitle = document.createElement('h3')
     gameTitle.textContent = game.name
 
-    const gameCategory = document.createElement('span')
-    gameCategory.className = 'game-category'
-    gameCategory.textContent = game.categories[0]
+    // Category span might not be needed if styling is handled elsewhere
+    // const gameCategory = document.createElement('span');
+    // gameCategory.className = 'game-category';
+    // gameCategory.textContent = game.categories[0];
 
     gameInfo.appendChild(gameTitle)
-    gameInfo.appendChild(gameCategory)
+    // gameInfo.appendChild(gameCategory);
 
     gameLink.appendChild(thumbnailContainer)
     gameLink.appendChild(gameInfo)
@@ -2706,4 +2724,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     gamesContainer.appendChild(gameCard)
   })
+
+  // Important: If beforeop.html uses this new native lazy loading,
+  // the old JS-based lazy loading in script.js might need to be adjusted
+  // or disabled for this specific page to avoid conflicts.
+  // This edit only modifies games.js.
 })

@@ -929,7 +929,7 @@ img {
 
 /* YouTube Sidebar */
 .youtube-sidebar {
-  width: 220px;
+  width: 220px; /* Default Expanded Width */
   background-color: var(--sidebar-bg-color);
   overflow-y: auto;
   position: fixed;
@@ -941,12 +941,11 @@ img {
   transition: width 0.2s ease;
 }
 
-/* Collapsed sidebar state */
+/* Styles for when JS adds .collapsed class */
 .youtube-sidebar.collapsed {
   width: 60px;
-  overflow: visible;
+  overflow: visible; /* Keep hover behavior */
 }
-
 .youtube-sidebar.collapsed:hover {
   width: 220px;
 }
@@ -1031,14 +1030,15 @@ img {
   flex: 1;
   padding: 16px;
   padding-top: 0;
-  margin-left: 220px;
+  margin-left: 220px; /* Default Expanded Margin */
   background-color: var(--main-bg-color);
   min-height: 100%;
   border-left: 1px solid var(--border-color);
-  max-width: calc(100% - 220px);
+  max-width: calc(100% - 220px); /* Default Expanded Max Width */
   transition: margin-left 0.2s ease, max-width 0.2s ease;
 }
 
+/* Style for when JS adds .collapsed-sidebar to layout */
 .collapsed-sidebar .youtube-main {
   margin-left: 60px;
   max-width: calc(100% - 60px);
@@ -1055,39 +1055,20 @@ img {
 }
 
 /* Show expanded sidebar at 1536px+ */
-@media (min-width: 1536px) {
-  /* Keep rules related to text visibility on hover/expand */
-  .collapsed .sidebar-text {
-    opacity: 1;
-    width: auto;
-    overflow: visible;
-    display: inline; /* Ensure text shows when expanded */
-  }
-
-  .collapsed .sidebar-item {
-    padding: 0 12px 0 24px;
-    justify-content: flex-start;
-  }
-
-  .collapsed .sidebar-item .material-icons {
-    margin-right: 24px;
-  }
-}
+/* Base styles handle this, no specific rule needed here */
 
 /* Maintain collapsed sidebar at smaller screens */
 @media (max-width: 1535px) {
-  /* Remove rule that forces width based only on screen size */
-  /* .youtube-sidebar {
-    width: 60px;
-  } */
+  /* Default state for smaller screens */
+  .youtube-sidebar {
+    width: 60px; /* Default collapsed width */
+  }
 
-  /* Remove rule that forces margin based only on screen size */
-  /* .youtube-main {
-    margin-left: 60px;
-    max-width: calc(100% - 60px);
-  } */
+  .youtube-main {
+    margin-left: 60px; /* Default collapsed margin */
+    max-width: calc(100% - 60px); /* Default collapsed max-width */
+  }
 
-  /* Keep rules for icon centering and text hiding */
   .sidebar-item {
     padding: 0;
     justify-content: center;
@@ -1098,11 +1079,10 @@ img {
   }
 
   .sidebar-text {
-    /* Ensure text is hidden by default via .collapsed .sidebar-text rule */
-    opacity: 0; /* Revert if display:none was better */
+    opacity: 0;
     width: 0;
     overflow: hidden;
-    /* display: none; */ /* Keep commented if opacity was preferred */
+    display: none; /* Ensure text is hidden */
   }
 
   /* Keep Hover expansion rules */
@@ -1112,7 +1092,7 @@ img {
   }
 
   .youtube-sidebar:hover .sidebar-item {
-    padding: 0 12px 0 18px;
+    padding: 0 12px 0 18px; /* Adjust padding on hover */
     justify-content: flex-start;
   }
 
@@ -1124,7 +1104,49 @@ img {
     opacity: 1;
     width: auto;
     overflow: visible;
-    display: inline; /* Ensure text shows on hover */
+    display: inline;
+  }
+}
+
+/* Adjustments for JS Toggle on Large Screens */
+@media (min-width: 1536px) {
+  /* Styles for when JS explicitly adds .collapsed */
+  .youtube-sidebar.collapsed {
+    width: 60px;
+  }
+  /* .collapsed-sidebar .youtube-main is handled globally */
+
+  .youtube-sidebar.collapsed .sidebar-text {
+    /* Hide text when explicitly collapsed */
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    display: none;
+  }
+  .youtube-sidebar.collapsed .sidebar-item {
+    padding: 0;
+    justify-content: center;
+  }
+  .youtube-sidebar.collapsed .sidebar-item .material-icons {
+    margin-right: 0;
+  }
+
+  /* Keep hover expansion when explicitly collapsed */
+  .youtube-sidebar.collapsed:hover {
+    width: 220px;
+  }
+  .youtube-sidebar.collapsed:hover .sidebar-text {
+    opacity: 1;
+    width: auto;
+    overflow: visible;
+    display: inline;
+  }
+  .youtube-sidebar.collapsed:hover .sidebar-item {
+    padding: 0 12px 0 24px;
+    justify-content: flex-start;
+  }
+  .youtube-sidebar.collapsed:hover .sidebar-item .material-icons {
+    margin-right: 24px;
   }
 }
 
@@ -1182,13 +1204,16 @@ img {
 /* Header search */
 .header-search {
   flex: 1;
-  max-width: 600px;
   margin: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-container {
   display: flex;
   width: 100%;
+  max-width: 600px;
 }
 
 .youtube-search {
