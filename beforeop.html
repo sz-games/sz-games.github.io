@@ -47,18 +47,38 @@
       })
     </script>
 
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'; if(document.body) { document.body.classList.add('material-icons-loaded'); }"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" />
+    <script>
+      // Material Icons font loading
+      ;(function () {
+        var materialIconsLink = document.createElement('link')
+        materialIconsLink.rel = 'stylesheet'
+        materialIconsLink.href = 'https://fonts.googleapis.com/icon?family=Material+Icons'
+
+        // Add the link element
+        document.head.appendChild(materialIconsLink)
+
+        // Handle successful loading
+        materialIconsLink.addEventListener('load', function () {
+          if (document.body) {
+            document.body.classList.add('material-icons-loaded')
+          } else {
+            // Fallback: wait for DOM to be ready
+            document.addEventListener('DOMContentLoaded', function () {
+              document.body.classList.add('material-icons-loaded')
+            })
+          }
+        })
+
+        // Ensure the class is added even if the event doesn't fire
+        document.addEventListener('DOMContentLoaded', function () {
+          // Add class after a short delay to ensure the font is loaded
+          setTimeout(function () {
+            document.body.classList.add('material-icons-loaded')
+          }, 100)
+        })
+      })()
+    </script>
     <noscript>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     </noscript>
