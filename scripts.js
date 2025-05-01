@@ -1,3 +1,32 @@
+var ToggledMenu3 = false
+function ToggleMenuBig() {
+  if (ToggledMenu3 === false) {
+    document.getElementById('SideMenuBigScreen').style.display = 'block'
+    document.getElementById('SideMenuBigScreen').style.opacity = 1
+
+    document.getElementById('MMenuBig').style.display = 'block'
+
+    document.getElementById('MMenuBig').classList.add('SlSlideIn')
+
+    setTimeout(() => {
+      document.getElementById('MMenuBig').classList.remove('SlSlideIn')
+
+      ToggledMenu3 = true
+    }, 500)
+  } else if (ToggledMenu3 === true) {
+    ToggledMenu3 = false
+
+    document.getElementById('SideMenuBigScreen').style.opacity = 0
+
+    document.getElementById('MMenuBig').classList.add('SlSlide')
+    setTimeout(() => {
+      document.getElementById('MMenuBig').classList.remove('SlSlide')
+      document.getElementById('MMenuBig').style.display = 'none'
+      document.getElementById('SideMenuBigScreen').style.display = 'none'
+    }, 500)
+  }
+}
+
 function openLink() {
   window.open('https://discord.gg/DzKRSntb87', '_blank')
   localStorage.setItem('discordnotee', 'true')
