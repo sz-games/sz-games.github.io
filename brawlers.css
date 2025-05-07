@@ -1,0 +1,720 @@
+:root {
+  --brawl-blue: #1099e7;
+  --brawl-yellow: #ffd86b;
+  --brawl-purple: #9b3cff;
+  --brawl-red: #f32757;
+  --brawl-green: #5faf26;
+  --dark-bg: #16171b;
+  --card-bg: #272a36;
+  --card-bg-light: #32364a;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('https://raw.githubusercontent.com/sz-games/home/main/brawlstars-pattern.png'),
+    radial-gradient(circle at top right, rgba(155, 60, 255, 0.2), transparent 50%),
+    radial-gradient(circle at bottom left, rgba(16, 153, 231, 0.2), transparent 50%);
+  background-size: 300px, 100% 100%, 100% 100%;
+  background-blend-mode: overlay;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--brawl-blue), var(--brawl-purple), var(--brawl-yellow));
+  z-index: 100;
+}
+
+/* Animated Avatar Background */
+.avatar-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.avatar-float {
+  position: absolute;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--card-bg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0.15;
+  filter: saturate(0.7);
+  transition: opacity 0.3s ease, filter 0.5s ease, transform 0.5s ease;
+}
+
+.avatar-float:hover {
+  opacity: 0.25;
+  filter: saturate(1.2) brightness(1.1);
+  z-index: 0 !important;
+}
+
+/* Mouse interaction effect */
+body.moving-mouse .avatar-float {
+  transition: transform 2s ease-out;
+}
+
+.avatar-float.layer1 {
+  animation: float1 20s ease-in-out infinite;
+}
+
+.avatar-float.layer2 {
+  animation: float2 25s ease-in-out infinite;
+}
+
+.avatar-float.layer3 {
+  animation: float3 30s ease-in-out infinite;
+}
+
+/* Glow effects for avatar background */
+.avatar-float::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: transparent;
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatar-float:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 15px 5px rgba(255, 216, 107, 0.3);
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 15px 5px rgba(255, 216, 107, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px 10px rgba(155, 60, 255, 0.3);
+  }
+}
+
+/* Enhanced floating animations with slight rotation */
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rotation));
+  }
+  33% {
+    transform: translateY(-8px) translateX(8px) rotate(calc(var(--rotation) + 1deg));
+  }
+  66% {
+    transform: translateY(-15px) translateX(-5px) rotate(calc(var(--rotation) + 2deg));
+  }
+}
+
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) rotate(var(--rotation));
+  }
+  33% {
+    transform: translateY(-15px) translateX(-8px) rotate(calc(var(--rotation) - 2deg));
+  }
+  66% {
+    transform: translateY(-25px) translateX(5px) rotate(calc(var(--rotation) - 3deg));
+  }
+}
+
+@keyframes float3 {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) rotate(var(--rotation));
+  }
+  25% {
+    transform: translateY(-10px) translateX(10px) rotate(calc(var(--rotation) + 1deg));
+  }
+  50% {
+    transform: translateY(-15px) translateX(0) rotate(calc(var(--rotation) - 1deg));
+  }
+  75% {
+    transform: translateY(-20px) translateX(-10px) rotate(calc(var(--rotation) + 0.5deg));
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lilita One', cursive;
+  letter-spacing: 0.5px;
+}
+
+.brawler-svg-preview {
+  width: 250px;
+  height: 250px;
+  border: 3px solid var(--brawl-yellow);
+  background-color: var(--card-bg);
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(255, 216, 107, 0.3);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.brawler-svg-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 216, 107, 0.1) 0%, rgba(41, 44, 60, 0) 70%);
+  pointer-events: none;
+}
+
+.brawler-svg-preview svg {
+  width: 100%;
+  height: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--brawl-yellow);
+  font-weight: 500;
+}
+
+select,
+input[type='text'],
+textarea {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: var(--card-bg-light);
+  border: 2px solid #3d4258;
+  border-radius: 10px;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+select:focus,
+input[type='text']:focus,
+textarea:focus {
+  border-color: var(--brawl-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 153, 231, 0.3);
+}
+
+input[type='color'] {
+  /* width: 100%;
+  height: 3rem; */
+  padding: 0.25rem;
+  background-color: var(--card-bg-light);
+  border: 2px solid #3d4258;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+
+/* Slider styling */
+.brawl-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--card-bg-light);
+  border: 2px solid #3d4258;
+  outline: none;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.brawl-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--brawl-yellow);
+  border: 2px solid var(--dark-bg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.brawl-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--brawl-yellow);
+  border: 2px solid var(--dark-bg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.brawl-slider::-webkit-slider-thumb:hover,
+.brawl-slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  background: var(--brawl-blue);
+}
+
+/* Remove these unused styles:
+.brawl-slider::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(to right, var(--brawl-yellow) 0%, var(--brawl-yellow) 50%, var(--card-bg-light) 50%, var(--card-bg-light) 100%);
+}
+
+.brawl-slider::-moz-range-track {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--card-bg-light);
+}
+*/
+
+/* Add this at the end of your existing <style> block or in a new one */
+@keyframes idleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+#brawlerRoot.animated {
+  animation: idleFloat 3.5s ease-in-out infinite;
+}
+
+.eye-highlight-el {
+  fill: white;
+  stroke: none;
+}
+
+.teeth-el {
+  fill: white;
+}
+
+.mouth-interior-el {
+  stroke: none;
+}
+
+/* Brawl Stars UI Components */
+.brawl-card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border: 2px solid #3d4258;
+  position: relative;
+  overflow: hidden;
+}
+
+.brawl-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brawl-blue), var(--brawl-purple));
+  z-index: 1;
+}
+
+/* Feature title enhancements */
+.feature-title-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--brawl-blue), var(--brawl-purple));
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: pulse-icon 3s infinite;
+}
+
+@keyframes pulse-icon {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 216, 107, 0.3);
+  }
+}
+
+.title-sparkle {
+  position: absolute;
+  top: 50%;
+  left: -100px;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brawl-yellow), transparent);
+  animation: sparkle-animation 8s infinite;
+  opacity: 0.7;
+}
+
+@keyframes sparkle-animation {
+  0% {
+    left: -100px;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Compact color controls styling */
+.color-control {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.color-control:hover {
+  transform: scale(1.15);
+}
+
+.color-control input[type='color'] {
+  -webkit-appearance: none;
+  border: 2px solid #3d4258;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  background: var(--card-bg-light);
+  margin-bottom: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.color-control input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-control input[type='color']::-webkit-color-swatch {
+  border: none;
+  border-radius: 3px;
+}
+
+.color-control input[type='color']::-moz-color-swatch {
+  border: none;
+  border-radius: 3px;
+}
+
+.color-control input[type='color']:focus {
+  outline: none;
+  border-color: var(--brawl-yellow);
+  box-shadow: 0 0 0 2px rgba(255, 216, 107, 0.5);
+}
+
+/* Add a glow effect on hover */
+.color-control::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 8px;
+  background: transparent;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.color-control:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255, 216, 107, 0.5);
+}
+
+.brawl-title {
+  color: var(--brawl-yellow);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.brawl-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--brawl-yellow);
+  border-radius: 3px;
+}
+
+.brawl-btn-primary {
+  background: linear-gradient(to bottom, var(--brawl-blue), #0b7dbd);
+  color: white;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 0 #0a6ca3, 0 8px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+  font-family: 'Lilita One', cursive;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.brawl-btn-primary:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #0a6ca3, 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.brawl-btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #0a6ca3, 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.brawl-btn-secondary {
+  background: linear-gradient(to bottom, var(--brawl-purple), #7a30d3);
+  color: white;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 0 #6128ab, 0 8px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+  font-family: 'Lilita One', cursive;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.brawl-btn-secondary:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #6128ab, 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.brawl-btn-secondary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #6128ab, 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.brawl-btn-accent {
+  background: linear-gradient(to bottom, var(--brawl-yellow), #ffc107);
+  color: #333;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 0 #e6a800, 0 8px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+  font-family: 'Lilita One', cursive;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.brawl-btn-accent:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #e6a800, 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.brawl-btn-accent:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #e6a800, 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Discord Card Styling */
+#discordCard {
+  background-color: var(--card-bg);
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#discordBanner {
+  position: relative;
+  overflow: hidden;
+}
+
+#discordBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://raw.githubusercontent.com/sz-games/home/main/brawlstars-banner-pattern.png');
+  background-size: cover;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+#discordAvatarContainer {
+  border: 4px solid var(--card-bg);
+}
+
+/* Visual selector grid enhancements */
+.visual-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+  gap: 8px;
+  margin-bottom: 0.75rem;
+  perspective: 800px;
+}
+
+.visual-option {
+  background-color: var(--card-bg-light);
+  border: 2px solid #3d4258;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.visual-option svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.visual-option.selected {
+  border-color: var(--brawl-yellow);
+  box-shadow: 0 0 0 2px rgba(255, 216, 107, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05) translateY(-2px);
+  z-index: 1;
+}
+
+.visual-option.selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brawl-yellow);
+  box-shadow: 0 0 5px rgba(255, 216, 107, 0.7);
+}
+
+.visual-option:hover {
+  border-color: var(--brawl-blue);
+  transform: translateY(-3px) rotateX(5deg);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.visual-option:hover svg {
+  transform: scale(1.08);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Tooltip styling */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  background-color: var(--brawl-purple);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+[data-tooltip]::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--brawl-purple) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* Tooltips for visual selector options */
+.visual-option {
+  position: relative;
+}
+
+.visual-option::before {
+  content: attr(data-option-name);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background-color: var(--brawl-blue);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.visual-option:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Update the visual selector styling */
