@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SZ Brawlers - Advanced Creator</title>
+    <title>SZ Brawlers - Avatar Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/save-svg-as-png@1.4.17/lib/saveSvgAsPng.min.js"></script>
     <style>
       body {
         background-color: #1a202c;
@@ -88,7 +89,7 @@
   </head>
   <body class="p-4 md:p-8">
     <div class="container mx-auto max-w-6xl">
-      <h1 class="text-4xl font-bold text-center mb-8 text-yellow-400">SZ Brawlers - Icon Creator</h1>
+      <h1 class="text-4xl font-bold text-center mb-8 text-yellow-400">SZ Brawlers - Avatar Generator</h1>
 
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Column 1: SVG Preview -->
@@ -150,6 +151,14 @@
               <label for="outlineWidth">Outline Width (px):</label>
               <input type="number" id="outlineWidth" value="1.5" min="0" max="5" step="0.1" class="p-2" />
             </div>
+            <div>
+              <label for="facialFeatures">Facial Features:</label>
+              <select id="facialFeatures"></select>
+            </div>
+            <div>
+              <label for="accessories">Accessories:</label>
+              <select id="accessories"></select>
+            </div>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -191,17 +200,107 @@
             </div>
             <!-- Add more: clothingHint, facialFeatures, accessories -->
           </div>
-          <button
-            id="createBrawlerBtn"
-            class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg text-lg mt-6"
-          >
-            Save/Display Brawler Concept
-          </button>
         </div>
       </div>
       <div id="createdBrawlerDisplay" class="mt-10">
         <!-- Brawler card will be injected here -->
       </div>
+      <div id="discordProfilePreviewContainer" class="mt-12">
+        <h2 class="text-2xl font-semibold mb-4 text-center text-purple-400">Discord Profile Preview</h2>
+
+        <div class="flex flex-col md:flex-row gap-6 items-start justify-center">
+          <!-- Discord Profile Card -->
+          <div id="discordCard" class="w-full max-w-sm bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+            <!-- Banner -->
+            <div id="discordBanner" class="h-24 bg-indigo-600">
+              <!-- Banner content (can be empty or have abstract pattern later) -->
+            </div>
+
+            <!-- Avatar & User Info Section -->
+            <div class="p-4 relative">
+              <!-- Avatar -->
+              <div
+                id="discordAvatarContainer"
+                class="absolute -top-12 left-4 w-24 h-24 rounded-full border-4 border-gray-800 bg-gray-700 overflow-hidden shadow-lg"
+              >
+                <!-- The brawler SVG will be injected here -->
+                <svg
+                  id="discordAvatarSVG"
+                  class="w-full h-full"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet"
+                ></svg>
+              </div>
+
+              <!-- Spacer for avatar -->
+              <div class="pt-12">
+                <!-- Adjust pt if avatar size changes -->
+                <h3 id="discordDisplayName" class="text-xl font-bold text-white">Brawler Name</h3>
+                <p id="discordUsername" class="text-sm text-gray-400">brawler_name</p>
+
+                <!-- SZ Games Server Affiliation -->
+                <div id="szGamesAffiliation" class="mt-3 pt-3 border-t border-gray-700">
+                  <h4 class="text-xs uppercase font-semibold text-gray-500 mb-1.5">Playing on SZ Games</h4>
+                  <div class="flex items-center space-x-2">
+                    <img
+                      src="https://github.com/sz-games/home/blob/main/G.png?raw=true"
+                      alt="SZ Games Logo"
+                      class="w-10 h-10 rounded-md"
+                      onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-logo').style.display='block';"
+                    />
+                    <div
+                      class="w-10 h-10 rounded-md bg-gray-600 flex items-center justify-center text-white font-bold text-lg fallback-logo"
+                      style="display: none"
+                    >
+                      SZ
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-white">SZ Games</p>
+                      <p class="text-xs text-gray-400">Brawler Avatar Generator</p>
+                    </div>
+                  </div>
+                  <!-- Alternative: Badge Style -->
+                  <div
+                    class="mt-2 inline-flex items-center bg-green-500 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                  >
+                    <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                    SZ Games Verified
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls for Discord Preview -->
+          <div class="w-full md:w-auto md:max-w-xs bg-gray-800 p-6 rounded-lg shadow-xl space-y-4">
+            <h3 class="text-lg font-semibold text-teal-300">Customize Preview</h3>
+            <div>
+              <label for="bannerColor" class="block text-sm font-medium text-gray-300 mb-1">Banner Color:</label>
+              <input
+                type="color"
+                id="bannerColor"
+                value="#4F46E5"
+                class="w-full h-10 p-1 border-gray-700 bg-gray-700 rounded"
+              />
+            </div>
+            <p class="text-xs text-gray-400">
+              The brawler name and generated avatar will update automatically when you create/randomize a brawler.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        id="downloadPngBtn"
+        class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg text-lg mt-4"
+      >
+        Download as PNG
+      </button>
     </div>
 
     <script>
@@ -211,109 +310,202 @@
       const colorInputs = {} // To store all color inputs
       const brawlerNameInput = document.getElementById('brawlerName')
       const generateNameBtn = document.getElementById('generateNameBtn')
-      const createBrawlerBtn = document.getElementById('createBrawlerBtn')
       const randomizeAllBtn = document.getElementById('randomizeAllBtn')
       const createdBrawlerDisplay = document.getElementById('createdBrawlerDisplay')
+      const downloadPngBtn = document.getElementById('downloadPngBtn')
+      const discordBanner = document.getElementById('discordBanner')
+      const discordAvatarSVG = document.getElementById('discordAvatarSVG') // The SVG inside the avatar circle
+      const discordDisplayName = document.getElementById('discordDisplayName')
+      const discordUsername = document.getElementById('discordUsername')
+      const bannerColorInput = document.getElementById('bannerColor')
+
+      if (downloadPngBtn) {
+        downloadPngBtn.addEventListener('click', () => {
+          const svgElement = document.getElementById('brawlerPreviewSVG')
+          if (!svgElement) {
+            console.error('SVG element not found for download.')
+            return
+          }
+
+          const brawlerName = brawlerNameInput.value.trim() || 'MyBrawler'
+          // Sanitize filename: replace spaces and special characters
+          const fileName = brawlerName.replace(/[^a-z0-9_]+/gi, '_').replace(/^_|_$/g, '') + '.png'
+
+          // Options for saveSvgAsPng
+          const options = {
+            scale: 3, // Increase scale for higher resolution PNG (e.g., 3x the SVG's display size)
+            backgroundColor: '#2d3748', // Set background color for the PNG (same as your preview bg)
+            // Or make it transparent: null or 'transparent' if SVG has no bg
+            encoderOptions: 0.92, // For PNG, this is compression level (0-1, where 1 is less compression, larger file)
+            // For JPEG, it's quality (0-1)
+            // You can also specify width and height directly if needed:
+            // width: 500, // desired width in pixels
+            // height: 500, // desired height in pixels
+            // The library will try to respect aspect ratio.
+          }
+
+          // The library is available globally as `svgAsPngUri` or `saveSvgAsPng`
+          // `saveSvgAsPng` directly triggers download.
+          // `svgAsPngUri` returns a data URI if you want to display it first.
+          saveSvgAsPng(svgElement, fileName, options)
+            .then(() => {
+              console.log('PNG download initiated for:', fileName)
+            })
+            .catch((error) => {
+              console.error('Error saving SVG as PNG:', error)
+              alert('Sorry, there was an error generating the PNG. Please try again or check the console.')
+            })
+        })
+      }
 
       // --- SVG ASSET DEFINITIONS ---
       // (Paths should be designed for a 100x100 viewBox)
       const SVG_ASSETS = {
         hairBack: {
           none: '',
-          // Make these larger to contribute to the "full frame" feel
           poofyLarge: '<path d="M10 40 Q50 10 90 40 L85 90 Q50 100 15 90 Z" class="hair-back-el"/>',
           spikyLayered:
             '<path d="M15 35 L50 10 L85 35 L80 50 L50 30 L20 50Z M10 60 L50 40 L90 60 L80 90 Q50 100 20 90Z" class="hair-back-el"/>',
+          longStraight:
+            '<path d="M20 35 C15 60, 15 90, 25 95 L75 95 C85 90, 85 60, 80 35 Q50 50 20 35Z" class="hair-back-el"/>',
+          bunHigh:
+            '<path d="M40 10 C30 15, 30 30, 40 35 L60 35 C70 30, 70 15, 60 10 Z M20 40 Q50 20 80 40 L75 80 Q50 90 25 80Z" class="hair-back-el"/>', // Bun + base
         },
         clothingHint: {
           none: '',
-          shouldersUp: '<path d="M20 75 Q50 90 80 75 L90 100 H10 Z" class="clothing-el"/>', // Higher shoulders
+          shouldersUp: '<path d="M20 75 Q50 90 80 75 L90 100 H10 Z" class="clothing-el"/>',
           simpleCollar: '<path d="M30 80 C40 85, 60 85, 70 80 L75 95 H25Z" class="clothing-el"/>',
+          vNeck: '<path d="M40 80 L50 90 L60 80 L75 100 H25Z" class="clothing-el"/>',
+          hoodieUpHint: '<path d="M25 70 Q50 60 75 70 L85 95 Q50 105 15 95 Z" class="clothing-el headwear-el"/>', // Can double as headwear base
         },
         headShape: {
-          // These should be designed to be quite prominent in the 100x100 box
-          ovalTilt: '<path d="M25,30 Q50,0 75,30 T78,70 Q50,100 22,70 T25,30 Z" class="skin-el head-el"/>', // Slightly asymmetric
+          ovalTilt: '<path d="M25,30 Q50,0 75,30 T78,70 Q50,100 22,70 T25,30 Z" class="skin-el head-el"/>',
           roundishFull: '<path d="M15,45 C15,15 85,15 85,45 S80,95 50,95 S15,75 15,45 Z" class="skin-el head-el"/>',
           dynamicJaw: '<path d="M20 35 C30 10 70 10 80 35 L85 65 Q50 95 15 65 Z" class="skin-el head-el"/>',
+          softSquare: '<path d="M20 25 C20 10, 80 10, 80 25 L85 70 Q50 95 15 70 Z" class="skin-el head-el"/>',
+          heartShape:
+            '<path d="M50 15 C30 10, 20 30, 20 45 C20 65, 40 80, 50 95 C60 80, 80 65, 80 45 C80 30, 70 10, 50 15 Z" class="skin-el head-el"/>',
         },
         ears: {
           none: '',
-          // Slightly asymmetric or positioned to suggest a turn if head is tilted
           pointedSide:
-            '<path d="M18 40 C5 45, 5 60, 18 65 M80 45 C90 50, 90 60, 80 62" class="skin-el ear-el" fill="none"/>',
+            '<g><path d="M18 40 C5 45, 5 60, 18 65" class="skin-el ear-el" fill="none"/><path d="M80 45 C90 50, 90 60, 80 62" class="skin-el ear-el" fill="none"/></g>',
+          roundSmall:
+            '<g><path d="M19 42 C15 42, 12 50, 19 55" class="skin-el ear-el" fill="none"/><path d="M81 42 C85 42, 88 50, 81 55" class="skin-el ear-el" fill="none"/></g>',
+          elfEars:
+            '<g><path d="M18 35 C0 45, 5 65, 20 70" class="skin-el ear-el" fill="none"/><path d="M82 35 C100 45, 95 65, 80 70" class="skin-el ear-el" fill="none"/></g>',
         },
         hairFront: {
           none: '',
           dynamicSpikes: '<path d="M20 10 L40 5 L50 15 L60 5 L80 10 L70 35 Q50 25 30 35 Z" class="hair-front-el"/>',
           sweepingBangs: '<path d="M15 15 Q60 0 85 30 L75 45 Q40 20 15 15 Z" class="hair-front-el"/>',
           fullVolume: '<path d="M10 10 Q50 -10 90 10 C95 40, 50 30, 5 40 Z" class="hair-front-el"/>',
+          curtainBangs:
+            '<path d="M20 15 Q35 5 50 15 L45 40 Q30 30 20 40 Z M80 15 Q65 5 50 15 L55 40 Q70 30 80 40 Z" class="hair-front-el"/>',
+          shortMessy:
+            '<path d="M25 15 L30 10 L35 18 L40 12 L45 20 L50 10 L55 20 L60 12 L65 18 L70 10 L75 15 L70 30 H30Z" class="hair-front-el"/>',
+          mohawkStrip: '<path d="M40 5 L45 0 L55 0 L60 5 L55 30 L45 30Z" class="hair-front-el"/>',
         },
         eyeShape: {
-          // Sclera - make these large!
-          largeExpressive: `
-                <ellipse cx="33" cy="45" rx="12" ry="15" transform="rotate(-10 33 45)" class="eye-sclera-el"/>
-                <ellipse cx="67" cy="48" rx="11" ry="14" transform="rotate(5 67 48)" class="eye-sclera-el"/>`,
-          animeAlmond: `
-                <path d="M20 40 C30 30, 45 30, 50 42 C45 52, 30 52, 20 40 Z M55 42 C65 32, 80 32, 85 44 C80 54, 65 54, 55 42 Z" class="eye-sclera-el"/>`,
+          largeExpressive: `<g><ellipse cx="33" cy="45" rx="12" ry="15" transform="rotate(-10 33 45)" class="eye-sclera-el"/><ellipse cx="67" cy="48" rx="11" ry="14" transform="rotate(5 67 48)" class="eye-sclera-el"/></g>`,
+          animeAlmond: `<g><path d="M20 40 C30 30, 45 30, 50 42 C45 52, 30 52, 20 40 Z" class="eye-sclera-el"/><path d="M55 42 C65 32, 80 32, 85 44 C80 54, 65 54, 55 42 Z" class="eye-sclera-el"/></g>`,
+          surprisedRound: `<g><circle cx="35" cy="45" r="13" class="eye-sclera-el"/><circle cx="65" cy="45" r="13" class="eye-sclera-el"/></g>`,
+          slyHalfMoon: `<g><path d="M25 50 Q35 35 45 50Z" class="eye-sclera-el"/><path d="M55 50 Q65 35 75 50Z" class="eye-sclera-el"/></g>`, // Top half open
+          determinedSlim: `<g><path d="M22 40 L48 43 L47 48 L23 45 Z" class="eye-sclera-el"/><path d="M52 43 L78 40 L77 45 L53 48 Z" class="eye-sclera-el"/></g>`,
         },
         pupilShape: {
-          // Relatively small pupils with highlights
-          smallDotWithHighlight: `
-                <circle cx="33" cy="47" r="3.5" class="pupil-el"/>
-                <circle cx="34" cy="45" r="1" class="eye-highlight-el"/>
-                <circle cx="67" cy="50" r="3.2" class="pupil-el"/>
-                <circle cx="68" cy="48" r="0.9" class="eye-highlight-el"/>`,
-          ovalVerticalHighlight: `
-                <ellipse cx="33" cy="47" rx="2.5" ry="4" class="pupil-el"/>
-                <ellipse cx="33" cy="45" rx="0.8" ry="1.5" class="eye-highlight-el" fill="white"/>
-                <ellipse cx="67" cy="50" rx="2.3" ry="3.8" class="pupil-el"/>
-                <ellipse cx="67" cy="48" rx="0.7" ry="1.4" class="eye-highlight-el" fill="white"/>`,
+          smallDotWithHighlight: `<g><circle cx="33" cy="47" r="3.5" class="pupil-el"/><circle cx="34" cy="45" r="1" class="eye-highlight-el"/> <circle cx="67" cy="50" r="3.2" class="pupil-el"/><circle cx="68" cy="48" r="0.9" class="eye-highlight-el"/></g>`,
+          ovalVerticalHighlight: `<g><ellipse cx="33" cy="47" rx="2.5" ry="4" class="pupil-el"/><ellipse cx="33" cy="45" rx="0.8" ry="1.5" class="eye-highlight-el"/> <ellipse cx="67" cy="50" rx="2.3" ry="3.8" class="pupil-el"/><ellipse cx="67" cy="48" rx="0.7" ry="1.4" class="eye-highlight-el"/></g>`,
+          largeRoundCenteredHighlight: `<g><circle cx="35" cy="45" r="5" class="pupil-el"/><circle cx="37" cy="43" r="1.5" class="eye-highlight-el"/> <circle cx="65" cy="45" r="5" class="pupil-el"/><circle cx="67" cy="43" r="1.5" class="eye-highlight-el"/></g>`,
+          catSlit: `<g><ellipse cx="35" cy="45" rx="1.5" ry="6" class="pupil-el"/><ellipse cx="65" cy="45" rx="1.5" ry="6" class="pupil-el"/></g>`, // No highlight example, add if needed
+          tinyPinpoint: `<g><circle cx="35" cy="45" r="1.5" class="pupil-el"/><circle cx="65" cy="45" r="1.5" class="pupil-el"/></g>`,
         },
         eyebrowShape: {
           none: '',
-          expressiveArched: '<path d="M22,32 Q35,25 45,33 M55,35 Q68,28 78,36" class="eyebrow-el" fill="none"/>',
-          determinedStraight: '<path d="M23,30 L43,34 M57,36 L77,32" class="eyebrow-el" fill="none"/>',
+          expressiveArched:
+            '<g><path d="M22,32 Q35,25 45,33" class="eyebrow-el" fill="none"/><path d="M55,35 Q68,28 78,36" class="eyebrow-el" fill="none"/></g>',
+          determinedStraight:
+            '<g><path d="M23,30 L43,34" class="eyebrow-el" fill="none"/><path d="M57,36 L77,32" class="eyebrow-el" fill="none"/></g>',
+          sadSloped:
+            '<g><path d="M25,35 Q35,40 45,35" class="eyebrow-el" fill="none"/><path d="M55,35 Q65,40 75,35" class="eyebrow-el" fill="none"/></g>',
+          raisedSurprised:
+            '<g><path d="M25,25 Q35,18 45,25" class="eyebrow-el" fill="none"/><path d="M55,25 Q65,18 75,25" class="eyebrow-el" fill="none"/></g>',
+          thickBlocky: '<path d="M23 28 H43 V32 H23 Z M57 28 H77 V32 H57 Z" class="eyebrow-el"/>', // Fillable
         },
         noseShape: {
           none: '',
-          subtleShade: '<path d="M48,55 C49,58 51,58 52,55" class="nose-el skin-el" style="opacity:0.7;"/>', // Use opacity for subtlety
+          subtleShade: '<path d="M48,55 C49,58 51,58 52,55" class="nose-el skin-el" style="opacity:0.7;"/>',
           simpleAngled: '<path d="M47,53 L50,58 L53,54" class="nose-el" fill="none"/>',
+          buttonSmall: '<circle cx="50" cy="57" r="2.5" class="nose-el skin-el"/>',
+          pointedMedium: '<path d="M48 52 L50 60 L52 52 Z" class="nose-el skin-el"/>',
+          vShapeLine: '<path d="M47 55 L50 58 L53 55" class="nose-el" fill="none"/>',
         },
         mouthShape: {
-          // Brawl Stars teeth are prominent and often outlined
-          toothyGrin: `
-                <g class="mouth-group">
-                    <path d="M35,65 Q50,80 65,65 L60,82 H40 Z" class="mouth-interior-el"/>
-                    <path d="M40,68 L43,64 L46,68 L49,64 L52,68 L55,64 L58,68" class="teeth-el" stroke-linejoin="round"/> <!-- Top teeth -->
-                </g>`,
-          openShout: `
-                <g class="mouth-group">
-                    <path d="M30,60 Q50,85 70,60 Q50,95 30,60 Z" class="mouth-interior-el"/>
-                    <path d="M35,65 L38,60 L41,65 L44,60 L47,65 L50,60 L53,65 L56,60 L59,65 L62,60 L65,65" class="teeth-el"/> <!-- Upper teeth row -->
-                    <path d="M38,85 L41,90 L44,85 L47,90 L50,85 L53,90 L56,85" class="teeth-el" transform="translate(0, -5)"/> <!-- Lower teeth row, slightly up -->
-                </g>`,
+          toothyGrin: `<g class="mouth-group"><path d="M35,65 Q50,80 65,65 L60,82 H40 Z" class="mouth-interior-el"/><path d="M40,68 L43,64 L46,68 L49,64 L52,68 L55,64 L58,68" class="teeth-el" stroke-linejoin="round"/></g>`,
+          openShout: `<g class="mouth-group"><path d="M30,60 Q50,85 70,60 Q50,95 30,60 Z" class="mouth-interior-el"/><path d="M35,65 L38,60 L41,65 L44,60 L47,65 L50,60 L53,65 L56,60 L59,65 L62,60 L65,65" class="teeth-el"/><path d="M38,85 L41,90 L44,85 L47,90 L50,85 L53,90 L56,85" class="teeth-el" transform="translate(0, -5)"/></g>`,
           smirkLine: '<path d="M38,70 Q48,73 60,68" class="mouth-el" fill="none"/>',
+          neutralLine: '<line x1="40" y1="72" x2="60" y2="72" class="mouth-el"/>',
+          smallOh: `<g class="mouth-group"><ellipse cx="50" cy="70" rx="5" ry="7" class="mouth-interior-el"/></g>`, // Can add teeth if needed
+          wobblyConcern: '<path d="M38 70 Q43 67, 48 70 Q52 73, 57 70" class="mouth-el" fill="none"/>',
+          laughingOpen: `<g class="mouth-group"><path d="M30 60 C35 80, 65 80, 70 60 Q50 90 30 60Z" class="mouth-interior-el"/><path d="M35,65 C40 60, 60 60, 65 65" class="teeth-el" fill="none"/></g>`, // Upper teeth as a line
         },
         headwear: {
           none: '',
           dynamicBeanie: '<path d="M15 5 Q50 -5 85 5 L80 35 C70 25, 30 25, 20 35 Z" class="headwear-el clothing-el"/>',
-          wideCap: '<path d="M10 15 Q50 0 90 15 L 85 30 H15Z M80 30 Q100 30 85 18" class="headwear-el clothing-el"/>',
+          wideCap: '<path d="M10 15 Q50 0 90 15 L 85 30 H15Z M80 30 Q100 30 85 18" class="headwear-el clothing-el"/>', // Cap + brim
+          headbandSimple: '<path d="M15 20 L85 20 L80 28 L20 28Z" class="headwear-el clothing-el"/>',
+          crownSpiky:
+            '<path d="M20 10 L30 25 L40 10 L50 25 L60 10 L70 25 L80 10 L75 30 H25Z" class="headwear-el clothing-el"/>',
+          helmetBasic: '<path d="M15 10 Q50 -5 85 10 L90 50 Q50 60 10 50 Z" class="headwear-el clothing-el"/>',
+        },
+        facialFeatures: {
+          // These are typically drawn over the skin, before hair (if under), or after hair (if over)
+          none: '',
+          cheekBlush:
+            '<g><ellipse cx="28" cy="55" rx="5" ry="3" class="facial-feature-el blush-el" opacity="0.5"/><ellipse cx="72" cy="55" rx="5" ry="3" class="facial-feature-el blush-el" opacity="0.5"/></g>',
+          singleScarEye: '<line x1="55" y1="38" x2="75" y2="50" class="facial-feature-el scar-el" stroke-width="1.5"/>',
+          frecklesBridge: `
+              <g>
+                  <circle cx="45" cy="56" r="0.7" class="facial-feature-el freckle-el skin-el" opacity="0.7"/>
+                  <circle cx="48" cy="57" r="0.8" class="facial-feature-el freckle-el skin-el" opacity="0.7"/>
+                  <circle cx="51" cy="56" r="0.7" class="facial-feature-el freckle-el skin-el" opacity="0.7"/>
+                  <circle cx="54" cy="57.5" r="0.6" class="facial-feature-el freckle-el skin-el" opacity="0.7"/>
+              </g>`,
+          warPaintStripe: '<path d="M20 40 L30 35 L35 45 L25 50Z" class="facial-feature-el paint-el clothing-el"/>', // Uses clothing color
+        },
+        accessories: {
+          // Drawn typically near the end of the DRAW_ORDER
+          none: '',
+          roundGlasses: `
+              <g class="accessory-el glasses-el">
+                  <circle cx="35" cy="45" r="10" fill="none" stroke-width="1.5"/>
+                  <circle cx="65" cy="45" r="10" fill="none" stroke-width="1.5"/>
+                  <line x1="45" y1="45" x2="55" y2="45" stroke-width="1.5"/>
+              </g>`,
+          hoopEarrings: `
+              <g class="accessory-el earring-el">
+                  <circle cx="18" cy="55" r="4" fill="none" stroke-width="1.2"/>
+                  <circle cx="82" cy="55" r="4" fill="none" stroke-width="1.2"/>
+              </g>`,
+          simpleChoker:
+            '<path d="M30 78 Q50 82 70 78 L68 83 Q50 87 32 83Z" class="accessory-el choker-el clothing-el"/>',
         },
       }
 
       const DRAW_ORDER = [
-        // Define the layering
         'clothingHint',
         'hairBack',
         'ears',
         'headShape',
+        'facialFeatures',
         'hairFront',
         'eyeShape',
         'pupilShape',
         'noseShape',
         'mouthShape',
         'eyebrowShape',
-        'headwear', // Headwear usually on top of hair
+        'accessories',
+        'headwear',
       ]
 
       function populateSelects() {
@@ -373,6 +565,38 @@
           // console.warn("Parsed SVG string resulted in no element:", svgString);
           return null
         }
+      }
+
+      // --- Function to update the Discord Profile Preview ---
+      function updateDiscordProfilePreview(brawlerNameValue, currentBrawlerSVGString) {
+        if (!discordCard.style.display || discordCard.style.display === 'none') {
+          // If you choose to hide the card initially, show it now.
+          // document.getElementById('discordProfilePreviewContainer').style.display = 'block';
+        }
+
+        // Update Display Name
+        discordDisplayName.textContent = brawlerNameValue || 'Brawler'
+
+        // Update Username
+        const username = (brawlerNameValue || 'brawler')
+          .toLowerCase()
+          .replace(/\s+/g, '_')
+          .replace(/[^a-z0-9_]/g, '')
+        discordUsername.textContent = username || 'sz_brawler'
+
+        // Update Avatar SVG
+        if (discordAvatarSVG && currentBrawlerSVGString) {
+          discordAvatarSVG.innerHTML = currentBrawlerSVGString
+        }
+
+        // Banner color is handled by its own event listener
+      }
+
+      // --- Event Listener for Banner Color Picker ---
+      if (bannerColorInput && discordBanner) {
+        bannerColorInput.addEventListener('input', (event) => {
+          discordBanner.style.backgroundColor = event.target.value
+        })
       }
 
       function updateBrawlerPreview() {
@@ -474,6 +698,45 @@
                     el.style.fill = selectedColors.clothing1
                     el.style.stroke = selectedColors.outline
                     el.style.strokeWidth = outlineWidthValue
+                  } else if (el.classList.contains('facial-feature-el')) {
+                    if (el.classList.contains('blush-el')) {
+                      el.style.fill = '#FF8A80' // A pinkish blush color
+                      el.style.stroke = 'none'
+                    } else if (el.classList.contains('scar-el')) {
+                      el.style.fill = 'none'
+                      el.style.stroke = selectedColors.skin // Often a slightly darker skin tone or outline color
+                      el.style.filter = 'brightness(0.8)' // Make it look like a scar on skin
+                      el.style.strokeLinecap = 'round'
+                    } else if (el.classList.contains('freckle-el')) {
+                      el.style.fill = selectedColors.skin // Skin color, but darker
+                      el.style.filter = 'brightness(0.6)'
+                      el.style.stroke = 'none'
+                    } else if (el.classList.contains('paint-el')) {
+                      el.style.fill = selectedColors.clothing1 // Or a dedicated paint color
+                      el.style.stroke = selectedColors.outline
+                      el.style.strokeWidth = Math.max(0.2, parseFloat(outlineWidthValue) * 0.4) + 'px'
+                    }
+                  } else if (el.classList.contains('accessory-el')) {
+                    if (el.classList.contains('glasses-el')) {
+                      // Children of glasses group are already paths/circles
+                      el.querySelectorAll('*').forEach((glassPart) => {
+                        glassPart.style.stroke = selectedColors.outline // Or a specific glasses frame color
+                        // glassPart.style.fill = 'rgba(173, 216, 230, 0.3)'; // Optional lens tint
+                      })
+                    } else if (el.classList.contains('earring-el') || el.classList.contains('choker-el')) {
+                      el.style.fill = selectedColors.clothing1 // Or a metallic color for earrings
+                      if (
+                        el.classList.contains('earring-el') &&
+                        el.tagName.toLowerCase() === 'circle' &&
+                        el.getAttribute('fill') === 'none'
+                      ) {
+                        // for hoop earrings
+                        el.style.stroke = selectedColors.clothing1 // Or metallic
+                      } else {
+                        el.style.stroke = selectedColors.outline
+                      }
+                      el.style.strokeWidth = Math.max(0.3, parseFloat(outlineWidthValue) * 0.6) + 'px'
+                    }
                   } else {
                     // Default for any unclassified filled paths
                     if (el.style.fill !== 'none' && el.getAttribute('d') /* only apply to paths */) {
@@ -491,6 +754,9 @@
             }
           }
         })
+        const currentBrawlerName = brawlerNameInput.value.trim()
+        const currentBrawlerIconSVG = svgPreview.innerHTML // The content of the main preview
+        updateDiscordProfilePreview(currentBrawlerName, currentBrawlerIconSVG)
       }
       // Name Generation (same as before)
       const namePrefixes = [
@@ -551,19 +817,11 @@
         })
         generateNameBtn.click() // Generate a random name
         updateBrawlerPreview()
-      })
 
-      // Create Brawler Card (simplified for now, can be expanded)
-      createBrawlerBtn.addEventListener('click', () => {
-        const brawlerData = {
-          name: brawlerNameInput.value || 'Unnamed Brawler',
-          // You can grab other stats from previous HTML if you add them back
-          svgString: svgPreview.innerHTML, // Save the generated SVG
-          // Colors for reference
-          skinTone: colorInputs.skinTone.value,
-          hairColor: colorInputs.hairColor.value,
-        }
-        displayBrawlerCard(brawlerData)
+        // NOW, update the Discord profile preview after main preview is updated
+        const currentBrawlerName = brawlerNameInput.value.trim()
+        const currentBrawlerIconSVG = svgPreview.innerHTML
+        updateDiscordProfilePreview(currentBrawlerName, currentBrawlerIconSVG)
       })
 
       function displayBrawlerCard(data) {
@@ -583,6 +841,21 @@
       // --- Initialization ---
       populateSelects()
       updateBrawlerPreview() // Initial render
+
+      // --- INITIALIZATION ---
+      // Call updateDiscordProfilePreview once on load if you want it to show something initially.
+      // Or, you might prefer to only show/update it after the first brawler creation.
+      document.addEventListener('DOMContentLoaded', () => {
+        // Initial update of the Discord preview with default/placeholder values
+        // Get initial values or use placeholders
+        const initialName = brawlerNameInput.value.trim() || 'Brawler Example'
+        const initialIconSVG = svgPreview.innerHTML // This will be the initial state of the main preview
+        updateDiscordProfilePreview(initialName, initialIconSVG)
+
+        // Optional: if you want the Discord preview section hidden initially:
+        // document.getElementById('discordProfilePreviewContainer').style.display = 'none';
+        // Then in createBrawlerBtn, set it to 'block' or remove a 'hidden' class.
+      })
     </script>
   </body>
 </html>
