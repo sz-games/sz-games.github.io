@@ -5,10 +5,18 @@ const colorInputs = {} // To store all color inputs
 const brawlerNameInput = document.getElementById('brawlerName')
 const generateNameBtn = document.getElementById('generateNameBtn')
 const randomizeAllBtn = document.getElementById('randomizeAllBtn')
+const randomizeFeaturesBtn = document.getElementById('randomizeFeaturesBtn')
 const createdBrawlerDisplay = document.getElementById('createdBrawlerDisplay')
 const downloadPngBtn = document.getElementById('downloadPngBtn')
 const discordBanner = document.getElementById('discordBanner')
 const discordAvatarSVG = document.getElementById('discordAvatarSVG') // The SVG inside the avatar circle
+const discordAvatarContainer = document.getElementById('discordAvatarContainer') // Avatar container
+const avatarOverlay = document.getElementById('avatarOverlay') // The overlay container
+const darkOverlay = document.getElementById('darkOverlay') // Dark background overlay
+const closeOverlayBtn = document.getElementById('closeOverlayBtn') // Close button
+const largeAvatarSVG = document.getElementById('largeAvatarSVG') // The larger SVG in the overlay
+const overlayDownloadBtn = document.getElementById('overlayDownloadBtn') // Download button in overlay
+const overlayBrawlerName = document.getElementById('overlayBrawlerName') // Brawler name in overlay
 const discordDisplayName = document.getElementById('discordDisplayName')
 const discordUsername = document.getElementById('discordUsername')
 const bannerColorInput = document.getElementById('bannerColor')
@@ -231,6 +239,52 @@ function createSVGElement(svgString) {
   }
 }
 
+// --- Avatar overlay functionality ---
+if (discordAvatarContainer && avatarOverlay) {
+  // Open overlay when clicking on the Discord avatar
+  discordAvatarContainer.addEventListener('click', () => {
+    // Make sure the large SVG is updated with the current avatar SVG content
+    if (largeAvatarSVG && discordAvatarSVG) {
+      largeAvatarSVG.innerHTML = discordAvatarSVG.innerHTML
+    }
+
+    // Update the brawler name in the overlay
+    if (overlayBrawlerName && discordDisplayName) {
+      overlayBrawlerName.textContent = discordDisplayName.textContent + ' Avatar'
+    }
+
+    // Show the overlay
+    avatarOverlay.classList.remove('hidden')
+
+    // Prevent scrolling of the body while overlay is open
+    document.body.style.overflow = 'hidden'
+  })
+
+  // Close overlay when clicking the close button
+  if (closeOverlayBtn) {
+    closeOverlayBtn.addEventListener('click', () => {
+      avatarOverlay.classList.add('hidden')
+      document.body.style.overflow = ''
+    })
+  }
+
+  // Close overlay when clicking the dark background
+  if (darkOverlay) {
+    darkOverlay.addEventListener('click', () => {
+      avatarOverlay.classList.add('hidden')
+      document.body.style.overflow = ''
+    })
+  }
+
+  // Close overlay when pressing Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !avatarOverlay.classList.contains('hidden')) {
+      avatarOverlay.classList.add('hidden')
+      document.body.style.overflow = ''
+    }
+  })
+}
+
 // --- Function to update the Discord Profile Preview ---
 function updateDiscordProfilePreview(brawlerNameValue, currentBrawlerSVGString) {
   if (!discordCard.style.display || discordCard.style.display === 'none') {
@@ -251,6 +305,16 @@ function updateDiscordProfilePreview(brawlerNameValue, currentBrawlerSVGString) 
   // Update Avatar SVG
   if (discordAvatarSVG && currentBrawlerSVGString) {
     discordAvatarSVG.innerHTML = currentBrawlerSVGString
+  }
+
+  // Update Large Avatar SVG in overlay
+  if (largeAvatarSVG && currentBrawlerSVGString) {
+    largeAvatarSVG.innerHTML = currentBrawlerSVGString
+  }
+
+  // Update overlay brawler name
+  if (overlayBrawlerName) {
+    overlayBrawlerName.textContent = (brawlerNameValue || 'Brawler') + ' Avatar'
   }
 
   // Banner color is handled by its own event listener
@@ -498,6 +562,11 @@ generateNameBtn.addEventListener('click', () => {
   const middle = nameMiddles[Math.floor(Math.random() * nameMiddles.length)]
   const suffix = Math.random() > 0.6 ? ' ' + nameSuffixes[Math.floor(Math.random() * nameSuffixes.length)] : ''
   brawlerNameInput.value = `${prefix} ${middle}${suffix}`
+
+  // Update Discord profile preview with the new name
+  const currentBrawlerName = brawlerNameInput.value.trim()
+  const currentBrawlerIconSVG = svgPreview.innerHTML
+  updateDiscordProfilePreview(currentBrawlerName, currentBrawlerIconSVG)
 })
 
 randomizeAllBtn.addEventListener('click', () => {
@@ -528,6 +597,41 @@ randomizeAllBtn.addEventListener('click', () => {
   const currentBrawlerIconSVG = svgPreview.innerHTML
   updateDiscordProfilePreview(currentBrawlerName, currentBrawlerIconSVG)
 })
+
+// Add event listener for the randomize features button
+if (randomizeFeaturesBtn) {
+  randomizeFeaturesBtn.addEventListener('click', () => {
+    // Randomize all feature selections
+    for (const category in selects) {
+      const select = selects[category]
+      if (select.options.length > 0) {
+        select.selectedIndex = Math.floor(Math.random() * select.options.length)
+      }
+    }
+
+    // Randomize colors
+    Object.values(colorInputs).forEach((input) => {
+      if (input.type === 'color') {
+        input.value =
+          '#' +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, '0')
+      }
+    })
+
+    // Update the preview (without changing the name)
+    updateBrawlerPreview()
+
+    // Update visual selectors to match new values
+    updateVisualSelectors()
+
+    // Update the Discord profile preview with current name and new SVG
+    const currentBrawlerName = brawlerNameInput.value.trim()
+    const currentBrawlerIconSVG = svgPreview.innerHTML
+    updateDiscordProfilePreview(currentBrawlerName, currentBrawlerIconSVG)
+  })
+}
 
 function displayBrawlerCard(data) {
   createdBrawlerDisplay.innerHTML = `
@@ -1097,5 +1201,36 @@ function updateVisualSelectors() {
         currentOption.classList.add('selected')
       }
     }
+  })
+}
+
+// Add download functionality for the overlay download button
+if (overlayDownloadBtn) {
+  overlayDownloadBtn.addEventListener('click', () => {
+    const svgElement = largeAvatarSVG
+    if (!svgElement) {
+      console.error('Large SVG element not found for download.')
+      return
+    }
+
+    const brawlerName = brawlerNameInput.value.trim() || 'MyBrawler'
+    // Sanitize filename: replace spaces and special characters
+    const fileName = brawlerName.replace(/[^a-z0-9_]+/gi, '_').replace(/^_|_$/g, '') + '.png'
+
+    // Options for saveSvgAsPng
+    const options = {
+      scale: 4, // Higher resolution for the avatar download
+      backgroundColor: '#2d3748', // Set background color for the PNG
+      encoderOptions: 0.95, // Higher quality for avatar
+    }
+
+    saveSvgAsPng(svgElement, fileName, options)
+      .then(() => {
+        console.log('PNG download initiated from overlay for:', fileName)
+      })
+      .catch((error) => {
+        console.error('Error saving SVG as PNG from overlay:', error)
+        alert('Sorry, there was an error generating the PNG. Please try again or check the console.')
+      })
   })
 }

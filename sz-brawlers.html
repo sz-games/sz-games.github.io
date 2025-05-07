@@ -43,15 +43,172 @@
       </p>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Column 1: SVG Preview -->
-        <div class="md:col-span-1 brawl-card p-6 flex flex-col items-center">
-          <h2 class="text-2xl font-semibold mb-6 brawl-title">Brawler Preview</h2>
-          <div class="brawler-svg-preview mb-6">
+        <!-- Column 1: Discord Profile Preview (no panel) -->
+        <div class="md:col-span-1 flex flex-col items-center">
+          <!-- Discord Profile Card with positioned color picker -->
+          <div class="relative w-full max-w-sm mb-6">
+            <!-- Banner Color Picker (positioned) -->
+            <div class="absolute top-2 right-2 z-10 color-control group" data-tooltip="Banner Color">
+              <span
+                class="absolute -top-4 left-0 text-xs text-brawl-yellow opacity-0 group-hover:opacity-100 transition-opacity"
+                >BANNER</span
+              >
+              <input type="color" id="bannerColor" value="#1099E7" class="w-10 h-10" />
+            </div>
+
+            <div id="discordCard" class="w-full rounded-lg overflow-hidden">
+              <!-- Banner -->
+              <div id="discordBanner" class="h-24 bg-brawl-blue">
+                <!-- Banner content (can be empty or have abstract pattern later) -->
+              </div>
+
+              <!-- Avatar & User Info Section -->
+              <div class="p-5 relative">
+                <!-- Avatar -->
+                <div
+                  id="discordAvatarContainer"
+                  class="absolute -top-12 left-4 w-24 h-24 rounded-full bg-gray-700 overflow-hidden shadow-lg relative cursor-pointer"
+                >
+                  <!-- The brawler SVG will be injected here -->
+                  <svg
+                    id="discordAvatarSVG"
+                    class="w-full h-full"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="xMidYMid meet"
+                  ></svg>
+
+                  <!-- "View" button overlay on hover -->
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
+                  >
+                    <span class="text-white text-sm font-semibold">View</span>
+                  </div>
+                </div>
+
+                <!-- Avatar large overlay (hidden by default) -->
+                <div id="avatarOverlay" class="fixed inset-0 z-50 hidden">
+                  <!-- Dark overlay background -->
+                  <div id="darkOverlay" class="absolute inset-0 bg-black bg-opacity-70"></div>
+
+                  <!-- Overlay content -->
+                  <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-card-bg rounded-xl border-2 border-brawl-yellow shadow-2xl p-4 w-72"
+                  >
+                    <div class="relative">
+                      <!-- Close button -->
+                      <button
+                        id="closeOverlayBtn"
+                        class="absolute -top-2 -right-2 bg-brawl-red text-white rounded-full w-6 h-6 flex items-center justify-center shadow-lg hover:bg-red-700 transition-colors"
+                      >
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                      </button>
+
+                      <div class="text-center mb-2 font-bold text-brawl-yellow">
+                        <span id="overlayBrawlerName">Avatar Preview</span>
+                      </div>
+
+                      <div class="rounded-lg bg-gray-800 p-2 mb-3 shadow-inner">
+                        <svg
+                          id="largeAvatarSVG"
+                          class="w-60 h-60 mx-auto"
+                          viewBox="0 0 100 100"
+                          preserveAspectRatio="xMidYMid meet"
+                        ></svg>
+                      </div>
+
+                      <button
+                        id="overlayDownloadBtn"
+                        class="brawl-btn-primary text-sm py-2 px-3 w-full flex items-center justify-center"
+                      >
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9 4v-2H3v2h18z" />
+                        </svg>
+                        Download Avatar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Spacer for avatar -->
+                <div class="pt-14">
+                  <h3 id="discordDisplayName" class="text-xl font-bold text-white">Brawler Name</h3>
+                  <p id="discordUsername" class="text-sm text-gray-400">brawler_name</p>
+
+                  <!-- SZ Games Server Affiliation -->
+                  <div id="szGamesAffiliation" class="mt-4 pt-4 border-t border-gray-700">
+                    <h4 class="text-xs uppercase font-semibold text-gray-400 mb-1.5">Playing on SZ Games</h4>
+                    <div class="flex items-center space-x-2">
+                      <img
+                        src="https://github.com/sz-games/home/blob/main/G.png?raw=true"
+                        alt="SZ Games Logo"
+                        class="w-10 h-10 rounded-md"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-logo').style.display='block';"
+                      />
+                      <div
+                        class="w-10 h-10 rounded-md bg-gray-600 flex items-center justify-center text-white font-bold text-lg fallback-logo"
+                        style="display: none"
+                      >
+                        SZ
+                      </div>
+                      <div>
+                        <p class="text-sm font-semibold text-white">SZ Games</p>
+                        <p class="text-xs text-gray-400">Brawler Avatar Generator</p>
+                      </div>
+                    </div>
+                    <!-- Badge Style -->
+                    <div
+                      class="mt-2 inline-flex items-center bg-brawl-green text-white text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                    >
+                      <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                          fill-rule="evenodd"
+                        ></path>
+                      </svg>
+                      SZ Games Verified
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SVG Preview (Hidden for reference) -->
+          <div class="brawler-svg-preview hidden">
             <svg id="brawlerPreviewSVG" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
               <!-- SVG content will be dynamically inserted here -->
             </svg>
           </div>
-          <button id="randomizeAllBtn" class="mt-4 brawl-btn-accent w-full">RANDOMIZE</button>
+
+          <!-- Standalone buttons -->
+          <button id="randomizeAllBtn" class="mt-2 brawl-btn-accent w-full flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE -->
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <rect width="12" height="12" x="2" y="10" rx="2" ry="2" />
+                <path
+                  d="m17.92 14l3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6M6 18h.01M10 14h.01M15 6h.01M18 9h.01"
+                />
+              </g>
+            </svg>
+            RANDOMIZE ALL
+          </button>
+
+          <div class="mt-6 w-full relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-brawl-blue to-brawl-purple blur opacity-20"></div>
+            <button
+              id="downloadPngBtn"
+              class="w-full brawl-btn-primary py-4 px-4 rounded-lg text-lg relative flex items-center justify-center"
+            >
+              <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9 4v-2H3v2h18z" />
+              </svg>
+              DOWNLOAD Avatar
+            </button>
+          </div>
         </div>
 
         <!-- Column 2: Customization Controls -->
@@ -73,6 +230,18 @@
               <div class="flex-grow ml-2 relative overflow-hidden">
                 <div class="title-sparkle"></div>
               </div>
+              <button id="randomizeFeaturesBtn" class="brawl-btn-accent text-xs py-1 px-3 ml-2 flex items-center">
+                <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                  <!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE -->
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <rect width="12" height="12" x="2" y="10" rx="2" ry="2" />
+                    <path
+                      d="m17.92 14l3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6M6 18h.01M10 14h.01M15 6h.01M18 9h.01"
+                    />
+                  </g>
+                </svg>
+                RANDOMIZE
+              </button>
             </h3>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div>
@@ -187,97 +356,6 @@
       </div>
       <div id="createdBrawlerDisplay" class="mt-10">
         <!-- Brawler card will be injected here -->
-      </div>
-      <div id="discordProfilePreviewContainer" class="mt-12 mb-8">
-        <h2 class="text-2xl font-semibold mb-6 text-center brawl-title">Discord Profile Preview</h2>
-
-        <div class="flex flex-col md:flex-row gap-8 items-start justify-center">
-          <!-- Discord Profile Card -->
-          <div id="discordCard" class="w-full max-w-sm rounded-lg overflow-hidden">
-            <!-- Banner -->
-            <div id="discordBanner" class="h-24 bg-brawl-blue">
-              <!-- Banner content (can be empty or have abstract pattern later) -->
-            </div>
-
-            <!-- Avatar & User Info Section -->
-            <div class="p-5 relative">
-              <!-- Avatar -->
-              <div
-                id="discordAvatarContainer"
-                class="absolute -top-12 left-4 w-24 h-24 rounded-full bg-gray-700 overflow-hidden shadow-lg"
-              >
-                <!-- The brawler SVG will be injected here -->
-                <svg
-                  id="discordAvatarSVG"
-                  class="w-full h-full"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="xMidYMid meet"
-                ></svg>
-              </div>
-
-              <!-- Spacer for avatar -->
-              <div class="pt-14">
-                <h3 id="discordDisplayName" class="text-xl font-bold text-white">Brawler Name</h3>
-                <p id="discordUsername" class="text-sm text-gray-400">brawler_name</p>
-
-                <!-- SZ Games Server Affiliation -->
-                <div id="szGamesAffiliation" class="mt-4 pt-4 border-t border-gray-700">
-                  <h4 class="text-xs uppercase font-semibold text-gray-400 mb-1.5">Playing on SZ Games</h4>
-                  <div class="flex items-center space-x-2">
-                    <img
-                      src="https://github.com/sz-games/home/blob/main/G.png?raw=true"
-                      alt="SZ Games Logo"
-                      class="w-10 h-10 rounded-md"
-                      onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-logo').style.display='block';"
-                    />
-                    <div
-                      class="w-10 h-10 rounded-md bg-gray-600 flex items-center justify-center text-white font-bold text-lg fallback-logo"
-                      style="display: none"
-                    >
-                      SZ
-                    </div>
-                    <div>
-                      <p class="text-sm font-semibold text-white">SZ Games</p>
-                      <p class="text-xs text-gray-400">Brawler Avatar Generator</p>
-                    </div>
-                  </div>
-                  <!-- Badge Style -->
-                  <div
-                    class="mt-2 inline-flex items-center bg-brawl-green text-white text-xs font-semibold px-2.5 py-0.5 rounded-full"
-                  >
-                    <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                        fill-rule="evenodd"
-                      ></path>
-                    </svg>
-                    SZ Games Verified
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Controls for Discord Preview -->
-          <div class="w-full md:w-auto md:max-w-xs brawl-card p-6 space-y-4">
-            <h3 class="text-lg font-semibold text-brawl-yellow mb-3">CUSTOMIZE PREVIEW</h3>
-            <div>
-              <label for="bannerColor" class="block text-sm font-medium text-brawl-yellow mb-1">BANNER COLOR</label>
-              <input type="color" id="bannerColor" value="#1099E7" class="w-full h-10 p-1 rounded-md" />
-            </div>
-            <p class="text-xs text-gray-400">
-              The brawler name and generated avatar will update automatically when you create/randomize a brawler.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-brawl-blue to-brawl-purple blur opacity-20"></div>
-        <button id="downloadPngBtn" class="w-full brawl-btn-primary py-4 px-4 rounded-lg text-lg relative">
-          DOWNLOAD AS PNG
-        </button>
       </div>
     </div>
 
