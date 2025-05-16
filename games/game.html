@@ -43,7 +43,12 @@
       gtag('config', 'G-C78TXR0XFK')
     </script>
     <script src="/GobalSettings.js"></script>
+    <script src="https://stpd.cloud/assets/libraries/inview.min.js"></script>
+    <script>
+      inView.offset(-200)
+    </script>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
     <script>
       window.googletag = window.googletag || { cmd: [] }
 
@@ -64,6 +69,32 @@
               },
             },
           })
+        }
+
+        if (window.innerWidth >= 1200) {
+          googletag
+            .defineSlot(
+              '/147246189,22921845643/sz-games.github.io_300x600_desktop_side_right',
+              [
+                [300, 600],
+                [160, 600],
+                [300, 250],
+                [300, 300],
+              ],
+              'sz_games_github_io_sidebar_right_desktop'
+            )
+            .addService(googletag.pubads())
+        } else if (window.innerWidth >= 1024) {
+          googletag
+            .defineSlot(
+              '/147246189,22921845643/sz-games.github.io_160x600_desktop_side_right',
+              [
+                [160, 600],
+                [120, 600],
+              ],
+              'sz_games_github_io_sidebar_right_desktop'
+            )
+            .addService(googletag.pubads())
         }
         googletag.pubads().enableSingleRequest()
         googletag.enableServices()
@@ -436,24 +467,13 @@
         ></iframe>
       </div>
       <div class="sidebar">
-        <ins
-          class="adsbygoogle"
-          style="
-            display: inline-block;
-            min-width: 120px;
-            max-width: 300px;
-            max-height: 600px;
-            min-height: 250px;
-            width: 100%;
-            height: 100%;
-          "
-          data-ad-client="ca-pub-3723218062742398"
-          data-ad-slot="9386191967"
-          data-ad-channel="9267153333"
-        ></ins>
-        <script>
-          ;(adsbygoogle = window.adsbygoogle || []).push({})
-        </script>
+        <div id="sz_games_github_io_sidebar_right_desktop" class="side_ad_right">
+          <script>
+            googletag.cmd.push(function () {
+              googletag.display('sz_games_github_io_sidebar_right_desktop')
+            })
+          </script>
+        </div>
         <div class="discord-container" style="margin: 20px; text-align: center">
           <p style="font-size: 16px; margin-bottom: 10px; color: #7289da">
             <a
