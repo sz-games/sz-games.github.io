@@ -93,7 +93,9 @@
           })
         }
 
+        googletag.pubads().disableInitialLoad()
         googletag.pubads().enableSingleRequest()
+        googletag.pubads().collapseEmptyDivs()
         googletag.enableServices()
       })
     </script>

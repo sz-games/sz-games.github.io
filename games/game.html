@@ -97,6 +97,8 @@
             .addService(googletag.pubads())
         }
         googletag.pubads().enableSingleRequest()
+        googletag.pubads().disableInitialLoad()
+        googletag.pubads().collapseEmptyDivs()
         googletag.enableServices()
       })
     </script>
