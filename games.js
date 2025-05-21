@@ -14,6 +14,13 @@ const gamesData = [
     imgSrc: '/buildnowgg.png',
   },
   {
+    id: 'Diep IO',
+    name: 'Diep IO',
+    categories: ['Casual Shooter Multiplayer'],
+    url: 'https://sz-games.github.io/games/game.html?game=https://diep.io/',
+    imgSrc: '/deepio.jpg',
+  },
+  {
     id: 'Tunnel Rush',
     name: 'Tunnel Rush',
     categories: ['Casual'],
