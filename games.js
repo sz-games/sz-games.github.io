@@ -11,7 +11,7 @@ const gamesData = [
     name: 'Build Now GG',
     categories: ['Casual', 'Multiplayer', 'Shooter'],
     url: 'https://sz-games.github.io/games/game.html?game=https://buildnow-gg.io/buildnow-gg.embed',
-    imgSrc: '/buildnowgg.png?raw=true',
+    imgSrc: '/buildnowgg.png',
   },
   {
     id: 'Tunnel Rush',
