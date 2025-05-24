@@ -69,6 +69,8 @@
       height: 250px;
       z-index: 99999999999;
       background: transparent;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
     `
 
     // Create close button
@@ -106,6 +108,11 @@
     bannerContainer.appendChild(adDiv)
     document.body.appendChild(bannerContainer)
 
+    // Animate in from bottom
+    setTimeout(() => {
+      bannerContainer.style.transform = 'translateY(0)'
+    }, 50)
+
     // Define and display the ad
     window.googletag.cmd.push(function () {
       googletag.defineSlot(adSlot, [300, 250], adId).addService(googletag.pubads())
@@ -116,8 +123,16 @@
   // Close current banner and create new one after 10 seconds
   function closeAndRecreate() {
     if (bannerContainer) {
-      bannerContainer.remove()
-      bannerContainer = null
+      // Animate out to bottom
+      bannerContainer.style.transform = 'translateY(100%)'
+
+      // Remove after animation completes
+      setTimeout(() => {
+        if (bannerContainer) {
+          bannerContainer.remove()
+          bannerContainer = null
+        }
+      }, 300)
     }
 
     // Clear any existing timeout
