@@ -78,8 +78,8 @@
     closeButton.innerHTML = '×'
     closeButton.style.cssText = `
       position: absolute;
-      top: -10px;
-      right: -10px;
+      top: -22px;
+      right: 0;
       background: #ffffff;
       border: 1px solid #ccc;
       border-radius: 50%;
