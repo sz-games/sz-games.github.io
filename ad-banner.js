@@ -1,10 +1,10 @@
 ;(function () {
   'use strict'
 
-  // Check if GPT is already loaded
   let gptLoaded = !!window.googletag
 
-  // Get ad slot from script tag data attribute
+  var mediumUnit
+
   const currentScript =
     document.currentScript ||
     (() => {
@@ -22,24 +22,20 @@
   let bannerContainer = null
   let adTimeout = null
 
-  // Generate random ID for ad unit
   function generateRandomId() {
     return 'div-gpt-ad-' + Date.now() + '-' + Math.floor(Math.random() * 1000000)
   }
 
-  // Inject GPT scripts if not already loaded
   function injectGPTScripts() {
     if (gptLoaded) return Promise.resolve()
 
     return new Promise((resolve) => {
-      // Load GPT library
       const gptScript = document.createElement('script')
       gptScript.async = true
       gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js'
       gptScript.crossOrigin = 'anonymous'
       document.head.appendChild(gptScript)
 
-      // Initialize GPT
       const initScript = document.createElement('script')
       initScript.textContent = `
         window.googletag = window.googletag || {cmd: []};
@@ -55,11 +51,9 @@
     })
   }
 
-  // Create and show ad banner
   function createAdBanner() {
     const adId = generateRandomId()
 
-    // Create container
     bannerContainer = document.createElement('div')
     bannerContainer.style.cssText = `
       position: fixed;
@@ -73,7 +67,6 @@
       transition: transform 0.3s ease-out;
     `
 
-    // Create close button
     const closeButton = document.createElement('button')
     closeButton.innerHTML = '×'
     closeButton.style.cssText = `
@@ -99,7 +92,6 @@
 
     closeButton.addEventListener('click', closeAndRecreate)
 
-    // Create ad div
     const adDiv = document.createElement('div')
     adDiv.id = adId
     adDiv.style.cssText = 'min-width: 300px; min-height: 250px;'
@@ -108,25 +100,24 @@
     bannerContainer.appendChild(adDiv)
     document.body.appendChild(bannerContainer)
 
-    // Animate in from bottom
     setTimeout(() => {
       bannerContainer.style.transform = 'translateY(0)'
     }, 50)
 
-    // Define and display the ad
     window.googletag.cmd.push(function () {
-      googletag.defineSlot(adSlot, [300, 250], adId).addService(googletag.pubads())
+      mediumUnit = googletag.defineSlot(adSlot, [300, 250], adId)
+      mediumUnit.addService(googletag.pubads())
+    })
+
+    window.googletag.cmd.push(function () {
       googletag.display(adId)
     })
   }
 
-  // Close current banner and create new one after 10 seconds
   function closeAndRecreate() {
     if (bannerContainer) {
-      // Animate out to bottom
       bannerContainer.style.transform = 'translateY(100%)'
 
-      // Remove after animation completes
       setTimeout(() => {
         if (bannerContainer) {
           bannerContainer.remove()
@@ -135,26 +126,21 @@
       }, 300)
     }
 
-    // Clear any existing timeout
     if (adTimeout) {
       clearTimeout(adTimeout)
     }
 
-    // Create new banner after 10 seconds
     adTimeout = setTimeout(() => {
       createAdBanner()
     }, 10000)
   }
 
-  // Initialize the ad banner system
   function init() {
     injectGPTScripts().then(() => {
-      // Wait a bit for GPT to be ready, then create the first banner
       setTimeout(createAdBanner, 500)
     })
   }
 
-  // Start when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init)
   } else {
