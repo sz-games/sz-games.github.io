@@ -28,6 +28,13 @@ const gamesData = [
     imgSrc: 'https://github.com/sz-games/sz-games.github.io/blob/main/cover/tunnel.webp?raw=true',
   },
   {
+    id: 'Square Meal',
+    name: 'Square Meal',
+    categories: ['Puzzle'],
+    url: 'https://sz-games.github.io/games/Flash.html?game=/games/swf/squaremeal/squaremeal.swf',
+    imgSrc: './squaremeal.jpeg',
+  },
+  {
     id: 'Space War',
     name: 'Space War',
     categories: ['Casual', 'Shooter'],
