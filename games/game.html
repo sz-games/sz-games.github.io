@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      // if urlcontains query ?game=https://sz-games.github.io/Games/monkey-mart we need to stop script execution and render 404 page
+      if (window.location.search.includes('monkey-mart')) {
+        // Stop script execution
+        document.body.innerHTML = '<h1>404 - Game Not Found</h1>'
+      }
+    </script>
     <script
       defer
       data-domain="sz-games.github.io"
