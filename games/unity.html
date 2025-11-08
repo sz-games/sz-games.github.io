@@ -14,77 +14,7 @@
       data-ad-client="ca-pub-3723218062742398"
       data-ad-frequency-hint="15s"
     ></script>
-    <!-- H5 Ad Placement API Initialization -->
-    <script>
-      // Initialize H5 API - Standard implementation per Google docs
-      window.adsbygoogle = window.adsbygoogle || []
-      var adBreak = (adConfig = function (o) {
-        adsbygoogle.push(o)
-      })
-      console.log('🚀 H5 Ad API initialized')
-    </script>
-    <script>
-      function showPreroll() {
-        adBreak({
-          type: 'preroll',
-          name: 'game-start',
-          adBreakDone: (placementInfo) => {
-            console.log('Preroll complete. Status:', placementInfo.breakStatus)
-            // Start your game now
-          },
-        })
-      }
 
-      adConfig({
-        preloadAdBreaks: 'on',
-        onReady: () => {
-          console.log('H5 Ads API is ready.')
-          // The API is ready, show the first ad.
-          showPreroll()
-        },
-      })
-
-      // Example of calling an ad on game over
-      document.addEventListener('gameOver', function () {
-        console.log('Game Over - calling interstitial ad.')
-        adBreak({
-          type: 'next', // 'next' is used for interstitials between levels/sessions
-          name: 'game-over',
-        })
-      })
-
-      // Example of calling a rewarded ad on game won
-      document.addEventListener('gameWon', function () {
-        console.log('Game Won - calling rewarded ad.')
-        adBreak({
-          type: 'reward',
-          name: 'game-won',
-          adBreakDone: (placementInfo) => {
-            if (placementInfo.breakStatus === 'viewed') {
-              console.log('User watched rewarded ad - grant bonus!')
-              // Grant reward to user
-            }
-          },
-        })
-      })
-
-      // Function to show rewarded ads (can be called manually)
-      function showRewardedAd() {
-        adBreak({
-          type: 'reward',
-          name: 'user-requested-reward',
-          adBreakDone: (placementInfo) => {
-            if (placementInfo.breakStatus === 'viewed') {
-              console.log('User earned reward!')
-              // Grant reward logic here
-            }
-          },
-        })
-      }
-
-      // Make rewarded ad function available globally
-      window.showRewardedAd = showRewardedAd
-    </script>
     <script>
       window.plausible =
         window.plausible ||
