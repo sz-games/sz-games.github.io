@@ -592,6 +592,8 @@ voicemediagroup.com, 9262, RESELLER
 360playvid.com, 22921845643, DIRECT
 smartadline.com, 22921845643, DIRECT
 zippormedia.com, 22921845643, DIRECT
+nomadelab.com,22921845643,DIRECT
+google.com, pub-2960795876206253, RESELLER, f08c47fec0942fa0
 #Amazon Dor
 aps.amazon.com,d4004b5f-4fb6-4be2-82ae-0e36b8f52c12,RESELLER
 pubmatic.com,157150,RESELLER,5d62403b186f2ace
