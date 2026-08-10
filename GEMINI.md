@@ -4,21 +4,18 @@
 **Sz Games** is a static web-based game aggregation platform designed primarily for school environments. It focuses on providing "unblocked" access to web games using techniques like tab cloaking and `about:blank` embedding. The site features a library of over 250 games, including retro titles, emulators, and popular web games.
 
 ## Architecture
-The project is a **Static Website** hosted on GitHub Pages. It does not use a backend database or server-side rendering language (like PHP or Python). instead, it relies on:
-*   **Frontend:** HTML5, CSS3, and Vanilla JavaScript.
-*   **Data Storage:** A large JavaScript array (`gamesData`) within `games.js` acts as the client-side database.
-*   **Rendering:** The `script.js` file reads the `gamesData` array and dynamically generates the HTML for the game grid in the browser.
+The project is a **static website** hosted on GitHub Pages. It does not use a backend database or server-side rendering language. It relies on:
+* **Frontend:** HTML5, CSS3, and Vanilla JavaScript.
+* **Homepage catalogue:** The canonical game cards (their names, descriptions/labels, and links) are present directly in `index.html` inside `#games`. This is intentional: crawlable game content must remain in the initial HTML and must not depend on scrolling or client-side rendering.
+* **Legacy catalogue code:** `games.js` and `script.js` are used by legacy pages, but are not loaded by the homepage. Do not treat them as the homepage source of truth without introducing a static build step that emits equivalent HTML into `index.html`.
 
 ## Key Files & Directories
 
 ### Core
-*   **`index.html`**: The main entry point. Contains the site structure, navigation bars, ads configuration, and the empty container (`#games`) where games are injected.
-*   **`games.js`**: The most critical data file. Contains the `gamesData` constant, an array of objects where each object represents a game (ID, name, category, URL, image source).
-*   **`script.js`**: The main application logic. It handles:
-    *   **Rendering:** Iterates through `gamesData` to create and append game cards to the DOM.
-    *   **Search & Filter:** Implements the search bar logic and category filtering (e.g., "Shooter", "Casual").
-    *   **UI Interactions:** Manages menus, scroll-to-top buttons, and "maintenance mode" screens.
-*   **`style.css` / `styles.css`**: Global styling for the application.
+* **`index.html`**: Main entry point. Contains navigation, ads configuration, and the complete static `#games` catalogue.
+* **`scripts.js`**: Homepage menu, search, category-filtering, scroll, and image-loading behavior. It must only enhance the static catalogue, not replace it.
+* **`games.js` / `script.js`**: Legacy data and rendering code loaded by `beforeop.html`; not loaded by the homepage.
+* **`styles.css`**: Homepage styling. `style.css` contains legacy/alternate styles.
 
 ### Content
 *   **`games/`**: Directory containing HTML files for individual games or iframed content.
@@ -34,19 +31,13 @@ Since this is a static site, you can serve it using any simple HTTP server.
 *   **VS Code:** Use the "Live Server" extension.
 
 ### 2. Adding a New Game
-To add a game to the site, you strictly modify **`games.js`**:
-1.  Open `games.js`.
-2.  Add a new object to the `gamesData` array in the following format:
-    ```javascript
-    {
-      id: 'Game Unique Name',
-      name: 'Display Name',
-      categories: ['Category1', 'Category2'], // e.g., 'Shooter', 'Casual'
-      url: 'https://path-to-game.com', // Can be local path or external URL
-      imgSrc: './path/to/image.png' // Usually in the cover/ directory
-    },
-    ```
-3.  Ensure the image exists in the specified path (usually `cover/`).
+Add homepage games as complete, semantic cards in **`index.html`** inside `#games`:
+1. Include a crawlable `<a href="...">`, visible game name, category attribute, and an `<img>` with an accurate `alt` value.
+2. Use a local cover under `cover/` where possible.
+3. Keep the card in the initial HTML. Do not make its title, link, or descriptive text dependent on search, scrolling, or JavaScript rendering.
+4. If the catalogue is ever split or changed to infinite scroll, publish crawlable static paginated/category URLs with ordinary links; a scroll or “Load more” control must not be the only way to discover games.
+
+`games.js` remains legacy data for pages that load it; it is not the homepage catalogue source of truth.
 
 ### 3. Modifying Logic
 *   **UI Changes:** Edit `index.html` for structure or `script.js` for dynamic behavior.

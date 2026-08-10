@@ -344,8 +344,8 @@ const gamesData = [
     imgSrc: 'https://github.com/sz-games/storage3/blob/main/fs.jpeg?raw=true',
   },
   {
-    id: 'Geomerty Dash',
-    name: 'Geomerty Dash',
+    id: 'Geometry Dash',
+    name: 'Geometry Dash',
     categories: ['Casual'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games10/geodash/index.html',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/geo.jpeg',
@@ -687,7 +687,7 @@ const gamesData = [
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/catnin.png',
   },
   {
-    id: 'moto x3m',
+    id: 'Moto X3M',
     name: 'Moto X3M',
     categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://tbg95.github.io/moto-x3m/game',
@@ -701,21 +701,21 @@ const gamesData = [
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/X3M2.png',
   },
   {
-    id: 'moto x3m pool party',
+    id: 'Moto X3M Pool Party',
     name: 'Moto X3M Pool Party',
     categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games5/motox3m-pool',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/X3M3.avif',
   },
   {
-    id: 'moto x3m spooky land',
+    id: 'Moto X3M Spooky Land',
     name: 'Moto X3M Spooky Land',
     categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games5/motox3m-spooky',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/X3M9.png',
   },
   {
-    id: 'moto x3m winter',
+    id: 'Moto X3M Winter',
     name: 'Moto X3M Winter',
     categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games5/motox3m-winter',
@@ -1178,7 +1178,7 @@ const gamesData = [
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/098B.png',
   },
   {
-    id: 'adventure drivers',
+    id: 'Adventure Drivers',
     name: 'Adventure Drivers',
     categories: ['Adventure', 'Driver'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games5/adventure-drivers',
@@ -1257,7 +1257,7 @@ const gamesData = [
   {
     id: 'highway justice',
     name: 'Highway Justice',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/Flash.html?game=/Games5/highway-justice.swf',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/09KL.jpeg',
   },
@@ -1313,7 +1313,7 @@ const gamesData = [
   {
     id: 'Highway Racer',
     name: 'Highway Racer',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/hwy-rcer',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/hwy-rcer.png',
   },
@@ -1369,14 +1369,14 @@ const gamesData = [
   {
     id: 'drift boss',
     name: 'Drift Boss',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/drift-boss',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/DRIFTBOSS.jpeg',
   },
   {
     id: 'eggy car',
     name: 'Eggycar',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/eggycar',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/EGGYCAR.webp',
   },
@@ -1474,14 +1474,14 @@ const gamesData = [
   {
     id: 'jelly truck',
     name: 'Jelly Truck',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/jellytruck',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/JELLYTRCK.png',
   },
   {
     id: 'wheely 6',
     name: 'Wheely 6',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/wheely6',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/wheely6.png',
   },
@@ -1635,7 +1635,7 @@ const gamesData = [
   {
     id: 'online racing game',
     name: 'Online Racing Game',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/cars-master/',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/CARSMASTER.png',
   },
@@ -1656,7 +1656,7 @@ const gamesData = [
   {
     id: 'drift city',
     name: 'Drift City',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/unity.html?game=https://sz-games.github.io/Games6/drift-city',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/DRIFTCITY.png',
   },
@@ -1677,14 +1677,14 @@ const gamesData = [
   {
     id: 'timothys race',
     name: 'Timothys Race',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: "https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/timothy's-race",
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/TIMRACE.png',
   },
   {
     id: 'slowroads',
     name: 'Slowroads',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games7/slowroads',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/SLOWROADS.png',
   },
@@ -1810,7 +1810,7 @@ const gamesData = [
   {
     id: 'x trial racing',
     name: 'X Trial Racing',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games7/x-trial-racing',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/XTRIAL.png',
   },
@@ -1866,7 +1866,7 @@ const gamesData = [
   {
     id: 'sky car stunt',
     name: 'Sky Car Stunt',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games7/sky-car-stunt',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/SKYCARSTUNT.png',
   },
@@ -1971,7 +1971,7 @@ const gamesData = [
   {
     id: 'gopher kart',
     name: 'Gopher Kart',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games7/gopher-kart',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/gopherkart.png',
   },
@@ -2090,7 +2090,7 @@ const gamesData = [
   {
     id: 'cyber city driver',
     name: 'Cyber City Driver',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games7/cyber-city-driver',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/CYBERCITYD.png',
   },
@@ -2216,7 +2216,7 @@ const gamesData = [
   {
     id: 'city driver',
     name: 'City Driver',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games8/CITYDRIVER',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/CITYDRIVER.png',
   },
@@ -2272,7 +2272,7 @@ const gamesData = [
   {
     id: 'stickman tour kart',
     name: 'Stickman Tour Kart',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games8/STICKMANTOURKART',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/STICKMANTK.png',
   },
@@ -2300,7 +2300,7 @@ const gamesData = [
   {
     id: 'tanuki sunset',
     name: 'Tanuki Sunset',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/unity.html?game=https://sz-games.github.io/Games9/TANUKISUNSET',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/TANUKISUNSET.png',
   },
@@ -2335,7 +2335,7 @@ const gamesData = [
   {
     id: 'cyber tunnel',
     name: 'Cyber Tunnel',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: 'https://sz-games.github.io/games/unity.html?game=https://sz-games.github.io/Games9/CYBERTUNNEL',
     imgSrc: 'https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/cover/cybertun.png',
   },
@@ -2392,7 +2392,7 @@ const gamesData = [
   {
     id: 'drift boss fix',
     name: 'Drift Boss FIX',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: './games/game.html?game=/Games11/drift-boss/game',
     imgSrc: './cover/driftbosss.jpg',
   },
@@ -2406,7 +2406,7 @@ const gamesData = [
   {
     id: 'crazy cars',
     name: 'Crazy Cars',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: './games/game.html?game=/Games11/crazy-cars/game',
     imgSrc: './cover/crazycars.jpg',
   },
@@ -2427,7 +2427,7 @@ const gamesData = [
   {
     id: 'snes mario kart',
     name: 'SNES Mario Kart',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: './games/game.html?game=/RetroGames/smariokart.html',
     imgSrc: 'https://sz-games.github.io/cover/snesmariokart.png',
   },
@@ -2497,7 +2497,7 @@ const gamesData = [
   {
     id: 'dashcraft',
     name: 'DashCraft.io',
-    categories: ['Driver'],
+    categories: ['Driving'],
     url: './games/game.html?game=/Games11/dashcraft/index.html',
     imgSrc: './cover/dashcr.jfif',
   },
@@ -2553,7 +2553,7 @@ const gamesData = [
   {
     id: 'scrap metal 3',
     name: 'Scrap Metal 3',
-    categories: ['Casual', 'Driver'],
+    categories: ['Casual', 'Driving'],
     url: './games/game.html?game=/Games11/scrapmetal/',
     imgSrc: './cover/scrapm.jfif',
   },

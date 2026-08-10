@@ -81,15 +81,67 @@ p {
 .ImageForGame {
   border-radius: 15px;
   width: 180px;
-  opacity: 0;
+  opacity: 1;
 
   height: 180px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   transition: 0.5s;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.725);
 }
 .ImageForGame:hover {
   transform: scale(1.1);
   box-shadow: 2px 2px 2px 2px rgba(54, 54, 54, 0.725);
+}
+
+/* --- Fix #4: extracted inline styles for Featured Cards --- */
+.featgameit {
+  min-width: 120px;
+  flex: 1;
+  max-width: 150px;
+  margin: 0 7.5px;
+  overflow: hidden;
+}
+.feat-pop-badge {
+  position: absolute;
+  z-index: 3;
+  margin: 13px;
+  border-radius: 15px;
+  width: 100px;
+  height: 25px;
+  background: linear-gradient(to right, rgb(211, 51, 22), rgb(197, 36, 125), rgb(221, 12, 117));
+}
+.feat-pop-text {
+  color: white;
+  font-weight: 600;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  position: relative;
+}
+.feat-pop-icon {
+  font-size: 22px;
+  position: absolute;
+  margin-left: 3px;
+  top: -3px;
+}
+.feat-title {
+  bottom: 0;
+  text-shadow: 0px 0px 6px black;
+  position: absolute;
+  z-index: 2;
+  color: white;
+  font-size: 18px;
+  margin: 20px;
+}
+.feat-cover {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  filter: blur(2px) brightness(95%);
+  object-fit: cover;
+  top: 0;
+  position: relative;
 }
 @keyframes scroll {
   0% {
@@ -338,7 +390,8 @@ img {
 }
 
 .box {
-  opacity: 0;
+  /* Keep every catalogue card visible in the rendered HTML for crawlers and non-JS users. */
+  opacity: 1;
   transition: 0.5s;
 }
 

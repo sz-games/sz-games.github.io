@@ -102,153 +102,17 @@ function randomGamelol() {
   }
 }
 
-const imageContainer = document.getElementById('games')
-
-const images = imageContainer.getElementsByTagName('img')
-
-for (let i = 0; i < images.length; i++) {
-  images[i].addEventListener('error', function () {
-    console.log(`Image ${i + 1} failed to load!`)
-
-    setTimeout(function () {
-      images[i].src = images[i].src
-    }, 3000)
-  })
-  console.log('code: 9B')
-}
-
-const container = document.getElementById('games')
-const boxes = document.querySelectorAll('.box')
-
-function isElementInViewport(element) {
-  const rect = element.getBoundingClientRect()
-  return (
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight + 400 || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  )
-}
-
-function isElementNotInViewport(element) {
-  const rect = element.getBoundingClientRect()
-  return (
-    rect.bottom < 0 ||
-    rect.top > (window.innerHeight + 400 || document.documentElement.clientHeight) ||
-    rect.right < 0 ||
-    rect.left > (window.innerWidth || document.documentElement.clientWidth)
-  )
-}
-function errorimgshow() {
-  var errormsgimg = document.getElementById('errorcontmsg')
-  if (errormsgimg.getAttribute('style', 'display') === 'block') {
-  } else {
-    errormsgimg.style.display = 'block'
-    errormsgimg.style.animation = 'showalert 0.8s'
-
-    setTimeout(() => {
-      errormsgimg.style.animation = 'hidealert 0.5s'
-      setTimeout(() => {
-        errormsgimg.style.display = 'none'
-      }, 450)
-    }, 8000)
-  }
-}
-
+// Catalogue cards and their image URLs are delivered in the initial HTML. Native
+// `loading="lazy"` defers only off-screen image bytes; it does not hide cards from
+// crawlers, non-JavaScript users, or keyboard navigation.
 function handleScroll() {
-  const hiddenDivs = document.querySelectorAll('.box')
-  const lazyImages = document.querySelectorAll('.ImageForGame')
-
-  if ((canLoadImages = true)) {
-    lazyImages.forEach((image) => {
-      let retries = 0
-
-      function loadImage() {
-        if (isElementInViewport(image) && !image.src) {
-          image.src = image.getAttribute('data-src')
-
-          image.onload = function () {
-            image.classList.add('showIMG')
-            retries = 0
-          }
-
-          image.onerror = function () {
-            retries++
-            if (retries < 3) {
-              loadImage()
-            } else {
-              image.classList.add('showIMG')
-
-              image.src = './fallback.png'
-              errorimgshow()
-            }
-          }
-        }
-      }
-
-      loadImage()
-    })
-
-    hiddenDivs.forEach((div) => {
-      if (isElementInViewport(div)) {
-        div.classList.add('show')
-        //console.log('Loaded ' + div.id)
-      } else if (isElementNotInViewport(div)) {
-        //div.classList.remove('show')
-      }
-    })
-  }
+  document.querySelectorAll('.box').forEach((card) => card.classList.add('show'))
 }
 
-var PageHasLoaded = false
-
-window.addEventListener('load', function (event) {
-  if ((PageHasLoaded = false)) {
-    canLoadImages = true
-    console.log('E-2')
-
-    handleScroll()
-  }
-  console.log('E-1')
-})
-
-var preloaded = false
 function searchHandleLoad() {
-  const hiddenDivs = document.querySelectorAll('.box')
-  const lazyImages = document.querySelectorAll('.ImageForGame')
-  if (preloaded === false) {
-    lazyImages.forEach((image) => {
-      let retries = 0
-
-      function loadImage() {
-        image.src = image.getAttribute('data-src')
-
-        image.onload = function () {
-          image.classList.add('showIMG')
-          retries = 0
-        }
-
-        image.onerror = function () {
-          retries++
-          if (retries < 3) {
-            loadImage()
-          } else {
-            image.classList.add('showIMG')
-
-            image.src = './fallback.png'
-          }
-        }
-      }
-
-      loadImage()
-    })
-    hiddenDivs.forEach((div) => {
-      div.classList.add('show')
-    })
-    console.log('Loaded')
-    preloaded = true
-  } else if (preloaded === true) {
-    console.log('Already Loaded')
-  }
+  // Kept for existing search/filter callers. Images no longer need JavaScript source
+  // swapping, which previously made below-the-fold covers dependent on scrolling.
+  handleScroll()
 }
 
 window.addEventListener('scroll', handleScroll)
