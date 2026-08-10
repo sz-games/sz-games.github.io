@@ -694,6 +694,8 @@ google.com, pub-6106740322220497, RESELLER, f08c47fec0942fa0
 # VDO
 vdo.ai, 5875, DIRECT
 atlas5.co, 5875, DIRECT
+vdo.ai, 3568, DIRECT
+atlas5.co, 3568, DIRECT
 google.com, pub-7094677798399606, RESELLER, f08c47fec0942fa0
 google.com, pub-2403018226404213, RESELLER, f08c47fec0942fa0
 tapmind.com, TMP10227, DIRECT
