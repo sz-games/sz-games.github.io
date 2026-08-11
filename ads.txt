@@ -692,6 +692,15 @@ google.com, pub-6106740322220497, RESELLER, f08c47fec0942fa0
 #360Playvid end
 
 # VDO
+onetag.com, 62e564782c44a66-OB, DIRECT
+smartadserver.com, 4168, RESELLER
+smartadserver.com, 4167, DIRECT
+districtm.io, 101760, RESELLER, 3fd707be9c4527c3
+rhythmone.com, 2564526802, RESELLER, a670c89d4a324e47
+adagio.io, 1442, DIRECT
+indexexchange.com, 194558, RESELLER
+loopme.com, 11575, RESELLER, 6c8d5f95897a5a3b
+advertising.com, 23089, RESELLER
 vdo.ai, 5875, DIRECT
 atlas5.co, 5875, DIRECT
 vdo.ai, 3568, DIRECT
