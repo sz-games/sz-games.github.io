@@ -5,8 +5,8 @@
 </p>
 
 <h1 align="center">Sz Games</h1>
-<p align="center">The Best Way To Play Game's In School</p>
-<p align="Center">This Site Was Made By Me (Bobby)</p>
+<p align="center">The best way to play games in school</p>
+<p align="Center">This site was made by me (Bobby)</p>
 <a href="https://discord.gg/DzKRSntb87"><img height="30px"  src="https://img.shields.io/badge/Join%20The%20Discord!-brightgreen?style=for-the-badge&logo=discord&logoColor=white&labelColor=%233f4bd1&color=%235865F2"></a>
 
 
@@ -25,15 +25,15 @@
 - **Panic Button**
 - **Proxies (Testing)**
 
-- **Doesnt Have A Thousand Ads On Every Page**
+- **Doesn't have a thousand ads on every page**
 
-<h1 align="Center">Instructions To Host Your Own</h1>
-<p align="center">You Can Fork This Repo and Host Your Own But You Need To Include The Following</p>
+<h1 align="Center">Instructions to Host Your Own</h1>
+<p align="center">You can fork this but you need to include the following:</p>
 
 - **Link To The Original Site**
 - **Credits**
 
-<p align="center">Do Not Do The Following</p>
+<p align="center">Do <strong>NOT</strong> do the following</p>
 
 - **Rebrand The Site**
 
