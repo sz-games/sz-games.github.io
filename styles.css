@@ -894,3 +894,34 @@ img {
   font-size: 15px;
   padding: 3px 4px 4px 3px;
 }
+
+/* --- propose.md cleanup: extracted inline styles (identical values, no visual change) --- */
+.box {
+  position: relative;
+  float: left;
+}
+.textover--overlay {
+  border-radius: 15px;
+  background-color: #191919db;
+  top: 15% !important;
+  color: #fff !important;
+}
+.textover--muted {
+  color: rgba(255, 255, 255, 0.827) !important;
+}
+.textover--wide {
+  width: 90%;
+  border-radius: 15px;
+  background-color: #191919db;
+}
+.featgameit--row {
+  margin: 0 7.5px;
+  overflow: hidden;
+  flex: 1;
+  min-width: 120px;
+  max-width: 150px;
+}
+.MenuIt h1,
+.MenuIt h2 {
+  font-size: 21px !important;
+}

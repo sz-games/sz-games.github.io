@@ -131,7 +131,7 @@ function filterByCategory(selected) {
 
   for (var i = 0, len = elements.length; i < len; i++) {
     var element = elements[i]
-    var categories = element.getAttribute('category')
+    var categories = element.getAttribute('data-category') || element.getAttribute('category')
 
     if (categories) {
       var categoryArray = categories.toUpperCase().split(' ')
@@ -181,7 +181,7 @@ function Search() {
   input.addEventListener(
     'input',
     debounce(function () {
-      var filter = input.value.trim().toUpperCase()
+      var filter = input.value.trim().toUpperCase().replace(/[-_]+/g, ' ')
       var found = false
       if (input.value.toLowerCase() === 'hawk tuah') {
         const hiddenDivs = document.querySelectorAll('.box')
@@ -207,7 +207,7 @@ function Search() {
           var id = element.getAttribute('id')
 
           if (id) {
-            var idUpper = id.toUpperCase()
+            var idUpper = id.toUpperCase().replace(/[-_]+/g, ' ')
             var shouldExclude = element.classList.contains('textover')
 
             if (!shouldExclude) {
@@ -337,3 +337,38 @@ function toggleMENU107() {
   document.getElementById('URLIFRAME').src = './index.html'
 }
 document.getElementById('URLIFRAME').style.height = window.innerHeight - 200 + 'px'
+
+// --- propose.md cleanup: delegated click handlers (replaces inline onclick, same behavior) ---
+function closeNotice(event) {
+  if (event) {
+    if (event.preventDefault) event.preventDefault()
+    if (event.stopPropagation) event.stopPropagation()
+  }
+  var box = document.getElementById('noticeBoxWrapper') || document.getElementById('noticeBox')
+  if (box) box.style.display = 'none'
+  try {
+    localStorage.setItem('discordnotee', 'true')
+  } catch (e) {}
+}
+
+document.addEventListener('click', function (event) {
+  var t = event.target.closest ? event.target.closest('[data-action]') : null
+  if (!t) return
+  var action = t.getAttribute('data-action')
+  if (action === 'toggle-menu') ToggleMenuBig()
+  else if (action === 'open-link') openLink()
+  else if (action === 'close-notice') closeNotice(event)
+  else if (action === 'toggle-iframe-menu') toggleMENU107()
+  else if (action === 'random-game') randomGamelol()
+  else if (action === 'open-settings') window.location = 'https://sz-games.github.io/settings.html'
+})
+
+// keyboard access for notice banner (role=link + tabindex added in HTML)
+document.addEventListener('keydown', function (event) {
+  if ((event.key === 'Enter' || event.key === ' ') && event.target && event.target.getAttribute) {
+    if (event.target.getAttribute('data-action') === 'open-link') {
+      event.preventDefault()
+      openLink()
+    }
+  }
+})
