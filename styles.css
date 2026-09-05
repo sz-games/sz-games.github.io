@@ -1189,6 +1189,14 @@ img {
   .feat-row {
     padding: 4px 16px 12px;
   }
+  .featgameit {
+    width: 38vw; /* ~2.5 cards per row with a peek of the next */
+    scroll-snap-align: start;
+  }
+  .feat-title {
+    font-size: 14px;
+    margin: 12px;
+  }
   #MMenuBig {
     width: calc(100vw - 20px);
     max-width: 325px;
