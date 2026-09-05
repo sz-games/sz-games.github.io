@@ -1091,12 +1091,22 @@ img {
   .group .input,
   .group .selected {
     border-radius: 0; /* full-bleed bars, no rounded corners against the screen edge */
+    box-shadow: none; /* flat bars — glow reads as a gap on full-bleed */
   }
   .group .input {
     flex: none;
     min-width: 0;
     width: 100%;
+    margin: 0;
     box-sizing: border-box;
+    -webkit-appearance: none; /* strip UA search-field chrome that insets the box */
+    appearance: none;
+  }
+  .group .input::-webkit-search-decoration,
+  .group .input::-webkit-search-cancel-button,
+  .group .input::-webkit-search-results-button,
+  .group .input::-webkit-search-results-decoration {
+    display: none;
   }
   .group .icon {
     top: 20px; /* centre on the 40px input while stacked */
