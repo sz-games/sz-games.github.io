@@ -12,7 +12,6 @@ function check(elem) {
         platformdiv.style.display = "block";
         select.setAttribute('required', '');
         link.style.display = "none";
-    console.log('emulator') 
     } else {
         platformdiv.style.display = "none";
         select.removeAttribute('required', '');
@@ -37,4 +36,4 @@ for (let i = 0; i < buttons.length; i++) {
 
   info.push(data)
 }
-console.log(info)
+/* dbg(info) — removed prod log */

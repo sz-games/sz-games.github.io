@@ -1,4 +1,5 @@
-console.log('Script.js loaded')
+const __dbg=new URLSearchParams(location.search).has('debug');const dbg=(...a)=>{if(__dbg)console.log(...a)};
+dbg('Script.js loaded')
 // ==========================================================================
 // Global Variables
 // ==========================================================================
@@ -182,7 +183,7 @@ function updateScrollButtonVisibility() {
 // Function to load all images immediately (e.g., for search activation)
 function searchHandleLoad() {
   if (preloaded) {
-    console.log('Already Loaded')
+    dbg('Already Loaded')
     return
   }
 
@@ -192,7 +193,7 @@ function searchHandleLoad() {
   lazyImages.forEach((image) => loadImageWithRetries(image, true)) // Force load immediate=true
   hiddenDivs.forEach((div) => div.classList.add('show'))
 
-  console.log('Loaded all images due to search/interaction.')
+  dbg('Loaded all images due to search/interaction.')
   preloaded = true
 }
 
@@ -238,7 +239,7 @@ function loadImageWithRetries(image, immediate = false) {
 
     image.onload = () => {
       image.classList.add('showIMG')
-      // console.log(`Loaded: ${src}`);
+      // dbg(`Loaded: ${src}`);
       retries = 0 // Reset on success
     }
 
@@ -299,7 +300,7 @@ function handleRadioChange(event) {
   }
   const category = label.getAttribute('data-txt')
 
-  console.log(`Selected category: ${category}`)
+  dbg(`Selected category: ${category}`)
 
   if (selectedOption.id === 'all') {
     // Assuming 'all' is the ID for "No Filter"
@@ -384,7 +385,7 @@ function randomGamelol() {
 function loadGame() {
   if (usingLoad === true) {
     // Logic for loading a specific game? Needs implementation.
-    console.log('loadGame function called but is incomplete.')
+    dbg('loadGame function called but is incomplete.')
   }
 }
 
@@ -392,7 +393,7 @@ function loadGame() {
 // Game Rendering
 // ==========================================================================
 function renderGames(gamesArray) {
-  console.log('renderGames', gamesArray)
+  dbg('renderGames', gamesArray)
   const gamesContainer = document.getElementById('games')
   if (!gamesContainer) {
     console.error('Game container #games not found.')
@@ -417,7 +418,7 @@ function renderGames(gamesArray) {
 
   // After rendering, check for initially visible games
   handleScroll()
-  console.log('Games rendered successfully.')
+  dbg('Games rendered successfully.')
 }
 
 // ==========================================================================
@@ -428,7 +429,8 @@ function renderGames(gamesArray) {
 if (setscreen === true) {
   const bgVid = document.getElementById('BGVIDSOM1')
   if (bgVid) {
-    bgVid.src = 'https://sz-games.github.io/BGVIDLOW.mp4' // Consider preloading this?
+    bgVid.preload = 'none'
+    bgVid.src = 'https://sz-games.github.io/BGVIDLOW.mp4'
   }
   const maintenanceScreen = document.getElementById('WeWillBeBackScreen')
   if (maintenanceScreen) {
@@ -468,7 +470,7 @@ Search() // Sets up the input listener
 
 // Initial call to handle elements visible on load
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM Loaded. Initializing...')
+  dbg('DOM Loaded. Initializing...')
   adjustIframeHeight()
 
   // Check if gamesData exists (it should if games.js loaded correctly)
@@ -483,10 +485,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Example: Check for a cookie on load
   let userPref = getCookie('userPreference')
   if (userPref) {
-    console.log('User preference found:', userPref)
+    dbg('User preference found:', userPref)
     // Apply preference if needed
   } else {
-    console.log('No user preference cookie found.')
+    dbg('No user preference cookie found.')
     // Maybe set a default cookie?
     // setCookie("userPreference", "default", 30);
   }
@@ -496,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
   // PageHasLoaded logic seems unused/incorrectly implemented, removing for now.
   // Original: if ((PageHasLoaded = false)) { ... } - This assigns false, then checks truthiness (always false)
-  console.log('Window fully loaded (images, etc.).')
+  dbg('Window fully loaded (images, etc.).')
   // If there are actions that *must* wait for all images, put them here.
   // handleScroll(); // Already called on DOMContentLoaded, usually sufficient.
 })
@@ -504,7 +506,7 @@ window.addEventListener('load', () => {
 // Window Resize Listener (Example: Adjust layout elements like iframe)
 window.addEventListener('resize', debounce(adjustIframeHeight, 250)) // Debounced adjustment
 
-console.log('SZ Games Script Initialized (vX.Y)') // Add a version/log marker
+dbg('SZ Games Script Initialized (vX.Y)') // Add a version/log marker
 
 // Update the category filter for our new chip-style categories
 document.addEventListener('DOMContentLoaded', function () {

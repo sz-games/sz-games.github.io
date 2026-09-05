@@ -1,3 +1,4 @@
+const __dbg=new URLSearchParams(location.search).has('debug');const dbg=(...a)=>{if(__dbg)console.log(...a)};
 function getCookie(name) {
   const cookieName = name + '='
   const cookies = document.cookie.split(';')
@@ -31,7 +32,7 @@ function checkPageClose2() {
   if (Setting14b === 'false') {
   }
 }
-console.log('CookiePAGE Value: ' + Setting14b + 'SzGames-Scripts Loaded')
+dbg('CookiePAGE Value: ' + Setting14b + 'SzGames-Scripts Loaded')
 checkPageClose2()
 
 //CLOAK
@@ -43,7 +44,7 @@ if (tab) {
   try {
     tabData = JSON.parse(tab)
   } catch (e) {
-    console.log('Error parsing tab data from localStorage', e)
+    dbg('Error parsing tab data from localStorage', e)
   }
 } else {
 }
@@ -115,12 +116,12 @@ if (PANIC) {
   document.addEventListener('keydown', function (event) {
     if (event.key === '\\') {
       // Backslash key was pressed
-      console.log('PANIC')
+      dbg('PANIC')
       window.location = PANIC
     }
   })
 } else {
-  console.log('clear')
+  dbg('clear')
 }
 
 function panicURL() {
@@ -139,7 +140,7 @@ function panicURL() {
 
 function clearPANIC() {
   localStorage.clear('panic')
-  console.log('clear')
+  dbg('clear')
   PANIC = localStorage.getItem('panic')
 }
 
@@ -251,10 +252,10 @@ let ResSmooAni = getCookie('RestrictSmooth')
 function checkdissmooth() {
   if (ResSmooAni === 'true') {
     restrictsmoothanimations()
-    console.log('Disabled Smooth Animations [✅]')
+    dbg('Disabled Smooth Animations [✅]')
   }
   if (ResSmooAni === 'false') {
-    console.log('Disabled Smooth Animations [❌]')
+    dbg('Disabled Smooth Animations [❌]')
   }
 }
 
@@ -448,7 +449,7 @@ function performanceMode() {
             `
     document.head.appendChild(style2)
 
-    console.log('Fancy CSS has been removed and replaced with minimal styles.')
+    dbg('Fancy CSS has been removed and replaced with minimal styles.')
   })()
 }
 
@@ -457,10 +458,10 @@ let PerforM = getCookie('PerforMode')
 function checkperform() {
   if (PerforM === 'true') {
     performanceMode()
-    console.log('Performance Mode [✅]')
+    dbg('Performance Mode [✅]')
   }
   if (PerforM === 'false') {
-    console.log('Performance Mode [❌]')
+    dbg('Performance Mode [❌]')
   }
 }
 

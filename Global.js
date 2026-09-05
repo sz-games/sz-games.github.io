@@ -1,3 +1,4 @@
+const __dbg=new URLSearchParams(location.search).has('debug');const dbg=(...a)=>{if(__dbg)console.log(...a)};
 
 
 
@@ -102,4 +103,4 @@ var Debug = false;
 
 
 
-console.log('Global.js Has Been Loaded!')
+dbg('Global.js loaded')

@@ -909,6 +909,9 @@ img {
 .textover--muted {
   color: rgba(255, 255, 255, 0.827) !important;
 }
+.textover--low {
+  top: 13% !important;
+}
 .textover--wide {
   width: 90%;
   border-radius: 15px;
@@ -924,4 +927,46 @@ img {
 .MenuIt h1,
 .MenuIt h2 {
   font-size: 21px !important;
+}
+
+/* --- 2026-09-05 cleanup: extracted from index.html inline styles (identical values) --- */
+.link-plain {
+  text-decoration: none;
+}
+.icon-btn {
+  cursor: pointer;
+  color: white;
+}
+.icon-btn--menu {
+  font-size: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 15px;
+  float: right;
+  position: relative;
+}
+.icon-btn--close,
+.icon-btn--close-close {
+  z-index: 96;
+  font-size: x-large;
+  top: 23px;
+  right: 0;
+  position: absolute;
+}
+.icon-btn--close {
+  margin-right: 55px;
+}
+.icon-btn--close-close {
+  margin-right: 20px;
+}
+.menu-link {
+  cursor: pointer;
+  width: 100%;
+  font-size: medium;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 }
