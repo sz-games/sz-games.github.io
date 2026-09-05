@@ -1117,11 +1117,15 @@ img {
     transform: none;
     margin-left: 0;
     margin-right: 0;
-    padding: 0 10px;
+    padding: 0; /* inputs run edge to edge on mobile */
     box-sizing: border-box;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+  }
+  .group .input,
+  .group .selected {
+    border-radius: 0; /* full-bleed bars, no rounded corners against the screen edge */
   }
   .group .input {
     flex: none;
@@ -1131,7 +1135,7 @@ img {
   }
   .group .icon {
     top: 20px; /* centre on the 40px input while stacked */
-    left: calc(10px + 1rem); /* offset the group's side padding so it sits inside the input */
+    left: 1rem; /* group has no side padding on mobile */
   }
   .group .select {
     position: static;
