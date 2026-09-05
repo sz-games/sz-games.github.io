@@ -841,15 +841,14 @@ img {
 /* Popular-now rail: Apple-TV-style native swipe (scroll-snap, no libraries). */
 .featgameit {
   position: relative;
-  flex: 0 0 auto;
-  width: min(80vw, 340px);
+  flex: 1 1 220px;
+  max-width: 340px;
   aspect-ratio: 16 / 9;
   background-color: #161616;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  scroll-snap-align: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
 }
@@ -1046,12 +1045,11 @@ img {
 }
 .feat-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
-  width: max-content;
-  max-width: none;
-  min-width: 0;
   padding: 4px 16px 12px;
   align-items: stretch;
+  justify-content: center;
 }
 .hero-logo {
   position: relative;
@@ -1060,11 +1058,6 @@ img {
 }
 .feat-hero {
   display: block;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
   width: 100%;
   max-width: 100%;
   margin-top: 0px;
@@ -1074,6 +1067,21 @@ img {
 }
 .feat-hero::-webkit-scrollbar {
   display: none;
+}
+@media screen and (max-width: 680px) {
+  .feat-hero {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .feat-row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: max-content;
+    max-width: none;
+  }
 }
 
 /* --- 2026-09-05: mobile responsiveness (desktop rules above untouched) --- */
@@ -1190,6 +1198,8 @@ img {
     padding: 4px 16px 12px;
   }
   .featgameit {
+    flex: 0 0 auto;
+    max-width: none;
     width: 38vw; /* ~2.5 cards per row with a peek of the next */
     scroll-snap-align: start;
   }
