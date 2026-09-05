@@ -298,7 +298,9 @@ img {
   height: 40px;
   line-height: 28px;
   padding: 0 1rem;
-  width: 80%;
+  flex: 1;
+  min-width: 0;
+  width: auto;
 
   padding-left: 2.5rem;
   border: 2px solid transparent;
@@ -319,6 +321,9 @@ img {
 .icon {
   position: absolute;
   left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
   fill: #ffffff;
   width: 1rem;
   height: 1rem;
@@ -361,28 +366,39 @@ img {
 .select {
   width: fit-content;
   position: relative;
+  flex-shrink: 0;
+  margin-left: 10px;
 
   transition: 300ms;
   color: white;
 }
 
 .selected {
-  background-color: #363636;
+  background-color: #3d3d3d;
+  border: 2px solid transparent;
   cursor: pointer;
-  padding: 5px;
-  margin-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 3px;
+  padding: 0 10px;
   width: 150px;
-  border-radius: 5px;
-  position: absolute;
+  height: 40px; /* matches .input */
+  border-radius: 8px; /* matches .input */
+  position: relative;
   z-index: 400;
   font-size: 15px;
-  top: -19px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.selected:hover {
+  border-color: #5a5a5a;
+}
+.selected:focus-visible {
+  outline: none;
+  border-color: #8a8a8a;
+  box-shadow: 0 0 5px #474747;
 }
 
 .arrow {
@@ -404,14 +420,18 @@ img {
 
   background-color: #363636ad;
   position: absolute;
-  top: 10px;
-  margin-top: 20px;
-  margin-left: 8px;
-  height: 100px;
-  overflow-y: scroll;
+  top: calc(100% + 8px);
+  left: 0;
+  margin: 0;
+  height: auto;
+  max-height: min(380px, 60vh);
+  min-width: 100%;
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   transition: 300ms;
 }
 
@@ -420,7 +440,7 @@ img {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  top: 0;
+  transform: translateY(0);
 }
 
 .select.open > .selected .arrow {
