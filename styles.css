@@ -983,9 +983,93 @@ img {
   max-width: 100%;
   overflow: hidden;
 }
+.hero-logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.feat-hero {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0px;
+  height: 170px;
+  background-color: rgba(128, 128, 128, 0);
+  border-radius: 15px;
+  position: relative;
+}
 
 /* --- 2026-09-05: mobile responsiveness (desktop rules above untouched) --- */
 @media screen and (max-width: 680px) {
+  .split,
+  .split-left {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .header {
+    padding: 90px 12px 20px;
+    font-size: 22px;
+  }
+  .header h1 {
+    font-size: 40px;
+    margin: 10px 0;
+  }
+  .hero-logo {
+    width: 100px;
+    height: 100px;
+  }
+  .group {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    left: 0;
+    transform: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .group .input {
+    flex: none;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .group .select {
+    position: static;
+    width: 100%;
+  }
+  .group .selected {
+    position: static;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .group .options {
+    display: none;
+    position: static;
+    margin: 4px 0 0;
+    max-width: 100%;
+  }
+  .group .select:hover > .options,
+  .group .select:focus-within > .options {
+    display: flex;
+    opacity: 1;
+    top: auto;
+  }
+  #games {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  #games .box {
+    min-width: 0;
+  }
   #games {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -998,6 +1082,7 @@ img {
   .ImageForGame {
     width: 100%;
     height: auto;
+    margin: 0;
   }
   .textover {
     font-size: 13px;
