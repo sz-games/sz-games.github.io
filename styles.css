@@ -607,8 +607,10 @@ img {
   align-items: center;
 }
 @media (min-width: 1024px) {
-  #TopMenu {
+  /* Only reserve space when the right sidebar is actually rendered (see syncRightSidebar in JS) */
+  body.has-right-sidebar #TopMenu {
     right: 310px; /* stop at the sidebar with the same 10px gap as the left edge */
+  }
   }
 }
 .split {
@@ -630,6 +632,12 @@ img {
     position: sticky;
     top: 0;
   }
+}
+
+/* Collapse the right sidebar when its ad slot renders empty (adblock/no-fill),
+   so no dead 300px gutter remains. JS adds .ad-empty (see syncRightSidebarHeader). */
+.sidebar.ad-empty {
+  display: none;
 }
 
 .notice-box-wrapper {

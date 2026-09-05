@@ -712,3 +712,67 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 })
+
+// Keep floating headers (#TopMenu / .site-header / .categories-container) inset only
+// while the right sidebar is actually visible (absent on some pages, display:none
+// below 1024px). Toggles body.has-right-sidebar which the CSS guards on.
+;(function syncRightSidebarHeader() {
+  var SLOT_ID = 'sz_games_github_io_sidebar_right_desktop'
+  var EMPTY_GRACE_MS = 6000
+  var startTime = Date.now()
+  var slotIsEmpty = false
+  function isVisible(el) {
+    if (!el) return false
+    var cs = window.getComputedStyle(el)
+    if (cs.display === 'none' || cs.visibility === 'hidden') return false
+    return el.getBoundingClientRect().width > 0
+  }
+  // True once GPT/adSense has actually rendered a creative in the sidebar slot.
+  function hasCreative(slot) {
+    if (!slot) return false
+    var frames = slot.querySelectorAll('iframe')
+    for (var i = 0; i < frames.length; i++) {
+      try {
+        var r = frames[i].getBoundingClientRect()
+        if (r.width > 0 && r.height > 0) return true
+      } catch (e) {}
+    }
+    if (slot.querySelector('ins[data-ad-status="filled"]')) return true
+    return false
+  }
+  function sync() {
+    var sidebar = document.querySelector('.split > .sidebar') || document.querySelector('.sidebar')
+    if (sidebar && sidebar.classList.contains('youtube-sidebar')) sidebar = null
+    var slot = sidebar ? sidebar.querySelector('#' + SLOT_ID) : null
+    if (slot && !slotIsEmpty && hasCreative(slot)) {
+      sidebar.classList.remove('ad-empty')
+    } else if (slot && slotIsEmpty) {
+      if (sidebar) sidebar.classList.add('ad-empty')
+    } else if (slot && !hasCreative(slot) && Date.now() - startTime > EMPTY_GRACE_MS) {
+      if (sidebar) sidebar.classList.add('ad-empty')
+    }
+    var collapsed = sidebar && sidebar.classList.contains('ad-empty')
+    var visible = window.innerWidth >= 1024 && isVisible(sidebar) && !collapsed
+    document.body.classList.toggle('has-right-sidebar', visible)
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync)
+  else sync()
+  window.addEventListener('resize', sync)
+  window.addEventListener('load', sync)
+  if (window.googletag && googletag.cmd) {
+    googletag.cmd.push(function () {
+      try {
+        googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+          try {
+            if (event && event.slot && event.slot.getSlotElementId() === SLOT_ID && event.isEmpty) {
+              slotIsEmpty = true
+            }
+          } catch (e) {}
+          sync()
+        })
+      } catch (e) {}
+    })
+  }
+  // Re-check after the grace period in case no slotRenderEnded fires (adblock).
+  setTimeout(sync, EMPTY_GRACE_MS + 500)
+})()
