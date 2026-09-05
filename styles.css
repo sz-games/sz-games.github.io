@@ -614,11 +614,32 @@ img {
 }
 
 .header-ad {
-  display: none;
+  display: block;
+  width: 728px;
+  height: 90px;
+  max-width: 100%;
+  overflow: hidden;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .header-ad {
-    display: block;
+    width: 468px;
+    height: 60px;
+  }
+}
+@media (max-width: 767px) {
+  #TopMenu {
+    flex-wrap: wrap; /* banner drops to its own centred row on phones */
+  }
+  .header-ad {
+    width: 320px;
+    height: 50px;
+    order: 10;
+    margin: 6px auto 2px;
+  }
+}
+@media (max-width: 380px) {
+  #TopMenu h2 {
+    display: none; /* free room so the 320px banner fits */
   }
 }
 #TopMenu {
@@ -1049,10 +1070,6 @@ img {
   flex: 1;
   min-width: 400px;
   max-width: 800px;
-}
-.header-ad {
-  max-width: 100%;
-  overflow: hidden;
 }
 .hero-logo {
   position: relative;

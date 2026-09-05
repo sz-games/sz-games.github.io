@@ -39,8 +39,24 @@
       let anchorSlot
 
       googletag.cmd.push(function () {
+        // Same slot id serves desktop + mobile sizes; size mapping picks per viewport.
+        const bannerMapping = googletag
+          .sizeMapping()
+          .addSize([1024, 0], [[728, 90]])
+          .addSize([768, 0], [[468, 60]])
+          .addSize([0, 0], [[320, 50]])
+          .build()
         bannerSlot728x90 = googletag
-          .defineSlot('/22921845643/SZ_Games_Top_Leaderboard', [728, 90], 'div-gpt-ad-1744679821427-0')
+          .defineSlot(
+            '/22921845643/SZ_Games_Top_Leaderboard',
+            [
+              [728, 90],
+              [468, 60],
+              [320, 50],
+            ],
+            'div-gpt-ad-1744679821427-0'
+          )
+          .defineSizeMapping(bannerMapping)
           .addService(googletag.pubads())
 
         interstitialSlot = googletag.defineOutOfPageSlot(
@@ -305,7 +321,7 @@
             Sz Games
           </h2>
 
-          <div id="div-gpt-ad-1744679821427-0" class="header-ad" style="width: 728px; height: 90px; margin-bottom: 4px">
+          <div id="div-gpt-ad-1744679821427-0" class="header-ad" style="margin-bottom: 4px">
             <script>
               googletag.cmd.push(function () {
                 googletag.display(bannerSlot728x90)
