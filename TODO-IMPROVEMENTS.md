@@ -71,6 +71,16 @@ Scope: this project only (`sz-games.github.io`). No bridge / workspace files.
 - [x] Removed stray prod `console.log` (game URL). All 10 inline scripts
       syntax-verified via Node. Trap pattern confirmed absent from all other pages.
 
+## Done (2026-09-05, round 6 — search/filter height parity)
+- [x] Filter button (`.selected`) had no explicit height → 44px vs search box
+      (`.input`) 40px; bottom edge overhung the search bar by ~5px on desktop.
+- [x] `.selected` now `height: 40px; top: -20px` (matches `.input` box exactly,
+      margin-bottom removed). Mobile override also fixed to 40px.
+- [x] Height cap check: 40px per control ≤ 90px leaderboard banner; mobile
+      stacked pair = 40+10+40 = 90px == banner height, no longer 94px.
+- [x] Verified: no JS height dependencies (`scripts.js` only toggles classes),
+      dropdown positioning unaffected (anchored to `.select`, not `.selected`).
+
 ## Still open (needs human call)
 - [ ] `games/` (276 MB) is game binaries (unity/wasm/swf) — out of scope
       for web-code optimization.

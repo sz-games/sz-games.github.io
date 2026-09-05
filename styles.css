@@ -425,14 +425,14 @@ img {
   padding: 8px;
   margin-left: 10px;
   padding-right: 10px;
-  margin-bottom: 3px;
   cursor: pointer;
   width: 170px;
+  height: 40px; /* matches .input — search + filter sit as an equal pair */
   border-radius: 5px;
   position: absolute;
   z-index: 400;
   font-size: 16px;
-  top: -19px;
+  top: -20px; /* 40px control centred on the row line, same as .input */
 
   display: flex;
   align-items: center;
@@ -1051,6 +1051,7 @@ img {
   .group .selected {
     position: static;
     width: 100%;
+    height: 40px; /* same height as .input; stacked pair = 90px (== ad banner) */
     margin: 0;
     box-sizing: border-box;
   }
