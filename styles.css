@@ -423,15 +423,15 @@ img {
 
 .selected {
   background-color: #363636;
-  padding: 5px;
+  padding: 8px;
   margin-left: 10px;
   padding-right: 10px;
   margin-bottom: 3px;
-  width: 150px;
+  width: 170px;
   border-radius: 5px;
   position: absolute;
   z-index: 400;
-  font-size: 15px;
+  font-size: 16px;
   top: -19px;
 
   display: flex;
@@ -458,32 +458,37 @@ img {
 
   background-color: #363636ad;
   position: absolute;
+  z-index: 401;
   top: 10px;
   margin-top: 20px;
   margin-left: 8px;
-  height: 100px;
-  overflow-y: scroll;
+  height: auto;
+  max-height: min(380px, 60vh);
+  min-width: 170px;
+  overflow-y: auto;
   opacity: 0;
   transition: 300ms;
 }
 
-.select:hover > .options {
+.select:hover > .options,
+.select:focus-within > .options {
   opacity: 1;
   top: 0;
 }
 
-.select:hover > .selected .arrow {
+.select:hover > .selected .arrow,
+.select:focus-within > .selected .arrow {
   transform: rotate(0deg);
 }
 
 .option {
   border-radius: 5px;
-  padding: 5px;
+  padding: 8px;
   transition: 300ms;
   background-color: #1d1d1dd0;
-  width: 150px;
+  width: 170px;
   margin-bottom: 3px;
-  font-size: 15px;
+  font-size: 16px;
 }
 .option:hover {
   background-color: #414141;
