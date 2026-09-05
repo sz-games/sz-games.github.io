@@ -436,6 +436,65 @@ radioButtons.forEach((radio) => {
   radio.addEventListener('change', handleRadioChange)
 })
 
+// Click-to-open only: toggle .open when the button (.selected) itself is clicked.
+// Hovering .select or .options never opens the menu.
+document.querySelectorAll('.select').forEach((select) => {
+  const btn = select.querySelector('.selected')
+  if (!btn) return
+  btn.setAttribute('tabindex', '0')
+  btn.setAttribute('role', 'button')
+  btn.setAttribute('aria-haspopup', 'listbox')
+  const syncAria = () => btn.setAttribute('aria-expanded', select.classList.contains('open') ? 'true' : 'false')
+  syncAria()
+  const toggle = (e) => {
+    if (e) e.stopPropagation()
+    const willOpen = !select.classList.contains('open')
+    document.querySelectorAll('.select.open').forEach((other) => {
+      if (other !== select) {
+        other.classList.remove('open')
+        const ob = other.querySelector('.selected')
+        if (ob) ob.setAttribute('aria-expanded', 'false')
+      }
+    })
+    select.classList.toggle('open', willOpen)
+    syncAria()
+  }
+  btn.addEventListener('click', toggle)
+  btn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      toggle(e)
+    } else if (e.key === 'Escape' && select.classList.contains('open')) {
+      select.classList.remove('open')
+      syncAria()
+    }
+  })
+  select.querySelectorAll('.options .option').forEach((opt) => {
+    opt.addEventListener('click', () => {
+      select.classList.remove('open')
+      syncAria()
+    })
+  })
+})
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.select')) {
+    document.querySelectorAll('.select.open').forEach((s) => {
+      s.classList.remove('open')
+      const b = s.querySelector('.selected')
+      if (b) b.setAttribute('aria-expanded', 'false')
+    })
+  }
+})
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.select.open').forEach((s) => {
+      s.classList.remove('open')
+      const b = s.querySelector('.selected')
+      if (b) b.setAttribute('aria-expanded', 'false')
+    })
+  }
+})
+
 // Initialize Search Functionality
 Search() // Sets up the input listener
 

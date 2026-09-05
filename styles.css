@@ -414,7 +414,6 @@ img {
 
 .select {
   width: fit-content;
-  cursor: pointer;
   position: relative;
 
   transition: 300ms;
@@ -427,6 +426,7 @@ img {
   margin-left: 10px;
   padding-right: 10px;
   margin-bottom: 3px;
+  cursor: pointer;
   width: 170px;
   border-radius: 5px;
   position: absolute;
@@ -467,17 +467,20 @@ img {
   min-width: 170px;
   overflow-y: auto;
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   transition: 300ms;
 }
 
-.select:hover > .options,
-.select:focus-within > .options {
+/* Click-to-open only: toggled via .open on .select (see scripts.js). No :hover open. */
+.select.open > .options {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   top: 0;
 }
 
-.select:hover > .selected .arrow,
-.select:focus-within > .selected .arrow {
+.select.open > .selected .arrow {
   transform: rotate(0deg);
 }
 
@@ -1057,10 +1060,11 @@ img {
     margin: 4px 0 0;
     max-width: 100%;
   }
-  .group .select:hover > .options,
-  .group .select:focus-within > .options {
+  .group .select.open > .options {
     display: flex;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     top: auto;
   }
   #games {

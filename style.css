@@ -360,7 +360,6 @@ img {
 
 .select {
   width: fit-content;
-  cursor: pointer;
   position: relative;
 
   transition: 300ms;
@@ -369,6 +368,7 @@ img {
 
 .selected {
   background-color: #363636;
+  cursor: pointer;
   padding: 5px;
   margin-left: 10px;
   padding-right: 10px;
@@ -410,15 +410,20 @@ img {
   height: 100px;
   overflow-y: scroll;
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   transition: 300ms;
 }
 
-.select:hover > .options {
+/* Click-to-open only: toggled via .open on .select. No :hover open. */
+.select.open > .options {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   top: 0;
 }
 
-.select:hover > .selected .arrow {
+.select.open > .selected .arrow {
   transform: rotate(0deg);
 }
 
