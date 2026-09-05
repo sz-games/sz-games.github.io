@@ -102,16 +102,17 @@ p {
   z-index: 2;
   color: white;
   font-size: 18px;
+  font-weight: 600;
   margin: 20px;
 }
 .feat-cover {
   width: 100%;
   height: 100%;
   margin: 0;
-  filter: blur(2px) brightness(95%);
   object-fit: cover;
   top: 0;
   position: relative;
+  transition: transform 0.5s ease;
 }
 @keyframes scroll {
   0% {
@@ -844,14 +845,29 @@ img {
   width: min(80vw, 340px);
   aspect-ratio: 16 / 9;
   background-color: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   scroll-snap-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
 }
 .featgameit > a {
   display: block;
   height: 100%;
+  position: relative;
+}
+/* bottom scrim so the title reads on any artwork */
+.featgameit > a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  pointer-events: none;
 }
 .featgameit p {
   width: fit-content;
@@ -859,7 +875,12 @@ img {
 }
 
 .featgameit:hover {
-  filter: brightness(70%);
+  transform: scale(1.03);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+  filter: brightness(1.08);
+}
+.featgameit:hover .feat-cover {
+  transform: scale(1.05);
 }
 
 .text {
