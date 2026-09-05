@@ -289,10 +289,16 @@ img {
   z-index: 1;
 }
 
+.header h1 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
 .header {
   position: relative;
   z-index: 1;
   padding: 60px;
+  padding-top: 130px; /* clear the fixed #TopMenu (taller on desktop with ad banner) */
   text-align: center;
   /*background: linear-gradient(to bottom right, #9a9a9a, rgb(39, 39, 39)); */
   background: rgb(55, 53, 53);
@@ -602,7 +608,7 @@ img {
 }
 @media (min-width: 1024px) {
   #TopMenu {
-    right: 300px;
+    right: 310px; /* stop at the sidebar with the same 10px gap as the left edge */
   }
 }
 .split {
@@ -678,6 +684,18 @@ img {
   display: block;
   font-weight: normal;
   color: #ccc;
+}
+
+/* In-hero variant: panel lives under the heading inside #Header, not fixed at viewport bottom. */
+.header .notice-box-wrapper {
+  position: static;
+  transform: none;
+  visibility: visible;
+  width: fit-content;
+  margin: 14px auto 0;
+}
+.header .notice-box {
+  animation: none;
 }
 
 .icon-button {
