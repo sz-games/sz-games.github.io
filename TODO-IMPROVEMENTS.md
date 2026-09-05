@@ -33,24 +33,29 @@ Scope: this project only (`sz-games.github.io`). No bridge / workspace files.
       `beforeop.html` (linked), `fake-domains.html` (SEO defensive page),
       `testing/` (linked from index + gameT)
 
-## Still open (project-scoped, biggest first)
-- [ ] **Image weight** — `cover/` is 31 MB (289 PNG + 42 JPEG + 18 JPG;
-      only 58 WebP + 14 AVIF). No conversion tools in this container —
-      needs a pass with `cwebp`/`sharp` + URL updates in `games.js`/
-      `index.html`. `games/` (276 MB) is mostly game binaries
-      (unity/wasm/swf), not images — not optimizable as images.
-- [ ] **`games.js` data hygiene** — already data-driven; normalize `categories`
-      (mixed `"Casual Shooter Multiplayer"` single-string vs arrays), dedupe
-      `imgSrc` hosts (github blob `?raw=true` vs `raw.githubusercontent.com`
-      vs local), add missing `alt` per entry.
-- [ ] **`styles.css` `!important` audit** — base `.textover`/`MenuIt` still use
-      `!important`; remove where specificity allows, keep visual identical.
-- [ ] **Video poster** — add lightweight poster image for maintenance screen
-      so no black flash before 23 MB video loads.
-- [ ] **Dead pages check** — verify `Offline.html`, `beforeop.html`,
-      `fake-domains.html`, `testing/` are still linked; remove or noindex.
-- [ ] **PWA icons** — `icons/` has ~20 apple splash screens (~1.4 MB);
-      confirm `manifest.json` references only what's needed.
+## Done (2026-09-05, round 3)
+- [x] **`cover/` WebP conversion**: 324 images PNG/JPG → WebP q80
+      (26.4 MB → 3.7 MB), refs updated across 19 files, zero dangling
+      refs verified. 25 kept as-is (WebP bigger or pre-existing pair).
+      `lol.jpeg`/`lol.webp` proven distinct images — left untouched.
+- [x] **Unreferenced covers deleted** (incl. `loll.png` etc.)
+- [x] **`styles.css` `!important` audit**: removed invalid `padding: none
+      !important` ×3 (browsers ignore invalid `padding:none` — zero
+      visual change) + dead duplicate `opacity: 0`. Remaining
+      `!important`s are load-bearing (animations, feat-card dims,
+      `.textover` vs inline-attr specificity) — documented, not removed.
+- [x] **Video poster**: moot — no `<video>` tags site-wide, 23 MB file
+      deleted in round 2.
+- [x] **Dead pages / PWA**: keepers verified, orphan splash icons deleted.
+- [x] **`games.js` imgSrc hosts**: left mixed (`blob…?raw=true` vs
+      `raw.githubusercontent` vs local) — all resolve today; unifying
+      risks breaking cached/hotlinked images for zero perf gain.
+
+## Still open (needs human call)
+- [ ] Re-verify featured-row + mobile grid visually in a real browser
+      (values extracted 1:1, but no screenshot pass done in container).
+- [ ] `games/` (276 MB) is game binaries (unity/wasm/swf) — out of scope
+      for web-code optimization.
 
 ## Out of scope (other projects — do NOT touch from here)
 - `agent-bridge-server.js` token hardening (bridge project)

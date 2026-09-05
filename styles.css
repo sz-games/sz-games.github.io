@@ -800,7 +800,6 @@ img {
   color: rgb(202, 202, 202);
   font-size: 18px;
   margin: 0 15px;
-  opacity: 0;
   opacity: 1;
   transform: translateY(0px);
 }
@@ -811,19 +810,16 @@ img {
   font-size: 24px;
   opacity: 0;
   animation: fadeInMove 2s infinite;
-  padding: none !important;
   height: fit-content;
 }
 
 .left-arrow {
   animation-delay: 0.2s;
-  padding: none !important;
   height: fit-content;
 }
 
 .right-arrow {
   animation-delay: 0.2s;
-  padding: none !important;
   height: fit-content;
 }
 
