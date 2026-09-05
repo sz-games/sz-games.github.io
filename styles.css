@@ -360,6 +360,7 @@ img {
   flex: 1;
   min-width: 0;
   width: auto;
+  font-size: 16px; /* same as .selected */
 
   padding-left: 2.5rem;
   border: 2px solid transparent;
@@ -370,6 +371,13 @@ img {
   color: #ffffff;
   box-shadow: 0 0 5px #474747, 0 0 0 10px #9e9e9e00;
   transition: 0.3s ease;
+}
+.input:hover {
+  border-color: #5a5a5a; /* same as .selected */
+}
+.input:focus {
+  border-color: #8a8a8a; /* same as .selected */
+  box-shadow: 0 0 5px #474747;
 }
 
 .input::placeholder {
@@ -441,16 +449,37 @@ img {
   width: 170px;
   height: 40px; /* matches .input — search + filter sit as an equal pair */
   border-radius: 8px; /* matches .input */
+  box-shadow: 0 0 5px #474747; /* matches .input */
   position: relative;
   z-index: 400;
   font-size: 16px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start; /* icon + text grouped left, arrow pinned right via text flex */
   gap: 8px;
   user-select: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Leading filter icon — same 1rem size as the search .icon, text fills the middle. */
+.selected .filter-icon {
+  order: 1;
+  width: 1rem;
+  height: 1rem;
+  fill: #ffffff;
+  flex-shrink: 0;
+}
+.selected::before {
+  order: 2;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selected .arrow {
+  order: 3;
+  flex-shrink: 0;
 }
 .selected:hover {
   border-color: #5a5a5a;
@@ -1088,6 +1117,7 @@ img {
   }
   .group .icon {
     top: 20px; /* centre on the 40px input while stacked */
+    left: calc(10px + 1rem); /* offset the group's side padding so it sits inside the input */
   }
   .group .select {
     position: static;
@@ -1106,6 +1136,9 @@ img {
     position: static;
     margin: 4px 0 0;
     max-width: 100%;
+  }
+  .group .option {
+    width: auto; /* full-width rows while stacked */
   }
   .group .select.open > .options {
     display: flex;
