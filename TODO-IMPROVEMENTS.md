@@ -51,9 +51,14 @@ Scope: this project only (`sz-games.github.io`). No bridge / workspace files.
       `raw.githubusercontent` vs local) — all resolve today; unifying
       risks breaking cached/hotlinked images for zero perf gain.
 
+## Done (2026-09-05, round 4 — verified headless Chromium, 390px)
+- [x] **True mobile fit**: page rendered 990px wide on phones. Traced to
+      flex min-content blowout + absolute dropdown + img margins.
+      scrollWidth 990 → 390, zero overflowers; desktop 1280 unchanged.
+      Screenshots verified: hero, stacked search/filter, 2-col grid,
+      scroll-snap featured row, in-flow dropdown.
+
 ## Still open (needs human call)
-- [ ] Re-verify featured-row + mobile grid visually in a real browser
-      (values extracted 1:1, but no screenshot pass done in container).
 - [ ] `games/` (276 MB) is game binaries (unity/wasm/swf) — out of scope
       for web-code optimization.
 
