@@ -15,10 +15,30 @@ Scope: this project only (`sz-games.github.io`). No bridge / workspace files.
 - [x] Maintenance video (`BGVIDLOW.mp4` 23 MB): only set when maintenance mode
       is on, `preload="none"`, no autoplay
 
+## Done (2026-09-05, round 2)
+- [x] `games.js`: `'Casual Shooter Multiplayer'` → proper array (filter uses
+      substring match, join output identical — no behavior change)
+- [x] `script.js`: removed duplicate `filterByCategory` (identical twin)
+- [x] Removed 23 MB `BGVIDLOW.mp4` — zero `<video>` tags site-wide, only a
+      guarded JS ref to a nonexistent element. Dead JS block removed too.
+- [x] Removed 30 orphan `icons/apple-splash-*` + `apple-icon-180.png`
+      (~1.4 MB, never linked from any page — browsers never fetched them)
+- [x] Fixed `class="featgameit" featgameit--row` bare-attribute bug (5×) —
+      the `--row` class never applied before
+- [x] **Mobile responsive**: fluid `#games` grid + auto-height covers,
+      scroll-snap featured row (`min-width:400px` overflow fixed),
+      full-width menu overlay capped at 325px, tighter TopMenu/notice
+      boxes, 13px card labels. Desktop rules untouched.
+- [x] Verified keepers: `Offline.html` (service-worker fallback),
+      `beforeop.html` (linked), `fake-domains.html` (SEO defensive page),
+      `testing/` (linked from index + gameT)
+
 ## Still open (project-scoped, biggest first)
-- [ ] **Image weight** — `games/` 276 MB + `cover/` 31 MB. Convert hero/cover
-      to WebP/AVIF, compress, keep `loading="lazy"` + `decoding="async"`
-      below the fold. Largest real-world saving left.
+- [ ] **Image weight** — `cover/` is 31 MB (289 PNG + 42 JPEG + 18 JPG;
+      only 58 WebP + 14 AVIF). No conversion tools in this container —
+      needs a pass with `cwebp`/`sharp` + URL updates in `games.js`/
+      `index.html`. `games/` (276 MB) is mostly game binaries
+      (unity/wasm/swf), not images — not optimizable as images.
 - [ ] **`games.js` data hygiene** — already data-driven; normalize `categories`
       (mixed `"Casual Shooter Multiplayer"` single-string vs arrays), dedupe
       `imgSrc` hosts (github blob `?raw=true` vs `raw.githubusercontent.com`

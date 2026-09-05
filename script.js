@@ -266,30 +266,6 @@ function loadImageWithRetries(image, immediate = false) {
 // Filtering Logic
 // ==========================================================================
 
-function filterByCategory(category) {
-  const gameElements = document.querySelectorAll('.game-card')
-  let found = false
-
-  gameElements.forEach((element) => {
-    const categoryAttr = element.getAttribute('category')
-
-    if (!categoryAttr) return
-
-    if (category === 'No Filter' || categoryAttr.toUpperCase().includes(category.toUpperCase())) {
-      element.style.display = ''
-      found = true
-    } else {
-      element.style.display = 'none'
-    }
-  })
-
-  // Show a message if no games match the current filter
-  const noMatchesElement = document.getElementById('nonefound')
-  if (noMatchesElement) {
-    noMatchesElement.style.display = found ? 'none' : 'block'
-  }
-}
-
 function handleRadioChange(event) {
   const selectedOption = event.target
   // Find the associated label to get the category text
@@ -427,11 +403,6 @@ function renderGames(gamesArray) {
 
 // Initial setup based on 'setscreen' flag (likely for maintenance mode)
 if (setscreen === true) {
-  const bgVid = document.getElementById('BGVIDSOM1')
-  if (bgVid) {
-    bgVid.preload = 'none'
-    bgVid.src = 'https://sz-games.github.io/BGVIDLOW.mp4'
-  }
   const maintenanceScreen = document.getElementById('WeWillBeBackScreen')
   if (maintenanceScreen) {
     maintenanceScreen.style.display = 'block'

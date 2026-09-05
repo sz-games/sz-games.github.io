@@ -16,7 +16,7 @@ const gamesData = [
   {
     id: 'Diep IO',
     name: 'Diep IO',
-    categories: ['Casual Shooter Multiplayer'],
+    categories: ['Casual', 'Shooter', 'Multiplayer'],
     url: 'https://sz-games.github.io/games/game.html?game=https://diep.io/',
     imgSrc: '/deepio.jpg',
   },
