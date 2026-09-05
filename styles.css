@@ -1014,11 +1014,8 @@ img {
 }
 .icon-btn--menu {
   font-size: 22px;
-  top: 50%;
-  transform: translateY(-50%);
+  line-height: 1;
   margin-right: 15px;
-  float: right;
-  position: relative;
 }
 .icon-btn--close,
 .icon-btn--close-close {
