@@ -637,6 +637,7 @@ img {
 }
 .split-left {
   flex: 1;
+  min-width: 0; /* wide children must never push the right sidebar off-screen */
 }
 .sidebar {
   display: none;
