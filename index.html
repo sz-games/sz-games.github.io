@@ -25,7 +25,10 @@
 
     <script defer src="https://stpd.cloud/assets/libraries/inview.min.js"></script>
     <script>
-      inView.offset(-200)
+      // inview lib loads with defer (runs before DOMContentLoaded); guard for adblock.
+      window.addEventListener('DOMContentLoaded', function () {
+        if (window.inView) inView.offset(-200)
+      })
     </script>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>

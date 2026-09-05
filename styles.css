@@ -607,7 +607,8 @@ img {
   align-items: center;
 }
 @media (min-width: 1024px) {
-  #TopMenu {
+  /* Inset only when the right sidebar is actually in the page; full width otherwise. */
+  .split:has(> .sidebar) #TopMenu {
     right: 310px; /* stop at the sidebar with the same 10px gap as the left edge */
   }
 }

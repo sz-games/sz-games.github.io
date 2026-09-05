@@ -560,8 +560,9 @@ img {
   align-items: center;
 }
 @media (min-width: 1024px) {
-  #TopMenu {
-    right: 300px;
+  /* Inset only when the right sidebar is actually in the page; full width otherwise. */
+  .split:has(> .sidebar) #TopMenu {
+    right: 310px; /* stop at the sidebar with the same 10px gap as the left edge */
   }
 }
 .split {
@@ -1214,7 +1215,7 @@ img {
 }
 
 @media (min-width: 1024px) {
-  .site-header {
+  .split:has(> .sidebar) .site-header {
     right: 300px; /* Adjust for sidebar at 1024px+ */
   }
 }
@@ -1306,7 +1307,7 @@ img {
 }
 
 @media (min-width: 1024px) {
-  .categories-container {
+  .split:has(> .sidebar) .categories-container {
     right: 300px; /* Adjust for sidebar at 1024px+ */
   }
 }
