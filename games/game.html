@@ -109,36 +109,27 @@
         }
         googletag.pubads().enableSingleRequest()
         googletag.enableServices()
-
-        // Prevent back navigation when ads close
-        googletag.pubads().addEventListener('slotOnload', function (event) {
-          console.log('Ad loaded:', event.slot.getSlotElementId())
-        })
-
-        googletag.pubads().addEventListener('slotRenderEnded', function (event) {
-          console.log('Ad render ended:', event.slot.getSlotElementId())
-          // Ensure we stay on the current page
-          if (window.location.hash !== '#game') {
-            window.location.hash = '#game'
-          }
-        })
       })
 
-      // Additional protection against unwanted navigation
-      window.addEventListener('beforeunload', function (e) {
-        // Only show warning if user is actually trying to leave
-        if (e.target.activeElement && e.target.activeElement.tagName === 'A') {
-          return
-        }
+      // Single, polite leave-prompt: uses the browser's native confirm dialog only
+      // (no popstate/history traps — back button works normally).
+      // Skipped for intentional navigation via our own Back/Home buttons and
+      // same-origin links.
+      window.__szIntentionalNav = false
+      window.addEventListener('beforeunload', function (event) {
+        if (window.__szIntentionalNav) return
+        event.preventDefault()
+        event.returnValue = '' // required for Chrome to show the dialog
+        return ''
       })
-
-      // Prevent back button navigation caused by ads
-      window.addEventListener('popstate', function (event) {
-        if (window.location.pathname.includes('/games/game.html')) {
-          event.preventDefault()
-          window.history.pushState(null, null, window.location.href)
-        }
-      })
+      document.addEventListener(
+        'click',
+        function (e) {
+          var a = e.target && e.target.closest ? e.target.closest('a[href]') : null
+          if (a && a.origin === window.location.origin) window.__szIntentionalNav = true
+        },
+        true
+      )
     </script>
 
     <style>
@@ -175,6 +166,28 @@
 
       .btn-group button:not(:last-child) {
         border-right: none; /* Prevent double borders */
+      }
+
+      /* Visible Back button (bottom-left menu bar) */
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin: 5px;
+        padding: 6px 14px 6px 8px;
+        border: none;
+        border-radius: 10px;
+        background: transparent;
+        color: rgb(224, 224, 224);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .back-button:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+      .back-button .material-icons {
+        font-size: 20px;
       }
 
       /* Add a background color on hover */
@@ -562,13 +575,14 @@
       "
       id="Menu"
     >
-      <span
-        class="material-icons buttonForMenu"
-        style="margin: 5px"
-        onclick="window.location = 'https://sz-games.github.io'"
+      <button
+        class="back-button"
+        aria-label="Back to Sz Games home"
+        onclick="window.__szIntentionalNav = true; window.location = 'https://sz-games.github.io'"
       >
-        arrow_back
-      </span>
+        <span class="material-icons" aria-hidden="true">arrow_back</span>
+        Back
+      </button>
       <span class="material-icons buttonForMenu" style="margin: 5px" onclick="makeFullScreen()"> fullscreen </span>
       <script>
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
@@ -641,9 +655,6 @@
 
       // Get the text element
       var textElement = document.getElementById('game')
-      textElement.addEventListener('beforeunload', function (event) {
-        event.preventDefault()
-      })
       // Get the current URL
       var currentUrl = new URL(window.location.href)
 
@@ -653,7 +664,7 @@
         textElement.src = currentUrl.searchParams.get('game')
       }
 
-      console.log(currentUrl.searchParams.get('game'))
+
     </script>
   </body>
 </html>

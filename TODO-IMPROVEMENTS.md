@@ -58,6 +58,19 @@ Scope: this project only (`sz-games.github.io`). No bridge / workspace files.
       Screenshots verified: hero, stacked search/filter, 2-col grid,
       scroll-snap featured row, in-flow dropdown.
 
+## Done (2026-09-05, round 5 — back-button trap removal)
+- [x] **`games/game.html`**: removed the `popstate` pushState loop (back button
+      now works normally), the no-op head `beforeunload`, the dead
+      iframe-element `beforeunload`, and the `slotRenderEnded` handler that
+      forced `#game` hash (was polluting history on every ad render).
+- [x] Replaced with a **single polite native leave-prompt** (`beforeunload` +
+      `returnValue`) — skipped for intentional nav via Back/Home buttons and
+      same-origin `<a>` links.
+- [x] Icon-only arrow_back → visible labeled **Back button** (icon + text,
+      hover state, `aria-label`).
+- [x] Removed stray prod `console.log` (game URL). All 10 inline scripts
+      syntax-verified via Node. Trap pattern confirmed absent from all other pages.
+
 ## Still open (needs human call)
 - [ ] `games/` (276 MB) is game binaries (unity/wasm/swf) — out of scope
       for web-code optimization.
