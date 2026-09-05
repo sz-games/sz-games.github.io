@@ -560,9 +560,8 @@ img {
   align-items: center;
 }
 @media (min-width: 1024px) {
-  /* Only reserve space when the right sidebar is actually rendered (see syncRightSidebar in JS) */
-  body.has-right-sidebar #TopMenu {
-    right: 310px; /* stop at the sidebar with the same 10px gap as the left edge */
+  #TopMenu {
+    right: 300px;
   }
 }
 .split {
@@ -598,10 +597,6 @@ img {
   .split-left {
     width: calc(100% - 300px);
   }
-  /* Full width when the right sidebar is absent or its ad came back empty */
-  body:not(.has-right-sidebar) .split-left {
-    width: 100%;
-  }
 }
 
 @media (max-width: 1023px) {
@@ -621,12 +616,6 @@ img {
   .split-left {
     width: 100%;
   }
-}
-
-/* Collapse the right sidebar when its ad slot renders empty (adblock/no-fill),
-   so no dead 300px gutter remains. JS adds .ad-empty (see syncRightSidebarHeader). */
-.sidebar.ad-empty {
-  display: none;
 }
 
 @keyframes menuM {
@@ -1225,7 +1214,7 @@ img {
 }
 
 @media (min-width: 1024px) {
-  body.has-right-sidebar .site-header {
+  .site-header {
     right: 300px; /* Adjust for sidebar at 1024px+ */
   }
 }
@@ -1317,7 +1306,7 @@ img {
 }
 
 @media (min-width: 1024px) {
-  body.has-right-sidebar .categories-container {
+  .categories-container {
     right: 300px; /* Adjust for sidebar at 1024px+ */
   }
 }
