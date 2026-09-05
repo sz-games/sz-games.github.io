@@ -633,15 +633,19 @@ img {
 
   z-index: 800;
   transform: translateX(-50%);
-  width: 80%;
-  max-width: 400px;
+  width: auto;
+  max-width: min(400px, calc(100vw - 32px));
   visibility: hidden;
 }
 
 .notice-box {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
   background-color: #222;
   color: white;
   padding: 10px 15px;
@@ -654,13 +658,14 @@ img {
 
 .svg-placeholder {
   margin-top: 3px;
-  margin-right: 10px;
+  margin-right: 0;
+  flex-shrink: 0;
 }
 
 .notice-content {
   font-size: 16px;
   line-height: 1.2;
-  flex-grow: 1;
+  flex-grow: 0;
 }
 
 .notice-content strong {
@@ -1142,7 +1147,7 @@ img {
     right: 5px;
   }
   .notice-box-wrapper {
-    width: 95%;
+    width: auto;
   }
   .group {
     max-width: calc(100vw - 30px);
