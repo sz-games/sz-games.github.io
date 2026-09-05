@@ -627,19 +627,17 @@ img {
   }
 }
 @media (max-width: 767px) {
-  #TopMenu {
-    flex-wrap: wrap; /* banner drops to its own centred row on phones */
+  #TopMenu h2 {
+    display: none; /* header shows logo only on mobile */
   }
   .header-ad {
-    width: 320px;
-    height: 50px;
-    order: 10;
-    margin: 6px auto 2px;
-  }
-}
-@media (max-width: 380px) {
-  #TopMenu h2 {
-    display: none; /* free room so the 320px banner fits */
+    /* single row: fluid creative fills the space between logo and buttons */
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    height: auto;
+    max-height: 100px;
+    margin: 0 8px;
   }
 }
 #TopMenu {

@@ -44,7 +44,7 @@
           .sizeMapping()
           .addSize([1024, 0], [[728, 90]])
           .addSize([768, 0], [[468, 60]])
-          .addSize([0, 0], [[320, 50]])
+          .addSize([0, 0], ['fluid']) /* phones: fluid fills the space between logo and buttons */
           .build()
         bannerSlot728x90 = googletag
           .defineSlot(
@@ -53,6 +53,7 @@
               [728, 90],
               [468, 60],
               [320, 50],
+              'fluid',
             ],
             'div-gpt-ad-1744679821427-0'
           )
@@ -109,6 +110,7 @@
         }
 
         googletag.pubads().enableSingleRequest()
+        googletag.pubads().collapseEmptyDivs() /* no creative = no empty box */
         googletag.enableServices()
       })
     </script>
