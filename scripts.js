@@ -410,15 +410,6 @@ function closeNotice(event) {
   } catch (e) {}
 }
 
-// Hide the Discord notice on load if the user already dismissed it before
-// (the flag was being written by closeNotice but never read back).
-try {
-  if (localStorage.getItem('discordnotee') === 'true') {
-    var dismissedNotice = document.getElementById('noticeBoxWrapper') || document.getElementById('noticeBox')
-    if (dismissedNotice) dismissedNotice.style.display = 'none'
-  }
-} catch (e) {}
-
 document.addEventListener('click', function (event) {
   var t = event.target.closest ? event.target.closest('[data-action]') : null
   if (!t) return
