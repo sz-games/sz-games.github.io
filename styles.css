@@ -653,6 +653,26 @@ img {
   }
 }
 
+.notice-close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #2c2f33;
+  color: #b9bbbe;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 801;
+}
+.notice-close:hover {
+  background: #3a3d42;
+  color: #ffffff;
+}
+
 .notice-box-wrapper {
   position: fixed;
   bottom: 20px;
@@ -709,7 +729,7 @@ img {
 
 /* In-hero variant: panel lives under the heading inside #Header, not fixed at viewport bottom. */
 .header .notice-box-wrapper {
-  position: static;
+  position: relative; /* in-flow like static, but anchors the absolute ✕ button */
   transform: none;
   visibility: visible;
   width: fit-content;

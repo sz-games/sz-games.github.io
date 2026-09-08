@@ -105,19 +105,16 @@ document.body.onkeyup = function(e) {
 }
 
 function requestFullScreen(element) {
-    // Supports most browsers and their versions.
-    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullscreen;
-    
+    // Standard API first: the legacy requestFullScreen/webkitRequestFullScreen
+    // spellings were removed in Chrome 71 and silently broke the button on
+    // modern browsers (school Chromebooks included).
+    var requestMethod = element.requestFullscreen || element.webkitRequestFullscreen || element.mozRequestFullScreen || element.msRequestFullscreen;
+
     if (requestMethod) { // Native full screen.
         requestMethod.call(element);
         let hh = window.innerHeight - 10;
 
 document.getElementById('game').height = hh;
-    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-        var wscript = new ActiveXObject("WScript.Shell");
-        if (wscript !== null) {
-            wscript.SendKeys("{F11}");
-        }
     }
 }
 var canvas = document.getElementById('game');
