@@ -69,48 +69,25 @@
       })
     </script>
 
-    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" />
-    <script>
-      // Material Icons font loading
-      ;(function () {
-        var materialIconsLink = document.createElement('link')
-        materialIconsLink.rel = 'stylesheet'
-        materialIconsLink.href = 'https://fonts.googleapis.com/icon?family=Material+Icons'
-
-        // Add the link element
-        document.head.appendChild(materialIconsLink)
-
-        // Handle successful loading
-        materialIconsLink.addEventListener('load', function () {
-          if (document.body) {
-            document.body.classList.add('material-icons-loaded')
-          } else {
-            // Fallback: wait for DOM to be ready
-            document.addEventListener('DOMContentLoaded', function () {
-              document.body.classList.add('material-icons-loaded')
-            })
-          }
-        })
-
-        // Ensure the class is added even if the event doesn't fire
-        document.addEventListener('DOMContentLoaded', function () {
-          // Add class after a short delay to ensure the font is loaded
-          setTimeout(function () {
-            document.body.classList.add('material-icons-loaded')
-          }, 100)
-        })
-      })()
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
     <noscript>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     </noscript>
-
-    <script async src="https://kit.fontawesome.com/26f4207121.js" crossorigin="anonymous"></script>
-
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//kit.fontawesome.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://kit.fontawesome.com" />
+    <script>
+      // Reveal Material Icons once parsed (style.css hides them until this class is set - FOUT guard).
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+          document.body.classList.add('material-icons-loaded')
+        }, 100)
+      })
+    </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
     <script>
@@ -126,12 +103,6 @@
 
     <link rel="manifest" href="manifest.json" />
 
-    <link
-      rel="icon"
-      href="https://raw.githubusercontent.com/sz-games/sz-games.github.io/main/G2.png"
-      type="image/png"
-    />
-
     <meta name="title" content="Sz Games" />
     <meta name="author" content="Sz Games" />
 
@@ -146,7 +117,6 @@
     <meta property="og:image" content="/G2.png" />
 
     <link rel="icon" href="/G2.png" />
-    <meta name="description" content="The Best Place To Play over 100+ Games in school or at home." />
     <meta property="og:site_name" content="Sz Games" />
 
     <meta property="og:title" content="Sz Games" />
@@ -163,9 +133,9 @@
     />
 
     <meta name="language" content="English" />
-    <script async src="./GlobalSettings.js"></script>
+    <script defer src="./GlobalSettings.js"></script>
 
-    <script src="./games.js"></script>
+    <script defer src="./games.js"></script>
 
     <meta
       name="keywords"
@@ -456,6 +426,6 @@
         }
       })()
     </script>
-    <script src="./script.js"></script>
+    <script defer src="./script.js"></script>
   </body>
 </html>

@@ -1,1 +1,0 @@
-// Adsterra banner fallback removed.
