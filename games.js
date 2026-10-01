@@ -1241,13 +1241,6 @@ const gamesData = [
     imgSrc: './cover/BICEC2.webp',
   },
   {
-    id: 'bad ice cream 3',
-    name: 'Bad Ice Cream 3',
-    categories: ['Casual'],
-    url: 'https://sz-games.com/games/game.html?game=https://sz-games.com/Games5/bad-ice-cream-3',
-    imgSrc: './cover/BICEC3.webp',
-  },
-  {
     id: 'storm the house 2',
     name: 'Storm The House 2',
     categories: ['Casual', 'Action'],
