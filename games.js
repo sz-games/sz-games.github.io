@@ -1230,14 +1230,14 @@ const gamesData = [
     id: 'bad ice cream',
     name: 'Bad Ice Cream',
     categories: ['Casual'],
-    url: 'https://sz-games.com/games/game.html?game=https://sz-games.com/Games5/bad-ice-cream',
+    url: 'https://sz-games.github.io/games/Flash.html?game=https://sz-games.github.io/Games5/legacyflashgames/badicecream.swf',
     imgSrc: './cover/BICEC.webp',
   },
   {
     id: 'bad ice cream 2',
     name: 'Bad Ice Cream 2',
     categories: ['Casual'],
-    url: 'https://sz-games.com/games/game.html?game=https://sz-games.com/Games5/bad-ice-cream-2',
+    url: 'https://sz-games.github.io/games/Flash.html?game=https://sz-games.github.io/Games5/legacyflashgames/badicecream2.swf',
     imgSrc: './cover/BICEC2.webp',
   },
   {

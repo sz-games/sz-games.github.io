@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sz-games.github.io/sitemap.xml

@@ -1,35 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://sz-games.github.io/</loc>
-  <lastmod>2023-06-18T09:01:14+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://sz-games.github.io/FNF.html</loc>
-  <lastmod>2023-06-18T09:01:13+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sz-games.github.io/About.html</loc>
-  <lastmod>2023-06-18T09:01:13+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sz-games.github.io/Privacy-Policy.html</loc>
-  <lastmod>2023-06-18T09:01:13+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sz-games.github.io/Chat.html</loc>
-  <lastmod>2023-06-18T09:01:13+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sz-games.github.io/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/Slope.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/Bitlife.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/FNF.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/roblox.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/Blog.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/About.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/FAQ.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/Chat.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/reviews.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/Menu.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/StartFNF.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/sz-brawlers.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/Privacy-Policy.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/terms-of-service.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/contact.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/partners.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/IMAGEAI.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/settings.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/BetaTest.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/RammerheadProxys.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/fake-domains.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/rating.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/MessageUN.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://sz-games.github.io/beforeop.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.30</priority>
+  </url>
 </urlset>
