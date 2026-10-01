@@ -32,6 +32,40 @@
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <link rel="icon" href="../G.png" />
     <title>Sz Games - Game</title>
+    <link rel="canonical" href="https://sz-games.github.io/games/game.html" />
+    <script>
+      // Give the game viewer a specific, honest title/description for known games,
+      // and make each game URL its own canonical (drops foreign/utm params).
+      ;(function () {
+        var params = new URLSearchParams(window.location.search)
+        var game = (params.get('game') || '').replace(/\/+$/, '')
+
+        var canon = document.querySelector('link[rel="canonical"]')
+        if (canon) {
+          canon.setAttribute(
+            'href',
+            'https://sz-games.github.io/games/game.html' + (game ? '?game=' + encodeURIComponent(game) : '')
+          )
+        }
+
+        var names = [
+          [/storage3\/AWeb$/i, 'Precision Client', 'Play Precision Client, a browser Minecraft/Eaglercraft client, free in your browser on Sz Games. Choose a server and jump straight into a world — no download needed.'],
+          [/^\/?slope/i, 'Slope', 'Play Slope free in your browser on Sz Games. Guide a rolling ball down an endless neon slope, dodging gaps and obstacles at speed.'],
+          [/Games11\/retro-bowl/i, 'Retro Bowl', 'Play Retro Bowl free in your browser on Sz Games. Manage a retro football team, call plays and lead them to the championship.'],
+          [/Games9\/bitlife/i, 'BitLife', 'Play BitLife free in your browser on Sz Games. Make life choices from birth to death and see how your story turns out.'],
+        ]
+        for (var i = 0; i < names.length; i++) {
+          if (names[i][0].test(game)) {
+            document.title = names[i][1] + ' - Play Free Online | Sz Games'
+            var m = document.createElement('meta')
+            m.setAttribute('name', 'description')
+            m.setAttribute('content', names[i][2])
+            document.head.appendChild(m)
+            break
+          }
+        }
+      })()
+    </script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
