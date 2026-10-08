@@ -1,5 +1,12 @@
 const gamesData = [
   {
+    id: 'infinite road',
+    name: 'Infinite Road Game',
+    categories: ['Driving', 'Casual'],
+    url: 'https://sz-games.github.io/games/infinite-road/',
+    imgSrc: './cover/infinite-road.webp',
+  },
+  {
     id: 'Infinite Tower',
     name: 'Infinite Tower',
     categories: ['Casual'],

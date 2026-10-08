@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Road Game - Free 3D Driving Game</title>
+  <meta name="description"
+    content="Play Infinite Road Game free in your browser. Drive a 3D car down an endless road that curves, climbs and banks, collect coins and push your distance as far as you can. Works with a keyboard, a gamepad or touch controls. No download needed.">
+  <link rel="canonical" href="https://sz-games.github.io/games/infinite-road/">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script defer data-domain="sz-games.github.io"
+    src="https://stats.senty.com.au/js/script.outbound-links.pageview-props.tagged-events.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #10151f;
+      --panel: #1a2230;
+      --text: #eef2f7;
+      --muted: #a9b4c4;
+      --accent: #ffd24d;
+      --accent-text: #1a1300;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 0 0 8px;
+    }
+
+    .lede {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0 0 24px;
+    }
+
+    .play {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--accent-text);
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 6px;
+    }
+
+    .play:hover,
+    .play:focus {
+      background: #ffdf7a;
+    }
+
+    section {
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-top: 24px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin: 0 0 8px;
+    }
+
+    ol,
+    ul {
+      padding-left: 22px;
+      margin: 8px 0 0;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    dt {
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    dd {
+      margin: 2px 0 0;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Infinite Road Game</h1>
+    <p class="lede">Drive a 3D car down an endless road. The road curves, climbs and banks, the engine follows
+      your speed, and nothing interrupts the drive. Collect coins and push your distance as far as you can.</p>
+    <p><a class="play" href="drive.html">Play the game</a></p>
+
+    <section id="how-to-play">
+      <h2>How to play</h2>
+      <ol>
+        <li>Press W or Up to accelerate, S or Down to brake and reverse.</li>
+        <li>Press A or D, or Left and Right, to steer. Steering tightens up as you slow down.</li>
+        <li>Press Space for the handbrake. It loosens the rear wheels so the car rotates into a corner.</li>
+        <li>Collect the gold coins to raise your score.</li>
+        <li>Press R to restart the run instantly, C to switch camera and Esc for the settings.</li>
+      </ol>
+      <p>On a phone or tablet, the game shows on-screen buttons for gas, brake, handbrake and steering. A
+        gamepad works too: left stick to steer, triggers for gas and brake.</p>
+    </section>
+
+    <section id="about">
+      <h2>About the game</h2>
+      <p>Infinite Road Game is a free browser game. It uses the three.js library and needs no download or account. The
+        road is generated as you drive, so it never ends and never repeats. Low, Medium and High quality settings are
+        in the game, and the game picks one for you if you do not choose.</p>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently asked questions</h2>
+      <dl>
+        <dt>Is the game free?</dt>
+        <dd>Yes. The game is free to play and has no account or sign-up.</dd>
+
+        <dt>Does the game work on phones?</dt>
+        <dd>Yes. On a phone or tablet, hold the on-screen buttons to drive, steer and brake.</dd>
+
+        <dt>Does the game save my score?</dt>
+        <dd>No. The distance and the score reset when you reload the page or press R.</dd>
+
+        <dt>Which keys do I use?</dt>
+        <dd>W or Up accelerates, S or Down brakes, A and D or Left and Right steer, Space is the handbrake, R
+          restarts, C changes the camera, M mutes and Esc opens the settings.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p>Car model: Kenney Car Kit (CC0). Built with three.js and cannon-es (MIT). The debug panel uses Tweakpane
+        (MIT). See <a href="CREDITS.md">CREDITS.md</a>.</p>
+    </footer>
+  </main>
+</body>
+
+</html>

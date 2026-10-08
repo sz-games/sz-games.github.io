@@ -1,0 +1,13 @@
+# Known broken links, found when the check was added (FL-671). Fix and remove.
+IMAGEAI.html -> ./tools.css
+Slope.html -> ../index.html
+games/breaking-the-bank.html -> https://sz-games.github.io/games/swf/bank
+games/index.html -> TemplateData/favicon.ico
+games/index.html -> TemplateData/style.css
+games/tetris.html -> https://sz-games.github.io/games/tet
+games/tunnel-rush/index.html -> style/favicon.ico
+index.html -> https://sz-games.github.io/home/webb/
+index.html -> https://sz-games.github.io/games/woods
+index.html -> https://sz-games.github.io/games/dungeon
+index.html -> https://sz-games.github.io/games/bloxx
+index.html -> https://sz-games.github.io/Games2/sm64

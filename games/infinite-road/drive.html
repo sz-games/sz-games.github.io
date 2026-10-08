@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Play Infinite Road Game</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --panel: rgba(16, 22, 32, 0.82);
+      --text: #eef2f7;
+      --muted: #a9b4c4;
+      --accent: #ffd24d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #a9c6dc;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #stats {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 4;
+      min-width: 172px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--panel);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    #stats .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    #rev {
+      height: 6px;
+      margin-top: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.18);
+      overflow: hidden;
+    }
+
+    #rev-fill {
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+    }
+
+    #hint,
+    #toast {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: var(--panel);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    #hint {
+      top: 12px;
+      color: var(--muted);
+    }
+
+    #toast {
+      bottom: 24px;
+    }
+
+    #toast[hidden],
+    #hint[hidden] {
+      display: none;
+    }
+
+    #meter {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 4;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--panel);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    #meter[hidden] {
+      display: none;
+    }
+
+    #settings-toggle {
+      position: absolute;
+      right: 10px;
+      bottom: 16px;
+      z-index: 6;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(8, 12, 20, 0.72);
+    }
+
+    .overlay[hidden] {
+      display: none;
+    }
+
+    .panel {
+      width: 100%;
+      max-width: 440px;
+      max-height: 100%;
+      overflow-y: auto;
+      padding: 24px;
+      border-radius: 10px;
+      background: #1a2230;
+      text-align: center;
+    }
+
+    .panel h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+    }
+
+    .panel h2 {
+      margin: 16px 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .panel p {
+      margin: 8px 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      line-height: 1.8;
+    }
+
+    .panel button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px 20px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #1a1300;
+      font-size: 1.15rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .panel button:hover,
+    .panel button:focus {
+      background: #ffdf7a;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 10px 0;
+      font-size: 0.95rem;
+    }
+
+    .field input[type="range"] {
+      flex: 1;
+    }
+
+    .field select {
+      padding: 6px 8px;
+      border-radius: 6px;
+      background: #10151f;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    #tuning {
+      display: none;
+    }
+
+    #tuning label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 6px 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    #tuning input {
+      flex: 1;
+    }
+
+    .credit {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    #touch-controls {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 16px;
+      z-index: 5;
+      display: none;
+      justify-content: space-between;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+
+    body.touch #touch-controls {
+      display: flex;
+    }
+
+    .touch-group {
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    #touch-controls button {
+      width: 76px;
+      height: 76px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: bold;
+      touch-action: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #touch-controls button:active {
+      background: rgba(255, 210, 77, 0.85);
+      color: #1a1300;
+    }
+
+    @media (max-height: 480px) {
+      #stats {
+        font-size: 13px;
+        min-width: 150px;
+      }
+
+      #touch-controls button {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/three.module.min.js",
+        "three/addons/": "./vendor/three/addons/",
+        "cannon-es": "./vendor/cannon-es/cannon-es.js"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="stats">
+    <div class="row"><span>Distance</span><span><span id="distance">0.00</span> km</span></div>
+    <div class="row"><span>Score</span><span id="score">0</span></div>
+    <div class="row"><span>Speed</span><span><span id="speed">0</span> km/h</span></div>
+    <div class="row"><span>Gear</span><span id="gear">1</span></div>
+    <div id="rev">
+      <div id="rev-fill"></div>
+    </div>
+  </div>
+
+  <div id="hint">W or Up accelerates, A and D steer, Space is the handbrake.</div>
+  <div id="meter" hidden><span id="meter-text"></span></div>
+  <div id="toast" hidden></div>
+
+  <button id="settings-toggle" type="button" aria-label="Settings">&#9881;</button>
+
+  <div id="start" class="overlay">
+    <div class="panel">
+      <h1>Infinite Road</h1>
+      <p>Drive the endless road as far as you can. The road climbs, curves and banks. Nothing interrupts the drive.</p>
+      <h2>Controls</h2>
+      <ul>
+        <li>W or Up: accelerate</li>
+        <li>S or Down: brake and reverse</li>
+        <li>A and D or Left and Right: steer</li>
+        <li>Space: handbrake</li>
+        <li>R: restart, C: camera, M: mute, Esc: settings</li>
+        <li>T: time of day, Y: rain</li>
+        <li>Gamepad: left stick steers, RT accelerates, LT brakes</li>
+      </ul>
+      <p id="start-touch-hint" hidden>On a phone or tablet, use the on-screen buttons.</p>
+      <button id="start-button" type="button">Start driving</button>
+      <p class="credit">Car model: Kenney Car Kit (CC0). Built with three.js and cannon-es (MIT).</p>
+    </div>
+  </div>
+
+  <div id="settings" class="overlay" hidden>
+    <div class="panel">
+      <h2>Settings</h2>
+      <label class="field">Quality
+        <select id="quality-select">
+          <option value="auto">Auto</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <label class="field">View distance <span id="view-distance-value">Auto</span>
+        <input id="view-distance" type="range" min="0" max="2000" step="100" value="0">
+      </label>
+      <label class="field">Volume
+        <input id="volume" type="range" min="0" max="100" step="1" value="70">
+      </label>
+      <label class="field">Camera
+        <select id="camera-select">
+          <option value="chase">Chase</option>
+          <option value="hood">Hood</option>
+        </select>
+      </label>
+      <label class="field">Time of day
+        <select id="time-select">
+          <option value="morning">Morning</option>
+          <option value="noon">Noon</option>
+          <option value="sunset">Sunset</option>
+          <option value="night">Night</option>
+        </select>
+      </label>
+      <label class="field">Weather
+        <select id="weather-select">
+          <option value="clear">Clear</option>
+          <option value="rain">Rain (Medium and High)</option>
+        </select>
+      </label>
+      <div id="tuning"></div>
+      <button id="settings-close" type="button">Back to the road</button>
+    </div>
+  </div>
+
+  <div id="touch-controls">
+    <div class="touch-group">
+      <button id="touch-left" type="button" aria-label="Steer left">&#9664;</button>
+      <button id="touch-right" type="button" aria-label="Steer right">&#9654;</button>
+    </div>
+    <div class="touch-group">
+      <button id="touch-handbrake" type="button" aria-label="Handbrake">Drift</button>
+      <button id="touch-brake" type="button" aria-label="Brake">Brake</button>
+      <button id="touch-gas" type="button" aria-label="Accelerate">Gas</button>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
