@@ -5,14 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Play Infinite Road Game</title>
   <style>
+    :root {
+      color-scheme: dark;
+      --panel: rgba(16, 22, 32, 0.82);
+      --text: #eef2f7;
+      --muted: #a9b4c4;
+      --accent: #ffd24d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       overflow: hidden;
-      background: #87CEEB;
+      background: #a9c6dc;
       font-family: Arial, sans-serif;
+      color: var(--text);
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     canvas {
@@ -23,11 +37,91 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      color: white;
-      font-size: 16px;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 5px;
+      z-index: 4;
+      min-width: 172px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--panel);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    #stats .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    #rev {
+      height: 6px;
+      margin-top: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.18);
+      overflow: hidden;
+    }
+
+    #rev-fill {
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+    }
+
+    #hint,
+    #toast {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: var(--panel);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    #hint {
+      top: 12px;
+      color: var(--muted);
+    }
+
+    #toast {
+      bottom: 24px;
+    }
+
+    #toast[hidden],
+    #hint[hidden] {
+      display: none;
+    }
+
+    #meter {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 4;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--panel);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    #meter[hidden] {
+      display: none;
+    }
+
+    #settings-toggle {
+      position: absolute;
+      right: 10px;
+      bottom: 16px;
+      z-index: 6;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
     }
 
     .overlay {
@@ -38,7 +132,7 @@
       align-items: center;
       justify-content: center;
       padding: 16px;
-      background-color: rgba(8, 12, 20, 0.75);
+      background: rgba(8, 12, 20, 0.72);
     }
 
     .overlay[hidden] {
@@ -47,14 +141,12 @@
 
     .panel {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       max-height: 100%;
       overflow-y: auto;
-      box-sizing: border-box;
       padding: 24px;
       border-radius: 10px;
-      background-color: #1a2230;
-      color: #eef2f7;
+      background: #1a2230;
       text-align: center;
     }
 
@@ -70,7 +162,7 @@
 
     .panel p {
       margin: 8px 0;
-      color: #a9b4c4;
+      color: var(--muted);
       line-height: 1.5;
     }
 
@@ -78,8 +170,7 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      color: #eef2f7;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     .panel button {
@@ -88,7 +179,7 @@
       padding: 14px 20px;
       border: 0;
       border-radius: 6px;
-      background-color: #ffd24d;
+      background: var(--accent);
       color: #1a1300;
       font-size: 1.15rem;
       font-weight: bold;
@@ -97,17 +188,52 @@
 
     .panel button:hover,
     .panel button:focus {
-      background-color: #ffdf7a;
+      background: #ffdf7a;
     }
 
-    #gameover-stats {
-      white-space: pre-line;
-      font-size: 1.05rem;
-      color: #eef2f7;
+    .field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 10px 0;
+      font-size: 0.95rem;
+    }
+
+    .field input[type="range"] {
+      flex: 1;
+    }
+
+    .field select {
+      padding: 6px 8px;
+      border-radius: 6px;
+      background: #10151f;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    #tuning {
+      display: none;
+    }
+
+    #tuning label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 6px 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    #tuning input {
+      flex: 1;
     }
 
     .credit {
+      margin-top: 14px;
       font-size: 0.8rem;
+      color: var(--muted);
     }
 
     #touch-controls {
@@ -128,7 +254,7 @@
 
     .touch-group {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       pointer-events: auto;
     }
 
@@ -137,24 +263,23 @@
       height: 76px;
       border: 2px solid rgba(255, 255, 255, 0.7);
       border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.45);
-      color: white;
-      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 0.95rem;
       font-weight: bold;
       touch-action: none;
-      user-select: none;
-      -webkit-user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
 
     #touch-controls button:active {
-      background-color: rgba(255, 210, 77, 0.8);
+      background: rgba(255, 210, 77, 0.85);
       color: #1a1300;
     }
 
     @media (max-height: 480px) {
       #stats {
-        font-size: 14px;
+        font-size: 13px;
+        min-width: 150px;
       }
 
       #touch-controls button {
@@ -163,38 +288,93 @@
       }
     }
   </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/three.module.min.js",
+        "three/addons/": "./vendor/three/addons/",
+        "cannon-es": "./vendor/cannon-es/cannon-es.js"
+      }
+    }
+  </script>
 </head>
 
 <body>
   <div id="stats">
-    <div>Distance: <span id="distance">0.00</span> km</div>
-    <div>Score: <span id="score">0</span></div>
-    <div>Speed: <span id="speed">0</span> km/h</div>
-    <div id="hint">W or Up to accelerate. A and D or Left and Right to steer.</div>
+    <div class="row"><span>Distance</span><span><span id="distance">0.00</span> km</span></div>
+    <div class="row"><span>Score</span><span id="score">0</span></div>
+    <div class="row"><span>Speed</span><span><span id="speed">0</span> km/h</span></div>
+    <div class="row"><span>Gear</span><span id="gear">1</span></div>
+    <div id="rev">
+      <div id="rev-fill"></div>
+    </div>
   </div>
+
+  <div id="hint">W or Up accelerates, A and D steer, Space is the handbrake.</div>
+  <div id="meter" hidden><span id="meter-text"></span></div>
+  <div id="toast" hidden></div>
+
+  <button id="settings-toggle" type="button" aria-label="Settings">&#9881;</button>
 
   <div id="start" class="overlay">
     <div class="panel">
       <h1>Infinite Road</h1>
-      <p>Drive down the endless road. Collect coins. Keep all four wheels on the road.</p>
+      <p>Drive the endless road as far as you can. The road climbs, curves and banks. Nothing interrupts the drive.</p>
       <h2>Controls</h2>
       <ul>
         <li>W or Up: accelerate</li>
-        <li>S or Down: brake</li>
+        <li>S or Down: brake and reverse</li>
         <li>A and D or Left and Right: steer</li>
+        <li>Space: handbrake</li>
+        <li>R: restart, C: camera, M: mute, Esc: settings</li>
+        <li>T: time of day, Y: rain</li>
+        <li>Gamepad: left stick steers, RT accelerates, LT brakes</li>
       </ul>
       <p id="start-touch-hint" hidden>On a phone or tablet, use the on-screen buttons.</p>
       <button id="start-button" type="button">Start driving</button>
-      <p class="credit">Car model: Kenney Car Kit (CC0). Built with three.js (MIT).</p>
+      <p class="credit">Car model: Kenney Car Kit (CC0). Built with three.js and cannon-es (MIT).</p>
     </div>
   </div>
 
-  <div id="gameover" class="overlay" hidden>
+  <div id="settings" class="overlay" hidden>
     <div class="panel">
-      <h2>Run over</h2>
-      <p id="gameover-stats"></p>
-      <button id="restart-button" type="button">Play again</button>
-      <p class="credit">Press R to play again.</p>
+      <h2>Settings</h2>
+      <label class="field">Quality
+        <select id="quality-select">
+          <option value="auto">Auto</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <label class="field">View distance <span id="view-distance-value">Auto</span>
+        <input id="view-distance" type="range" min="0" max="2000" step="100" value="0">
+      </label>
+      <label class="field">Volume
+        <input id="volume" type="range" min="0" max="100" step="1" value="70">
+      </label>
+      <label class="field">Camera
+        <select id="camera-select">
+          <option value="chase">Chase</option>
+          <option value="hood">Hood</option>
+        </select>
+      </label>
+      <label class="field">Time of day
+        <select id="time-select">
+          <option value="morning">Morning</option>
+          <option value="noon">Noon</option>
+          <option value="sunset">Sunset</option>
+          <option value="night">Night</option>
+        </select>
+      </label>
+      <label class="field">Weather
+        <select id="weather-select">
+          <option value="clear">Clear</option>
+          <option value="rain">Rain (Medium and High)</option>
+        </select>
+      </label>
+      <div id="tuning"></div>
+      <button id="settings-close" type="button">Back to the road</button>
     </div>
   </div>
 
@@ -204,455 +384,13 @@
       <button id="touch-right" type="button" aria-label="Steer right">&#9654;</button>
     </div>
     <div class="touch-group">
+      <button id="touch-handbrake" type="button" aria-label="Handbrake">Drift</button>
       <button id="touch-brake" type="button" aria-label="Brake">Brake</button>
       <button id="touch-gas" type="button" aria-label="Accelerate">Gas</button>
     </div>
   </div>
 
-  <script src="vendor/three.min.js"></script>
-  <script src="vendor/GLTFLoader.js"></script>
-  <script>
-    // The developer panel loads only with ?debug=1. Production pages never
-    // request the Tweakpane file.
-    const DEBUG = new URLSearchParams(window.location.search).get('debug') === '1';
-
-    let scene, camera, renderer, car;
-    let roadSegments = [], coins = [];
-    let distance = 0;
-    let score = 0;
-    let speed = 0;
-    let acceleration = 0;
-    let gameOver = false;
-    let started = false;
-    let carTargetX = 0;
-    let turnSpeed = 0;
-
-    const clock = new THREE.Clock();
-    const keys = { A: false, D: false, W: false, S: false };
-
-    // Game parameters (controllable via Tweakpane)
-    const PARAMS = {
-      roadLength: 1000,
-      roadWidth: 15,
-      maxSpeed: 200,
-      minSpeed: 0,
-      maxTurnSpeed: 0.1,
-      turnAcceleration: 0.01,
-      accelerationRate: 0.5,
-      decelerationRate: 0.5,
-      coinSpawnRate: 5,
-      fogColor: '#87CEEB',
-      fogNear: 1,
-      fogFar: 1000,
-      carColor: '#ff0000',
-      carScale: 2,
-    };
-
-    function init() {
-      scene = new THREE.Scene();
-      scene.fog = new THREE.Fog(PARAMS.fogColor, PARAMS.fogNear, PARAMS.fogFar);
-
-      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(PARAMS.fogColor);
-      document.body.appendChild(renderer.domElement);
-
-      // Create the car group before the model loads, so the game loop always
-      // has a car to move. The loaded model is added to this group.
-      car = new THREE.Group();
-      car.position.set(0, 0, -5);
-      car.scale.setScalar(PARAMS.carScale);
-      car.userData.materials = [];
-      scene.add(car);
-      loadCarModel();
-
-      // Create initial road segments
-      createRoadSegment(0);
-      createRoadSegment(-PARAMS.roadLength);
-      createRoadSegment(-PARAMS.roadLength * 2);
-
-      camera.position.set(0, 5, 10);
-      camera.lookAt(car.position.x, 0, car.position.z - 30);
-
-      // Add ambient light
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-      scene.add(ambientLight);
-
-      // Add directional light
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-      directionalLight.position.set(0, 1, 0);
-      scene.add(directionalLight);
-
-      if (DEBUG) loadDevPanel();
-    }
-
-    function loadDevPanel() {
-      const script = document.createElement('script');
-      script.src = 'vendor/tweakpane.min.js';
-      script.onload = initTweakpane;
-      script.onerror = function () {
-        console.warn('Developer panel failed to load');
-      };
-      document.head.appendChild(script);
-    }
-
-    function loadCarModel() {
-      const loader = new THREE.GLTFLoader();
-      loader.load(
-        'models/race.glb',
-        function (gltf) {
-          const model = gltf.scene;
-          // The Kenney model faces +Z. The game drives toward -Z, so turn it around.
-          model.rotation.y = Math.PI;
-          car.add(model);
-
-          model.traverse(function (node) {
-            if (node.isMesh) car.userData.materials.push(node.material);
-          });
-        },
-        function (xhr) {
-          if (xhr.total) {
-            console.log(Math.round(xhr.loaded / xhr.total * 100) + '% loaded');
-          }
-        },
-        function (error) {
-          console.error('Car model failed to load', error);
-        }
-      );
-    }
-
-    function createRoadSegment(zPosition) {
-      const roadGeometry = new THREE.PlaneGeometry(PARAMS.roadWidth, PARAMS.roadLength);
-      const roadMaterial = new THREE.MeshPhongMaterial({ color: 0x808080 });
-      const road = new THREE.Mesh(roadGeometry, roadMaterial);
-      road.rotation.x = -Math.PI / 2;
-      road.position.set(0, 0, zPosition);
-      scene.add(road);
-      roadSegments.push({ road, zPosition });
-
-      // Create road edges
-      const edgeGeometry = new THREE.BoxGeometry(1, 1, PARAMS.roadLength);
-      const edgeMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
-      const leftEdge = new THREE.Mesh(edgeGeometry, edgeMaterial);
-      const rightEdge = new THREE.Mesh(edgeGeometry, edgeMaterial);
-      leftEdge.position.set(-PARAMS.roadWidth / 2 - 0.5, 0.5, zPosition);
-      rightEdge.position.set(PARAMS.roadWidth / 2 + 0.5, 0.5, zPosition);
-      scene.add(leftEdge);
-      scene.add(rightEdge);
-
-      // Add coins
-      for (let i = 0; i < PARAMS.coinSpawnRate; i++) {
-        createCoin(zPosition - Math.random() * PARAMS.roadLength);
-      }
-    }
-
-    function createCoin(zPosition) {
-      const coinGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.2, 32);
-      const coinMaterial = new THREE.MeshPhongMaterial({ color: 0xFFD700 });
-      const coin = new THREE.Mesh(coinGeometry, coinMaterial);
-      coin.rotation.x = Math.PI / 2;
-      coin.position.set((Math.random() - 0.5) * (PARAMS.roadWidth - 2), 1, zPosition);
-      scene.add(coin);
-      coins.push(coin);
-    }
-
-    function animate() {
-      if (gameOver) return;
-      requestAnimationFrame(animate);
-
-      // Keep the tuned rates working at every refresh rate.
-      const delta = Math.min(clock.getDelta(), 0.05);
-      const frameScale = delta * 60;
-
-      // The car stays still until the player starts the run.
-      if (!started) {
-        renderer.render(scene, camera);
-        return;
-      }
-
-      // Update speed based on acceleration
-      speed = Math.max(PARAMS.minSpeed, Math.min(PARAMS.maxSpeed, speed + acceleration * frameScale));
-
-      // Update car position
-      const speedMS = speed / 3.6;  // Convert km/h to m/s
-      car.position.z -= speedMS * delta;
-      distance += speedMS * delta / 1000;  // Convert to km
-
-      // Update car turning
-      if (keys.A && !keys.D) {
-        turnSpeed = Math.max(-PARAMS.maxTurnSpeed, turnSpeed - PARAMS.turnAcceleration * frameScale);
-      } else if (keys.D && !keys.A) {
-        turnSpeed = Math.min(PARAMS.maxTurnSpeed, turnSpeed + PARAMS.turnAcceleration * frameScale);
-      } else {
-        turnSpeed *= Math.pow(0.9, frameScale);  // Gradual return to straight
-      }
-
-      carTargetX += turnSpeed * frameScale;
-      car.position.x += (carTargetX - car.position.x) * (1 - Math.pow(0.9, frameScale));
-
-      // Leaving the road ends the run.
-      if (Math.abs(car.position.x) > PARAMS.roadWidth / 2) {
-        endGame();
-        return;
-      }
-
-      // Tilt car based on turning
-      car.rotation.z = -turnSpeed * 10;
-
-      // Move camera with car
-      camera.position.z = car.position.z + 10;
-      camera.position.x = car.position.x * 0.5;
-      camera.lookAt(car.position.x, 0, car.position.z - 30);
-
-      // Check for collisions
-      checkCollisions();
-
-      // Check if we need to create a new road segment
-      if (car.position.z <= roadSegments[roadSegments.length - 1].zPosition + PARAMS.roadLength / 2) {
-        createRoadSegment(roadSegments[roadSegments.length - 1].zPosition - PARAMS.roadLength);
-      }
-
-      // Remove old road segments and coins
-      if (roadSegments.length > 3 && car.position.z < roadSegments[0].zPosition - PARAMS.roadLength) {
-        scene.remove(roadSegments[0].road);
-        roadSegments.shift();
-      }
-      coins = coins.filter(c => c.position.z < car.position.z + 100);
-
-      // Update distance, score, and speed display
-      document.getElementById('distance').textContent = distance.toFixed(2);
-      document.getElementById('score').textContent = score;
-      document.getElementById('speed').textContent = Math.floor(speed);
-
-      // Rotate coins
-      coins.forEach(coin => {
-        coin.rotation.y += 0.05 * frameScale;
-      });
-
-      renderer.render(scene, camera);
-    }
-
-    function startGame() {
-      if (started || gameOver) return;
-      started = true;
-      document.getElementById('start').hidden = true;
-    }
-
-    function endGame() {
-      gameOver = true;
-      document.getElementById('gameover-stats').textContent =
-        'Distance: ' + distance.toFixed(2) + ' km\nScore: ' + score;
-      document.getElementById('gameover').hidden = false;
-    }
-
-    function checkCollisions() {
-      // Bind coins to the car. Iterate backwards so removing a coin is safe.
-      for (let i = coins.length - 1; i >= 0; i--) {
-        const coin = coins[i];
-        const dx = car.position.x - coin.position.x;
-        const dz = car.position.z - coin.position.z;
-        const distanceSquared = dx * dx + dz * dz;
-
-        // Adjust collection radius based on speed
-        const collectionRadius = 2 + speed / 50;  // Increase radius at higher speeds
-
-        if (distanceSquared < collectionRadius * collectionRadius) {
-          scene.remove(coin);
-          coins.splice(i, 1);
-          score += 1;
-        }
-      }
-    }
-
-    function initTweakpane() {
-      const pane = new Tweakpane.Pane();
-
-      const roadFolder = pane.addFolder({ title: 'Road' });
-      roadFolder.addInput(PARAMS, 'roadLength', { min: 500, max: 2000, step: 100 });
-      roadFolder.addInput(PARAMS, 'roadWidth', { min: 10, max: 30, step: 1 });
-
-      const gameplayFolder = pane.addFolder({ title: 'Gameplay' });
-      gameplayFolder.addInput(PARAMS, 'maxSpeed', { min: 100, max: 300, step: 10 });
-      gameplayFolder.addInput(PARAMS, 'minSpeed', { min: 0, max: 50, step: 5 });
-      gameplayFolder.addInput(PARAMS, 'maxTurnSpeed', { min: 0.05, max: 0.2, step: 0.01 });
-      gameplayFolder.addInput(PARAMS, 'turnAcceleration', { min: 0.005, max: 0.05, step: 0.005 });
-      gameplayFolder.addInput(PARAMS, 'accelerationRate', { min: 0.1, max: 1, step: 0.1 });
-      gameplayFolder.addInput(PARAMS, 'decelerationRate', { min: 0.1, max: 1, step: 0.1 });
-      gameplayFolder.addInput(PARAMS, 'coinSpawnRate', { min: 1, max: 10, step: 1 });
-
-      const visualsFolder = pane.addFolder({ title: 'Visuals' });
-      visualsFolder.addInput(PARAMS, 'fogColor');
-      visualsFolder.addInput(PARAMS, 'fogNear', { min: 0, max: 10, step: 0.1 });
-      visualsFolder.addInput(PARAMS, 'fogFar', { min: 100, max: 2000, step: 100 });
-      visualsFolder.addInput(PARAMS, 'carColor');
-
-      // Update visuals when changed
-      visualsFolder.on('change', (ev) => {
-        if (ev.presetKey === 'fogColor') {
-          scene.fog.color.setStyle(PARAMS.fogColor);
-          renderer.setClearColor(PARAMS.fogColor);
-        } else if (ev.presetKey === 'fogNear' || ev.presetKey === 'fogFar') {
-          scene.fog.near = PARAMS.fogNear;
-          scene.fog.far = PARAMS.fogFar;
-        } else if (ev.presetKey === 'carColor') {
-          car.userData.materials.forEach((material) => {
-            material.color.setStyle(PARAMS.carColor);
-          });
-        }
-      });
-    }
-
-    // Touch controls: press and hold the on-screen buttons to drive.
-    function bindHold(button, press, release) {
-      button.addEventListener('pointerdown', function (event) {
-        event.preventDefault();
-        try {
-          button.setPointerCapture(event.pointerId);
-        } catch (error) {
-          // Pointer capture is optional. The button still works without it.
-        }
-        press();
-      });
-
-      button.addEventListener('pointerup', function (event) {
-        event.preventDefault();
-        release();
-      });
-
-      button.addEventListener('pointercancel', release);
-      button.addEventListener('contextmenu', function (event) {
-        event.preventDefault();
-      });
-    }
-
-    function setupTouchControls() {
-      document.body.classList.add('touch');
-      document.getElementById('start-touch-hint').hidden = false;
-      document.getElementById('hint').textContent = 'Use the on-screen buttons to drive.';
-
-      bindHold(
-        document.getElementById('touch-left'),
-        function () { keys.A = true; },
-        function () { keys.A = false; }
-      );
-      bindHold(
-        document.getElementById('touch-right'),
-        function () { keys.D = true; },
-        function () { keys.D = false; }
-      );
-      bindHold(
-        document.getElementById('touch-gas'),
-        function () {
-          keys.W = true;
-          acceleration = PARAMS.accelerationRate;
-        },
-        function () {
-          keys.W = false;
-          if (!keys.S) acceleration = 0;
-        }
-      );
-      bindHold(
-        document.getElementById('touch-brake'),
-        function () {
-          keys.S = true;
-          acceleration = -PARAMS.decelerationRate;
-        },
-        function () {
-          keys.S = false;
-          if (!keys.W) acceleration = 0;
-        }
-      );
-    }
-
-    init();
-    animate();
-
-    if (('ontouchstart' in window) || navigator.maxTouchPoints > 0) {
-      setupTouchControls();
-    }
-
-    // Handle window resizing
-    window.addEventListener('resize', function () {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }, false);
-
-    document.getElementById('start-button').addEventListener('click', startGame);
-    document.getElementById('restart-button').addEventListener('click', function () {
-      window.location.reload();
-    });
-
-    // Handle user input
-    document.addEventListener('keydown', function (event) {
-      const key = event.key.toUpperCase();
-
-      // Enter or Space starts the run from the start screen.
-      if (!started && (key === 'ENTER' || event.code === 'Space')) {
-        event.preventDefault();
-        startGame();
-        return;
-      }
-
-      switch (key) {
-        case 'A':
-        case 'ARROWLEFT':
-          keys.A = true;
-          break;
-        case 'D':
-        case 'ARROWRIGHT':
-          keys.D = true;
-          break;
-        case 'W':
-        case 'ARROWUP':
-          keys.W = true;
-          acceleration = PARAMS.accelerationRate;  // Accelerate
-          break;
-        case 'S':
-        case 'ARROWDOWN':
-          keys.S = true;
-          acceleration = -PARAMS.decelerationRate;  // Decelerate
-          break;
-        case 'R':
-          if (gameOver) window.location.reload();
-          break;
-      }
-    });
-
-    document.addEventListener('keyup', function (event) {
-      switch (event.key.toUpperCase()) {
-        case 'A':
-        case 'ARROWLEFT':
-          keys.A = false;
-          break;
-        case 'D':
-        case 'ARROWRIGHT':
-          keys.D = false;
-          break;
-        case 'W':
-        case 'ARROWUP':
-          keys.W = false;
-          if (!keys.S) acceleration = 0;  // Stop accelerating if S is not pressed
-          break;
-        case 'S':
-        case 'ARROWDOWN':
-          keys.S = false;
-          if (!keys.W) acceleration = 0;  // Stop decelerating if W is not pressed
-          break;
-      }
-    });
-
-    // Do not leave a key stuck when the window loses focus.
-    window.addEventListener('blur', function () {
-      keys.A = false;
-      keys.D = false;
-      keys.W = false;
-      keys.S = false;
-      acceleration = 0;
-    });
-  </script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

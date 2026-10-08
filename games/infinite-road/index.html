@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Infinite Road Game - Free 3D Driving Game</title>
   <meta name="description"
-    content="Play Infinite Road Game free in your browser. Drive a 3D car down an endless road, collect coins and keep the car on the road. It works with a keyboard or touch controls. No download needed.">
+    content="Play Infinite Road Game free in your browser. Drive a 3D car down an endless road that curves, climbs and banks, collect coins and push your distance as far as you can. Works with a keyboard, a gamepad or touch controls. No download needed.">
   <link rel="canonical" href="https://sz-games.github.io/games/infinite-road/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script defer data-domain="sz-games.github.io"
@@ -114,26 +114,28 @@
 <body>
   <main>
     <h1>Infinite Road Game</h1>
-    <p class="lede">Drive a 3D car down an endless road. Collect coins, keep the car between the road edges and
-      push your distance as far as you can.</p>
+    <p class="lede">Drive a 3D car down an endless road. The road curves, climbs and banks, the engine follows
+      your speed, and nothing interrupts the drive. Collect coins and push your distance as far as you can.</p>
     <p><a class="play" href="drive.html">Play the game</a></p>
 
     <section id="how-to-play">
       <h2>How to play</h2>
       <ol>
-        <li>Press W or Up to accelerate.</li>
-        <li>Press A or D, or Left and Right, to steer.</li>
-        <li>Press S or Down to brake.</li>
+        <li>Press W or Up to accelerate, S or Down to brake and reverse.</li>
+        <li>Press A or D, or Left and Right, to steer. Steering tightens up as you slow down.</li>
+        <li>Press Space for the handbrake. It loosens the rear wheels so the car rotates into a corner.</li>
         <li>Collect the gold coins to raise your score.</li>
-        <li>Keep the car on the road. The run ends when a wheel leaves the road.</li>
+        <li>Press R to restart the run instantly, C to switch camera and Esc for the settings.</li>
       </ol>
-      <p>On a phone or tablet, the game shows on-screen buttons for gas, brake and steering.</p>
+      <p>On a phone or tablet, the game shows on-screen buttons for gas, brake, handbrake and steering. A
+        gamepad works too: left stick to steer, triggers for gas and brake.</p>
     </section>
 
     <section id="about">
       <h2>About the game</h2>
       <p>Infinite Road Game is a free browser game. It uses the three.js library and needs no download or account. The
-        road, the coins and the distance counter never stop while the car is moving.</p>
+        road is generated as you drive, so it never ends and never repeats. Low, Medium and High quality settings are
+        in the game, and the game picks one for you if you do not choose.</p>
     </section>
 
     <section id="faq">
@@ -146,16 +148,17 @@
         <dd>Yes. On a phone or tablet, hold the on-screen buttons to drive, steer and brake.</dd>
 
         <dt>Does the game save my score?</dt>
-        <dd>No. The score resets when you reload the page.</dd>
+        <dd>No. The distance and the score reset when you reload the page or press R.</dd>
 
         <dt>Which keys do I use?</dt>
-        <dd>W or Up accelerates, S or Down brakes, and A and D or Left and Right steer.</dd>
+        <dd>W or Up accelerates, S or Down brakes, A and D or Left and Right steer, Space is the handbrake, R
+          restarts, C changes the camera, M mutes and Esc opens the settings.</dd>
       </dl>
     </section>
 
     <footer>
-      <p>Car model: Kenney Car Kit (CC0). Built with three.js (MIT). The debug panel uses Tweakpane (MIT).
-        See <a href="CREDITS.md">CREDITS.md</a>.</p>
+      <p>Car model: Kenney Car Kit (CC0). Built with three.js and cannon-es (MIT). The debug panel uses Tweakpane
+        (MIT). See <a href="CREDITS.md">CREDITS.md</a>.</p>
     </footer>
   </main>
 </body>
