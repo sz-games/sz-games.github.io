@@ -322,6 +322,7 @@
         }
       }
     </style>
+    <script src="/safe-url.js"></script>
   </head>
 
   <body>
@@ -423,7 +424,7 @@
 
       // Navigation functions
       function opena() {
-        window.location = url
+        window.location = safeRedirectUrl(url)
       }
 
       function back() {
