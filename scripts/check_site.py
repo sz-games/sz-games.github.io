@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check internal links, sitemap.xml and canonical tags. Stdlib only.
+"""Check internal links, sitemap.xml, canonical tags and query-param sinks. Stdlib only.
 
 Usage: python3 scripts/check_site.py [root]
 Exit 1 if any check fails. Known-broken links live in scripts/link-baseline.txt.
@@ -14,6 +14,26 @@ from urllib.parse import unquote, urlparse
 HOST = "sz-games.github.io"
 SKIP_DIRS = {".git", ".github", ".worktrees", "node_modules"}
 NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+
+# A raw query-string value assigned to .src or location is an XSS / open
+# redirect (SEC-2026-10). Pass it through safeGameUrl() or safeRedirectUrl()
+# from /safe-url.js first.
+QUERY = r"(?:\w*[Pp]arams?\w*\s*\.\s*get\s*\(|getQueryParam\s*\(|location\s*\.\s*(?:search|hash)\b)"
+TAINT = re.compile(r"\b(?:const|let|var)\s+(\w+)\s*=\s*[^;\n]*" + QUERY)
+SINK = re.compile(r"(?:\.src|\blocation(?:\s*\.\s*href)?)\s*=(?!=)\s*([^;\n]*)"
+                  r"|\blocation\s*\.\s*(?:assign|replace)\s*\(([^;\n]*)")
+SAFE = re.compile(r"\s*safe(?:Game|Redirect)Url\s*\(")
+
+
+def query_sinks(text):
+    """Yield (line, code) for each .src/location assignment fed from the query string."""
+    names = set(TAINT.findall(text))
+    tainted = re.compile(QUERY + (r"|\b(?:" + "|".join(map(re.escape, names)) + r")\b" if names else ""))
+    for m in SINK.finditer(text):
+        rhs = m.group(1) if m.group(1) is not None else m.group(2)
+        if SAFE.match(rhs) or not tainted.search(rhs):
+            continue
+        yield text.count("\n", 0, m.start()) + 1, m.group(0).strip()
 
 
 class Page(HTMLParser):
@@ -118,6 +138,12 @@ def main():
             errors.append(f"canonical not https://{HOST}: {rel} -> {info.canonical}")
         elif not exists(root / unquote(u.path).lstrip("/")):
             errors.append(f"canonical target missing: {rel} -> {info.canonical}")
+
+    sources = [p for p in root.rglob("*") if p.suffix in (".html", ".js") and p.is_file()
+               and not SKIP_DIRS & set(p.relative_to(root).parts)]
+    for p in sorted(sources):
+        for line, code in query_sinks(p.read_text(errors="replace")):
+            errors.append(f"raw query param in sink: {p.relative_to(root).as_posix()}:{line}: {code}")
 
     for e in errors:
         print(e)
