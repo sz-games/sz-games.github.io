@@ -1,53 +1,43 @@
-<p align="center">
- 
-  <img src="https://sz-games.github.io/G-Google.png" width="150px" height="150px">
+# SZ Games (sz-games.github.io)
 
-</p>
+A static unblocked-games portal for school students: 250+ browser games (HTML5, WebGL, Flash via Ruffle), retro emulators, tab cloaking, a panic button and an about:blank launcher. Built by Bobby; run by Senty.
 
-<h1 align="center">Sz Games</h1>
-<p align="center">The Best Way To Play Game's In School</p>
-<p align="Center">This Site Was Made By Me (Bobby)</p>
-<a href="https://discord.gg/DzKRSntb87"><img height="30px"  src="https://img.shields.io/badge/Join%20The%20Discord!-brightgreen?style=for-the-badge&logo=discord&logoColor=white&labelColor=%233f4bd1&color=%235865F2"></a>
+- Live: https://sz-games.github.io/
+- Repo: https://github.com/sz-games/sz-games.github.io (default branch `main`)
+- Not the same site as sz-games.com (repo `docklib/docklib.github.io`, Kamal on themarzlibrary) or sz.games (`senty-au/sz.games`). Only the games are shared. rus decided on 2026-10-01 to keep them separate.
 
+## Stack
+Plain HTML, CSS and vanilla JavaScript. No build step, no package manager, no backend. A one-line `_config.yml` (Jekyll cache header) is all GitHub Pages reads. Python 3 (stdlib only) runs the CI check.
 
+## Run locally
+```bash
+python3 -m http.server 8000      # then open http://localhost:8000
+python3 -I scripts/check_site.py # links, sitemap.xml, canonical tags (same as CI)
+```
 
+## Deploy
+GitHub Pages, legacy "build from branch": every push to `main` is published from `/`. There is no CNAME and no deploy workflow. The only workflow is `.github/workflows/site-check.yml` (runs `scripts/check_site.py` on push and pull request; it does not deploy).
 
-<h1 align="center">Features</h1>
+## Connected services
+| Service | Detail |
+|---|---|
+| Plausible | `data-domain="sz-games.github.io"`, script from stats.senty.com.au |
+| Google Analytics 4 / Tag Manager | `G-C78TXR0XFK`, GTM `GTM-P93VS8N5` |
+| Google AdSense | publisher `ca-pub-3723218062742398`; `ads.txt` also lists Setupad and Aniview records |
+| Search Console / my-seo | property for `sz-games.github.io` (listed in fleet `sites.toml`); content and SEO changes are annotated in my-seo, not here |
+| Firebase Realtime Database | only `Chat.html` (client key in the page) |
 
-- **250+ Games**
-- **Retro Games**
-- **Emulators**
-- **10+ Roblox Servers**
+## Backups
+No server state. The repo is the backup (about 296 MB checked out; GitHub reports 260 MB). Nothing else needs backing up.
 
-- **Tab Cloaking**
-- **Prevent Page Close**
-- **About:Blank Embeder**
-- **Panic Button**
-- **Proxies (Testing)**
+## Docs
+- [GEMINI.md](GEMINI.md): site structure and how to add a game
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [docs/CHANGELOG-TECH.md](docs/CHANGELOG-TECH.md)
+- [docs/PROPOSALS.md](docs/PROPOSALS.md)
+- [docs/AUDIT-2026-10.md](docs/AUDIT-2026-10.md): the October 2026 audit
+- [SECURITY.md](SECURITY.md)
 
-- **Doesnt Have A Thousand Ads On Every Page**
-
-<h1 align="Center">Instructions To Host Your Own</h1>
-<p align="center">You Can Fork This Repo and Host Your Own But You Need To Include The Following</p>
-
-- **Link To The Original Site**
-- **Credits**
-
-<p align="center">Do Not Do The Following</p>
-
-- **Rebrand The Site**
-
-
-<h1 align="center">Other Stuff</h1>
-
-<a href="https://chromewebstore.google.com/detail/sz-games-portable/hbclpfdbinpmdgcglhmkngpabafdeaim"><img height="30px" src="https://img.shields.io/badge/Download%20The%20Extension-white?style=for-the-badge&logo=chromewebstore&logoColor=white&logoSize=auto&labelColor=%232d2d2d&color=%232d2d2d"></a>
-
-<a href="https://addons.mozilla.org/en-US/firefox/addon/sz-games-portable/"><img height="30px" src="https://img.shields.io/badge/Download%20The%20Addon-white?style=for-the-badge&logo=firefoxbrowser&logoColor=white&logoSize=auto&color=%23FF7139"></a>
-
-
-
-
-
-
-
+## Owner and notes
+Owner: Senty (rus). Fork rules from the original author: keep a link to the original site and the credits; do not rebrand. Browser extension: [Chrome](https://chromewebstore.google.com/detail/sz-games-portable/hbclpfdbinpmdgcglhmkngpabafdeaim), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/sz-games-portable/). Discord: https://discord.gg/DzKRSntb87
 
