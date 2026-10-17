@@ -24,11 +24,11 @@
         margin: 0;
         color: white;
         font-family: Arial, Helvetica, sans-serif;
-        overflow: hidden;
+        min-height: 100vh;
       }
 
       .game-covers {
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 100%;
         display: grid;
@@ -58,10 +58,10 @@
       }
 
       .error-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: relative;
+        box-sizing: border-box;
+        width: min(680px, calc(100% - 24px));
+        margin: 24px auto;
         text-align: center;
         background: rgba(32, 32, 32, 0.9);
         padding: 40px;
@@ -85,7 +85,8 @@
       }
 
       .error-code {
-        font-size: 120px;
+        font-size: 96px;
+        line-height: 1.1;
         font-weight: bold;
         margin: 0;
         background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
@@ -158,6 +159,77 @@
           transform: translateX(100%) rotate(45deg);
         }
       }
+
+      .play-box {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3 / 1;
+        margin: 20px 0;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #111 center / cover no-repeat url('/cover/dino.webp');
+      }
+
+      .play-box iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .play-btn {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        border: 0;
+        cursor: pointer;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.55);
+      }
+
+      .play-btn:hover,
+      .play-btn:focus-visible {
+        background: rgba(0, 0, 0, 0.35);
+      }
+
+      .popular {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 10px;
+        margin: 22px 0;
+      }
+
+      .popular a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .popular img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 4px;
+        background: #111;
+      }
+
+      .popular a:hover img {
+        outline: 2px solid #4ecdc4;
+      }
+
+      @media (max-width: 520px) {
+        .error-container {
+          padding: 20px;
+        }
+        .error-code {
+          font-size: 64px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -218,8 +290,27 @@
         <h1>Sz Games</h1>
       </div>
       <h1 class="error-code">404</h1>
-      <p class="error-message">Oops! This page got lost in the game</p>
+      <p class="error-message">Oops! This page got lost. Play while you're here:</p>
+      <div class="play-box">
+        <button class="play-btn" id="play" type="button">▶ Play Chrome Dino</button>
+      </div>
       <a href="https://sz-games.github.io" class="home-link">🎮 Back to Games 🎮</a>
+      <h2>Popular games</h2>
+      <div class="popular">
+        <a href="https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/slope/"><img src="/cover/slope.webp" alt="" width="110" height="110" loading="lazy" />Slope</a>
+        <a href="https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games9/bitlife"><img src="/cover/Bitlife.webp" alt="" width="110" height="110" loading="lazy" />Bitlife</a>
+        <a href="https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/storage3/AWeb/"><img src="/cover/Minecraft.webp" alt="" width="110" height="110" loading="lazy" />Minecraft</a>
+        <a href="https://sz-games.github.io/games/game.html?game=/Games11/retro-bowl/game"><img src="/cover/retrobowl.avif" alt="" width="110" height="110" loading="lazy" />Retro Bowl</a>
+      </div>
+      <script>
+        document.getElementById('play').addEventListener('click', function () {
+          var f = document.createElement('iframe')
+          f.src = '/games/dino/'
+          f.title = 'Chrome Dino'
+          this.parentNode.replaceChild(f, this)
+          f.focus()
+        })
+      </script>
     </div>
   </body>
 </html>
