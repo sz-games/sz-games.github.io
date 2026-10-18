@@ -140,6 +140,7 @@ body {
 /* Page Content */
 
 </style>
+<script src="/safe-url.js"></script>
 </head>
 <body onresize="resize()">
     <script src="https://360playvid.info/slidepleer/s03938s.js" type="text/javascript" charset="utf-8"></script>
@@ -628,14 +629,14 @@ var currentUrl = new URL(window.location.href);
 // Check for the presence of the "text" parameter in the URL
 if (currentUrl.searchParams.has("game")) {
   // Set the text of the element to the value of the "text" parameter
-  textElement.src = currentUrl.searchParams.get("game");
+  textElement.src = safeGameUrl(currentUrl.searchParams.get("game"));
 } else {
  
 }
 
 setInterval(() => {
   if(document.getElementById('game').contentWindow.location.href.includes('https://ckf01.lancsd.org/')) {
-    textElement.src = currentUrl.searchParams.get("game");
+    textElement.src = safeGameUrl(currentUrl.searchParams.get("game"));
   }
 }, 1000);
 
