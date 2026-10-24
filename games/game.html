@@ -32,12 +32,11 @@
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <link rel="icon" href="../G.png" />
     <title>Sz Games - Game</title>
-    <link rel="canonical" href="https://sz-games.github.io/games/game.html" />
     <script defer src="/games.js"></script>
     <script>
       // Known games get a unique title, description and canonical, looked up in the
-      // site's game list (games.js). Unknown games keep the generic title and the
-      // bare viewer canonical. The game param is normalised to one form: the
+      // site's game list (games.js). Unknown games keep the generic title and have no
+      // canonical (a static one made Google fold every game into the bare viewer). The game param is normalised to one form: the
       // list's own game URL as an absolute sz-games.github.io URL, which is the
       // form the site's internal links use. The lookup treats a trailing slash and
       // a trailing /index.html as variants of the same game.
@@ -113,8 +112,10 @@
         setMeta('name', 'description', description)
         setMeta('property', 'og:title', title)
 
-        var canonical = document.querySelector('link[rel="canonical"]')
-        if (canonical) canonical.setAttribute('href', ORIGIN + '/games/game.html?game=' + encodeURI(match.canonical))
+        var link = document.createElement('link')
+        link.setAttribute('rel', 'canonical')
+        link.setAttribute('href', ORIGIN + '/games/game.html?game=' + encodeURI(match.canonical))
+        document.head.appendChild(link)
       })
     </script>
     <meta charset="UTF-8" />
