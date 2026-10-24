@@ -140,6 +140,10 @@ def main():
         elif not exists(root / unquote(u.path).lstrip("/")):
             errors.append(f"canonical target missing: {rel} -> {info.canonical}")
 
+    viewer = parsed.get("games/game.html")
+    if viewer is not None and viewer.canonical:
+        errors.append("games/game.html has a static canonical; it must be set per game by script")
+
     sources = [p for p in root.rglob("*") if p.suffix in (".html", ".js") and p.is_file()
                and not SKIP_DIRS & set(p.relative_to(root).parts)]
     for p in sorted(sources):
