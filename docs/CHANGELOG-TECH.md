@@ -15,3 +15,4 @@ Content and SEO changes are in my-seo annotations for the `sz-games.github.io` p
 - 2026-10-08: CI check for broken links, sitemap and canonicals (FL-671).
 - 2026-10-12: stronger home result for the brand search "sz games" (FL-986). Merged to `main` as PR #6.
 - 2026-10-16: project audit (FL-1141), docs added.
+- 2026-10-24 (FL-1453): sitemap built from games.js by `scripts/build_sitemap.py` (298 URLs, utility pages removed); one Wordle entry (Games5); Wordle added to the home "Popular now" rail.

@@ -106,7 +106,8 @@ def main():
             continue
         if info.noindex:
             errors.append(f"sitemap: noindex page listed: {url}")
-        if info.canonical and info.canonical != url:
+        # Game viewer URLs (with ?game=) get their canonical from JavaScript.
+        if info.canonical and not u.query and info.canonical != url:
             errors.append(f"canonical mismatch: {url} has canonical {info.canonical}")
 
     # Every canonical on any page must be an absolute URL on this host that exists.

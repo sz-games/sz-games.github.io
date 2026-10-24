@@ -10,7 +10,7 @@ A static site served as-is by GitHub Pages. No server code, no database.
 - `games.js`, `script.js`, `beforeop.html`: legacy catalogue code, not used by the home page.
 - `Games5/`, `testing/`, `weather/`: small old or experimental folders.
 - `service-worker.js`: a kill switch. It unregisters itself and clears caches for visitors who still have the old worker. Delete it once that is no longer needed.
-- `sitemap.xml`, `robots.txt`, `ads.txt`: SEO and ad files, edited by hand.
+- `sitemap.xml` is built by `python3 scripts/build_sitemap.py` (games.js + page list). `robots.txt`, `ads.txt`: edited by hand.
 - `scripts/check_site.py` and `scripts/link-baseline.txt`: CI check. Known broken links are listed in the baseline.
 
 ## Data flow

@@ -953,13 +953,6 @@ const gamesData = [
     imgSrc: './cover/townscaper.webp',
   },
   {
-    id: 'Wordle',
-    name: 'Wordle',
-    categories: ['Casual'],
-    url: 'https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games2/wordle',
-    imgSrc: './cover/wordle.webp',
-  },
-  {
     id: 'Zelda 3D',
     name: 'Zelda 3D',
     categories: ['Adventure'],

@@ -12,6 +12,7 @@ Plain HTML, CSS and vanilla JavaScript. No build step, no package manager, no ba
 ## Run locally
 ```bash
 python3 -m http.server 8000      # then open http://localhost:8000
+python3 scripts/build_sitemap.py     # rebuild sitemap.xml from games.js
 python3 -I scripts/check_site.py # links, sitemap.xml, canonical tags (same as CI)
 ```
 
