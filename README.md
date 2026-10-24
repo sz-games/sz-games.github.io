@@ -12,12 +12,13 @@ Plain HTML, CSS and vanilla JavaScript. No build step, no package manager, no ba
 ## Run locally
 ```bash
 python3 -m http.server 8000      # then open http://localhost:8000
-python3 scripts/build_sitemap.py     # rebuild sitemap.xml from games.js
+python3 scripts/build_sitemap.py     # rebuild sitemap.xml from games.js (probes each game target)
 python3 -I scripts/check_site.py # links, sitemap.xml, canonical tags (same as CI)
+python3 -I -m unittest discover -s scripts -p 'test_*.py'   # tests
 ```
 
 ## Deploy
-GitHub Pages, legacy "build from branch": every push to `main` is published from `/`. There is no CNAME and no deploy workflow. The only workflow is `.github/workflows/site-check.yml` (runs `scripts/check_site.py` on push and pull request; it does not deploy).
+GitHub Pages, legacy "build from branch": every push to `main` is published from `/`. There is no CNAME and no deploy workflow. The only workflow is `.github/workflows/site-check.yml` (runs `scripts/check_site.py` and the script tests on push and pull request; it does not deploy).
 
 ## Connected services
 | Service | Detail |

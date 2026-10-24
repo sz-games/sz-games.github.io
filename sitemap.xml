@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sz-games.github.io/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
@@ -291,11 +291,6 @@
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://sz-games.github.io/games/game.html?game=https://mr-funkinguy.github.io/75/projects/smashkarts/index.html</loc>
-    <lastmod>2025-05-01</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
     <loc>https://sz-games.github.io/games/game.html?game=https://unblockeds-games.com/webgl/combat-online/index.html</loc>
     <lastmod>2025-05-01</lastmod>
     <priority>0.70</priority>
@@ -382,16 +377,6 @@
   </url>
   <url>
     <loc>https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games10/theheist/index.html</loc>
-    <lastmod>2025-05-01</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://sz-games.github.io/games/game.html?game=https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc/cat-ninja.xml</loc>
-    <lastmod>2025-05-01</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://sz-games.github.io/games/game.html?game=https://tbg95.github.io/moto-x3m/game</loc>
     <lastmod>2025-05-01</lastmod>
     <priority>0.70</priority>
   </url>
@@ -562,11 +547,6 @@
   </url>
   <url>
     <loc>https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games4/DogeMiner</loc>
-    <lastmod>2025-05-01</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://sz-games.github.io/games/game.html?game=https://webglmath.github.io/drift-hunters/</loc>
     <lastmod>2025-05-01</lastmod>
     <priority>0.70</priority>
   </url>
@@ -777,11 +757,6 @@
   </url>
   <url>
     <loc>https://sz-games.github.io/games/game.html?game=https://sz-games.github.io/Games6/1v1space</loc>
-    <lastmod>2025-05-01</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://sz-games.github.io/games/game.html?game=https://v6p9d9t4.ssl.hwcdn.net/html/8805247/UZG/index.html</loc>
     <lastmod>2025-05-01</lastmod>
     <priority>0.70</priority>
   </url>

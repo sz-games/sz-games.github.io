@@ -1,0 +1,6 @@
+# Games that stay in sitemap.xml even when the health check fails.
+# One game target URL per line. A line starting with # is a comment.
+# Add a line for a live game that blocks the check (bot protection, brief
+# outage). Remove the line once the target answers 200 again.
+# Example:
+# https://example.com/game/
