@@ -80,6 +80,14 @@
         }
 
         var params = new URLSearchParams(window.location.search)
+        // The bare viewer (no game param) is an empty shell: keep it out of the index.
+        if (!params.get('game')) {
+          var robots = document.createElement('meta')
+          robots.setAttribute('name', 'robots')
+          robots.setAttribute('content', 'noindex, follow')
+          document.head.appendChild(robots)
+          return
+        }
         var match = byKey[keyOf(normalise(params.get('game') || ''))]
         if (!match) return
 
