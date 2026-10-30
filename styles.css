@@ -651,6 +651,10 @@ img {
     position: sticky;
     top: 0;
   }
+  /* Our own container reserves the tallest sidebar unit (300x600 / 160x600) so the Discord box below does not jump when the ad fills. */
+  .side_ad_right {
+    min-height: 600px;
+  }
 }
 
 .notice-box-wrapper {
