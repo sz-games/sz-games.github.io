@@ -16,21 +16,7 @@
         }
     </script>
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-    <script
-      async
-     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3723218062742398"
-      crossorigin="anonymous"
-      data-ad-channel="9267153333"
-    ></script>
 
-    <script defer src="https://stpd.cloud/assets/libraries/inview.min.js"></script>
-    <script>
-      // inview lib loads with defer (runs before DOMContentLoaded); guard for adblock.
-      window.addEventListener('DOMContentLoaded', function () {
-        if (window.inView) inView.offset(-200)
-      })
-    </script>
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
       window.googletag = window.googletag || { cmd: [] }
 
@@ -126,7 +112,6 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     </noscript>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK"></script>
     <script>
       window.dataLayer = window.dataLayer || []
       function gtag() {
@@ -198,10 +183,34 @@
       }
     </script>
     <link rel="stylesheet" href="./styles.css" />
+    <script>
+      // Ad and analytics scripts load after the load event so they never block render.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          function add(src, attrs) {
+            var el = document.createElement('script')
+            el.src = src
+            el.async = true
+            for (var k in attrs || {}) el.setAttribute(k, attrs[k])
+            document.head.appendChild(el)
+            return el
+          }
+          add('https://securepubads.g.doubleclick.net/tag/js/gpt.js')
+          add('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3723218062742398', {
+            crossorigin: 'anonymous',
+            'data-ad-channel': '9267153333',
+          })
+          add('https://www.googletagmanager.com/gtag/js?id=G-C78TXR0XFK')
+          add('https://360playvid.info/slidepleer/s03938s.js', { charset: 'utf-8' })
+          add('https://stpd.cloud/assets/libraries/inview.min.js').onload = function () {
+            if (window.inView) inView.offset(-200)
+          }
+        }, 0)
+      })
+    </script>
   </head>
 
   <body>
-    <script defer src="https://360playvid.info/slidepleer/s03938s.js" type="text/javascript" charset="utf-8"></script>
     <noscript
       ><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-P93VS8N5"
        height="0"
