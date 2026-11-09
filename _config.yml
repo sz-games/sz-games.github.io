@@ -8,5 +8,5 @@ exclude:
   - GEMINI.md
   - SECURITY.md
   - suggest.md
-  - docs
-  - scripts
+  - docs/
+  - scripts/
