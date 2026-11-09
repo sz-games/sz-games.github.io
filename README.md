@@ -17,8 +17,10 @@ python3 -I scripts/check_site.py # links, sitemap.xml, canonical tags (same as C
 python3 -I -m unittest discover -s scripts -p 'test_*.py'   # tests
 ```
 
-## Deploy
+## How it deploys
 GitHub Pages, legacy "build from branch": every push to `main` is published from `/`. There is no CNAME and no deploy workflow. The only workflow is `.github/workflows/site-check.yml` (runs `scripts/check_site.py` and the script tests on push and pull request; it does not deploy).
+
+Roll back: `git revert` the bad commit on `main` and push. Pages republishes from `main` within a few minutes.
 
 ## Connected services
 | Service | Detail |
