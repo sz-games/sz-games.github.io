@@ -3,3 +3,10 @@ defaults:
       path: ""
     values:
       cache-control: "max-age=31536000"
+exclude:
+  - README.md
+  - GEMINI.md
+  - SECURITY.md
+  - suggest.md
+  - docs
+  - scripts
