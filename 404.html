@@ -69,6 +69,53 @@
         border: 2px solid rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         z-index: 2;
+        width: min(560px, calc(100% - 40px));
+        max-height: calc(100% - 40px);
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 24px;
+      }
+
+      .game-box {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        margin: 12px 0;
+        background: #111;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .game-box iframe,
+      .game-box button {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .game-box button {
+        background: #111;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      .popular {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 12px 0;
+      }
+
+      .popular a {
+        color: white;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 8px 14px;
+        border-radius: 16px;
+        text-decoration: none;
       }
 
       .logo {
@@ -76,7 +123,7 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 8px;
       }
 
       .logo img {
@@ -85,7 +132,7 @@
       }
 
       .error-code {
-        font-size: 120px;
+        font-size: 72px;
         font-weight: bold;
         margin: 0;
         background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
@@ -218,8 +265,27 @@
         <h1>Sz Games</h1>
       </div>
       <h1 class="error-code">404</h1>
-      <p class="error-message">Oops! This page got lost in the game</p>
+      <p class="error-message">Oops! This page got lost in the game. Play while you are here:</p>
+      <div class="game-box">
+        <button type="button" id="play-dino">🦖 Play Dino Run</button>
+      </div>
+      <div class="popular">
+        <a href="https://sz-games.github.io/Slope.html">Slope</a>
+        <a href="https://sz-games.github.io/Bitlife.html">BitLife</a>
+        <a href="https://sz-games.github.io/FNF.html">Friday Night Funkin</a>
+        <a href="https://sz-games.github.io/games/tetris.html">Tetris</a>
+        <a href="https://sz-games.github.io/games/paperio.html">Paper.io</a>
+      </div>
       <a href="https://sz-games.github.io" class="home-link">🎮 Back to Games 🎮</a>
     </div>
+    <script>
+      document.getElementById('play-dino').addEventListener('click', function () {
+        var f = document.createElement('iframe')
+        f.src = 'https://sz-games.github.io/games/dino/'
+        f.title = 'Dino Run'
+        this.replaceWith(f)
+        f.focus()
+      })
+    </script>
   </body>
 </html>
